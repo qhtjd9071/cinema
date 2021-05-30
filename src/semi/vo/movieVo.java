@@ -1,17 +1,18 @@
 package semi.vo;
 
 public class movieVo {
-	private int showNum;
+	private int movieNum;
 	private String movieTitle;
 	private String movieContent;
 	private String director;
 	private String genre;
 	private String rating;
 	private String image;
-	public movieVo(int showNum, String movieTitle, String movieContent, String director, String genre, String rating,
+	public movieVo() {}
+	public movieVo(int movieNum, String movieTitle, String movieContent, String director, String genre, String rating,
 			String image) {
 		super();
-		this.showNum = showNum;
+		this.movieNum = movieNum;
 		this.movieTitle = movieTitle;
 		this.movieContent = movieContent;
 		this.director = director;
@@ -19,11 +20,11 @@ public class movieVo {
 		this.rating = rating;
 		this.image = image;
 	}
-	public int getShowNum() {
-		return showNum;
+	public int getMovieNum() {
+		return movieNum;
 	}
-	public void setShowNum(int showNum) {
-		this.showNum = showNum;
+	public void setMovieNum(int movieNum) {
+		this.movieNum = movieNum;
 	}
 	public String getMovieTitle() {
 		return movieTitle;
@@ -61,5 +62,6 @@ public class movieVo {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	
 	
 }

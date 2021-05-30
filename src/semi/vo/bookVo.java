@@ -11,10 +11,9 @@ public class bookVo {
 	private int userNum;
 	private String cancel;
 	private int seatNum;
-	private String seatArray;
 	public bookVo() {}
 	public bookVo(int bookNum, String booker, int showNum, Date bookDate, int price, int userNum, String cancel,
-			int seatNum, String seatArray) {
+			int seatNum) {
 		super();
 		this.bookNum = bookNum;
 		this.booker = booker;
@@ -24,7 +23,6 @@ public class bookVo {
 		this.userNum = userNum;
 		this.cancel = cancel;
 		this.seatNum = seatNum;
-		this.seatArray = seatArray;
 	}
 	public int getBookNum() {
 		return bookNum;
@@ -60,7 +58,7 @@ public class bookVo {
 		return userNum;
 	}
 	public void setUserNum(int userNum) {
-		userNum = userNum;
+		this.userNum = userNum;
 	}
 	public String getCancel() {
 		return cancel;
@@ -74,11 +72,6 @@ public class bookVo {
 	public void setSeatNum(int seatNum) {
 		this.seatNum = seatNum;
 	}
-	public String getSeatArray() {
-		return seatArray;
-	}
-	public void setSeatArray(String seatArray) {
-		this.seatArray = seatArray;
-	}
+	
 	
 }

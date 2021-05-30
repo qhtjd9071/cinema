@@ -8,19 +8,19 @@ public class movieCommentsVo {
 	private String content;
 	private int star;
 	private Date writedate;
-	private int showNum;
 	private int UserNum;
+	private int movieNum;
 	public movieCommentsVo() {}
-	public movieCommentsVo(int movieCommentsNum, String id, String content, int star, Date writedate, int showNum,
-			int userNum) {
+	public movieCommentsVo(int movieCommentsNum, String id, String content, int star, Date writedate, int userNum,
+			int movieNum) {
 		super();
 		this.movieCommentsNum = movieCommentsNum;
 		this.id = id;
 		this.content = content;
 		this.star = star;
 		this.writedate = writedate;
-		this.showNum = showNum;
 		UserNum = userNum;
+		this.movieNum = movieNum;
 	}
 	public int getMovieCommentsNum() {
 		return movieCommentsNum;
@@ -52,17 +52,17 @@ public class movieCommentsVo {
 	public void setWritedate(Date writedate) {
 		this.writedate = writedate;
 	}
-	public int getShowNum() {
-		return showNum;
-	}
-	public void setShowNum(int showNum) {
-		this.showNum = showNum;
-	}
 	public int getUserNum() {
 		return UserNum;
 	}
 	public void setUserNum(int userNum) {
 		UserNum = userNum;
+	}
+	public int getMovieNum() {
+		return movieNum;
+	}
+	public void setMovieNum(int movieNum) {
+		this.movieNum = movieNum;
 	}
 	
 }

@@ -7,16 +7,14 @@ public class showVo {
 	private int movieNum;
 	private Date beginTime;
 	private Date endTime;
-	private Date showDate;
 	private int roomserialNum;
 	public showVo() {}
-	public showVo(int showNum, int movieNum, Date beginTime, Date endTime, Date showDate, int roomserialNum) {
+	public showVo(int showNum, int movieNum, Date beginTime, Date endTime, int roomserialNum) {
 		super();
 		this.showNum = showNum;
 		this.movieNum = movieNum;
 		this.beginTime = beginTime;
 		this.endTime = endTime;
-		this.showDate = showDate;
 		this.roomserialNum = roomserialNum;
 	}
 	public int getShowNum() {
@@ -42,12 +40,6 @@ public class showVo {
 	}
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
-	}
-	public Date getShowDate() {
-		return showDate;
-	}
-	public void setShowDate(Date showDate) {
-		this.showDate = showDate;
 	}
 	public int getRoomserialNum() {
 		return roomserialNum;
