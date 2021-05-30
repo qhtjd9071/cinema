@@ -1,5 +1,4 @@
 
-
 /* Drop Tables */
 
 DROP TABLE pay CASCADE CONSTRAINTS;
@@ -132,9 +131,8 @@ CREATE TABLE show
 (
 	showNum number NOT NULL,
 	movieNum number NOT NULL,
-	beginTime varchar2(20) NOT NULL,
-	endTime varchar2(20) NOT NULL,
-    showDate date NOT NULL,
+	beginTime date NOT NULL,
+	endTime date NOT NULL,
 	roomserialNum number NOT NULL,
 	PRIMARY KEY (showNum)
 );
