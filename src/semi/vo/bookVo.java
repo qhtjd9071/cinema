@@ -21,7 +21,7 @@ public class bookVo {
 		this.showNum = showNum;
 		this.bookDate = bookDate;
 		this.price = price;
-		userNum = userNum;
+		this.userNum = userNum;
 		this.cancel = cancel;
 		this.seatNum = seatNum;
 		this.seatArray = seatArray;
