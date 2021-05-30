@@ -1,0 +1,5 @@
+시작페이지에서 cmd접속->sqlplus system/비밀번호 입력
+
+create user semi identified by 1234;
+grant connect,resource to semi;
+
