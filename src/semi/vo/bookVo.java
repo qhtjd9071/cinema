@@ -10,10 +10,10 @@ public class bookVo {
 	private int price;
 	private int userNum;
 	private String cancel;
-	private int seatNum;
+	private String seatNum;
 	public bookVo() {}
 	public bookVo(int bookNum, String booker, int showNum, Date bookDate, int price, int userNum, String cancel,
-			int seatNum) {
+			String seatNum) {
 		super();
 		this.bookNum = bookNum;
 		this.booker = booker;
@@ -66,12 +66,11 @@ public class bookVo {
 	public void setCancel(String cancel) {
 		this.cancel = cancel;
 	}
-	public int getSeatNum() {
+	public String getSeatNum() {
 		return seatNum;
 	}
-	public void setSeatNum(int seatNum) {
+	public void setSeatNum(String seatNum) {
 		this.seatNum = seatNum;
 	}
-	
 	
 }
