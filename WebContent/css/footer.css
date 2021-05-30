@@ -1,0 +1,153 @@
+@charset "UTF-8";
+
+* {
+	margin:0;
+	padding:0;
+}
+
+body {
+	min-width:1024px;
+	display:block;
+	font-family:'Noto Sans KR', 'Roboto', 'dotum', 'sans-serif';
+	margin:0;
+	padding:0;
+}
+
+.footer {
+	display:block;
+	padding-top:80px;
+}
+
+.inner {
+	width:980px;
+	position:relative;
+	display:block;
+	margin:0 auto;
+}
+
+/*logo*/
+.f_logo {
+	display:block;
+	margin-bottom:20px;
+}
+.f_logo img {
+	border: none;
+    vertical-align: top;
+}
+
+/*f_menu*/
+.f_menu {
+	display:flex;
+	padding:0;
+	margin:0;
+	margin-bottom:15px;
+	list-style:none;
+	flex-direction:row;
+}
+.f_menu li {
+	position:relative;
+	display:list-item;
+	fload:left;
+	list-style:none;
+	margin-right:10px;
+	padding-left:10px;
+	text-align:left;
+}
+.f_menu li:first-child {
+	padding-left:0px;
+}
+.f_menu li::before {
+	position:absolute;
+	height:10px;
+	content:"";
+	top:2px;
+	left:0px;
+	border-left:1px solid rgb(112, 112, 112);
+}
+.f_menu li:first-child::before {
+	border-left:0px solid rgb(112, 112, 112);
+}
+.f_menu li a {
+	display:block;
+	color:#000;
+	cursor:pointer;
+	font-size:12px;
+	letter-spaceing:-0.03em;
+	line-height:1.1;
+	text-align:left;
+	lext-decoration-line:none;
+}
+
+/*f_address*/
+.f_address {
+	display:block;
+	color:#4D4D4D;
+	font-size:12px;
+	letter-spacing:-0.03em;
+	line-height:1.5;
+}
+.f_address p {
+	display:inline;
+	margin-right:10px;
+}
+.bar {
+	position:relative;
+	margin-right:10px;
+	padding-left:10px;
+}
+.bar2 {
+	padding-left:0px;
+}
+.bar::before {
+	content:"";
+	position:absolute;
+	height:10px;
+	top:4px;
+	left:0px;
+	border-left:1px solid rgb(112,112,112);
+}
+.bar2::before {
+	border-left:0px solid rgb(112,112,112);
+}
+
+/*copyright*/
+.copyright {
+	display:block;
+	color:#4D4D4D;
+	font-size:12px;
+	letter-spacing:-0.03em;
+	line-height:1.1;
+	margin:4px 0 0 0;
+	padding:0;
+}
+
+/*article_award*/
+.article_award {
+	display:block;
+	background-color:rgb(245, 245, 245);
+	margin:50px 0 0 0;
+	padding:20px 0;
+}
+.inner {
+	width:980px;
+	position:relative;
+	display:block;
+	margin:0 auto;
+}
+.inner ul {
+	display:flex;
+	flex-direction:row;
+	margin:0;
+	padding:0;
+}
+.inner ul li {
+	display:list-item;
+	list-style:none;
+	margin:0 4px;
+}
+.inner ul li:first-child {
+	margin-left:0px;
+}
+.inner ul li:last-child {
+	margin-right:0px;
+}
