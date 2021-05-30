@@ -25,7 +25,7 @@ CREATE TABLE book
 	showNum number NOT NULL,
 	bookDate date NOT NULL,
 	price number NOT NULL,
-	UserNum number NOT NULL,
+	userNum number NOT NULL,
 	cancel varchar2(20) NOT NULL,
 	seatNum number NOT NULL,
 	seatArray varchar2(5) NOT NULL,
@@ -109,7 +109,7 @@ CREATE TABLE notice
 	title varchar2(20) NOT NULL,
 	content varchar2(1000) NOT NULL,
 	writedate date NOT NULL,
-	hit number,
+	hit number  NOT NULL,
 	PRIMARY KEY (noticeNum)
 );
 
@@ -153,7 +153,7 @@ CREATE TABLE show
 
 CREATE TABLE users
 (
-	UserNum number NOT NULL,
+	userNum number NOT NULL,
 	id varchar2(20) NOT NULL,
 	pwd varchar2(20) NOT NULL,
 	name varchar2(10) NOT NULL,
@@ -161,7 +161,7 @@ CREATE TABLE users
 	phone varchar2(20) NOT NULL,
 	age number NOT NULL,
 	delUser varchar2(20) NOT NULL,
-	PRIMARY KEY (UserNum)
+	PRIMARY KEY (userNum)
 );
 
 
@@ -205,26 +205,26 @@ ALTER TABLE book
 
 
 ALTER TABLE book
-	ADD FOREIGN KEY (UserNum)
-	REFERENCES users (UserNum)
+	ADD FOREIGN KEY (userNum)
+	REFERENCES users (userNum)
 ;
 
 
 ALTER TABLE comments
 	ADD FOREIGN KEY (writer)
-	REFERENCES users (UserNum)
+	REFERENCES users (userNum)
 ;
 
 
 ALTER TABLE customer
 	ADD FOREIGN KEY (writer)
-	REFERENCES users (UserNum)
+	REFERENCES users (userNum)
 ;
 
 
 ALTER TABLE movieComments
-	ADD FOREIGN KEY (UserNum)
-	REFERENCES users (UserNum)
+	ADD FOREIGN KEY (userNum)
+	REFERENCES users (userNum)
 ;
 
 commit;
