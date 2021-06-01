@@ -13,6 +13,16 @@
 <link rel="stylesheet" href="css/footer.css"></head>
 
 <body>
+<div class="banner">
+	<div class="inner">
+		<div class="banner_01">
+			<a><img src="images/main/Voyagers_980180.jpg"></a>
+		</div>
+		<div class="banner_02">
+			<a><img src="images/main/Inbyu_980240.png"></a>
+		</div>
+	</div>
+</div>
 <div class="footer">
 	<div class="inner">
 		<span class="f_logo">

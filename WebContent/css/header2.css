@@ -15,19 +15,18 @@ body {
 
 .header {
 	width:100%;
-	height:194px;
+	height:114px;
 	display:block;
 	font-family:'Noto Sans KR', 'Roboto', 'dotum', 'sans-serif';
-	background-color:rgba(0,0,0,0);
-	background-image:linear-gradient(rgb(29, 29, 31) 0%, rgba(0, 0, 0, 0) 100%);
 	position:absolute;
 	z-index:2;
+	border-bottom:1px solid rgb(238, 238, 238);
 }
 
 /*logo*/
 .logo {
 	display:block;
-	background-image:url(../images/main/logo_wht.png);
+	background-image:url(../images/main/logo.png);
 	background-repeat:no-repeat;
 	background-position:center;
 	position:absolute;
@@ -54,7 +53,7 @@ body {
 	height:70px;
 	display:block;
 	margin:0 auto;
-	border-bottom:1px solid rgba(255,255,255,0.3);
+	border-bottom:1px solid #B2B2B2;
 	position:relative;
 }
 
@@ -63,7 +62,6 @@ body {
 	float:right;
 	margin-top:40px;
 	padding:0;
-	opacity:0.5;
 	list-style:none;
 }
 .g_menu1 li {
@@ -75,7 +73,7 @@ body {
 .g_menu1 li a {
 	display:block;
 	cursor:pointer;
-	color:#FFF;
+	color:#656565;
 	font-family:'Noto Sans KR', 'Roboto', 'dotum', 'sans-serif';
 	font-size:12px;
 	line-height:1.1;
@@ -102,7 +100,7 @@ body {
 	height:14px;
 	display:block;
 	cursor:pointer;
-	color:#FFF;
+	color:#656565;
 	font-family:'Noto Sans KR', 'Roboto', 'dotum', 'sans-serif';
 	font-size:11px;
 	line-height:14px;
@@ -111,7 +109,7 @@ body {
 }
 .btn_my {
 	padding-left:15px;
-	background-image:url(../images/main/nav_side_my_wht.png);
+	background-image:url(../images/main/nav_side_my.png);
 	background-position-x:0px;
 	background-position-y:center;
 	background-repeat:no-repeat;
@@ -120,7 +118,7 @@ body {
 .btn_reserve {
 	margin-top:0px;
 	padding-left:18px;
-	background-image:url(../images/main/nav_side_reserve_wht.png);
+	background-image:url(../images/main/nav_side_reserve.png);
 	background-position-x:0px;
 	background-position-y:2px;
 	background-repeat:no-repeat;
@@ -140,7 +138,7 @@ body {
     text-indent:-9999em;
 	word-spacing:normal;
 	padding-left:1px 6px;
-	background-image:url(../images/main/nav_side_all_wht.png);
+	background-image:url(../images/main/nav_side_all.png);
 	background-position:center;
 	background-repeat:no-repeat;
 	background-size:auto;
@@ -171,7 +169,7 @@ body {
 	display:block;
 	cursor:pointer;
 	position:relative;
-	color:#FFF;
+	color:#000;
 	font-size:14px;
 	line-height:40px;
 	letter-spacing:0.1em;

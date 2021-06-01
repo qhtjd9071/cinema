@@ -31,10 +31,9 @@
 						<div class="myslide"><a><img src="images/main/Truck_1920774.jpg"></a></div>
 						<div class="myslide"><a><img src="images/main/Conjuring_1920774.jpg"></a></div>
 					</div>
-					
 					<div class="slide_nav">
-						<button type="button" role="presentation" class="slide_prev"><span><</span></button>
-						<button type="button" role="presentation" class="slide_prev"><span>></span></button>
+						<button type="button" role="presentation" class="slide_prev"><span></span></button>
+ 						<button type="button" role="presentation" class="slide_next"><span></span></button>
 					</div>
 					<div class="slide_dots">
 						<button role="button" class="slide_dot active"><span></span></button>
@@ -51,8 +50,8 @@
 					</div>
 				</div>
 				<div class="bx_ctrl">
-					<button class="play">슬라이드 자동재생</button>
-					<button class="stop">슬라이드 일시정지</button>
+					<button class="bx_play"></button>
+					<button class="bx_stop"></button>
 				</div>
 			</div>
 		</div>
@@ -123,15 +122,6 @@
 				</ul>
 			</div>
 			<button type="button" class="btn_txt_more">더보기</button>
-		</div>
-	</div>
-	
-	<div class="banner_wrap">
-		<div class="banner_01">
-			<a><img src="images/main/Voyagers_980180.jpg"></a>
-		</div>
-		<div class="banner_02">
-			<a><img src="images/main/Inbyu_980240.png"></a>
 		</div>
 	</div>
 </body>
