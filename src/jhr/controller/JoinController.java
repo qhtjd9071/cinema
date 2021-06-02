@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jhr.dao.UsersDao;
-import test.vo.UsersVo;
+<<<<<<< HEAD
+import semi.vo.usersVo;
+=======
+import semi.vo.UserVo;
+>>>>>>> branch 'master' of https://github.com/qhtjd9071/semi.git
 
 @WebServlet("/join")
 public class JoinController extends HttpServlet{
@@ -27,7 +31,11 @@ public class JoinController extends HttpServlet{
 		String year=req.getParameter("year");
 		String phone=req.getParameter("phone");
 
-		UsersVo vo=new UsersVo(name, id, pwd, email, year, phone);
+<<<<<<< HEAD
+		usersVo vo=new UsersVo(name, id, pwd, email, year, phone);
+=======
+		UserVo vo=new UserVo(name, id, pwd, email, year, phone);
+>>>>>>> branch 'master' of https://github.com/qhtjd9071/semi.git
 		UsersDao dao=new UsersDao();
 		int n=dao.insert(vo);
 		

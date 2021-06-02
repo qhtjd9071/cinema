@@ -12,6 +12,7 @@ DROP TABLE movie CASCADE CONSTRAINTS;
 DROP TABLE notice CASCADE CONSTRAINTS;
 DROP TABLE room CASCADE CONSTRAINTS;
 DROP TABLE users CASCADE CONSTRAINTS;
+DROP TABLE integration CASCADE CONSTRAINTS;
 
 
 
@@ -26,7 +27,7 @@ CREATE TABLE book
 	price number NOT NULL,
 	userNum number NOT NULL,
 	cancel varchar2(20),
-	seatNum varchar2(10) NOT NULL,
+	seatNum number NOT NULL,
 	PRIMARY KEY (bookNum)
 );
 
@@ -106,15 +107,21 @@ CREATE TABLE notice
 
 CREATE TABLE pay
 (
-	payNum number NOT NULL,
-	userNum number NOT NULL,
-	bookNum number NOT NULL,
-	method varchar2(20) NOT NULL,
-	tot number NOT NULL,
-	payDate date NOT NULL,
+	payNum varchar2(40) NOT NULL,
+	intNum number unique NOT NULL,
+	method varchar2(20),
+    count number,
+	tot number,
 	PRIMARY KEY (payNum)
+    
 );
 
+CREATE TABLE integration
+(
+    intNum number NOT NULL,
+    bookNumArray varchar2(2000) NOT NULL,
+    PRIMARY KEY (intNum)
+);
 
 CREATE TABLE room
 (
@@ -146,7 +153,7 @@ CREATE TABLE users
 	name varchar2(10) NOT NULL,
 	email varchar2(50) NOT NULL,
 	phone varchar2(20) NOT NULL,
-	age number NOT NULL,
+	year number NOT NULL,
 	delUser varchar2(20),
 	PRIMARY KEY (userNum)
 );
@@ -156,8 +163,8 @@ CREATE TABLE users
 /* Create Foreign Keys */
 
 ALTER TABLE pay
-	ADD FOREIGN KEY (bookNum)
-	REFERENCES book (bookNum)
+	ADD FOREIGN KEY (intNum)
+	REFERENCES integration (intNum)
 ;
 
 
@@ -215,3 +222,4 @@ ALTER TABLE movieComments
 ;
 
 commit;
+

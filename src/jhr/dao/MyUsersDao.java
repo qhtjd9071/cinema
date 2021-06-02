@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import test.db.DBConnection;
+import semi.db.DBConnection;
 
 public class MyUsersDao {
 	public boolean isMember(String id,String pwd) {
