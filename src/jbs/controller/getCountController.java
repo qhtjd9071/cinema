@@ -7,17 +7,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import jbs.dao.testDao;
+import jbs.dao.bookDao;
 
 
 @WebServlet("/getCount")
 public class getCountController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		testDao dao=new testDao();
+		bookDao dao=new bookDao();
 		int getCount=dao.getCount();
 		request.setAttribute("getCount", getCount);
-		request.getRequestDispatcher("booklist.jsp").forward(request, response);
+		request.getRequestDispatcher("/booklist.jsp").forward(request, response);
 	}
 
 }

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import semi.db.dbCon;
 import semi.vo.bookVo;
 
-public class testDao {
+public class bookDao {
 	
 	public void insert(bookVo vo) {
 		Connection con=null;
@@ -43,6 +43,7 @@ public class testDao {
 		while(rs.next()){
 			bookVo vo=new bookVo();
 			vo.setSeatNum(rs.getInt("seatNum"));
+			vo.setPrice(rs.getInt("price"));
 			list.add(vo);
 		}
 		return list;
@@ -52,6 +53,29 @@ public class testDao {
 	}finally {
 		dbCon.close(con, pstmt, rs);
 	}
+	}
+	
+	public int getBookNum(bookVo vo){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="select bookNum from book where userNum=? and seatNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, vo.getUserNum());
+			pstmt.setInt(2, vo.getSeatNum());
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				int bookNum=rs.getInt("bookNum");
+				return bookNum;
+			}
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			dbCon.close(con, pstmt, rs);
+		}
+		return 0;
 	}
 	
 	public boolean check(int seatNum, int showNum) {

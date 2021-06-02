@@ -1,35 +1,25 @@
 package semi.vo;
 
-import java.sql.Date;
-
 public class payVo {
-	private int payNum;
-	private int userNum;
+	private String payNum;
 	private int bookNum;
 	private String method;
+	private int count;
 	private int tot;
-	private Date payDate;
 	public payVo() {}
-	public payVo(int payNum, int userNum, int bookNum, String method, int tot, Date payDate) {
+	public payVo(String payNum, int bookNum, String method, int count, int tot) {
 		super();
 		this.payNum = payNum;
-		this.userNum = userNum;
 		this.bookNum = bookNum;
 		this.method = method;
+		this.count = count;
 		this.tot = tot;
-		this.payDate = payDate;
 	}
-	public int getPayNum() {
+	public String getPayNum() {
 		return payNum;
 	}
-	public void setPayNum(int payNum) {
+	public void setPayNum(String payNum) {
 		this.payNum = payNum;
-	}
-	public int getUserNum() {
-		return userNum;
-	}
-	public void setUserNum(int userNum) {
-		this.userNum = userNum;
 	}
 	public int getBookNum() {
 		return bookNum;
@@ -43,17 +33,17 @@ public class payVo {
 	public void setMethod(String method) {
 		this.method = method;
 	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
 	public int getTot() {
 		return tot;
 	}
 	public void setTot(int tot) {
 		this.tot = tot;
-	}
-	public Date getPayDate() {
-		return payDate;
-	}
-	public void setPayDate(Date payDate) {
-		this.payDate = payDate;
 	}
 	
 }

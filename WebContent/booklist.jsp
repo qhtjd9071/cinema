@@ -12,8 +12,10 @@
 <style type="text/css">
 	#seatArea{width:600px;margin:0 auto;}
 	#seatArea div{width:50px;height:50px;text-align:center;background-color:gray;display:inline-block;margin:10px;}
+	#rating{width:200px;hegiht:150px;margin:0 auto;color:blue}
 </style>
 <script type="text/javascript">
+		//배열 초기화
 		const book=new Array(${getCount });
 		for(let i=0;i<book.length;i++){
 			book[i]="";
@@ -22,9 +24,11 @@
 		for(let i=0;i<count.length;i++){
 			count[i]=0;
 		}
+		let selectCount=0;
 </script>
 </head>
 <body>
+<div id="rating">이 영화는 <span style="color:red">${rating}세</span>이상 관람가능한 영화입니다.</div>
 <div id="seatArea"></div>
 <c:forEach var="i" begin="1" end="${getCount }">
 <c:forEach var="vo" items="${list}">
@@ -77,10 +81,14 @@
 					div.style.backgroundColor="gray";
 					input.value="none";
 					book[${i}-1]="";
+					selectCount-=1;
 				}else{
+					if(selectCount<${totalCount}){
 					div.style.backgroundColor="pink";
 					input.value="check";
 					book[${i}-1]=input2.value;
+					selectCount+=1;
+					}
 				}
 			}
 		});
@@ -88,7 +96,7 @@
 	controllSeat();
 	</script>
 </c:forEach>
-<a href="pay.jsp" onclick="transfer()">결제하기</a>
+<a href="#" onclick="transfer()">결제하기</a>
 <script type="text/javascript">
 	//서버로 선택좌석 정보 전송
 	function transfer(){
@@ -98,12 +106,29 @@
 		let xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4 && xhr.status==200){
-					alert("성공");
+					let json=xhr.responseText;
+					let bna=JSON.parse(json);
+					alert(json);
+					kakaoPay(xhr,json);
 				}
 		}
-		xhr.open("post","pay",true);
+		xhr.open("post","book",true);
 		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		xhr.send("aa="+aa);
+	}
+	
+	function kakaoPay(xhr,json){
+		let toss={"bookNum":json,"id":"testid","title":"testtitle","count":selectCount,"total":${adultCount}+${teenCount}};
+		let jsonToss=JSON.stringify(toss);
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+					let json=xhr.responseText;
+					location.href=json;
+				}
+		}
+		xhr.open("post","kakao",true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send("toss="+jsonToss);
 	}
 </script>
 </body>
