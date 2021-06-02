@@ -29,18 +29,19 @@
 					<div class="member_login_wrap">
 						<div class="login_inner">
 							<div class="login_box">
-								<div class="login_area">
-									<input type="text" id="userId" class="login_id" maxlength="50" placeholder="아이디 또는 이메일을 입력해 주세요.">
-									<input type="password" id="userPassword" class="login_pwd" maxlength="15" placeholder="비밀번호를 입력해 주세요.">
-									<button type="button" class="btn_login">로그인</button>
-								</div>
+								<form class="login_area" method="post" action="login">
+									<input type="text" name="id" value="${param.id }" id="userId" class="login_id" maxlength="50" placeholder="아이디 또는 이메일을 입력해 주세요.">
+									<input type="password" name="pwd" value="${param.pwd }" id="userPassword" class="login_pwd" maxlength="15" placeholder="비밀번호를 입력해 주세요.">
+									<!-- <button type="button" class="btn_login">로그인</button> -->
+									<input type="submit" class="btn_login" value="로그인">
+								</form>
 								<div class="login_bot_wrap">
 									<div class="login_check">
 										<input type="checkbox" name="loginCheck" class="logincheckid" id="checkSavedID">
 										<label for="checkSavedID" class="logincheckid_label">아이디 저장</label>
 									</div>
 									<div class="login_menu">
-										<a>회원가입</a>
+										<a href="${pageContext.request.contextPath }/join.jsp">회원가입</a>
 										<a>아이디 찾기</a>
 										<a>비밀번호 찾기</a>
 									</div>

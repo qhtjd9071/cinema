@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,14 +17,21 @@
 <body>
 <div class="header">
 	<h1 class="logo">
-		<a href="https://www.lottecinema.co.kr/NLCHS/">LOTTE CINEMA</a>
+		<a href="${pageContext.request.contextPath }/main.jsp">LOTTE CINEMA</a>
 	</h1>
 	
 	<div class="gnb">
 		<ul class="g_menu1">
 			<li><a href="https://www.lottecinema.co.kr/NLCHS/Mypage/MemberVipzone">멤버십</a></li>
 			<li><a href="https://www.lottecinema.co.kr/NLCHS/Customer">고객센터</a></li>
-			<li><a href="https://www.lottecinema.co.kr/NLCHS/Member/login">로그인</a></li>
+			<c:choose>
+				<c:when test="${empty sessionScope.id }">
+					<li><a href="${pageContext.request.contextPath }/login.jsp">로그인</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="logout">로그아웃</a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 		
 		<ul class="g_menu2">
