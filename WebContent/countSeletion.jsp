@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="selection" method="post">
-	성인
+	성인1s
 	<input type="button" value="-" id="adultBtnMinus">
 	<input type="text" id="adultCount" name="adultCount" value="0" readonly="readonly">
 	<input type="button" value="+" id="adultBtnPlus">
