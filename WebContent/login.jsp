@@ -61,5 +61,11 @@
 <div id="footer">
 	<jsp:include page="footer.jsp"/>
 </div>
+<script type="text/javascript">
+	let msg='${errMsg}';
+	if(msg!='') {
+		alert(msg);
+	}
+</script>
 </body>
 </html>
