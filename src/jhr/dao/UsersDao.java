@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import semi.db.DBConnection;
-import semi.vo.UserVo;
+import semi.vo.usersVo;
 
 public class UsersDao {
 	/*
@@ -78,7 +78,7 @@ public class UsersDao {
 		}
 	}
 	*/
-	public int insert(UserVo vo){
+	public int insert(usersVo vo){
 		String sql="insert into users values(memnum.nextval,?,?,?,?,?,?,null)";
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -100,7 +100,7 @@ public class UsersDao {
 			DBConnection.close(con,pstmt,null);
 		}
 	}
-	public ArrayList<UserVo> list(){
+	public ArrayList<usersVo> list(){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -109,15 +109,17 @@ public class UsersDao {
 			String sql="select * from users";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
-			ArrayList<UserVo> mlist=new ArrayList<UserVo>();
+			ArrayList<usersVo> mlist=new ArrayList<usersVo>();
 			while(rs.next()) {
-				UserVo vo=new UserVo(
+				usersVo vo=new usersVo(
+						rs.getInt("userNum"),
 						rs.getString("name"), 
 						rs.getString("id"), 
 						rs.getString("pwd"), 
 						rs.getString("email"), 
 						rs.getString("year"), 
-						rs.getString("phone"));
+						rs.getString("phone"),
+						rs.getNString("delUser"));
 				mlist.add(vo);
 			}
 			return mlist;

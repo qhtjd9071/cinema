@@ -7,9 +7,9 @@ public class usersVo {
 	private String name;
 	private String email;
 	private String phone;
-	private int age;
+	private String year;
 	private String delUser;
-	public usersVo(int userNum, String id, String pwd, String name, String email, String phone, int age,
+	public usersVo(int userNum, String id, String pwd, String name, String email, String phone, String year,
 			String delUser) {
 		super();
 		this.userNum = userNum;
@@ -18,7 +18,7 @@ public class usersVo {
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
-		this.age = age;
+		this.year = year;
 		this.delUser = delUser;
 	}
 	public usersVo() {}
@@ -58,11 +58,11 @@ public class usersVo {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public int getAge() {
-		return age;
+	public String getYear() {
+		return year;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setYear(String year) {
+		this.year = year;
 	}
 	public String getDelUser() {
 		return delUser;
