@@ -11,23 +11,23 @@
 </style>
 </head>
 <body>
-<div id="header2">
-	<jsp:include page="header2.jsp"/>
-</div>
+
 <div id="content" class="main">
-	<div class="theater_part">
+	<div class="theater-part">
         <div class="booking-title">극장</div>
         <div id="theaterLoc-list">
-        	<c:forEach var="vo" items="${ requestScope.theaterList }">
-	        	<div>${ vo.location }</div>
-        	</c:forEach>
+        	<ul>
+        		<c:forEach var="vo" items="${ requestScope.theaterList }">
+        			<li onclick='theaterNameList("${vo.location}")'> ${ vo.location } </li>
+        		</c:forEach>
+        	</ul>
         </div>
         <div id="theaterName-list"></div>
     </div>
     <div class="movie-part">
         <div class="booking-title">영화</div>
         <div class="sort-wrapper">
-				<select name="movieField" onchange="changeMovie(this)">
+				<select name="movieField" onchange="changeMovie()">
 					<option value="bookCount"<c:if test="${field == 'bookCount'}">selected = 'selected'</c:if>>관람순</option>
 					<option value="starCount">평점순</option>
 				</select>	
@@ -47,60 +47,58 @@
         </div>
     </div>
 </div>
-<div id="footer">
-	<jsp:include page="footer.jsp"/>
-</div>
+
 
 <script type="text/javascript">
-	function theaterNameList(){
+
+	function theaterNameList(location){
+		console.log(location);
 		let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
 				let xml = xhr.responseXML;
-				let theaterName-list = document.getElementById("theaterName-list");
+				let theaterName_list = document.getElementById("theaterName-list");
 				let tnList = xml.getElementsByTagName("tnList");
+				theaterName_list.innerHTML = "";
 				for(let i=0; i<tnList.length; i++){
 					let div = document.createElement("div");
 					let theaterName = tnList[i].getElementsByTagName("name")[0].textContent;
 					div.innerHTML = theaterName + "<br>";
 					div.className = "theaterNameBox";
-					theaterName-list.appendChild(div);
+					theaterName_list.appendChild(div);
 				}	
 			}
 		};
-		xhr.open('get','${pageContext.request.contextPath}/theater?location=${vo.location}', true)
+		xhr.open('get','${pageContext.request.contextPath}/theater?location=' + location, true)
 		xhr.send();
 	}
 	
-	function changeMovie(obj){
-		if($(obj).val() == "bookCount"){
-			cmd = bookCount;
-		}else if($(obj).val() == "starCount"){
-			cmd = starCount;
-		}
+	function changeMovie(){
+		console.log("a");
 	}
 	
-	function movieList(){
+	function movieList(movieField){
 		let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
 				let xml = xhr.responseXML;
-				let movie-list = document.getElementById("movie-list");
+				let movie_list = document.getElementById("movie-list");
 				let movList = xml.getElementsByTagName("movList");
 				for(let i=0; i<movList.length; i++){
 					let div2 = document.createElement("div2");
 					let movieTitle = movList[i].getElementsByTagName("movieList")[0].textContent;
 					div2.innerHTML = movieTitle + "<br>";
 					div2.className = "movieListBox";
-					theaterName-list.appendChild(div);
+					movie_list.appendChild(div);
 				}	
 			}
 		};
-		xhr.open('get','${pageContext.request.contextPath}/movie?theaterName=${vo.theaterName}&cmd=base', true)
+		let url = 
+		xhr.open('get','${pageContext.request.contextPath}/movie?theaterName=' + theaterName +'&cmd = ' + cmd, true)
 		xhr.send();
 	}
 	// 달력
-    const date = new Date();
+ /*   const date = new Date();
     const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
     const bookingDate = document.getElementById("date-list");
 
@@ -149,13 +147,13 @@
             button.classList.add("movie-date-wrapper-active");
         })
     }
-    
+ */   
     function showList(){
     	let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
 				let xml = xhr.responseXML;
-				let show-list = document.getElementById("show-list");
+				let show_list = document.getElementById("show-list");
 				let sList = xml.getElementsByTagName("sList");
 				for(let i=0; i<sList.length; i++){
 					let div3 = document.createElement("div3");
@@ -163,7 +161,7 @@
 					let sitCount = sList[i].getElementsByTagName("sc")[0].textContent;
 					div3.innerHTML = roomNum + "관 " + sitCount + "석";
 					div3.className = "showListBox";
-					show-list.appendChild(div);
+					show_list.appendChild(div);
 				}	
 			}
 		};
@@ -176,14 +174,14 @@
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
 				let xml = xhr.responseXML;
-				let time-list = document.getElementById("time-list");
+				let time_list = document.getElementById("time-list");
 				let stList = xml.getElementsByTagName("stList");
 				for(let i=0; i<stList.length; i++){
 					let div4 = document.createElement("div4");
 					let begintime = stList[i].getElementsByTagName("time")[0].textContent;
 					div3.innerHTML = begintime + "<br>";
 					div3.className = "timeListBox";
-					time-list.appendChild(div);
+					time_list.appendChild(div);
 				}	
 			}
 		};

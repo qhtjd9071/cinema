@@ -35,6 +35,7 @@ public class BookingDao {
 			ArrayList<roomVo> rlist = new ArrayList<roomVo>();
 			while(rs.next()) {
 				String location = rs.getString("location");
+				//System.out.println(location);
 				roomVo vo = new roomVo(0, null, 0, location, 0);
 				rlist.add(vo);
 			}
@@ -59,9 +60,8 @@ public class BookingDao {
 			rs = pstmt.executeQuery();
 			ArrayList<roomVo> rlist = new ArrayList<roomVo>();
 			while(rs.next()) {
-				location = rs.getString("location");
 				String theaterName = rs.getString("theaterName");
-				roomVo vo = new roomVo(0, theaterName, 0, location, 0);
+				roomVo vo = new roomVo(0, theaterName, 0, null, 0);
 				rlist.add(vo);
 			}
 			return rlist;
