@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import semi.db.DBConnection;
+import semi.db.dbCon;
 
 public class MyUsersDao {
 	public boolean isMember(String id,String pwd) {
@@ -13,7 +13,7 @@ public class MyUsersDao {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
-			con=DBConnection.getCon();
+			con=dbCon.getConnection();
 			String sql="select * from users where id=? and pwd=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,id);
@@ -28,7 +28,7 @@ public class MyUsersDao {
 			se.printStackTrace();
 			return false;
 		}finally {
-			DBConnection.close(con, pstmt, rs);
+			dbCon.close(con, pstmt, rs);
 		}
 	}
 }

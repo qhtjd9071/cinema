@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import semi.db.DBConnection;
+import semi.db.dbCon;
 import semi.vo.usersVo;
 
 public class UsersDao {
@@ -83,7 +83,7 @@ public class UsersDao {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
-			con=DBConnection.getCon();
+			con=dbCon.getConnection();
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,vo.getName());
 			pstmt.setString(2,vo.getId());
@@ -97,7 +97,7 @@ public class UsersDao {
 			s.printStackTrace();
 			return -1;
 		}finally {
-			DBConnection.close(con,pstmt,null);
+			dbCon.close(con,pstmt,null);
 		}
 	}
 	public ArrayList<usersVo> list(){
@@ -105,7 +105,7 @@ public class UsersDao {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
-			con=DBConnection.getCon();
+			con=dbCon.getConnection();
 			String sql="select * from users";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
@@ -127,7 +127,7 @@ public class UsersDao {
 			s.printStackTrace();
 			return null;
 		}finally {
-			DBConnection.close(con, pstmt,rs);
+			dbCon.close(con, pstmt,rs);
 		}
 	}
 }
