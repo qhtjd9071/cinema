@@ -11,7 +11,6 @@
 </style>
 </head>
 <body>
-
 <div id="content" class="main">
 	<div class="theater-part">
         <div class="booking-title">극장</div>
@@ -44,7 +43,6 @@
         <div>
    		  	<div id="show-list"> 관/석  </div>
    			<div id="time-list"> 상영시간</div>
-   			<div id="seat-list"> 빈좌석</div>
         </div>
     </div>
 </div>
@@ -108,7 +106,7 @@ var vtheaterName='';
 					div2.className = "movieListBox";
 					div2.onclick=function(){
 						//alert(this.inner)
-						//달력function
+						showList(begintime, movieTitle);
 					}
 					movie_list.appendChild(div2);
 				}	
@@ -175,6 +173,10 @@ var vtheaterName='';
 					let sitCount = sList[i].getElementsByTagName("sc")[0].textContent;
 					div3.innerHTML = roomNum + "관 " + sitCount + "석";
 					div3.className = "showListBox";
+					div3.onclick=function(){
+						//alert(this.inner)
+						timeList(begintime, movieTitle);
+					}
 					show_list.appendChild(div3);
 				}	
 			}
@@ -195,6 +197,10 @@ var vtheaterName='';
 					let begintime = stList[i].getElementsByTagName("time")[0].textContent;
 					div4.innerHTML = begintime + "<br>";
 					div4.className = "timeListBox";
+					div4.onclick=function(){
+						//alert(this.inner)
+						location.href="/book";
+					}
 					time_list.appendChild(div4);
 				}	
 			}

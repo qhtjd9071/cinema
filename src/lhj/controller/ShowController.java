@@ -19,8 +19,9 @@ public class ShowController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Date begintime = Date.valueOf(req.getParameter("begintime"));
+		String movieTitle = req.getParameter("movieTitle");
 		BookingDao dao = BookingDao.getInstace();
-		ArrayList<showinfoVo> rsdList = dao.roomSitDateList(begintime);
+		ArrayList<showinfoVo> rsdList = dao.roomSitDateList(begintime, movieTitle);
 		
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw = resp.getWriter();
