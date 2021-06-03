@@ -81,15 +81,16 @@ public class BookingDao {
 		try {
 			con = dbCon.getConnection();
 			String sql = "select m.movieTitle "
-					+ "from movie m, room r, show s"
+					+ "from movie m, room r, show s "
 					+ "where m.movieNum = s.movieNum and s.roomserialNum = r.roomserialNum "
 					+ "and r.theaterName=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, theaterName);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				theaterName = rs.getString("theaterName");
-				roommovVo vo = new roommovVo(sql, 0, 0, theaterName);
+				String movieTitle = rs.getString("movieTitle");
+				//System.out.println(movieTitle);
+				roommovVo vo = new roommovVo(movieTitle, 0, 0, null);
 				mlist.add(vo);
 			}
 			return mlist;
@@ -102,15 +103,15 @@ public class BookingDao {
 	}
 	
 	// 영화별 영화 불러오기 - 관람순
-	public ArrayList<movieVo> mCountList(){
+	public ArrayList<roommovVo> mCountList(String theaterName){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<movieVo> mlist = new ArrayList<>();
+		ArrayList<roommovVo> mlist = new ArrayList<>();
 		try {
 			con = dbCon.getConnection();
 			String sql = "select m.movieTitle "
-						+ "from movie m,"
+						+ "from movie m, room r,"
 						+ "("
 						+ "select s.movieNum, sum(c) sc "
 						+ "from show s,"
@@ -123,11 +124,13 @@ public class BookingDao {
 						+ "group by movieNum"
 						+ "order by sc desc"
 						+ ")sh "
-						+ "where sh.movieNum =m.movieNum";
+						+ "where sh.movieNum =m.movieNum and theaterName=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, theaterName);
+			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				String movieTitle = rs.getString("movieTitle");
-				movieVo vo = new movieVo(0, movieTitle, null, null, null, null, null);
+				roommovVo vo = new roommovVo(movieTitle, 0, 0, null);
 				mlist.add(vo);
 			}
 			return mlist;
@@ -140,25 +143,26 @@ public class BookingDao {
 	}
 	
 	// 영화별 영화 불러오기 - 평점순
-	public ArrayList<movieVo> mStarList(){
+	public ArrayList<roommovVo> mStarList(String theaterName){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<movieVo> mlist = new ArrayList<movieVo>();
+		ArrayList<roommovVo> mlist = new ArrayList<roommovVo>();
 		try {
 			con = dbCon.getConnection();
-			String sql = "select m.movieTitle from movie m,"
+			String sql = "select m.movieTitle from movie m, room r,"
 					+ "("
 					+ "select avg(star) s, movieNum from movieComments "
 					+ "group by movieNum "
 					+ "order by s desc "
 					+ ")c"
-					+ "where m.movieNum = c.movieNum";
+					+ "where m.movieNum = c.movieNum and r.theaterName=?";
 			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, theaterName);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				String movieTitle = rs.getString("movieTitle");
-				movieVo vo = new movieVo(0, movieTitle, null, null, null, null, null);
+				roommovVo vo = new roommovVo(movieTitle, 0, 0, null);
 				mlist.add(vo);
 			}
 			return mlist;

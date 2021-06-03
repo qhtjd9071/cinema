@@ -18,10 +18,12 @@ import semi.vo.roommovVo;
 public class MovieController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");	
+		req.setCharacterEncoding("utf-8");
 		String theaterName = req.getParameter("theaterName");
-		String cmd = req.getParameter("cmd");
-		if(cmd.equals("base")) {
+		//System.out.println(theaterName);
+		String cmv = req.getParameter("cmv");
+		//System.out.println(cmv);
+		if(cmv.equals("base")) {
 			BookingDao dao = BookingDao.getInstace();
 			ArrayList<roommovVo> tlist = dao.movieList(theaterName);
 			
@@ -35,29 +37,30 @@ public class MovieController extends HttpServlet{
 				pw.print("</movList>");
 			}
 			pw.print("</result>");
-		}else if(cmd.equals("bookCount")) {
+		}else if(cmv.equals("bookCount")) {
 			BookingDao dao = BookingDao.getInstace();
-			ArrayList<movieVo> mlist = dao.mCountList();
+			ArrayList<roommovVo> mlist = dao.mCountList(theaterName);
 			
 			resp.setContentType("text/xml;charset=utf-8");
 			PrintWriter pw = resp.getWriter();
 			pw.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 			pw.print("<result>");
-			for(movieVo vo : mlist) {
+			for(roommovVo vo : mlist) {
 				pw.print("<movList>");
 				pw.print("<movieList>"+ vo.getMovieTitle() + "</movieList>");
 				pw.print("</movList>");
 			}
 			pw.print("</result>");
-		}else if(cmd.equals("starCount")) {
+			
+		}else if(cmv.equals("starCount")) {
 			BookingDao dao = BookingDao.getInstace();
-			ArrayList<movieVo> mlist = dao.mStarList();
+			ArrayList<roommovVo> mlist = dao.mStarList(theaterName);
 			
 			resp.setContentType("text/xml;charset=utf-8");
 			PrintWriter pw = resp.getWriter();
 			pw.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 			pw.print("<result>");
-			for(movieVo vo : mlist) {
+			for(roommovVo vo : mlist) {
 				pw.print("<movList>");
 				pw.print("<movieList>"+ vo.getMovieTitle() + "</movieList>");
 				pw.print("</movList>");

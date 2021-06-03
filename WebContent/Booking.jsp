@@ -22,13 +22,13 @@
         		</c:forEach>
         	</ul>
         </div>
-        <div id="theaterName-list"></div>
+        <div id="theaterName-list"></div>	
     </div>
     <div class="movie-part">
         <div class="booking-title">영화</div>
         <div class="sort-wrapper">
-				<select name="movieField" onchange="changeMovie()">
-					<option value="bookCount"<c:if test="${field == 'bookCount'}">selected = 'selected'</c:if>>관람순</option>
+				<select id="movieField" onchange="changeMovie()">
+					<option value="bookCount">관람순</option>
 					<option value="starCount">평점순</option>
 				</select>	
         </div>
@@ -52,7 +52,7 @@
 <script type="text/javascript">
 
 	function theaterNameList(location){
-		console.log(location);
+		//console.log(location);
 		let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
@@ -65,6 +65,10 @@
 					let theaterName = tnList[i].getElementsByTagName("name")[0].textContent;
 					div.innerHTML = theaterName + "<br>";
 					div.className = "theaterNameBox";
+					div.onclick=function(){
+						//alert(this.inner)
+						movieList(theaterName);
+					}
 					theaterName_list.appendChild(div);
 				}	
 			}
@@ -72,29 +76,34 @@
 		xhr.open('get','${pageContext.request.contextPath}/theater?location=' + location, true)
 		xhr.send();
 	}
-	
+	var cmv = 'base';
 	function changeMovie(){
-		console.log("a");
+		if(movieField == "bookCount"){
+			cmv = bookCount;
+		}else if(movieField == "starCount"){
+			cmv = starCount;
+		}
 	}
 	
-	function movieList(movieField){
+	function movieList(theaterName){
+		console.log(theaterName);
 		let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
 				let xml = xhr.responseXML;
 				let movie_list = document.getElementById("movie-list");
 				let movList = xml.getElementsByTagName("movList");
+				movie_list.innerHTML = "";
 				for(let i=0; i<movList.length; i++){
 					let div2 = document.createElement("div2");
 					let movieTitle = movList[i].getElementsByTagName("movieList")[0].textContent;
 					div2.innerHTML = movieTitle + "<br>";
 					div2.className = "movieListBox";
-					movie_list.appendChild(div);
+					movie_list.appendChild(div2);
 				}	
 			}
 		};
-		let url = 
-		xhr.open('get','${pageContext.request.contextPath}/movie?theaterName=' + theaterName +'&cmd = ' + cmd, true)
+		xhr.open('get','${pageContext.request.contextPath}/movie?theaterName=' + theaterName +'&cmv=' + cmv, true)
 		xhr.send();
 	}
 	// 달력
@@ -161,7 +170,7 @@
 					let sitCount = sList[i].getElementsByTagName("sc")[0].textContent;
 					div3.innerHTML = roomNum + "관 " + sitCount + "석";
 					div3.className = "showListBox";
-					show_list.appendChild(div);
+					show_list.appendChild(div3);
 				}	
 			}
 		};
@@ -179,9 +188,9 @@
 				for(let i=0; i<stList.length; i++){
 					let div4 = document.createElement("div4");
 					let begintime = stList[i].getElementsByTagName("time")[0].textContent;
-					div3.innerHTML = begintime + "<br>";
-					div3.className = "timeListBox";
-					time_list.appendChild(div);
+					div4.innerHTML = begintime + "<br>";
+					div4.className = "timeListBox";
+					time_list.appendChild(div4);
 				}	
 			}
 		};

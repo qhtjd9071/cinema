@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import jhr.dao.UsersDao;
-import test.vo.UsersVo;
+import semi.vo.usersVo;
 
 @WebServlet("/join")
 public class JoinController extends HttpServlet{
@@ -26,8 +26,9 @@ public class JoinController extends HttpServlet{
 		String email=req.getParameter("email");
 		String year=req.getParameter("year");
 		String phone=req.getParameter("phone");
+		String delUser=req.getParameter("delUser");
 
-		UsersVo vo=new UsersVo(name, id, pwd, email, year, phone);
+		usersVo vo=new usersVo(0, id, pwd, name, email, year, phone,null);
 		UsersDao dao=new UsersDao();
 		int n=dao.insert(vo);
 		
