@@ -7,12 +7,13 @@
 <head>
 <title> lhj_booking.jsp </title>
 <style type="text/css">
-	.main{width: 1000px; height: 800px; background-color: gray;}
+	.wrap_list{width:24%;}
+	.float_left{float:left;}
 </style>
 </head>
 <body>
 <div id="content" class="main">
-	<div class="theater-part">
+	<div class="theater-part wrap_list float_left">
         <div class="booking-title">극장</div>
         <div id="theaterLoc-list">
         	<ul>
@@ -23,7 +24,7 @@
         </div>
         <div id="theaterName-list"></div>	
     </div>
-    <div class="movie-part">
+    <div class="movie-part wrap_list float_left">
         <div class="booking-title">영화</div>
         <div class="sort-wrapper">
 				<select id="movieField" onchange="changeMovie()">
@@ -33,15 +34,15 @@
         </div>
         <div id="movie-list"></div>
     </div>
-    <div class="date-part">
+    <div class="date-part wrap_list float_left">
         <div class="booking-title">날짜</div>
         <div id="year-month"></div>
         <div id="date-list"></div>
     </div>
-    <div class="time-part">
-        <div class="booking-title">시간</div>
+    <div class="time-part wrap_list float_left">
+        <div class="booking-title">시간표</div>
         <div>
-   		  	<div id="show-list"> 관/석  </div>
+   		  	<div id="show-list"></div>
    			<div id="time-list"> 상영시간</div>
         </div>
     </div>
@@ -49,7 +50,11 @@
 
 
 <script type="text/javascript">
-var vtheaterName='';
+
+	var curDate;
+	var curTheaterName;
+	var curMovieTitle;
+	var vTheaterName='';
 	function theaterNameList(location){
 		//console.log(location);
 		let xhr = new XMLHttpRequest();
@@ -65,9 +70,10 @@ var vtheaterName='';
 					div.innerHTML = theaterName + "<br>";
 					div.className = "theaterNameBox";
 					div.onclick=function(){
-						vtheaterName=theaterName;
+						vTheaterName = theaterName;
+						//curTheaterName = theaterName;
 						//alert(this.inner)
-						movieList(theaterName);
+						movieList(vTheaterName);
 					}
 					theaterName_list.appendChild(div);
 				}	
@@ -78,20 +84,25 @@ var vtheaterName='';
 	}
 	
 	
+	
+	
 	function changeMovie(){
 		let cmv = "base";
 		let movieField = document.getElementById("movieField")
 		let mfIndex = movieField.options[movieField.selectedIndex].value;
-		//console.log(mfIndex);
+		console.log("aa" + mfIndex);
 		cmv = mfIndex;
-		//console.log(cmv);
-		movieList(vtheaterName,cmv);
+		console.log(cmv);
+		movieList(vTheaterName,cmv);
+		//movieList(vtheaterName);
 	}
 	
-	function movieList(theaterName,cmv){
+	function movieList(vtheaterName,cmv){
+	//function movieList(theaterName){
 		//console.log("dddddddd:"+ cmv)
 		if(cmv == undefined) cmv='base';
-		//console.log(theaterName);
+		console.log(vtheaterName);
+		console.log("dddddddd:"+ cmv)
 		let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
@@ -105,83 +116,108 @@ var vtheaterName='';
 					div2.innerHTML = movieTitle + "<br>";
 					div2.className = "movieListBox";
 					div2.onclick=function(){
+						curMovieTitle = movieTitle;
 						//alert(this.inner)
-						showList(begintime, movieTitle);
+						//showList();
 					}
 					movie_list.appendChild(div2);
 				}	
 			}
 		};
-		xhr.open('get','${pageContext.request.contextPath}/movie?theaterName=' + theaterName +'&cmv=' + cmv, true)
+		xhr.open('get','${pageContext.request.contextPath}/movie?theaterName=' + vtheaterName +'&cmv=' + cmv, true)
 		xhr.send();
 	}
+	
+	function selectDate(year, month, date){
+		curDate = year + "/" + month + "/" + date;
+		// 상영관, 상영시간 정보 얻어오기
+		showList();
+	}
+	
 	// 달력
-/*		
-   const date = new Date(); //date객체
-   const year = date.getFullYear();
-   const month = date.getMonth();
-   const firstDay = new Date(date.getFullYear(), date.getMonth(), 1); //달의 첫날
-   const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0); //한달의 마지막날
-   const bookingDate = document.getElementById("date-list"); // 날짜 요일 저장할 곳
-   const year_month = document.getElementById("year-month"); // 년도 월 저장할 곳
-   year_month.innerHTML = date.getFullYear() + "년 " + (date.getMonth() + 1) + "월";
-   const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"];
-  
-   for (i = date.getDate(); i <= lastDay.getDate(); i++) {
+ 	function createDate(){
+	 
+	 	const date_list = document.getElementById("date-list"); // 날짜 요일 저장할 곳
+	   	const year_month = document.getElementById("year-month"); // 년도 월 저장할 곳
+	 	
+	 	var today = new Date();
+	 	
+	 	var year = today.getFullYear();
+	 	var month = today.getMonth() + 1;
+	 	var date = today.getDate();
+	 	var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0); //한달의 마지막날
+	 	var day = today.getDay();
+	 	
+	 	const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"];
+	 	
+	 	var html = "<ul>";
+	 	
+	 	for(var i=0; i<5; i++){
+	 		var printDate = (date+i > lastDate)? (date + i) - lastDate : date + i;
+	 		var printDay = (day + i >= 7)? (day + i) - 7 : day + i;
+	 		var printMonth = (date+i > lastDate)? month + 1 : month;
+	 		var printYear = year;
+	 		if(printMonth >= 13) {
+	 			printMonth = 1;
+	 			printYear += 1;
+	 		}
 
-       const button = document.createElement("button");
-       const spanWeekOfDay = document.createElement("span");
-       const spanDay = document.createElement("span");
-
-       //class넣기
-       button.classList = "movie_date_wrapper"
-       spanWeekOfDay.classList = "movie_week_of_day";
-       spanDay.classList = "movie_day";
-
-       //weekOfDay[new Date(2021-06-날짜)]
-       var dayOfWeek = week[date.getDay()];
-
-       //요일 넣기
-       if (dayOfWeek == "토") {
-           spanWeekOfDay.classList.add("saturday");
-           spanDay.classList.add("saturday");
-       } else if (dayOfWeek == "일") {
-           spanWeekOfDay.classList.add("sunday");
-           spanDay.classList.add("sunday");
-       }
-       spanWeekOfDay.innerHTML = dayOfWeek;
-       button.append(spanWeekOfDay);
-       //날짜 넣기
-       spanDay.innerHTML = i;
-       button.append(spanDay);
-       //button.append(i);
-       bookingDate.append(button);
-
-       dayClickEvent(button);
-       }
- */	
-    function showList(begintime, movieTitle){
+	 		
+	 		var li = "<li";
+	 		if(printDay == 0) li += ' class="sunday"';
+	 		if(printDay == 6) li += ' class="saturday"';
+	 		li += ' onclick="selectDate(' + printYear + ',' + printMonth + ',' + printDate + ')">' + printDate + " " + weekOfDay[printDay] + "</li>";
+	 		
+	 		html += li;
+	 	}
+	 	
+		for(var i=5; i<10; i++){
+			var printDate = (date+i > lastDate)? (date + i) - lastDate : date + i;
+	 		var printDay = (day + i >= 7)? (day + i) - 7 : day + i;
+	 		var printMonth = (date+i > lastDate)? month + 1 : month;
+	 		var printYear = year;
+	 		if(printMonth >= 13) {
+	 			printMonth = 1;
+	 			printYear += 1;
+	 		}
+	 		
+	 		
+	 		var li = '<li class="off';
+	 		if(printDay == 0) li += ' sunday';
+	 		if(printDay == 6) li += ' saturday';
+	 		li += '" onclick="selectDate(' + printYear + ',' + printMonth + ',' + printDate + ')">' + printDate + " " + weekOfDay[printDay] + "</li>";
+	 		
+	 		html += li;
+	 	}
+		
+		html += "</ul>";
+		
+		year_month.innerHTML = year + "-" + month;
+		date_list.innerHTML = html;
+ 	}
+ 
+ 	window.onload = function(){
+ 		createDate();
+ 	}
+    function showList(){
     	let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
 				let xml = xhr.responseXML;
 				let show_list = document.getElementById("show-list");
 				let sList = xml.getElementsByTagName("sList");
+				show_list.innerHTML = "";
 				for(let i=0; i<sList.length; i++){
-					let div3 = document.createElement("div3");
+					/* let div3 = document.createElement("div3");
 					let roomNum = sList[i].getElementsByTagName("rn")[0].textContent;
 					let sitCount = sList[i].getElementsByTagName("sc")[0].textContent;
 					div3.innerHTML = roomNum + "관 " + sitCount + "석";
 					div3.className = "showListBox";
-					div3.onclick=function(){
-						//alert(this.inner)
-						timeList(begintime, movieTitle);
-					}
-					show_list.appendChild(div3);
+					show_list.appendChild(div3); */
 				}	
 			}
 		};
-		xhr.open('get','${pageContext.request.contextPath}/show?begintime=' + begintime +'&movieTitle=' + movieTitle,true)
+		xhr.open('get','${pageContext.request.contextPath}/show?begintime=' + curDate +'&movieTitle=' + curMovieTitle + '&theaterName=' + curTheaterName,true)
 		xhr.send();
     }
     
@@ -208,6 +244,7 @@ var vtheaterName='';
 		xhr.open('get','${pageContext.request.contextPath}/time?begintime=' + begintime +'&movieTitle=' + movieTitle, true)
 		xhr.send();
     }
+	
 </script>
 </body>
 </html>

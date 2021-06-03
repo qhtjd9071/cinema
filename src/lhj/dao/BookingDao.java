@@ -110,21 +110,21 @@ public class BookingDao {
 		ArrayList<roommovVo> mlist = new ArrayList<>();
 		try {
 			con = dbCon.getConnection();
-			String sql = "select m.movieTitle "
-						+ "from movie m, room r,"
-						+ "("
-						+ "select s.movieNum, sum(c) sc "
-						+ "from show s,"
-						+ "("
-						+ "select count(*) c, showNum "
-						+ "from book "
-						+ "group by showNum"
-						+ ")b "
-						+ " where b.showNum = s.showNum "
-						+ " group by movieNum "
-						+ " order by sc desc"
-						+ ")sh "
-						+ "where sh.movieNum =m.movieNum and theaterName=?";
+			String sql = "select m.movieTitle, sh.sc "
+					+ "from movie m,"
+					+ "("
+					+ "select s.movieNum, sum(c) sc "
+					+ "from show s, room r,"
+					+ "("
+					+ "select nvl(count(*),0) c, showNum "
+					+ "from book "
+					+ "group by showNum"
+					+ ")b "
+					+ "where b.showNum = s.showNum and  r.roomserialnum = s.roomserialnum and r.theaterName=? "
+					+ "group by movieNum "
+					+ "order by sc desc "
+					+ ")sh "
+					+ "where sh.movieNum =m.movieNum";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, theaterName);
 			System.out.println(theaterName);
@@ -149,12 +149,12 @@ public class BookingDao {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<roommovVo> mlist = new ArrayList<roommovVo>();
+		ArrayList<roommovVo> starlist = new ArrayList<roommovVo>();
 		try {
 			con = dbCon.getConnection();
 			String sql = "select m.movieTitle from movie m, room r,"
 					+ "("
-					+ "select avg(star) s, movieNum from movieComments "
+					+ "select nvl(avg(star),0) s, movieNum from movieComments "
 					+ "group by movieNum "
 					+ "order by s desc "
 					+ ")c "
@@ -165,9 +165,9 @@ public class BookingDao {
 			while(rs.next()) {
 				String movieTitle = rs.getString("movieTitle");
 				roommovVo vo = new roommovVo(movieTitle, 0, 0, null);
-				mlist.add(vo);
+				starlist.add(vo);
 			}
-			return mlist;
+			return starlist;
 		} catch(SQLException se) {
 			se.printStackTrace();
 			return null;
