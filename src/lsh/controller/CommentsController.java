@@ -26,22 +26,18 @@ public class CommentsController extends HttpServlet{
 //		int UserNum=Integer.parseInt(req.getParameter("UserNum"));
 		int movieNum=Integer.parseInt(req.getParameter("movieNum"));
 		
-		
-		System.out.println("id:::"+id + "content:::"+content + "star:::"+star +"movieNum:::"+movieNum);
-		
-		
 		movieCommentsVo vo=new movieCommentsVo(0,id,content,star,null,1,movieNum);
 		CommentsDao dao=CommentsDao.getInstance();
 		int n=dao.insert(vo);
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw=resp.getWriter();
-		pw.print("<?xml version=\"1.0\" encoding=\"utf-8\"?>");	//xml표시
-		pw.print("<result>");	//루트태그
+		pw.print("<?xml version=\"1.0\" encoding=\"utf-8\"?>");	
+		pw.print("<result>");
 		if(n>0) {
 			pw.print("<code>success</code>");
 		}else {
 			pw.print("<code>fail</code>");
 		}
-		pw.print("</result>");	//루트태그
+		pw.print("</result>");	
 	}
 }

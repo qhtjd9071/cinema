@@ -21,6 +21,7 @@ public class ListController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		CommentsDao dao=CommentsDao.getInstance();
 		int movieNum=Integer.parseInt(req.getParameter("movieNum"));
+		System.out.println(movieNum);
 		ArrayList<movieCommentsVo> list=dao.list(movieNum);
 		
 		resp.setContentType("text/xml;charset=utf-8");
@@ -28,14 +29,15 @@ public class ListController extends HttpServlet{
 		pw.print("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
 		pw.print("<result>");
 		for(movieCommentsVo vo:list) {
-			pw.print("<comm>");
-			pw.print("<movieCommentsVo>" + vo.getMovieCommentsNum() + "</movieCommentsNum>");
+			pw.print("<mcom>");
+			pw.print("<movieCommentsNum>" + vo.getMovieCommentsNum() + "</movieCommentsNum>");
 			pw.print("<id>" + vo.getId() + "</id>");
 			pw.print("<content>" + vo.getContent() + "</content>");
 			pw.print("<star>" + vo.getStar() + "</star>");
+			pw.print("<writedate>" + vo.getWritedate() + "</writedate>");
 			pw.print("<UserNum>" + vo.getUserNum() + "</UserNum>");
 			pw.print("<movieNum>" + vo.getMovieNum() + "</movieNum>");
-			pw.print("</comm>");
+			pw.print("</mcom>");
 		}
 		pw.print("</result>");
 		

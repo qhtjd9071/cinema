@@ -63,6 +63,8 @@
 </style>
 </head>
 <body>
+
+<!-- 영화정보 -->
 <div style="width:500px; height:300px; background-color:#bbb">
 	<h1>영화제목 : ${vo.movieTitle }</h1>
 	<ul>
@@ -73,158 +75,27 @@
 		<li>이미지 : ${vo.image }</li>
 	</ul>
 </div>
+<!-- 영화정보끝 -->
+
 	<div>
 		<div id="commList"></div>
 		<div id="commForm">
-		<h1>평점 및 관람평</h1>
-			<form name="reviewform" class="reviewform" method="post" action="/save">
-			<input type="hidden" name="rate" id="rate" value="0"/>
-			<p class="title_star">영화 관람 후 관람평을 작성하시면 L.POINT 50P를 적립해 드립니다.</p>
-			
-			<div class="review_rating">
-				<div class="warning_msg">별점을 선택해 주세요.</div>
-				<div class="rating">
-					<input type="checkbox" name="rating" id="rating1" value="1" class="rate_radio" title="1점">
-					<label for="rating1"></label>
-					<input type="checkbox" name="rating" id="rating2" value="2" class="rate_radio" title="2점">
-					<label for="rating2"></label>
-					<input type="checkbox" name="rating" id="rating3" value="3" class="rate_radio" title="3점">
-					<label for="rating3"></label>
-					<input type="checkbox" name="rating" id="rating4" value="4" class="rate_radio" title="4점">
-					<label for="rating4"></label>
-					<input type="checkbox" name="rating" id="rating5" value="5" class="rate_radio" title="5점">
-					<label for="rating5"></label>
-				</div>
-			</div>
-			<div class="review_contents">
-				<div class="warning_msg">평점 및 영화 관람평을 작성해주세요.</div>
-				<textarea rows="10" class="review_textarea" id="content"></textarea>
-			</div>
-			<div class="cmd">
-				<input type="button" value="등록" name="save" id="save" onclick="addComments()">	
-			</div>
-			</form>
+			별점 <br>
+			<input type="text" id="star"><br>
+			아이디 <br>
+			<input type="text" id="id"><br>
+			영화평 <br>
+			<textarea rows="3" cols="30" id="content"></textarea><br>
+			<input type="button" value="등록" onclick="addComments()">
 		</div>
-</div>
-<script type="text/javascript">
-	document.addEventListener('DOMcontentLoaded',function(){
-		document.querySelector('.rating').addEventListener('click',function(e){
-			let elem=e.target;
-			if(elem.classList.contains('rate_radio')){
-				rating.setRate(parseInt(elem.value));
-			}
-		})
-	});
-	
-	documnet.querySelector('.review_textarea').addEventListener('keydown',function(){
-		let review=document.querySelector('.review_textarea');
-		let lengthCheckEx = /^.{100,}$/;
-		if(lengthCheckEx.text(review.value)){
-			review.value=review.value.substr(0,100);
-		}
-	});
-	
-	document.querySelector('#save').addEventListener('click',function(e){
-		if(rating.rate==0){
-			rating.showMessage('rate');
-			return false;
-		}
-		if(document.querySelector('.review_textarea').value.length < 5) {
-			rating.showMessage('review');
-			return false;
-		}
-	});
-	
-	Rating.prototype.showMessage = function(type) {
-		switch(type){
-		case 'rate':
-			//안내메시지
-			documnet.querySelector('.review_rating.warning_msg').style.display='block';
-			setTimeout(function(){
-				document.querySelector('.review_rating.warning_msg').style.display='none';
-			},1000);
-			break;
-			
-		case 'review':
-			documnet.querySelector('.review_contents.warning_msg').style.display='block';
-			setTimeout(function(){
-				document.querySelector('.review_contents.warning_msg').style.display='none';
-			},1000);
-			break;
-		}
-	}
-	function Rating(){};
-	Rating.prototype.rate = 0;
-	Rating.prototype.setRate = function(newrate) {
-		this.rate=newrate;
-		document.querySelector('.ratefill').style.width=parseInt(newrate * 60) + 'px';
-		let items=document.querySelectorAll('.rate_radio');
-		items.forEach(function(item,idx){
-			if(idx < newrate){
-				item.checked = true;
-			}else{
-				item.checked = false;
-			}
-		});
-	}
-	let rating=new Rating();
-<!-- --------------------------------------------------------- -->
-	function list(){
-		let xhr=new XMLHttpRequest();
-		xhr.onreadystatechange=function(){
-			if(xhr.readyState==4 && xhr.status==200){
-				//댓글목록이 붙여질 div
-				const commList=document.getElementById("commList");
-				//기존의 댓글목록 지우기
-				let childs=commList.childNodes;
-				for(let i=childs.length-1;i>=0;i--){
-					commList.removeChild(childs.item(i));
-				}
-				
-				let xml=xhr.responseXML;
-				let comm=xml.getElementsByTagName("comm");
-				for(let i=0;i<comm.length;i++){
-					let div=document.createElement("div");
-					let movieCommentsNum=comm[i].getElementsByTagName("movieCommentsNum")[0].textContent;
-					let id=comm[i].getElementsByTagName("id")[0].textContent;
-					let content=comm[i].getElementsByTagName("content")[0].textContent;
-					let star=comm[i].getElementsByTagName("star")[0].textContent;
-					let writedate=comm[i].getElementsByTagName("writedate")[0].textContent;
-					let UserNum=comm[i].getElementsByTagName("UserNum")[0].textContent;
-					let movieNum=comm[i].getElementsByTagName("movieNum")[0].textContent;
-					
-					div.innerHTML="작성자:" + id + "<br>" +
-									"내용:" + content +
-									"별점:" + star +
-									"<a href='javascript:delComments(" + movieCommentsNum + ")'>삭제</a>";
-					
-					div.className="commBox";
-					commList.appendChild(div);
-				}
-			}			
-		};
-		xhr.open('get','${pageContext.request.contextPath}/LSH/list.do?movieNum=${vo.movieNum}',true);
-		xhr.send();
-	}
-	list();
+	</div>
 
-	function delComments(movieCommentsNum){
-		let xhr=new XMLHttpRequest();
-		xhr.onreadystatechange=function(){
-			if(xhr.readyState==4 && xhr.status==200){
-				let xml=xhr.responseXML;
-				let code=xml.getElementsByTagName("code")[0].textContent;
-				alert(code);
-				list();
-			}
-		};
-		xhr.open('get','${pageContext.request.contextPath}/LSH/delete.do?movieCommentsNum='+movieCommentsNum,true);
-		xhr.send();
-	}
-		
+<!-- 댓글목록 -->
+<script type="text/javascript">
+	<!-- 등록버튼 클릭시 댓글 등록 -->
 	function addComments(){
-		const id=document.getElementById("id").value;
-		const content=document.getElementById("content").value;
+		const id=document.getElementById("id").value;	
+		const content=document.getElementById("content").value;	//
 		const star=document.getElementById("star").value;
 		let xhr=new XMLHttpRequest();	
 		xhr.onreadystatechange=function(){	
@@ -240,6 +111,59 @@
 		let params="movieNum=${vo.movieNum}&id=" +id+ "&content=" + content + "&star=" + star;
 		xhr.send(params);
 	}
+	<!-- 등록버튼 클릭시 댓글 등록 끝 -->
+	function list(){
+		let xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				const commList=document.getElementById("commList");
+				let childs=commList.childNodes;
+				for(let i=childs.length-1;i>=0;i--){
+					commList.removeChild(childs.item(i));
+				}
+				
+				let xml=xhr.responseXML;
+				let mcom=xml.getElementsByTagName("mcom");	
+				for(let i=0;i<mcom.length;i++){
+					let div=document.createElement("div");
+					let movieCommentsNum=mcom[i].getElementsByTagName("movieCommentsNum")[0].textContent;
+					let id=mcom[i].getElementsByTagName("id")[0].textContent;
+					let content=mcom[i].getElementsByTagName("content")[0].textContent;
+					let star=mcom[i].getElementsByTagName("star")[0].textContent;
+					let writedate=mcom[i].getElementsByTagName("writedate")[0].textContent;
+					let UserNum=mcom[i].getElementsByTagName("UserNum")[0].textContent;
+					let movieNum=mcom[i].getElementsByTagName("movieNum")[0].textContent;
+					
+					div.innerHTML=  "별점:" + star + "<br>" +
+									"내용:" + content +
+									"작성자:" + id +
+									"<a href='javascript:delComments(" + movieCommentsNum + ")'>삭제</a>";
+					
+					div.className="commBox";
+					commList.appendChild(div);
+				}
+			}			
+		};
+		xhr.open('get','${pageContext.request.contextPath}/LSH/list.do?movieNum=${vo.movieNum}',true);
+		xhr.send();
+	}
+<!-- 댓글목록 끝 -->	
+
+<!-- 댓글삭제 -->
+	function delComments(movieCommentsNum){
+		let xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4 && xhr.status==200){
+				let xml=xhr.responseXML;
+				let code=xml.getElementsByTagName("code")[0].textContent;
+				alert(code);
+				list();
+			}
+		};
+		xhr.open('get','${pageContext.request.contextPath}/LSH/delete.do?movieCommentsNum='+movieCommentsNum,true);
+		xhr.send();
+	}
+<!-- 댓글삭제 끝 -->
 </script>
 </body>
 </html>
