@@ -3,63 +3,31 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <meta charset="UTF-8">
 <title>movie.jsp</title>
 <style>
-	.commBox{width:400px; height:100px; border:1px solid #aaa; margin-top: 5px;}
-	.commForm{
-		max-width: 480px;
-		margin: 0 auto;
-		background-color: #fff;
-		height: 100%;
-		padding: 20px;
-		box-sizing: border-box;
-	}
-	.reviewform textarea{
-		width: 100%;
-		padding : 10px;
-		box-sizing: border-box;
-	}
-	.rating .rate_radio{
-		position: relative;
-		display: inline-block;
-		z-index: 20;
-		opacity: 0.001;
-		width: 60px;
-		height: 60px;
-		background-color: #fff;
-		cursor: pointer;
-		vertical-align: top;
-		display: none;
-	}
-	.rating .rate_radio + label {
-		position : relative;
-		display : inline-block;
-		margin-left: -4px;
-		z-index: 10;
-		width: 60px;
-		height: 60px;
-		background-image: url('../images/star/starrate.png');
-		backogrund-repeat: no-repeat;
-		background-size: 60px; 60px;
-		cursor: pointer;
-		background-color: #f0f0f0;
-	}
-	.rating .rate_radio:checked + label{
-		background-color: #ff8;
-	}
-	.warning_msg{
-		display:none;
-		position: relative;
-		text-align: center;
-		background: #ffffff;
-		line-height: 26px;
-		width: 100%;
-		color: red;
-		padding: 10px;
-		box-sizing: border-box;
-		border: 1px solid #e0e0e0;
-	}
+.starR1{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat -52px 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR2{
+    background: url('http://miuu227.godohosting.com/images/icon/ico_review.png') no-repeat right 0;
+    background-size: auto 100%;
+    width: 15px;
+    height: 30px;
+    float:left;
+    text-indent: -9999px;
+    cursor: pointer;
+}
+.starR1.on{background-position:0 0;}
+.starR2.on{background-position:-15px 0;}
 </style>
 </head>
 <body>
@@ -77,10 +45,24 @@
 </div>
 <!-- 영화정보끝 -->
 
+<!-- 데이터 입력하는 부분  -->
 	<div>
 		<div id="commList"></div>
 		<div id="commForm">
-			별점 <br>
+			별점선택 <br>
+			<div class="starRev">
+			  <span class="starR1 on" >별1_왼쪽</span>
+			  <span class="starR2" >별1_오른쪽</span>
+			  <span class="starR1" >별2_왼쪽</span>
+			  <span class="starR2" >별2_오른쪽</span>
+			  <span class="starR1" >별3_왼쪽</span>
+			  <span class="starR2" >별3_오른쪽</span>
+			  <span class="starR1" >별4_왼쪽</span>
+			  <span class="starR2" >별4_오른쪽</span>
+			  <span class="starR1" >별5_왼쪽</span>
+			  <span class="starR2" >별5_오른쪽</span>
+			</div><br>
+			별점임의값입력<br>
 			<input type="text" id="star"><br>
 			아이디 <br>
 			<input type="text" id="id"><br>
@@ -89,9 +71,19 @@
 			<input type="button" value="등록" onclick="addComments()">
 		</div>
 	</div>
+<!-- 데이터 입력하는 부분 끝 -->
+
 
 <!-- 댓글목록 -->
 <script type="text/javascript">
+	<!-- 별점 -->
+	$('.starRev span').click(function(){
+		  $(this).parent().children('span').removeClass('on');
+		  $(this).addClass('on').prevAll('span').addClass('on');
+		  return false;
+	});
+	<!-- 별점 끝-->
+	
 	<!-- 등록버튼 클릭시 댓글 등록 -->
 	function addComments(){
 		const id=document.getElementById("id").value;	
@@ -112,6 +104,8 @@
 		xhr.send(params);
 	}
 	<!-- 등록버튼 클릭시 댓글 등록 끝 -->
+	
+	<!-- 댓글목록 -->
 	function list(){
 		let xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=function(){
@@ -147,9 +141,9 @@
 		xhr.open('get','${pageContext.request.contextPath}/LSH/list.do?movieNum=${vo.movieNum}',true);
 		xhr.send();
 	}
-<!-- 댓글목록 끝 -->	
+	<!-- 댓글목록 끝 -->	
 
-<!-- 댓글삭제 -->
+	<!-- 댓글삭제 -->
 	function delComments(movieCommentsNum){
 		let xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=function(){
@@ -163,7 +157,7 @@
 		xhr.open('get','${pageContext.request.contextPath}/LSH/delete.do?movieCommentsNum='+movieCommentsNum,true);
 		xhr.send();
 	}
-<!-- 댓글삭제 끝 -->
+	<!-- 댓글삭제 끝 -->
 </script>
 </body>
 </html>
