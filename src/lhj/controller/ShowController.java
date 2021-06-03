@@ -2,6 +2,7 @@ package lhj.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -17,8 +18,9 @@ import semi.vo.showinfoVo;
 public class ShowController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Date begintime = Date.valueOf(req.getParameter("begintime"));
 		BookingDao dao = BookingDao.getInstace();
-		ArrayList<showinfoVo> rsdList = dao.roomSitDateList();
+		ArrayList<showinfoVo> rsdList = dao.roomSitDateList(begintime);
 		
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw = resp.getWriter();

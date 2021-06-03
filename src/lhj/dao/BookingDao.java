@@ -120,16 +120,18 @@ public class BookingDao {
 						+ "from book "
 						+ "group by showNum"
 						+ ")b "
-						+ "where b.showNum = s.showNum"
-						+ "group by movieNum"
-						+ "order by sc desc"
+						+ " where b.showNum = s.showNum "
+						+ " group by movieNum "
+						+ " order by sc desc"
 						+ ")sh "
 						+ "where sh.movieNum =m.movieNum and theaterName=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, theaterName);
+			System.out.println(theaterName);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				String movieTitle = rs.getString("movieTitle");
+				System.out.println(movieTitle);
 				roommovVo vo = new roommovVo(movieTitle, 0, 0, null);
 				mlist.add(vo);
 			}
@@ -155,7 +157,7 @@ public class BookingDao {
 					+ "select avg(star) s, movieNum from movieComments "
 					+ "group by movieNum "
 					+ "order by s desc "
-					+ ")c"
+					+ ")c "
 					+ "where m.movieNum = c.movieNum and r.theaterName=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, theaterName);
@@ -211,7 +213,7 @@ public class BookingDao {
 	}
 	*/
 	//선택한 날짜에 맞는 상영관 총좌석수 상영시간 불러오기
-	public ArrayList<showinfoVo> roomSitDateList(){
+	public ArrayList<showinfoVo> roomSitDateList(Date begintime){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -225,9 +227,9 @@ public class BookingDao {
 					+ "select showNum, count(showNum) as cnt"
 					+ "from book"
 					+ "group by showNum"
-					+ ")b"
+					+ ")b "
 					+ "where s.shownum = b.shownum and to_char(begintime,'yyyy/mm/dd') = to_char(?,'yyyy/mm/dd')"
-					+ ") rb"
+					+ ") rb "
 					+ "where rb.roomserialnum = r.roomserialnum";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, "begintime");
@@ -249,7 +251,7 @@ public class BookingDao {
 	
 	
 	// 상영시간 불러오기
-	public ArrayList<showinfoVo> showTimeList(){
+	public ArrayList<showinfoVo> showTimeList(Date begintime){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -267,7 +269,7 @@ public class BookingDao {
 			pstmt.setString(1, "begintime");
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				Date begintime = rs.getDate("begintime");
+				begintime = rs.getDate("begintime");
 				showinfoVo vo = new showinfoVo(0, 0, 0, 0, 0, begintime, null, null);
 				stlist.add(vo);
 			}

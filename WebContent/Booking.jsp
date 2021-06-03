@@ -7,7 +7,7 @@
 <head>
 <title> lhj_booking.jsp </title>
 <style type="text/css">
-	.main{width: 1000px; height: 800px;}
+	.main{width: 1000px; height: 800px; background-color: gray;}
 </style>
 </head>
 <body>
@@ -36,6 +36,7 @@
     </div>
     <div class="date-part">
         <div class="booking-title">날짜</div>
+        <div id="year-month"></div>
         <div id="date-list"></div>
     </div>
     <div class="time-part">
@@ -50,7 +51,7 @@
 
 
 <script type="text/javascript">
-
+var vtheaterName='';
 	function theaterNameList(location){
 		//console.log(location);
 		let xhr = new XMLHttpRequest();
@@ -66,6 +67,7 @@
 					div.innerHTML = theaterName + "<br>";
 					div.className = "theaterNameBox";
 					div.onclick=function(){
+						vtheaterName=theaterName;
 						//alert(this.inner)
 						movieList(theaterName);
 					}
@@ -76,17 +78,22 @@
 		xhr.open('get','${pageContext.request.contextPath}/theater?location=' + location, true)
 		xhr.send();
 	}
-	var cmv = 'base';
+	
+	
 	function changeMovie(){
-		if(movieField == "bookCount"){
-			cmv = bookCount;
-		}else if(movieField == "starCount"){
-			cmv = starCount;
-		}
+		let cmv = "base";
+		let movieField = document.getElementById("movieField")
+		let mfIndex = movieField.options[movieField.selectedIndex].value;
+		//console.log(mfIndex);
+		cmv = mfIndex;
+		//console.log(cmv);
+		movieList(vtheaterName,cmv);
 	}
 	
-	function movieList(theaterName){
-		console.log(theaterName);
+	function movieList(theaterName,cmv){
+		//console.log("dddddddd:"+ cmv)
+		if(cmv == undefined) cmv='base';
+		//console.log(theaterName);
 		let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
@@ -99,6 +106,10 @@
 					let movieTitle = movList[i].getElementsByTagName("movieList")[0].textContent;
 					div2.innerHTML = movieTitle + "<br>";
 					div2.className = "movieListBox";
+					div2.onclick=function(){
+						//alert(this.inner)
+						//달력function
+					}
 					movie_list.appendChild(div2);
 				}	
 			}
@@ -107,57 +118,51 @@
 		xhr.send();
 	}
 	// 달력
- /*   const date = new Date();
-    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    const bookingDate = document.getElementById("date-list");
+/*		
+   const date = new Date(); //date객체
+   const year = date.getFullYear();
+   const month = date.getMonth();
+   const firstDay = new Date(date.getFullYear(), date.getMonth(), 1); //달의 첫날
+   const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0); //한달의 마지막날
+   const bookingDate = document.getElementById("date-list"); // 날짜 요일 저장할 곳
+   const year_month = document.getElementById("year-month"); // 년도 월 저장할 곳
+   year_month.innerHTML = date.getFullYear() + "년 " + (date.getMonth() + 1) + "월";
+   const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"];
+  
+   for (i = date.getDate(); i <= lastDay.getDate(); i++) {
 
-    const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"]
-    const year = date.getFullYear();
-    const month = date.getMonth();
-    for (i = date.getDate(); i <= lastDay.getDate(); i++) {
+       const button = document.createElement("button");
+       const spanWeekOfDay = document.createElement("span");
+       const spanDay = document.createElement("span");
 
-        const button = document.createElement("button");
-        const spanWeekOfDay = document.createElement("span");
-        const spanDay = document.createElement("span");
+       //class넣기
+       button.classList = "movie_date_wrapper"
+       spanWeekOfDay.classList = "movie_week_of_day";
+       spanDay.classList = "movie_day";
 
-        //class넣기
-        button.classList = "movie-date-wrapper"
-        spanWeekOfDay.classList = "movie-week-of-day";
-        spanDay.classList = "movie-day";
+       //weekOfDay[new Date(2021-06-날짜)]
+       var dayOfWeek = week[date.getDay()];
 
-        //weekOfDay[new Date(2020-03-날짜)]
-        const dayOfWeek = weekOfDay[new Date(year + "-" + month + "-" + i).getDay()];
+       //요일 넣기
+       if (dayOfWeek == "토") {
+           spanWeekOfDay.classList.add("saturday");
+           spanDay.classList.add("saturday");
+       } else if (dayOfWeek == "일") {
+           spanWeekOfDay.classList.add("sunday");
+           spanDay.classList.add("sunday");
+       }
+       spanWeekOfDay.innerHTML = dayOfWeek;
+       button.append(spanWeekOfDay);
+       //날짜 넣기
+       spanDay.innerHTML = i;
+       button.append(spanDay);
+       //button.append(i);
+       bookingDate.append(button);
 
-        //요일 넣기
-        if (dayOfWeek === "토") {
-            spanWeekOfDay.classList.add("saturday");
-            spanDay.classList.add("saturday");
-        } else if (dayOfWeek === "일") {
-            spanWeekOfDay.classList.add("sunday");
-            spanDay.classList.add("sunday");
-        }
-        spanWeekOfDay.innerHTML = dayOfWeek;
-        button.append(spanWeekOfDay);
-        //날짜 넣기
-        spanDay.innerHTML = i;
-        button.append(spanDay);
-        //button.append(i);
-        reserveDate.append(button);
-
-        dayClickEvent(button);
-        }
-
-    function dayClickEvent(button) {
-        button.addEventListener("click", function() {
-            const movieDateWrapperActive = document.querySelectorAll(".movie-date-wrapper-active");
-            movieDateWrapperActive.forEach((list) => {
-                list.classList.remove("movie-date-wrapper-active");
-            })
-            button.classList.add("movie-date-wrapper-active");
-        })
-    }
- */   
-    function showList(){
+       dayClickEvent(button);
+       }
+ */	
+    function showList(begintime, movieTitle){
     	let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
@@ -174,11 +179,11 @@
 				}	
 			}
 		};
-		xhr.open('get','${pageContext.request.contextPath}/show?begintime=${vo.begintime}',true)
+		xhr.open('get','${pageContext.request.contextPath}/show?begintime=' + begintime +'&movieTitle=' + movieTitle,true)
 		xhr.send();
     }
     
-    function timeList(){
+    function timeList(begintime, movieTitle){
     	let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
@@ -194,7 +199,7 @@
 				}	
 			}
 		};
-		xhr.open('get','${pageContext.request.contextPath}/time?begintime=${vo.begintime}',true)
+		xhr.open('get','${pageContext.request.contextPath}/time?begintime=' + begintime +'&movieTitle=' + movieTitle, true)
 		xhr.send();
     }
 </script>
