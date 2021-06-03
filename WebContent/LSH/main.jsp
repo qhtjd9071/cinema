@@ -7,7 +7,7 @@
 <title>main.jsp</title>
 </head>
 <body>
-<h1>상영중인 영화보기</h1>
+<h1>영화 관람평</h1>
 <ul>
 	<li><a href="/LSH/movie.do?movieNum=1">영화1</a></li>
 </ul>

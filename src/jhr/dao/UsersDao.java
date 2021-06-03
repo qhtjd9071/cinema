@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import semi.db.dbCon;
-import semi.vo.usersVo;
+import test.db.DBConnection;
+import test.vo.UsersVo;
 
 public class UsersDao {
 	/*
@@ -78,12 +78,12 @@ public class UsersDao {
 		}
 	}
 	*/
-	public int insert(usersVo vo){
+	public int insert(UsersVo vo){
 		String sql="insert into users values(memnum.nextval,?,?,?,?,?,?,null)";
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
-			con=dbCon.getConnection();
+			con=DBConnection.getCon();
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,vo.getName());
 			pstmt.setString(2,vo.getId());
@@ -97,29 +97,27 @@ public class UsersDao {
 			s.printStackTrace();
 			return -1;
 		}finally {
-			dbCon.close(con,pstmt,null);
+			DBConnection.close(con,pstmt,null);
 		}
 	}
-	public ArrayList<usersVo> list(){
+	public ArrayList<UsersVo> list(){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
-			con=dbCon.getConnection();
+			con=DBConnection.getCon();
 			String sql="select * from users";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
-			ArrayList<usersVo> mlist=new ArrayList<usersVo>();
+			ArrayList<UsersVo> mlist=new ArrayList<UsersVo>();
 			while(rs.next()) {
-				usersVo vo=new usersVo(
-						rs.getInt("userNum"),
+				UsersVo vo=new UsersVo(
 						rs.getString("name"), 
 						rs.getString("id"), 
 						rs.getString("pwd"), 
 						rs.getString("email"), 
 						rs.getString("year"), 
-						rs.getString("phone"),
-						rs.getNString("delUser"));
+						rs.getString("phone"));
 				mlist.add(vo);
 			}
 			return mlist;
@@ -127,7 +125,7 @@ public class UsersDao {
 			s.printStackTrace();
 			return null;
 		}finally {
-			dbCon.close(con, pstmt,rs);
+			DBConnection.close(con, pstmt,rs);
 		}
 	}
 }

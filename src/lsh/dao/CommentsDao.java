@@ -57,7 +57,7 @@ public class CommentsDao {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="select * from movieComments where movieCommentsNum=?";
+		String sql="select * from movieComments where movieNum=?";
 		try {
 			con=dbCon.getConnection();
 			pstmt=con.prepareStatement(sql);
