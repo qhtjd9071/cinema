@@ -6,10 +6,11 @@ public class usersVo {
 	private String pwd;
 	private String name;
 	private String email;
+	private String year;
 	private String phone;
-	private int age;
 	private String delUser;
-	public usersVo(int userNum, String id, String pwd, String name, String email, String phone, int age,
+	public usersVo() {}
+	public usersVo(int userNum, String id, String pwd, String name, String email, String year, String phone,
 			String delUser) {
 		super();
 		this.userNum = userNum;
@@ -17,11 +18,10 @@ public class usersVo {
 		this.pwd = pwd;
 		this.name = name;
 		this.email = email;
+		this.year = year;
 		this.phone = phone;
-		this.age = age;
 		this.delUser = delUser;
 	}
-	public usersVo() {}
 	public int getUserNum() {
 		return userNum;
 	}
@@ -52,17 +52,17 @@ public class usersVo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getYear() {
+		return year;
+	}
+	public void setYear(String year) {
+		this.year = year;
+	}
 	public String getPhone() {
 		return phone;
 	}
 	public void setPhone(String phone) {
 		this.phone = phone;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
 	}
 	public String getDelUser() {
 		return delUser;
