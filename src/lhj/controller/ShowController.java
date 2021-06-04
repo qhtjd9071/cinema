@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,9 +19,21 @@ import semi.vo.showinfoVo;
 public class ShowController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Date begintime = Date.valueOf(req.getParameter("begintime"));
+		//Date begintime = Date.valueOf(req.getParameter("begintime"));
+		String[] date = req.getParameter("begintime").split("/");
+		int year = Integer.parseInt(date[0]);
+		int month = Integer.parseInt(date[1]) - 1;
+		int day = Integer.parseInt(date[2]);
+		
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.YEAR, year);
+		cal.set(Calendar.MONTH, month);
+		cal.set(Calendar.DATE, day);
+		Date begintime = new Date(cal.getTimeInMillis());
+		
+		String movieTitle = req.getParameter("movieTitle");
 		BookingDao dao = BookingDao.getInstace();
-		ArrayList<showinfoVo> rsdList = dao.roomSitDateList(begintime);
+		ArrayList<showinfoVo> rsdList = dao.roomSitDateList(begintime, movieTitle);
 		
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw = resp.getWriter();
