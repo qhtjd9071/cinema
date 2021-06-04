@@ -28,7 +28,7 @@ public class JoinController extends HttpServlet{
 		String phone=req.getParameter("phone");
 		String delUser=req.getParameter("delUser");
 
-		usersVo vo=new usersVo(0, id, pwd, name, email, year, phone,null);
+		usersVo vo=new usersVo(0, id, pwd, name, email, year, phone, null);
 		UsersDao dao=new UsersDao();
 		int n=dao.insert(vo);
 		
