@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<div id="header2">
+<div class="header2">
 	<jsp:include page="header2.jsp"/>
 </div>
 
@@ -42,8 +42,8 @@
 									</div>
 									<div class="login_menu">
 										<a href="${pageContext.request.contextPath }/join.jsp">회원가입</a>
-										<a>아이디 찾기</a>
-										<a>비밀번호 찾기</a>
+										<a href="${pageContext.request.contextPath }/findid.jsp">아이디 찾기</a>
+										<a href="${pageContext.request.contextPath }/findpwd.jsp">비밀번호 찾기</a>
 									</div>
 								</div>
 							</div>
@@ -58,7 +58,7 @@
 	</div>
 </div>
 
-<div id="footer">
+<div class="footer">
 	<jsp:include page="footer.jsp"/>
 </div>
 <script type="text/javascript">
