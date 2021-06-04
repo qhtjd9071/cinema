@@ -40,10 +40,10 @@
         <div id="date-list"></div>
     </div>
     <div class="time-part wrap_list float_left">
-        <div class="booking-title">시간표</div>
+        <div class="booking-title">상영시간표</div>
         <div>
    		  	<div id="show-list"></div>
-   			<div id="time-list"> 상영시간</div>
+   			<div id="time-list"></div>
         </div>
     </div>
 </div>
@@ -148,7 +148,7 @@
 	 	var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0); //한달의 마지막날
 	 	var day = today.getDay();
 	 	
-	 	const weekOfDay = ["일", "월", "화", "수", "목", "금", "토"];
+	 	var weekOfDay = ["일", "월", "화", "수", "목", "금", "토"];
 	 	
 	 	var html = "<ul>";
 	 	
