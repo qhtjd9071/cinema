@@ -27,7 +27,7 @@
 		<td><div style="width:350px;height: 200px">${vo.content }</div></td>
 	</tr>
 	<tr>
-		<td colspan="2"><a href="csinsert.jsp?customerNum=${vo.customerNum }&ref=${vo.ref}&lev=${vo.lev}&step=${vo.step}">답글</a></td>
+		<td colspan="2"><a href="csinsert.jsp?customerNum=${vo.customerNum}&ref=${vo.ref}&lev=${vo.lev}&step=${vo.step}">답글</a></td>
 	</tr>
 </table>
 </body>

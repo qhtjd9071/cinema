@@ -15,11 +15,11 @@
 	<option value="기타">기타</option>
 </select>
 
-<form action="insert" method="post">
-	<input type="hidden" name="customerNum" value="${param.num }">
-	<input type="hidden" name="ref" value="${param.ref }">
-	<input type="hidden" name="lev" value="${param.lev }">
-	<input type="hidden" name="step" value="${param.step }">	
+<form action="csinsert" method="post">
+	<input type="hidden" name="customerNum" value="${param.customerNum}">
+	<input type="hidden" name="ref" value="${param.ref}">
+	<input type="hidden" name="lev" value="${param.lev}">
+	<input type="hidden" name="step" value="${param.step}">
 	*제목<br>
 	<input type="text" name="title"><br>
 	*내용<br>

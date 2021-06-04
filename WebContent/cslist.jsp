@@ -22,37 +22,37 @@
 		<tr>
 			<td>${vo.customerNum }</td>
 			<td>${vo.writer }</td>
-			<td><a href="csdetail?customerNum=${vo.customerNum }">${vo.title }</a></td></td>
-			<td>${vo.content }</td>	
-			<td><a href="delMember?customerNum=${vo.customerNum }">삭제</a></td>
-			<td><a href="csupdate?customerNum=${vo.customerNum }">수정</a></td>${vo.customerNum }
-			<!-- 답글인경우 들여쓰기하기 -->
-			<c:if test="${vo.lev>0 }">		
-				<c:forEach var="i" begin="1" end="${vo.lev }">
-					&nbsp;&nbsp;
+			<td><a href="csdetail?customerNum=${vo.customerNum}">
+			<c:if test="${vo.lev>0 }">
+				<c:forEach var="i" begin="1" end="${vo.lev}">
+					&nbsp;[re]
 				</c:forEach>
-				[re]
 			</c:if>
+			${vo.title }</a></td></td>
+			<td>${vo.content }</td>	
+			<td><a href="delMember?customerNum=${vo.customerNum}">삭제</a></td>
+			<td><a href="csupdate?customerNum=${vo.customerNum}">수정</a></td>
+			<!-- 답글인경우 들여쓰기하기 -->
 		</tr>
 	</c:forEach>
 </table>
 <!-- 페이징 처리 -->
 <div>
 	<c:if test="${startPageNum>10 }">
-		<a href="list?pageNum=${startPageNum-1 }">[이전]</a>
+		<a href="cslist?pageNum=${startPageNum-1 }">[이전]</a>
 	</c:if>
 	<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 		<c:choose>
 			<c:when test="${pageNum==i }"><%--현재페이지인경우 --%>
-				<a href="list?pageNum=${i }"><span style="color:blue">[${i }]</span></a>
+				<a href="cslist?pageNum=${i }"><span style="color:blue">[${i }]</span></a>
 			</c:when>
 			<c:otherwise>
-				<a href="list?pageNum=${i }"><span style="color:gray">[${i }]</span></a>
+				<a href="cslist?pageNum=${i }"><span style="color:gray">[${i }]</span></a>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 	<c:if test="${endPageNum<pageCount }">
-		<a href="list?pageNum=${endPageNum+1 }">[다음]</a>
+		<a href="cslist?pageNum=${endPageNum+1 }">[다음]</a>
 	</c:if>
 </div>
 </body>

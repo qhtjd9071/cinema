@@ -18,7 +18,7 @@ public class DelController extends HttpServlet {
 		customerDao dao=new customerDao();
 		int n=dao.delete(num);
 		if(n>0) {
-			resp.sendRedirect("list");
+			resp.sendRedirect(req.getContextPath()+"/cslist");
 		}else {
 			req.setAttribute("result", "fail");
 			req.getRequestDispatcher("/csresult.jsp").forward(req, resp);
