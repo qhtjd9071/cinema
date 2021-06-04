@@ -52,9 +52,8 @@
 <script type="text/javascript">
 
 	var curDate;
-	var curTheaterName;
+	var curTheaterName='';
 	var curMovieTitle;
-	var vTheaterName='';
 	function theaterNameList(location){
 		//console.log(location);
 		let xhr = new XMLHttpRequest();
@@ -70,10 +69,10 @@
 					div.innerHTML = theaterName + "<br>";
 					div.className = "theaterNameBox";
 					div.onclick=function(){
-						vTheaterName = theaterName;
-						//curTheaterName = theaterName;
+						curTheaterName = theaterName;
+						console.log(curTheaterName);
 						//alert(this.inner)
-						movieList(vTheaterName);
+						movieList(curTheaterName);
 					}
 					theaterName_list.appendChild(div);
 				}	
@@ -83,26 +82,21 @@
 		xhr.send();
 	}
 	
-	
-	
-	
 	function changeMovie(){
 		let cmv = "base";
 		let movieField = document.getElementById("movieField")
 		let mfIndex = movieField.options[movieField.selectedIndex].value;
-		console.log("aa" + mfIndex);
+		//console.log("aa" + mfIndex);
 		cmv = mfIndex;
 		console.log(cmv);
-		movieList(vTheaterName,cmv);
+		movieList(curTheaterName);
 		//movieList(vtheaterName);
 	}
 	
-	function movieList(vtheaterName,cmv){
+	function movieList(curTheaterName,cmv){
 	//function movieList(theaterName){
 		//console.log("dddddddd:"+ cmv)
 		if(cmv == undefined) cmv='base';
-		console.log(vtheaterName);
-		console.log("dddddddd:"+ cmv)
 		let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
@@ -117,21 +111,22 @@
 					div2.className = "movieListBox";
 					div2.onclick=function(){
 						curMovieTitle = movieTitle;
-						//alert(this.inner)
 						//showList();
+						//console.log(curMovieTitle);
 					}
 					movie_list.appendChild(div2);
 				}	
 			}
 		};
-		xhr.open('get','${pageContext.request.contextPath}/movie?theaterName=' + vtheaterName +'&cmv=' + cmv, true)
+		xhr.open('get','${pageContext.request.contextPath}/movie?theaterName=' + curTheaterName +'&cmv=' + cmv, true)
 		xhr.send();
 	}
 	
 	function selectDate(year, month, date){
 		curDate = year + "/" + month + "/" + date;
 		// 상영관, 상영시간 정보 얻어오기
-		showList();
+		showList(curDate,curMovieTitle,curTheaterName);
+		timeList(curDate,curMovieTitle,curTheaterName);
 	}
 	
 	// 달력
@@ -163,7 +158,7 @@
 	 		}
 
 	 		
-	 		var li = "<li";
+	 		var li = '<li';
 	 		if(printDay == 0) li += ' class="sunday"';
 	 		if(printDay == 6) li += ' class="saturday"';
 	 		li += ' onclick="selectDate(' + printYear + ',' + printMonth + ',' + printDate + ')">' + printDate + " " + weekOfDay[printDay] + "</li>";
@@ -173,14 +168,13 @@
 	 	
 		for(var i=5; i<10; i++){
 			var printDate = (date+i > lastDate)? (date + i) - lastDate : date + i;
-	 		var printDay = (day + i >= 7)? (day + i) - 7 : day + i;
+	 		var printDay = (day + i >= 7)? (day + i) % 7 : day + i;
 	 		var printMonth = (date+i > lastDate)? month + 1 : month;
 	 		var printYear = year;
 	 		if(printMonth >= 13) {
 	 			printMonth = 1;
 	 			printYear += 1;
 	 		}
-	 		
 	 		
 	 		var li = '<li class="off';
 	 		if(printDay == 0) li += ' sunday';
@@ -199,7 +193,8 @@
  	window.onload = function(){
  		createDate();
  	}
-    function showList(){
+ 	
+    function showList(curDate,curMovieTitle,curTheaterName){
     	let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
@@ -208,12 +203,12 @@
 				let sList = xml.getElementsByTagName("sList");
 				show_list.innerHTML = "";
 				for(let i=0; i<sList.length; i++){
-					/* let div3 = document.createElement("div3");
+					let div3 = document.createElement("div3");
 					let roomNum = sList[i].getElementsByTagName("rn")[0].textContent;
 					let sitCount = sList[i].getElementsByTagName("sc")[0].textContent;
-					div3.innerHTML = roomNum + "관 " + sitCount + "석";
+					div3.innerHTML = roomNum + "관 " + sitCount + "석" + "<br>";
 					div3.className = "showListBox";
-					show_list.appendChild(div3); */
+					show_list.appendChild(div3);
 				}	
 			}
 		};
@@ -221,7 +216,7 @@
 		xhr.send();
     }
     
-    function timeList(begintime, movieTitle){
+    function timeList(curDate,curMovieTitle,curTheaterName){
     	let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
@@ -241,10 +236,9 @@
 				}	
 			}
 		};
-		xhr.open('get','${pageContext.request.contextPath}/time?begintime=' + begintime +'&movieTitle=' + movieTitle, true)
+		xhr.open('get','${pageContext.request.contextPath}/time?begintime=' + curDate +'&movieTitle=' + curMovieTitle + '&theaterName=' + curTheaterName, true)
 		xhr.send();
-    }
-	
+    }	
 </script>
 </body>
 </html>

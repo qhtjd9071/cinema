@@ -61,6 +61,7 @@ public class MovieController extends HttpServlet{
 			pw.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 			pw.print("<result>");
 			for(roommovVo vo : mlist) {
+				System.out.println(vo);
 				pw.print("<movList>");
 				pw.print("<movieList>"+ vo.getMovieTitle() + "</movieList>");
 				pw.print("</movList>");
