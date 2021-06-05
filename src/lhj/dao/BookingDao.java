@@ -235,7 +235,8 @@ public class BookingDao {
 			con = dbCon.getConnection();
 			String sql = "select distinct(r.roomNum), r.sitCount from room r, show s, movie m "
 					+ "where r.roomserialNum = s.roomserialNum and s.movieNum = m.movieNum "
-					+ "and to_char(begintime, 'yyyy/mm/dd') = to_date(?, 'yyyy/mm/dd') "
+					+ "and to_char(begintime"
+					+ ", 'yyyy/mm/dd') = to_date(?, 'yyyy/mm/dd') "
 					+ "and m.movietitle = ? "
 					+ "and r.theaterName = ? ";
 			pstmt = con.prepareStatement(sql);
