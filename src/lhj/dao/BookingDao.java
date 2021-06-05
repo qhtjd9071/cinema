@@ -5,6 +5,8 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import semi.db.dbCon;
@@ -13,6 +15,7 @@ import semi.vo.roomVo;
 import semi.vo.roommovVo;
 import semi.vo.showVo;
 import semi.vo.showinfoVo;
+import semi.vo.timeVo;
 
 public class BookingDao {
 	private static BookingDao instance = new BookingDao();
@@ -175,8 +178,6 @@ public class BookingDao {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 					String movieTitle = rs.getString("movieTitle");
-					System.out.println(movieTitle);
-					
 					roommovVo vo = new roommovVo(movieTitle, 0, 0, null);
 					starlist.add(vo);
 				}	
@@ -233,25 +234,25 @@ public class BookingDao {
 		ArrayList<showinfoVo> rslist = new ArrayList<showinfoVo>();
 		try {
 			con = dbCon.getConnection();
-			String sql = "select distinct(r.roomNum), r.sitCount from room r, show s, movie m "
-					+ "where r.roomserialNum = s.roomserialNum and s.movieNum = m.movieNum "
-					+ "and to_char(begintime"
-					+ ", 'yyyy/mm/dd') = to_date(?, 'yyyy/mm/dd') "
-					+ "and m.movietitle = ? "
-					+ "and r.theaterName = ? ";
+			String sql = "select distinct(roomNum), sitCount from room join "
+						+ "("
+						+ "select * from show join movie on show.movieNum=movie.movieNum "
+						+ ") sm "
+						+ "on room.roomserialNum=sm.roomserialNum "
+						+ "where theaterName=? "
+						+ "and movieTitle=? "
+						+ "and TO_CHAR(beginTime,'yyyy/mm/dd')= TO_CHAR(?,'yyyy/mm/dd')";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setDate(1, begintime);
+			pstmt.setDate(3, begintime);
 			//System.out.println("bookdao : " + begintime);
 			pstmt.setString(2, movieTitle);
 			//System.out.println("bookdao : " + movieTitle);
-			pstmt.setString(3, theaterName);
+			pstmt.setString(1, theaterName);
 			//System.out.println("bookdao : " + theaterName);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int roomNum = rs.getInt("roomNum");
-				System.out.println(roomNum);
 				int sitCount = rs.getInt("sitCount");
-				System.out.println(sitCount);
 				showinfoVo vo = new showinfoVo(0, 0, roomNum, 0, sitCount, null, null, null);
 				rslist.add(vo);
 			}
@@ -264,34 +265,34 @@ public class BookingDao {
 		}
 	}
 	
-	
 	// 상영시간 불러오기
-	public ArrayList<showinfoVo> showTimeList(Date begintime, String movieTitle, String theaterName, int roomNum){
+	public ArrayList<timeVo> showTimeList(Date begintime, String movieTitle, String theaterName, int roomNum){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		ArrayList<showinfoVo> stlist = new ArrayList<showinfoVo>();
+		ArrayList<timeVo> stlist = new ArrayList<timeVo>();
 		try {
 			con = dbCon.getConnection();
-			String sql =  "select to_char(begintime, 'hh24:mi') from room r, show s, movie m "
+			String sql =  "select to_char(begintime, 'yyyy-mm-dd hh24:mi:ss') hr from room r, show s, movie m "
 						+ "where r.roomserialNum = s.roomserialNum and s.movieNum = m.movieNum "
-						+ "and to_char(begintime, 'yyyy/mm/dd') = to_date(?, 'yyyy/mm/dd') "
+						+ "and to_char(begintime, 'yyyy/mm/dd') = to_char(?, 'yyyy/mm/dd') "
 						+ "and m.movietitle = ? "
-						+ "and r.theaterName = ?"
-						+ "and r.roomNum= ?";
+						+ "and r.theaterName = ? "
+						+ "and r.roomNum= ? "
+						+ "order by hr";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setDate(1, begintime);
+			System.out.println("timedao : " + begintime);
 			pstmt.setString(2, movieTitle);
-			pstmt.setString(3, theaterName);
+			pstmt.setString(3, theaterName);;
 			pstmt.setInt(4, roomNum);
-			System.out.println(roomNum);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				begintime = rs.getDate("begintime");
-				showinfoVo vo = new showinfoVo(0, 0, 0, 0, 0, begintime, null, null);
+				Timestamp beginhour = rs.getTimestamp("hr");
+				System.out.println("timedao: " + beginhour);
+				timeVo vo = new timeVo(0, 0, 0, 0, 0, null, beginhour, null, null);
 				stlist.add(vo);
 			}
-			
 			return stlist;
 		} catch(SQLException se) {
 			se.printStackTrace();

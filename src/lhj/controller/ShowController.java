@@ -28,6 +28,7 @@ public class ShowController extends HttpServlet{
 		cal.set(Calendar.YEAR, year);
 		cal.set(Calendar.MONTH, month);
 		cal.set(Calendar.DATE, day);
+		
 		Date begintime = new Date(cal.getTimeInMillis());
 		
 		String movieTitle = req.getParameter("movieTitle");
@@ -37,7 +38,7 @@ public class ShowController extends HttpServlet{
 		//System.out.println("showcontroller: " + theaterName);
 		BookingDao dao = BookingDao.getInstace();
 		ArrayList<showinfoVo> rsdList = dao.roomSitDateList(begintime, movieTitle, theaterName);
-		System.out.println("showlist: " + rsdList);
+		//System.out.println("showlist: " + rsdList);
 		
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw = resp.getWriter();

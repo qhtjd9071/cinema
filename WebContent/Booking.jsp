@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -208,13 +209,13 @@
 					let roomNum = sList[i].getElementsByTagName("rn")[0].textContent;
 					let sitCount = sList[i].getElementsByTagName("sc")[0].textContent;
 					div3.innerHTML = roomNum + "관 " + sitCount + "석" + "<br>";
-					console.log("show: " + roomNum);
+					console.log("roomNum: " + roomNum);
 					div3.className = "showListBox";
-/*					div3.onload=function(){
+					div3.onclick=function(){
 						curRoomNum = roomNum;
-						console.log("curRoomNum: " + curRoomNum);
+						//console.log("curRoomNum: " + curRoomNum);
 						timeList(curDate,curMovieTitle,curTheaterName,curRoomNum);
-					} */
+					} 
 					show_list.appendChild(div3);
 				}	
 			}
@@ -223,21 +224,25 @@
 		xhr.send();
     }
     
-/*    function timeList(curDate,curMovieTitle,curTheaterName,curRoomNum){
+  
+    function timeList(curDate,curMovieTitle,curTheaterName,curRoomNum){
     	let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
 				let xml = xhr.responseXML;
 				let time_list = document.getElementById("time-list");
 				let stList = xml.getElementsByTagName("stList");
+				time_list.innerHTML = "";
 				for(let i=0; i<stList.length; i++){
 					let div4 = document.createElement("div4");
 					let begintime = stList[i].getElementsByTagName("time")[0].textContent;
-					div4.innerHTML = begintime + "<br>";
+					console.log(begintime)
+					//let beginhour = '<fmt:formatDate value="${begintime}" pattern="hh시 mm분"/>';
+					//console.log(beginhour);
+					div4.innerHTML = begintime;
 					div4.className = "timeListBox";
 					div4.onclick=function(){
-						//alert(this.inner)
-						location.href="/book";
+						location.href = "/book";
 					}
 					time_list.appendChild(div4);
 				}	
@@ -245,8 +250,7 @@
 		};
 		xhr.open('get','${pageContext.request.contextPath}/time?begintime=' + curDate +'&movieTitle=' + curMovieTitle + '&theaterName=' + curTheaterName + '&roomNum=' + curRoomNum, true)
 		xhr.send();
-    }	
- */   
+    }	   
 </script>
 </body>
 </html>

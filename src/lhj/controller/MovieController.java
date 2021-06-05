@@ -41,7 +41,6 @@ public class MovieController extends HttpServlet{
 		}else if(cmv.equals("bookCount")) {
 			BookingDao dao = BookingDao.getInstace();
 			ArrayList<roommovVo> mlist = dao.mCountList(theaterName);
-			//System.out.println("mlist: " + theaterName);
 			
 			resp.setContentType("text/xml;charset=utf-8");
 			PrintWriter pw = resp.getWriter();
