@@ -291,6 +291,7 @@ public class BookingDao {
 				showinfoVo vo = new showinfoVo(0, 0, 0, 0, 0, begintime, null, null);
 				stlist.add(vo);
 			}
+			
 			return stlist;
 		} catch(SQLException se) {
 			se.printStackTrace();
