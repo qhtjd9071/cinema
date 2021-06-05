@@ -32,8 +32,12 @@ public class ShowController extends HttpServlet{
 		
 		String movieTitle = req.getParameter("movieTitle");
 		String theaterName = req.getParameter("theaterName");
+		//System.out.println("showcontroller: " + begintime);
+		//System.out.println("showcontroller: " + movieTitle);
+		//System.out.println("showcontroller: " + theaterName);
 		BookingDao dao = BookingDao.getInstace();
 		ArrayList<showinfoVo> rsdList = dao.roomSitDateList(begintime, movieTitle, theaterName);
+		System.out.println("showlist: " + rsdList);
 		
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw = resp.getWriter();

@@ -31,8 +31,9 @@ public class TimeController extends HttpServlet {
 		Date begintime = new Date(cal.getTimeInMillis());
 		String movieTitle = req.getParameter("movieTitle");
 		String theaterName = req.getParameter("theaterName");
+		int roomNum = Integer.parseInt(req.getParameter("roomNum"));
 		BookingDao dao = BookingDao.getInstace();
-		ArrayList<showinfoVo> stList = dao.showTimeList(begintime, movieTitle, theaterName);
+		ArrayList<showinfoVo> stList = dao.showTimeList(begintime, movieTitle, theaterName, roomNum);
 		
 		resp.setContentType("text/xml;charset=utf-8");
 		PrintWriter pw = resp.getWriter();

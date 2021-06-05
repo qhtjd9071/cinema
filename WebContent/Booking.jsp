@@ -52,8 +52,10 @@
 <script type="text/javascript">
 
 	var curDate;
-	var curTheaterName='';
+	var curTheaterName;
 	var curMovieTitle;
+	var curRoomNum;
+	
 	function theaterNameList(location){
 		//console.log(location);
 		let xhr = new XMLHttpRequest();
@@ -70,7 +72,7 @@
 					div.className = "theaterNameBox";
 					div.onclick=function(){
 						curTheaterName = theaterName;
-						console.log(curTheaterName);
+						//console.log(curTheaterName);
 						//alert(this.inner)
 						movieList(curTheaterName);
 					}
@@ -88,8 +90,8 @@
 		let mfIndex = movieField.options[movieField.selectedIndex].value;
 		//console.log("aa" + mfIndex);
 		cmv = mfIndex;
-		console.log(cmv);
-		movieList(curTheaterName);
+		//console.log("지금: " + cmv);
+		movieList(curTheaterName,cmv);
 		//movieList(vtheaterName);
 	}
 	
@@ -120,13 +122,6 @@
 		};
 		xhr.open('get','${pageContext.request.contextPath}/movie?theaterName=' + curTheaterName +'&cmv=' + cmv, true)
 		xhr.send();
-	}
-	
-	function selectDate(year, month, date){
-		curDate = year + "/" + month + "/" + date;
-		// 상영관, 상영시간 정보 얻어오기
-		showList(curDate,curMovieTitle,curTheaterName);
-		timeList(curDate,curMovieTitle,curTheaterName);
 	}
 	
 	// 달력
@@ -193,6 +188,12 @@
  	window.onload = function(){
  		createDate();
  	}
+ 	function selectDate(year, month, date){
+		curDate = year + "/" + month + "/" + date;
+		// 상영관, 상영시간 정보 얻어오기
+		showList(curDate,curMovieTitle,curTheaterName);
+		//console.log(curDate,curMovieTitle,curTheaterName);
+	}
  	
     function showList(curDate,curMovieTitle,curTheaterName){
     	let xhr = new XMLHttpRequest();
@@ -207,7 +208,13 @@
 					let roomNum = sList[i].getElementsByTagName("rn")[0].textContent;
 					let sitCount = sList[i].getElementsByTagName("sc")[0].textContent;
 					div3.innerHTML = roomNum + "관 " + sitCount + "석" + "<br>";
+					console.log("show: " + roomNum);
 					div3.className = "showListBox";
+/*					div3.onload=function(){
+						curRoomNum = roomNum;
+						console.log("curRoomNum: " + curRoomNum);
+						timeList(curDate,curMovieTitle,curTheaterName,curRoomNum);
+					} */
 					show_list.appendChild(div3);
 				}	
 			}
@@ -216,7 +223,7 @@
 		xhr.send();
     }
     
-    function timeList(curDate,curMovieTitle,curTheaterName){
+/*    function timeList(curDate,curMovieTitle,curTheaterName,curRoomNum){
     	let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
@@ -236,9 +243,10 @@
 				}	
 			}
 		};
-		xhr.open('get','${pageContext.request.contextPath}/time?begintime=' + curDate +'&movieTitle=' + curMovieTitle + '&theaterName=' + curTheaterName, true)
+		xhr.open('get','${pageContext.request.contextPath}/time?begintime=' + curDate +'&movieTitle=' + curMovieTitle + '&theaterName=' + curTheaterName + '&roomNum=' + curRoomNum, true)
 		xhr.send();
     }	
+ */   
 </script>
 </body>
 </html>

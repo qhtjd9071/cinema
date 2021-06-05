@@ -125,7 +125,7 @@ public class BookingDao {
 					+ "where sh.movieNum =m.movieNum";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, theaterName);
-			//System.out.println(theaterName);
+			//System.out.println("booking: " + theaterName);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				String movieTitle = rs.getString("movieTitle");
@@ -155,7 +155,8 @@ public class BookingDao {
 					+ "("
 					+ "select m.movieNum from show s join movie m on m.movieNum = s.movieNum "
 					+ "join room r on s.roomserialNum = r.roomserialnum "
-					+ "where r.theaterName = ?"
+					+ "where r.theaterName = ? "
+					+ "group by m.movieNum "
 					+ ") a, "
 					+ "("
 					+ "select m.movieTitle, m.movieNum, c.s from movie m, "
@@ -165,15 +166,17 @@ public class BookingDao {
 					+ "order by s desc "
 					+ ")c "
 					+ "where c.movieNum = m.movieNum "
-					+ ")b "
+		 			+ ")b "
 					+ "where a.movieNum = b.movieNum "
 					+ "order by s desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, theaterName);
+			//System.out.println("star: " + theaterName);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 					String movieTitle = rs.getString("movieTitle");
 					System.out.println(movieTitle);
+					
 					roommovVo vo = new roommovVo(movieTitle, 0, 0, null);
 					starlist.add(vo);
 				}	
@@ -230,22 +233,18 @@ public class BookingDao {
 		ArrayList<showinfoVo> rslist = new ArrayList<showinfoVo>();
 		try {
 			con = dbCon.getConnection();
-			String sql = "select distinct(r.roomNum), r.sitCount from room r,"
-					+ "("
-					+ "select count(showNum), showNum from show s,"
-					+ "(select movienum from movie where movieTitle = ?) m,"
-					+ "(select roomserialnum from room where theaterName = ?) r"
-					+ " where to_char(begintime, 'yyyy/mm/dd') = to_char(? ,'yyyy/mm/dd') "
-					+ "and m.movieNum = s.movieNum and r.roomserialNum = s.roomserialNum "
-					+ "group by showNum "
-					+ ")";
+			String sql = "select distinct(r.roomNum), r.sitCount from room r, show s, movie m "
+					+ "where r.roomserialNum = s.roomserialNum and s.movieNum = m.movieNum "
+					+ "and to_char(begintime, 'yyyy/mm/dd') = to_date(?, 'yyyy/mm/dd') "
+					+ "and m.movietitle = ? "
+					+ "and r.theaterName = ? ";
 			pstmt = con.prepareStatement(sql);
-			pstmt.setDate(3, begintime);
-			//System.out.println(begintime);
-			pstmt.setString(1, movieTitle);
-			//System.out.println(movieTitle);
-			pstmt.setString(2, theaterName);
-			//System.out.println(theaterName);
+			pstmt.setDate(1, begintime);
+			//System.out.println("bookdao : " + begintime);
+			pstmt.setString(2, movieTitle);
+			//System.out.println("bookdao : " + movieTitle);
+			pstmt.setString(3, theaterName);
+			//System.out.println("bookdao : " + theaterName);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				int roomNum = rs.getInt("roomNum");
@@ -266,30 +265,25 @@ public class BookingDao {
 	
 	
 	// 상영시간 불러오기
-	public ArrayList<showinfoVo> showTimeList(Date begintime, String movieTitle, String theaterName){
+	public ArrayList<showinfoVo> showTimeList(Date begintime, String movieTitle, String theaterName, int roomNum){
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		ArrayList<showinfoVo> stlist = new ArrayList<showinfoVo>();
 		try {
 			con = dbCon.getConnection();
-			String sql =  "select to_char(begintime, 'hh24:mi') s from show s, movie m, room r,"
-					+ "("
-					+ "select showNum, count(showNum) as cnt "
-					+ "from book "
-					+ "group by showNum"
-					+ ")b "
-					+ "where s.shownum = b.shownum "
-					+ "and s.movieNum = m.movieNum "
-					+ "and s.roomserialNum = r.roomserialNum "
-					+ "and to_char(begintime,'yyyy/mm/dd hh24:mi')= to_char(? ,'yyyy/mm/dd hh24:mi') "
-					+ "and m.movieTitle= ?"
-					+ "and r.theaterName= ?";
+			String sql =  "select to_char(begintime, 'hh24:mi') from room r, show s, movie m "
+						+ "where r.roomserialNum = s.roomserialNum and s.movieNum = m.movieNum "
+						+ "and to_char(begintime, 'yyyy/mm/dd') = to_date(?, 'yyyy/mm/dd') "
+						+ "and m.movietitle = ? "
+						+ "and r.theaterName = ?"
+						+ "and r.roomNum= ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setDate(1, begintime);
 			pstmt.setString(2, movieTitle);
 			pstmt.setString(3, theaterName);
-			System.out.println(theaterName);
+			pstmt.setInt(4, roomNum);
+			System.out.println(roomNum);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				begintime = rs.getDate("begintime");

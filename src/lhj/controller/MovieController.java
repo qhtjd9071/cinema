@@ -26,6 +26,7 @@ public class MovieController extends HttpServlet{
 		if(cmv.equals("base")) {
 			BookingDao dao = BookingDao.getInstace();
 			ArrayList<roommovVo> tlist = dao.movieList(theaterName);
+			//System.out.println("tlist: " + theaterName);
 			
 			resp.setContentType("text/xml;charset=utf-8");
 			PrintWriter pw = resp.getWriter();
@@ -40,6 +41,7 @@ public class MovieController extends HttpServlet{
 		}else if(cmv.equals("bookCount")) {
 			BookingDao dao = BookingDao.getInstace();
 			ArrayList<roommovVo> mlist = dao.mCountList(theaterName);
+			//System.out.println("mlist: " + theaterName);
 			
 			resp.setContentType("text/xml;charset=utf-8");
 			PrintWriter pw = resp.getWriter();
@@ -54,13 +56,14 @@ public class MovieController extends HttpServlet{
 			
 		}else if(cmv.equals("starCount")) {
 			BookingDao dao = BookingDao.getInstace();
-			ArrayList<roommovVo> mlist = dao.mStarList(theaterName);
+			ArrayList<roommovVo> stlist = dao.mStarList(theaterName);
+			//System.out.println("stlist: " + theaterName);
 			
 			resp.setContentType("text/xml;charset=utf-8");
 			PrintWriter pw = resp.getWriter();
 			pw.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
 			pw.print("<result>");
-			for(roommovVo vo : mlist) {
+			for(roommovVo vo : stlist) {
 				System.out.println(vo);
 				pw.print("<movList>");
 				pw.print("<movieList>"+ vo.getMovieTitle() + "</movieList>");
