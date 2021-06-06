@@ -16,6 +16,7 @@
 <div id="content" class="main">
 	<div class="theater-part wrap_list float_left">
         <div class="booking-title">극장</div>
+        
         <div id="theaterLoc-list">
         	<ul>
         		<c:forEach var="vo" items="${ requestScope.theaterList }">
@@ -44,7 +45,6 @@
         <div class="booking-title">상영시간표</div>
         <div>
    		  	<div id="show-list"></div>
-   			<div id="time-list"></div>
         </div>
     </div>
 </div>
@@ -108,7 +108,7 @@
 				let movList = xml.getElementsByTagName("movList");
 				movie_list.innerHTML = "";
 				for(let i=0; i<movList.length; i++){
-					let div2 = document.createElement("div2");
+					let div2 = document.createElement("div");
 					let movieTitle = movList[i].getElementsByTagName("movieList")[0].textContent;
 					div2.innerHTML = movieTitle + "<br>";
 					div2.className = "movieListBox";
@@ -193,7 +193,6 @@
 		curDate = year + "/" + month + "/" + date;
 		// 상영관, 상영시간 정보 얻어오기
 		showList(curDate,curMovieTitle,curTheaterName);
-		//console.log(curDate,curMovieTitle,curTheaterName);
 	}
  	
     function showList(curDate,curMovieTitle,curTheaterName){
@@ -205,18 +204,14 @@
 				let sList = xml.getElementsByTagName("sList");
 				show_list.innerHTML = "";
 				for(let i=0; i<sList.length; i++){
-					let div3 = document.createElement("div3");
+					let div3 = document.createElement("div");
 					let roomNum = sList[i].getElementsByTagName("rn")[0].textContent;
 					let sitCount = sList[i].getElementsByTagName("sc")[0].textContent;
 					div3.innerHTML = roomNum + "관 " + sitCount + "석" + "<br>";
-					console.log("roomNum: " + roomNum);
-					div3.className = "showListBox";
-					div3.onclick=function(){
-						curRoomNum = roomNum;
-						//console.log("curRoomNum: " + curRoomNum);
-						timeList(curDate,curMovieTitle,curTheaterName,curRoomNum);
-					} 
+					div3.className = roomNum;
+					div3.className += " showListBox";
 					show_list.appendChild(div3);
+					timeList(curDate,curMovieTitle,curTheaterName,roomNum);
 				}	
 			}
 		};
@@ -225,30 +220,28 @@
     }
     
   
-    function timeList(curDate,curMovieTitle,curTheaterName,curRoomNum){
+    function timeList(curDate,curMovieTitle,curTheaterName,roomNum){
     	let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
 				let xml = xhr.responseXML;
-				let time_list = document.getElementById("time-list");
+				let time_list = document.getElementsByClassName(roomNum)[0];
 				let stList = xml.getElementsByTagName("stList");
-				time_list.innerHTML = "";
 				for(let i=0; i<stList.length; i++){
-					let div4 = document.createElement("div4");
+					let div4 = document.createElement("div");
 					let begintime = stList[i].getElementsByTagName("time")[0].textContent;
-					console.log(begintime)
-					//let beginhour = '<fmt:formatDate value="${begintime}" pattern="hh시 mm분"/>';
-					//console.log(beginhour);
-					div4.innerHTML = begintime;
+					let beginhour = new Date(begintime);
+					let beginMin = (beginhour.getMinutes().toString.length == 1)? '0' + beginhour.getMinutes() : beginhour.getMinutes();
+					div4.innerHTML = beginhour.getHours() + " : " + beginMin;
 					div4.className = "timeListBox";
 					div4.onclick=function(){
-						location.href = "/book";
+						//location.href = "/book";
 					}
 					time_list.appendChild(div4);
 				}	
 			}
 		};
-		xhr.open('get','${pageContext.request.contextPath}/time?begintime=' + curDate +'&movieTitle=' + curMovieTitle + '&theaterName=' + curTheaterName + '&roomNum=' + curRoomNum, true)
+		xhr.open('get','${pageContext.request.contextPath}/time?begintime=' + curDate +'&movieTitle=' + curMovieTitle + '&theaterName=' + curTheaterName + '&roomNum=' + roomNum, true)
 		xhr.send();
     }	   
 </script>

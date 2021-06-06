@@ -282,14 +282,14 @@ public class BookingDao {
 						+ "order by hr";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setDate(1, begintime);
-			System.out.println("timedao : " + begintime);
+			//System.out.println("timedao : " + begintime);
 			pstmt.setString(2, movieTitle);
 			pstmt.setString(3, theaterName);;
 			pstmt.setInt(4, roomNum);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Timestamp beginhour = rs.getTimestamp("hr");
-				System.out.println("timedao: " + beginhour);
+				//System.out.println("timedao: " + beginhour);
 				timeVo vo = new timeVo(0, 0, 0, 0, 0, null, beginhour, null, null);
 				stlist.add(vo);
 			}
