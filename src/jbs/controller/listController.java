@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import admin.dao.movieDao;
 import jbs.dao.bookDao;
+import jbs.dao.showDao;
 import semi.vo.bookVo;
+import semi.vo.showVo;
 @WebServlet("/list")
 public class listController extends HttpServlet{
 	@Override
@@ -33,12 +36,17 @@ public class listController extends HttpServlet{
 		
 		bookDao dao=bookDao.getInstance();
 		ArrayList<bookVo> list=dao.select();
-		bookVo priceVo=dao.getPrice(showNum);
-		int price=priceVo.getPrice();
+		showDao dao2=showDao.getInstance();
+		showVo vo2=dao2.getPrice(showNum);
+		int price=vo2.getPrice();
+		vo2=dao2.getMovieNum(showNum);
+		int movieNum=vo2.getPrice();
+		movieDao dao3=movieDao.getInstance();
+		String movieTitle=dao3.getMovieTitle(movieNum);
 		
-		//int price=1000;
 		request.setAttribute("list", list);
 		request.setAttribute("price", price);
+		request.setAttribute("movieTitle", movieTitle);
 		request.getRequestDispatcher("/getCount").forward(request, response);
 	}
 }

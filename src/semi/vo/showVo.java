@@ -8,9 +8,9 @@ public class showVo {
 	private Date beginTime;
 	private Date endTime;
 	private int roomserialNum;
-	private String price;
+	private int price;
 	public showVo() {}
-	public showVo(int showNum, int movieNum, Date beginTime, Date endTime, int roomserialNum, String price) {
+	public showVo(int showNum, int movieNum, Date beginTime, Date endTime, int roomserialNum, int price) {
 		super();
 		this.showNum = showNum;
 		this.movieNum = movieNum;
@@ -49,10 +49,10 @@ public class showVo {
 	public void setRoomserialNum(int roomserialNum) {
 		this.roomserialNum = roomserialNum;
 	}
-	public String getPrice() {
+	public int getPrice() {
 		return price;
 	}
-	public void setPrice(String price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 	

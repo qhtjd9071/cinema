@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import admin.dao.showDao;
-import semi.vo.showVo2;
 
 public class showEnrollController extends HttpServlet{
 	@Override
@@ -17,9 +16,9 @@ public class showEnrollController extends HttpServlet{
 		String beginTime=request.getParameter("begin")+":00";
 		String endTime=request.getParameter("end")+":00";
 		int roomSerialNum=Integer.parseInt(request.getParameter("roomSerialNum"));
+		int price=Integer.parseInt(request.getParameter("price")); 
 		
-		showVo2 vo=new showVo2(0, movieNum, beginTime, endTime, roomSerialNum);
 		showDao dao=showDao.getInstance();
-		dao.insert(vo);
+		dao.insert(movieNum, beginTime, endTime, roomSerialNum, price);
 	}
 }

@@ -130,26 +130,4 @@ public class bookDao {
 		}
 	}
 	
-	public bookVo getPrice(int showNum) {
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			con=dbCon.getConnection();
-			String sql="select * from book where showNum=?";
-			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, showNum);
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
-				bookVo vo=new bookVo();
-				vo.setPrice(rs.getInt("price"));
-				return vo;
-			}
-		}catch(SQLException se) {
-			se.printStackTrace();
-		}finally {
-			dbCon.close(con, pstmt, null);
-		}
-		return null;
-	}
 }

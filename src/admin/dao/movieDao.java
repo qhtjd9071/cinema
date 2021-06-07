@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import semi.db.dbCon;
 import semi.vo.movieVo;
+import semi.vo.showVo;
 
 public class movieDao {
 	private static movieDao instance=new movieDao();
@@ -61,5 +62,27 @@ public class movieDao {
 		}finally {
 			dbCon.close(con, pstmt, null);
 		}
+	}
+	
+	public String getMovieTitle(int movieNum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="select * from movie where movieNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, movieNum);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				String movieTitle=rs.getString("movieTitle");
+				return movieTitle;
+			}
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			dbCon.close(con, pstmt, null);
+		}
+		return null;
 	}
 }

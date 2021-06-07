@@ -32,6 +32,8 @@
 		상영관
 		<input type="text" id="room" readonly="readonly">
 		<input type="hidden" id="roomSerialNum" name="roomSerialNum">
+		가격
+		<input type="text" name="price">원
 		</form>
 	</div>
 	영화목록
