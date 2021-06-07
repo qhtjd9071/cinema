@@ -86,7 +86,7 @@ public class kakaoPay extends HttpServlet{
 	    		payVo vo=new payVo();
 	    		vo.setPayNum(tid);
 	    		vo.setBookNum(Integer.parseInt(partner_order_id));
-	    		payDao dao=new payDao();
+	    		payDao dao=payDao.getInstance();
 	    		dao.insert(vo);
 	    		
 	    		System.out.println(partner_order_id);
@@ -112,7 +112,7 @@ public class kakaoPay extends HttpServlet{
 			con.setDoOutput(true);
 			
 			int intOrder=Integer.parseInt(partner_order_id);
-			payDao dao=new payDao();
+			payDao dao=payDao.getInstance();
 			payVo vo=dao.find(intOrder);
 			String tid=vo.getPayNum();
 			//partner_order_id로 bookNum 검색후 userNum으로 users 테이블과 조인해서 id 가져오기
@@ -170,7 +170,7 @@ public class kakaoPay extends HttpServlet{
 			con.setDoOutput(true);
 			
 			int intOrder=Integer.parseInt(partner_order_id);
-			payDao dao=new payDao();
+			payDao dao=payDao.getInstance();
 			payVo vo=dao.find(intOrder);
 			String tid=vo.getPayNum();
 			int cancel_amount=vo.getTot();

@@ -14,7 +14,7 @@ import jbs.dao.bookDao;
 public class getCountController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		bookDao dao=new bookDao();
+		bookDao dao=bookDao.getInstance();
 		int getCount=dao.getCount();
 		request.setAttribute("getCount", getCount);
 		request.getRequestDispatcher("/booklist.jsp").forward(request, response);
