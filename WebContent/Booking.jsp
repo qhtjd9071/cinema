@@ -6,13 +6,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> lhj_booking.jsp </title>
+<title> Booking.jsp </title>
 <style type="text/css">
 	.wrap_list{width:24%;}
 	.float_left{float:left;}
 </style>
 </head>
-<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
+
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/header2.css">
+<link rel="stylesheet" href="css/footer.css">
+</head>
+
 <div id="content" class="main">
 	<div class="theater-part wrap_list float_left">
         <div class="booking-title">극장</div>
@@ -48,7 +58,6 @@
         </div>
     </div>
 </div>
-
 
 <script type="text/javascript">
 
