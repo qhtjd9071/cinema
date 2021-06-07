@@ -8,14 +8,16 @@ public class showVo {
 	private Date beginTime;
 	private Date endTime;
 	private int roomserialNum;
+	private String price;
 	public showVo() {}
-	public showVo(int showNum, int movieNum, Date beginTime, Date endTime, int roomserialNum) {
+	public showVo(int showNum, int movieNum, Date beginTime, Date endTime, int roomserialNum, String price) {
 		super();
 		this.showNum = showNum;
 		this.movieNum = movieNum;
 		this.beginTime = beginTime;
 		this.endTime = endTime;
 		this.roomserialNum = roomserialNum;
+		this.price = price;
 	}
 	public int getShowNum() {
 		return showNum;
@@ -47,5 +49,12 @@ public class showVo {
 	public void setRoomserialNum(int roomserialNum) {
 		this.roomserialNum = roomserialNum;
 	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
+	}
+	
 	
 }
