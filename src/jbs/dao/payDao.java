@@ -19,7 +19,7 @@ public class payDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=dbCon.getConnection();
-			String sql="insert into pay values(?,?,null,null,null)";
+			String sql="insert into pay values(?,?,null,null,sysdate)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, vo.getPayNum());
 			pstmt.setInt(2, vo.getBookNum());
@@ -35,13 +35,11 @@ public class payDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=dbCon.getConnection();
-			String sql="update pay set method=?,count=?,tot=? where payNum=?";
+			String sql="update pay set method=?,tot=? where payNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, vo.getMethod());
-			pstmt.setInt(2, vo.getCount());
-			pstmt.setInt(3, vo.getTot());
-			pstmt.setString(4, vo.getPayNum());
-			System.out.println(vo.getPayNum());
+			pstmt.setInt(2, vo.getTot());
+			pstmt.setString(3, vo.getPayNum());
 			pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -84,7 +82,6 @@ public class payDao {
 				System.out.println(rs.getInt(2));
 				System.out.println(rs.getString(3));
 				System.out.println(rs.getInt(4));
-				System.out.println(rs.getInt(5));
 				vo.setPayNum(rs.getString("payNum"));
 				vo.setTot(rs.getInt("tot"));
 				System.out.println(rs.getInt("tot"));

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="cancel?partner_order_id=30">취소하기</a>
+<a href="cancel?partner_order_id=63">취소하기</a>
 </body>
 </html>

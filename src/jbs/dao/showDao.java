@@ -39,7 +39,7 @@ public class showDao {
 		return null;
 	}
 	
-	public showVo getMovieNum(int showNum) {
+	public int getMovieNum(int showNum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -50,15 +50,14 @@ public class showDao {
 			pstmt.setInt(1, showNum);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				showVo vo=new showVo();
-				vo.setMovieNum(rs.getInt("movieNum"));
-				return vo;
+				int movieNum=rs.getInt("movieNum");
+				return movieNum;
 			}
 		}catch(SQLException se) {
 			se.printStackTrace();
 		}finally {
 			dbCon.close(con, pstmt, null);
 		}
-		return null;
+		return 0;
 	}
 }

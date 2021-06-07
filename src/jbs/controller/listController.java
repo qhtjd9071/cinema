@@ -21,15 +21,10 @@ public class listController extends HttpServlet{
 		request.setCharacterEncoding("utf-8");
 		
 		int showNum=Integer.parseInt(request.getParameter("showNum"));
-		System.out.println(showNum);
-		//int adultCount=Integer.parseInt(request.getParameter("adultCount"));
-		int adultCount=1;
-		//int teenCount=Integer.parseInt(request.getParameter("teenCount"));
-		int teenCount=1;
+		System.out.println("showNum:"+showNum);
+		int adultCount=Integer.parseInt(request.getParameter("adultCount"));
+		int teenCount=Integer.parseInt(request.getParameter("teenCount"));
 		
-		//String rating=request.getParameter("rating");
-		String rating="15";
-		request.setAttribute("rating", rating);
 		request.setAttribute("adultCount", adultCount);
 		request.setAttribute("teenCount", teenCount);
 		request.setAttribute("totalCount", adultCount+teenCount);
@@ -39,12 +34,20 @@ public class listController extends HttpServlet{
 		showDao dao2=showDao.getInstance();
 		showVo vo2=dao2.getPrice(showNum);
 		int price=vo2.getPrice();
-		vo2=dao2.getMovieNum(showNum);
-		int movieNum=vo2.getPrice();
-		movieDao dao3=movieDao.getInstance();
-		String movieTitle=dao3.getMovieTitle(movieNum);
+		System.out.println(price);
+		int movieNum=dao2.getMovieNum(showNum);
 		
+		
+		System.out.println(movieNum);
+		movieDao dao3=movieDao.getInstance();
+		String movieTitle=dao3.getMovieTitle(movieNum);;
+		System.out.println("movietitle:"+movieTitle);
+		String rating=dao3.getRating(movieNum);
+		System.out.println(rating);
+		
+		request.setAttribute("rating", rating);
 		request.setAttribute("list", list);
+		request.setAttribute("showNum", showNum);
 		request.setAttribute("price", price);
 		request.setAttribute("movieTitle", movieTitle);
 		request.getRequestDispatcher("/getCount").forward(request, response);

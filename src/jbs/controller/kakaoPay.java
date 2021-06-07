@@ -11,9 +11,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
+import jbs.dao.bookDao;
 import jbs.dao.payDao;
 import semi.vo.payVo;
 
@@ -28,6 +30,7 @@ public class kakaoPay extends HttpServlet{
 			 	System.out.println(partner_order_id);
 			 	String partner_user_id=json.getString("id");
 			 	String item_name=json.getString("title");
+			 	System.out.println(item_name);
 			 	int quantity=json.getInt("count");
 			 	int total_amount=json.getInt("total");
 			 	
@@ -85,13 +88,13 @@ public class kakaoPay extends HttpServlet{
 
 	    		payVo vo=new payVo();
 	    		vo.setPayNum(tid);
+	    		System.out.println("tid:"+tid);
 	    		vo.setBookNum(Integer.parseInt(partner_order_id));
+	    		System.out.println("poid:"+partner_order_id);
 	    		payDao dao=payDao.getInstance();
 	    		dao.insert(vo);
 	    		
-	    		System.out.println(partner_order_id);
-	    		System.out.println(partner_user_id);
-	    		System.out.println(tid);
+	    		System.out.println("puid:"+partner_user_id);
 	    		return next_redirect_pc_url;
 		 	} catch (MalformedURLException me) {
 	            System.out.println("잘못된 URL입니다.");
@@ -101,7 +104,7 @@ public class kakaoPay extends HttpServlet{
 				return null;
 			}
 	}
-	public void kakaoPayApprove(String partner_order_id,String pg_token) throws ServletException, IOException {
+	public void kakaoPayApprove(String partner_order_id,String pg_token,HttpServletRequest request) throws ServletException, IOException {
 		try {
 			URL url = new URL("https://kapi.kakao.com/v1/payment/approve");
 			HttpURLConnection con=(HttpURLConnection) url.openConnection();
@@ -112,11 +115,14 @@ public class kakaoPay extends HttpServlet{
 			con.setDoOutput(true);
 			
 			int intOrder=Integer.parseInt(partner_order_id);
+			System.out.println("poid:"+partner_order_id);
 			payDao dao=payDao.getInstance();
 			payVo vo=dao.find(intOrder);
 			String tid=vo.getPayNum();
 			//partner_order_id로 bookNum 검색후 userNum으로 users 테이블과 조인해서 id 가져오기
-			String partner_user_id="testid";
+			HttpSession session=request.getSession();
+			String partner_user_id=(String)session.getAttribute("id");
+			System.out.println("puid:"+partner_user_id);
 			
 			String headerParam = "cid=TC0ONETIME"+
 					"&tid="+tid+
@@ -142,7 +148,6 @@ public class kakaoPay extends HttpServlet{
 			System.out.println(serverResp);
 			
 			String payment_method_type=obj.getString("payment_method_type");
-			int quantity=obj.getInt("quantity");
 			JSONObject amount=obj.getJSONObject("amount");
 			int total=amount.getInt("total");
 			payVo vo2=new payVo();
@@ -150,7 +155,6 @@ public class kakaoPay extends HttpServlet{
 			System.out.println(tid);
 			vo2.setMethod(payment_method_type);
 			vo2.setTot(total);
-			vo2.setCount(quantity);
 			dao.save(vo2);
 			
 		} catch (MalformedURLException me) {

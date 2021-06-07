@@ -5,20 +5,36 @@
 <head>
 <meta charset="UTF-8">
 <title>인원 선택</title>
+	<style type="text/css">
+		body {background-Color:black;}
+		.wrapper {background-color:white;margin:0 auto;width:500px;height:40%;}
+		#ok{width:80px;height:30px;background-color:}
+	</style>
 </head>
 <body>
-<form action="selection" method="post">
-	성인1
-	<input type="button" value="-" id="adultBtnMinus">
-	<input type="text" id="adultCount" name="adultCount" value="0" readonly="readonly">
-	<input type="button" value="+" id="adultBtnPlus">
-	
-	청소년
-	<input type="button" value="-" id="teenBtnMinus">
-	<input type="text" id="teenCount" name="teenCount" value="0" readonly="readonly">
-	<input type="button" value="+" id="teenBtnPlus">
-	<input type="submit" value="확인">
-</form>
+<%
+	String showNum=request.getParameter("showNum");
+%>
+<div class="wrapper">
+	<form action="selection" method="post">
+		<input type="hidden" value="<%=showNum %>" name="showNum">
+		<label id="adult">
+		성인
+		<input type="button" value="-" id="adultBtnMinus">
+		<input type="text" id="adultCount" name="adultCount" value="0" readonly="readonly">
+		<input type="button" value="+" id="adultBtnPlus">
+		</label>
+		<br>
+		<label id="teen">
+		청소년
+		<input type="button" value="-" id="teenBtnMinus">
+		<input type="text" id="teenCount" name="teenCount" value="0" readonly="readonly">
+		<input type="button" value="+" id="teenBtnPlus">
+		<br>
+		<input type="submit" value="확인" id="ok">
+		</label>
+	</form>
+</div>
 </body>
 <script type="text/javascript">
 	const abm=document.getElementById("adultBtnMinus");

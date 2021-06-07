@@ -25,7 +25,7 @@ public class kakaoPayController extends HttpServlet{
 				PrintWriter pw=response.getWriter();
 				pw.write(next_redirect_pc_url);
 			}else {
-				kakaoPay.kakaoPayApprove(partner_order_id, pg_token);
+				kakaoPay.kakaoPayApprove(partner_order_id, pg_token,request);
 				response.sendRedirect(request.getContextPath()+"/kakaoPaySuccess.jsp");
 			}
 		}

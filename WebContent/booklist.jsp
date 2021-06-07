@@ -100,21 +100,25 @@
 <script type="text/javascript">
 	//서버로 선택좌석 정보 전송
 	function transfer(){
-		var parameter={"array":book}
-		var aa=JSON.stringify(parameter);
-		console.log(aa);
-		let xhr=new XMLHttpRequest();
-		xhr.onreadystatechange=function(){
-			if(xhr.readyState==4 && xhr.status==200){
-					let json=xhr.responseText;
-					let bna=JSON.parse(json);
-					alert(json);
-					kakaoPay(xhr,json);
-				}
+		if(selectCount<${totalCount}){
+			alert("좌석을 선택하세요");
+		}else{
+			var parameter={"showNum":${showNum},"price":${price},"array":book}
+			var aa=JSON.stringify(parameter);
+			console.log(aa);
+			let xhr=new XMLHttpRequest();
+			xhr.onreadystatechange=function(){
+				if(xhr.readyState==4 && xhr.status==200){
+						let json=xhr.responseText;
+						let bna=JSON.parse(json);
+						alert(json);
+						kakaoPay(xhr,json);
+					}
+			}
+			xhr.open("post","book",true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.send("aa="+aa);
 		}
-		xhr.open("post","book",true);
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhr.send("aa="+aa);
 	}
 	
 	function kakaoPay(xhr,json){

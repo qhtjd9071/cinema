@@ -85,4 +85,25 @@ public class movieDao {
 		}
 		return null;
 	}
+	public String getRating(int movieNum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="select * from movie where movieNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, movieNum);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				String rating=rs.getString("rating");
+				return rating;
+			}
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			dbCon.close(con, pstmt, null);
+		}
+		return null;
+	}
 }
