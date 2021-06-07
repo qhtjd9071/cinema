@@ -240,11 +240,11 @@
 					let div4 = document.createElement("div");
 					let begintime = stList[i].getElementsByTagName("time")[0].textContent;
 					let beginhour = new Date(begintime);
-					let beginMin = (beginhour.getMinutes().toString.length == 1)? '0' + beginhour.getMinutes() : beginhour.getMinutes();
-					div4.innerHTML = beginhour.getHours() + " : " + beginMin;
+					let beginMin = (beginhour.getMinutes()<10?'0':'') + beginhour.getMinutes();
+					div4.innerHTML = beginhour.getHours() + " : " + (beginhour.getMinutes()<10?'0':'') + beginhour.getMinutes();;
 					div4.className = "timeListBox";
 					div4.onclick=function(){
-						//location.href = "/book";
+						location.href = "/list";
 					}
 					time_list.appendChild(div4);
 				}	

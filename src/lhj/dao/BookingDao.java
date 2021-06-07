@@ -273,7 +273,7 @@ public class BookingDao {
 		ArrayList<timeVo> stlist = new ArrayList<timeVo>();
 		try {
 			con = dbCon.getConnection();
-			String sql =  "select to_char(begintime, 'yyyy-mm-dd hh24:mi:ss') hr from room r, show s, movie m "
+			String sql =  "select to_char(begintime, 'yyyy-mm-dd hh24:mi:ss') hr, s.showNum from room r, show s, movie m "
 						+ "where r.roomserialNum = s.roomserialNum and s.movieNum = m.movieNum "
 						+ "and to_char(begintime, 'yyyy/mm/dd') = to_char(?, 'yyyy/mm/dd') "
 						+ "and m.movietitle = ? "
@@ -289,8 +289,9 @@ public class BookingDao {
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				Timestamp beginhour = rs.getTimestamp("hr");
+				int showNum = rs.getInt("showNum");
 				//System.out.println("timedao: " + beginhour);
-				timeVo vo = new timeVo(0, 0, 0, 0, 0, null, beginhour, null, null);
+				timeVo vo = new timeVo(0, showNum, 0, 0, 0, null, beginhour, null, null);
 				stlist.add(vo);
 			}
 			return stlist;
