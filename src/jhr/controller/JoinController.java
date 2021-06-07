@@ -20,9 +20,9 @@ public class JoinController extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-		String name=req.getParameter("name");
 		String id=req.getParameter("id");
 		String pwd=req.getParameter("pwd");
+		String name=req.getParameter("name");
 		String email=req.getParameter("email");
 		String year=req.getParameter("year");
 		String phone=req.getParameter("phone");

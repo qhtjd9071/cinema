@@ -108,35 +108,35 @@ public class UsersDao {
 			dbCon.close(con, pstmt,rs);
 		}
 	}
-	/*
-	public int delete(int num){
-		String sql="delete from members where num=?";
+
+	public int delaccount(usersVo vo) {
+		String sql="update users set delUser=? where id=?";
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
-			con=DBConnection.getCon();
+			con=dbCon.getConnection();
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1,num);
+			pstmt.setString(1,vo.getId());
 			int n=pstmt.executeUpdate();
 			return n;
 		}catch(SQLException s) {
 			s.printStackTrace();
 			return -1;
 		}finally {
-			DBConnection.close(con,pstmt,null);
+			dbCon.close(con,pstmt,null);
 		}
 	}
-	*/
+	
 	public int insert(usersVo vo){
-		String sql="insert into users values(memnum.nextval,?,?,?,?,?,?,null)";
+		String sql="insert into users values(users_seq.nextval,?,?,?,?,?,?,null)";
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
 			con=dbCon.getConnection();
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,vo.getName());
-			pstmt.setString(2,vo.getId());
-			pstmt.setString(3,vo.getPwd());
+			pstmt.setString(1,vo.getId());
+			pstmt.setString(2,vo.getPwd());
+			pstmt.setString(3,vo.getName());
 			pstmt.setString(4,vo.getEmail());
 			pstmt.setString(5,vo.getYear());
 			pstmt.setString(6,vo.getPhone());
