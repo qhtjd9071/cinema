@@ -234,6 +234,7 @@
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
 				let xml = xhr.responseXML;
+				console.log(xhr.responseText);
 				let time_list = document.getElementsByClassName(roomNum)[0];
 				let stList = xml.getElementsByTagName("stList");
 				for(let i=0; i<stList.length; i++){
@@ -241,17 +242,21 @@
 					let begintime = stList[i].getElementsByTagName("time")[0].textContent;
 					let beginhour = new Date(begintime);
 					let beginMin = (beginhour.getMinutes()<10?'0':'') + beginhour.getMinutes();
+					let showNum = stList[i].getElementsByTagName("shownum")[0].textContent;
 					div4.innerHTML = beginhour.getHours() + " : " + (beginhour.getMinutes()<10?'0':'') + beginhour.getMinutes();;
 					div4.className = "timeListBox";
 					div4.onclick=function(){
-						location.href = "/list";
+						location.href = "${pageContext.request.contextPath}/list?showNum=" + showNum;
 					}
 					time_list.appendChild(div4);
 				}	
 			}
+			
 		};
-		xhr.open('get','${pageContext.request.contextPath}/time?begintime=' + curDate +'&movieTitle=' + curMovieTitle + '&theaterName=' + curTheaterName + '&roomNum=' + roomNum, true)
-		xhr.send();
+		xhr.open('post','${pageContext.request.contextPath}/time', true);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		let params = "begintime=" + curDate + "&movieTitle=" + curMovieTitle + "&theaterName=" + curTheaterName + "&roomNum=" + roomNum;
+		xhr.send(params);
     }	   
 </script>
 </body>

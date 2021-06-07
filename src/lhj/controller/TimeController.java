@@ -34,6 +34,7 @@ public class TimeController extends HttpServlet {
 		Date begintime = new Date(cal.getTimeInMillis());
 		Timestamp beginhour = new Timestamp(begintime.getTime());
 		
+		
 		String movieTitle = req.getParameter("movieTitle");
 		String theaterName = req.getParameter("theaterName");
 		int roomNum = Integer.parseInt(req.getParameter("roomNum"));
@@ -48,6 +49,7 @@ public class TimeController extends HttpServlet {
 		for(timeVo vo : stList) {
 			pw.print("<stList>");
 			pw.print("<time>"+ vo.getBeginhour() + "</time>");
+			pw.print("<shownum>"+ vo.getShowNum() + "</shownum>");
 			pw.print("</stList>");
 		}
 		pw.print("</result>");
