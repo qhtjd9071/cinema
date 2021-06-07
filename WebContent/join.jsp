@@ -45,7 +45,7 @@
 					<div class="ui_input">
 						<input type="text" name="id" maxlength="15" id="id">
 						<span class="placeholder">아이디를 입력해주세요.</span>
-						<input type="button" value="중복확인" id="idoverlap" onclick="idcheck()">  
+						<input type="button" value="중복확인" id="idoverlap">  
 						<span id="result"></span><br>
 					</div>
 					<!-- <button type="button" class="id_button">메일 발송</button> -->
@@ -123,7 +123,7 @@
 					}
 				}
 			};
-			xhr.open('get','idcheck.jsp?id=' + id,true);
+			xhr.open('get','${pageContext.request.contextPath }/idcheck.jsp?id=' + id,true);
 			xhr.send();
 		}
 	};
