@@ -9,6 +9,13 @@ import semi.db.dbCon;
 import semi.vo.usersVo;
 
 public class UsersDao {
+	/*
+	private static UsersDao instance=new UsersDao();
+	private UsersDao() {}
+	public static UsersDao getInstance() {
+		return instance;
+	}
+	*/
 	public int pwdupdate(usersVo vo) {
 		String sql="update users set pwd=? where id=?";
 		Connection con=null;
@@ -140,6 +147,29 @@ public class UsersDao {
 			return -1;
 		}finally {
 			dbCon.close(con,pstmt,null);
+		}
+	}
+	public boolean isMember(String id,String pwd) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="select * from users where id=? and pwd=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			pstmt.setString(2,pwd);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				return true;
+			}else {
+				return false;
+			}
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return false;
+		}finally {
+			dbCon.close(con, pstmt, rs);
 		}
 	}
 }

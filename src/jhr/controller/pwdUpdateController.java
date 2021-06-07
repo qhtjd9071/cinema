@@ -26,14 +26,16 @@ public class pwdUpdateController extends HttpServlet{
 		boolean check=dao.check(id, currPwd);
 		if(check==true) {
 			int n=dao.pwdupdate(vo);
+			
 			if(n>0) {
 				req.setAttribute("vo",vo);
+				session.setAttribute("pwd", newPwd);
 				req.getRequestDispatcher("/mypage.jsp").forward(req, resp);
 			} else {
-				resp.sendRedirect("/pwdUpdate.jsp");
+				req.getRequestDispatcher("/pwdUpdate.jsp").forward(req, resp);
 			}
 		} else {
-			resp.sendRedirect("/pwdUpdate.jsp");
+			req.getRequestDispatcher("/pwdUpdate.jsp").forward(req, resp);
 		}
 	}
 }

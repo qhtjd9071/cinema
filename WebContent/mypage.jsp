@@ -39,6 +39,7 @@
 	<a href="${pageContext.request.contextPath }/inquiry.jsp">나의 문의 내역</a>
 	<!-- <a href="${pageContext.request.contextPath }/update">MY 정보 관리</a> -->
 	<input type="button" value="MY 정보 관리" onclick="updatePop('<%=id %>','<%=pwd %>')"/>
+	<a href="${pageContext.request.contextPath }/delAccount.jsp">회원 탈퇴</a>
 </div>
 
 <div class="footer">

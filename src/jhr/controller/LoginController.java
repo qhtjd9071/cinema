@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import jhr.dao.MyUsersDao;
+import jhr.dao.UsersDao;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet{
@@ -17,7 +17,7 @@ public class LoginController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id=req.getParameter("id");
 		String pwd=req.getParameter("pwd");
-		MyUsersDao dao=new MyUsersDao();
+		UsersDao dao=new UsersDao();
 		boolean b=dao.isMember(id, pwd);
 		if(b) {
 			HttpSession session=req.getSession();

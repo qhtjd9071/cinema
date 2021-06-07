@@ -16,6 +16,25 @@
 </head>
 
 <body>
+<%
+	Cookie[] cooks=request.getCookies();
+	String id="";
+	String pwd="";
+	boolean checked=false;
+	if(cooks!=null){
+		for(Cookie c:cooks){
+			String name=c.getName();
+			String value=c.getValue();
+			if(name.equals("id")){
+				id=value;
+				checked=true;
+			}else if(name.equals("pwd")){
+				pwd=value;
+			}
+		}
+	}
+%>
+
 <div class="header2">
 	<jsp:include page="header2.jsp"/>
 </div>
@@ -30,16 +49,29 @@
 						<div class="login_inner">
 							<div class="login_box">
 								<form class="login_area" method="post" action="login">
-									<input type="text" name="id" value="${param.id }" id="userId" class="login_id" maxlength="50" placeholder="아이디 또는 이메일을 입력해 주세요.">
-									<input type="password" name="pwd" value="${param.pwd }" id="userPwd" class="login_pwd" maxlength="15" placeholder="비밀번호를 입력해 주세요.">
+									<input type="text" name="id" value="<%=id %>" id="userId" class="login_id" maxlength="50" placeholder="아이디 또는 이메일을 입력해 주세요.">
+									<input type="password" name="pwd" value="<%=pwd %>" id="userPwd" class="login_pwd" maxlength="15" placeholder="비밀번호를 입력해 주세요.">
 									<!-- <button type="button" class="btn_login">로그인</button> -->
 									<input type="submit" class="btn_login" value="로그인">
+									<div class="login_bot_wrap">
+										<div class="login_check">
+											<%
+												if(checked){
+											%>
+												<input type="checkbox" name="chk" class="loginchkid" id="checkSavedID" checked="checked">
+												<label for="checkSavedID" class="loginchkid_label">아이디 저장</label>
+											<% 
+												} else{
+											%>
+												<input type="checkbox" name="chk" class="loginchkid" id="checkSavedID">
+												<label for="checkSavedID" class="loginchkid_label">아이디 저장</label>
+											<%
+												}
+											%>
+										</div>
+									</div>
 								</form>
 								<div class="login_bot_wrap">
-									<form class="login_check" method="post" action="saveid.jsp">
-										<input type="checkbox" name="loginChk" class="loginchkid" id="checkSavedID">
-										<label for="checkSavedID" class="loginchkid_label">아이디 저장</label>
-									</form>
 									<div class="login_menu">
 										<a href="${pageContext.request.contextPath }/join.jsp">회원가입</a>
 										<a href="${pageContext.request.contextPath }/findid.jsp">아이디 찾기</a>
