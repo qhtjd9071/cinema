@@ -10,6 +10,7 @@
 </style>
 </head>
 <body>
+
 <div id="wrap">
 	<div id="header">
 		<h1 align="center">롯데시네마 로고</h1>
@@ -21,7 +22,7 @@
 	<div id="main">
 		<div id="movie">
 		<h3 align="left">영화</h3>
-			<a href=""><img src="../images/event/1.jpg"></a>
+			<a href="/LSH/event.do?eventNum=1"><img src="../images/event/1.jpg"></a>
 			<a href=""><img src="../images/event/2.jpg"></a>
 			<a href=""><img src="../images/event/3.jpg"></a>
 		</div>

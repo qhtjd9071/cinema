@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main.jsp</title>
+<title>findidResult.jsp</title>
 </head>
 <body>
-<h1>테스트 메인</h1>
-<ul>
-	<li><a href="/LSH/movie.do?movieNum=1">영화1</a></li>
-</ul>
+<h4>아이디 찾기 결과</h4>
+<h1>${test }</h1>
+
+<a href="main.jsp">홈</a>
+<a href="login.jsp">로그인</a>
 </body>
 </html>

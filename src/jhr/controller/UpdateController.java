@@ -7,42 +7,44 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import jhr.dao.UsersDao;
 import semi.vo.usersVo;
 
-@WebServlet("/join")
-public class JoinController extends HttpServlet{
+@WebServlet("/update")
+public class UpdateController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.sendRedirect("join.jsp");
+		HttpSession session=req.getSession();
+		String id=(String)session.getAttribute("id");
+		UsersDao dao=new UsersDao();
+		usersVo vo=dao.getinfo(id);
+		req.setAttribute("vo",vo);
+		req.getRequestDispatcher("/myinfo.jsp").forward(req, resp);
+		
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+		String id=req.getParameter("id");	
+		String pwd=req.getParameter("pwd");	
 		String name=req.getParameter("name");
-		String id=req.getParameter("id");
-		String pwd=req.getParameter("pwd");
-		String email=req.getParameter("email");
-		String year=req.getParameter("year");
+		String email=req.getParameter("email");	
+		String year=req.getParameter("year");	
 		String phone=req.getParameter("phone");
-		String delUser=req.getParameter("delUser");
-
+		String delUser=req.getParameter("delUser");	
 		usersVo vo=new usersVo(0, id, pwd, name, email, year, phone, null);
 		UsersDao dao=new UsersDao();
-		int n=dao.insert(vo);
-		
+		int n=dao.update(vo);
 		if(n>0) {
 			req.setAttribute("result","success");
 		}else {
 			req.setAttribute("result","fail");
 		}
-		req.getRequestDispatcher("/main.jsp").forward(req, resp);
+		req.getRequestDispatcher("/mypage.jsp").forward(req, resp);
 	}
 }
-
-
-
 
 
 

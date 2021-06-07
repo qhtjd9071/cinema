@@ -35,7 +35,7 @@
 		</ul>
 		
 		<ul class="g_menu2">
-			<li><a href="https://www.lottecinema.co.kr/NLCHS/Membership/l_point" class="btn_my">회원가입</a></li>
+			<li><a href="${pageContext.request.contextPath }/mypage.jsp" class="btn_my">마이페이지</a></li>
 			<li><a href="https://www.lottecinema.co.kr/NLCHS/Ticketing" class="btn_reserve">바로 예매</a></li>
 			<li>
 				<a class="btn_menu_all">전체 메뉴 레이어 열기</a>

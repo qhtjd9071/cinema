@@ -23,9 +23,9 @@ public class DeleteController extends HttpServlet{
 		pw.print("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
 		pw.print("<result>");
 		if(n>0) {
-			pw.print("<code>success</code>");
+			pw.print("<code>삭제완료</code>");
 		}else {
-			pw.print("<code>fail</code>");
+			pw.print("<code>삭제실패</code>");
 		}
 		pw.print("</result>");
 	}
