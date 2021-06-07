@@ -16,7 +16,7 @@
 </head>
 
 <body>
-<div id="header2">
+<div class="header2">
 	<jsp:include page="header2.jsp"/>
 </div>
 
@@ -31,19 +31,19 @@
 							<div class="login_box">
 								<form class="login_area" method="post" action="login">
 									<input type="text" name="id" value="${param.id }" id="userId" class="login_id" maxlength="50" placeholder="아이디 또는 이메일을 입력해 주세요.">
-									<input type="password" name="pwd" value="${param.pwd }" id="userPassword" class="login_pwd" maxlength="15" placeholder="비밀번호를 입력해 주세요.">
+									<input type="password" name="pwd" value="${param.pwd }" id="userPwd" class="login_pwd" maxlength="15" placeholder="비밀번호를 입력해 주세요.">
 									<!-- <button type="button" class="btn_login">로그인</button> -->
 									<input type="submit" class="btn_login" value="로그인">
 								</form>
 								<div class="login_bot_wrap">
-									<div class="login_check">
-										<input type="checkbox" name="loginCheck" class="logincheckid" id="checkSavedID">
-										<label for="checkSavedID" class="logincheckid_label">아이디 저장</label>
-									</div>
+									<form class="login_check" method="post" action="saveid.jsp">
+										<input type="checkbox" name="loginChk" class="loginchkid" id="checkSavedID">
+										<label for="checkSavedID" class="loginchkid_label">아이디 저장</label>
+									</form>
 									<div class="login_menu">
 										<a href="${pageContext.request.contextPath }/join.jsp">회원가입</a>
-										<a>아이디 찾기</a>
-										<a>비밀번호 찾기</a>
+										<a href="${pageContext.request.contextPath }/findid.jsp">아이디 찾기</a>
+										<a href="${pageContext.request.contextPath }/findpwd.jsp">비밀번호 찾기</a>
 									</div>
 								</div>
 							</div>
@@ -58,7 +58,7 @@
 	</div>
 </div>
 
-<div id="footer">
+<div class="footer">
 	<jsp:include page="footer.jsp"/>
 </div>
 <script type="text/javascript">

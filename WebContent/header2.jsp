@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,11 +24,18 @@
 		<ul class="g_menu1">
 			<li><a href="https://www.lottecinema.co.kr/NLCHS/Mypage/MemberVipzone">멤버십</a></li>
 			<li><a href="https://www.lottecinema.co.kr/NLCHS/Customer">고객센터</a></li>
-			<li><a href="https://www.lottecinema.co.kr/NLCHS/Member/login">로그인</a></li>
+			<c:choose>
+				<c:when test="${empty sessionScope.id }">
+					<li><a href="${pageContext.request.contextPath }/login.jsp">로그인</a></li>
+				</c:when>
+				<c:otherwise>
+					<li><a href="logout">로그아웃</a></li>
+				</c:otherwise>
+			</c:choose>
 		</ul>
 		
 		<ul class="g_menu2">
-			<li><a href="https://www.lottecinema.co.kr/NLCHS/Membership/l_point" class="btn_my">회원가입</a></li>
+			<li><a href="${pageContext.request.contextPath }/mypage.jsp" class="btn_my">마이페이지</a></li>
 			<li><a href="https://www.lottecinema.co.kr/NLCHS/Ticketing" class="btn_reserve">바로 예매</a></li>
 			<li>
 				<a class="btn_menu_all">전체 메뉴 레이어 열기</a>

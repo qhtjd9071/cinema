@@ -22,6 +22,7 @@ public class LoginController extends HttpServlet{
 		if(b) {
 			HttpSession session=req.getSession();
 			session.setAttribute("id",id);
+			session.setAttribute("pwd",pwd);
 			resp.sendRedirect("main.jsp");
 		}else {
 			req.setAttribute("errMsg","아이디, 비밀번호가 일치하지 않습니다.");

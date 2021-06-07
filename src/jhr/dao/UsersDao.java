@@ -4,51 +4,70 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import semi.db.dbCon;
 import semi.vo.usersVo;
 
 public class UsersDao {
-	/*
-	public int update(MembersVo vo) {
-		System.out.println("vo:" + vo);
-		String sql="update members set name=?,phone=?,addr=? where num=?";
+	public int pwdupdate(usersVo vo) {
+		String sql="update users set pwd=? where id=?";
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
-			con=DBConnection.getCon();
-			pstmt=con.prepareStatement(sql);	
-			pstmt.setString(1,vo.getName());
-			pstmt.setString(2,vo.getPhone());
-			pstmt.setString(3,vo.getAddr());
-			pstmt.setInt(4,vo.getNum());
+			con=dbCon.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,vo.getPwd());
+			pstmt.setString(2,vo.getId());
 			int n=pstmt.executeUpdate();
 			return n;
 		}catch(SQLException s) {
 			s.printStackTrace();
 			return -1;
 		}finally {
-			DBConnection.close(con,pstmt,null);
+			dbCon.close(con,pstmt,null);
 		}
 	}
-	public MembersVo getinfo(int num) {
+	public int update(usersVo vo) {
+		String sql="update users set name=?,email=?,year=?,phone=? where id=?";
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dbCon.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,vo.getName());
+			pstmt.setString(2,vo.getEmail());
+			pstmt.setString(3,vo.getYear());
+			pstmt.setString(4,vo.getPhone());
+			pstmt.setString(5,vo.getId());
+			int n=pstmt.executeUpdate();
+			return n;
+		}catch(SQLException s) {
+			s.printStackTrace();
+			return -1;
+		}finally {
+			dbCon.close(con,pstmt,null);
+		}
+	}
+	public usersVo getinfo(String id) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
-			con=DBConnection.getCon();
-			String sql="select * from members where num=?";
+			con=dbCon.getConnection();
+			String sql="select * from users where id=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1,num);
+			pstmt.setString(1,id);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				MembersVo vo=new MembersVo(
-						rs.getInt("num"), 
+				usersVo vo=new usersVo(
+						rs.getInt("userNum"),
+						rs.getString("id"), 
+						rs.getString("pwd"), 
 						rs.getString("name"), 
-						rs.getString("phone"), 
-						rs.getString("addr"), 
-						rs.getDate("regdate"));
+						rs.getString("email"), 
+						rs.getString("year"), 
+						rs.getString("phone"),
+						rs.getNString("delUser"));
 				return vo;
 			}
 			return null;
@@ -56,10 +75,33 @@ public class UsersDao {
 			s.printStackTrace();
 			return null;
 		}finally {
-			DBConnection.close(con, pstmt,rs);
+			dbCon.close(con, pstmt,rs);
 		}
 	}
 	
+	public boolean check(String id,String pwd) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="select * from users where id=? and pwd=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,id);
+			pstmt.setString(2,pwd);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				return true;
+			}
+			return false;
+		}catch(SQLException s) {
+			s.printStackTrace();
+			return false;
+		}finally {
+			dbCon.close(con, pstmt,rs);
+		}
+	}
+	/*
 	public int delete(int num){
 		String sql="delete from members where num=?";
 		Connection con=null;
@@ -100,61 +142,4 @@ public class UsersDao {
 			dbCon.close(con,pstmt,null);
 		}
 	}
-	public ArrayList<usersVo> list(){
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		try {
-			con=dbCon.getConnection();
-			String sql="select * from users";
-			pstmt=con.prepareStatement(sql);
-			rs=pstmt.executeQuery();
-			ArrayList<usersVo> mlist=new ArrayList<usersVo>();
-			while(rs.next()) {
-				usersVo vo=new usersVo(
-						rs.getInt("userNum"),
-						rs.getString("name"), 
-						rs.getString("id"), 
-						rs.getString("pwd"), 
-						rs.getString("email"), 
-						rs.getString("year"), 
-						rs.getString("phone"),
-						rs.getNString("delUser"));
-				mlist.add(vo);
-			}
-			return mlist;
-		}catch(SQLException s) {
-			s.printStackTrace();
-			return null;
-		}finally {
-			dbCon.close(con, pstmt,rs);
-		}
-	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
