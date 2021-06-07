@@ -8,8 +8,14 @@ import java.util.ArrayList;
 
 import semi.db.dbCon;
 import semi.vo.bookVo;
+import semi.vo.payVo;
 
 public class bookDao {
+	private static bookDao instance=new bookDao();
+	private bookDao() {}
+	public static bookDao getInstance() {
+		return instance;
+	}
 	
 	public void insert(bookVo vo) {
 		Connection con=null;
@@ -122,5 +128,28 @@ public class bookDao {
 		}finally {
 			dbCon.close(con, pstmt, rs);
 		}
+	}
+	
+	public bookVo getPrice(int showNum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="select * from book where showNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, showNum);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				bookVo vo=new bookVo();
+				vo.setPrice(rs.getInt("price"));
+				return vo;
+			}
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			dbCon.close(con, pstmt, null);
+		}
+		return null;
 	}
 }

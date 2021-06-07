@@ -9,6 +9,11 @@ import semi.db.dbCon;
 import semi.vo.payVo;
 
 public class payDao {
+	private static payDao instance=new payDao();
+	private payDao() {}
+	public static payDao getInstance() {
+		return instance;
+	}
 	public void insert(payVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -68,7 +73,6 @@ public class payDao {
 		ResultSet rs=null;
 		try {
 			con=dbCon.getConnection();
-			System.out.println(partner_order_id);
 			String sql="select * from pay where intNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, partner_order_id);

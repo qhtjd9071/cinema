@@ -25,7 +25,7 @@ public class bookController extends HttpServlet {
 		String str=aa.substring(11,aa.length()-3);
 		String[] arr=str.split("\",\"");
 		String bookNumArr="";
-		bookDao dao=new bookDao();
+		bookDao dao=bookDao.getInstance();
 		for(int i=0;i<arr.length;i++) {
 			if(!arr[i].equals("")) {
 				int seatNum=Integer.parseInt(arr[i]);

@@ -17,8 +17,12 @@ public class listController extends HttpServlet{
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		int adultCount=Integer.parseInt(request.getParameter("adultCount"));
-		int teenCount=Integer.parseInt(request.getParameter("teenCount"));
+		int showNum=Integer.parseInt(request.getParameter("showNum"));
+		System.out.println(showNum);
+		//int adultCount=Integer.parseInt(request.getParameter("adultCount"));
+		int adultCount=1;
+		//int teenCount=Integer.parseInt(request.getParameter("teenCount"));
+		int teenCount=1;
 		
 		//String rating=request.getParameter("rating");
 		String rating="15";
@@ -27,9 +31,14 @@ public class listController extends HttpServlet{
 		request.setAttribute("teenCount", teenCount);
 		request.setAttribute("totalCount", adultCount+teenCount);
 		
-		bookDao dao=new bookDao();
+		bookDao dao=bookDao.getInstance();
 		ArrayList<bookVo> list=dao.select();
+		bookVo priceVo=dao.getPrice(showNum);
+		int price=priceVo.getPrice();
+		
+		//int price=1000;
 		request.setAttribute("list", list);
+		request.setAttribute("price", price);
 		request.getRequestDispatcher("/getCount").forward(request, response);
 	}
 }

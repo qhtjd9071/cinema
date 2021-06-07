@@ -118,7 +118,7 @@
 	}
 	
 	function kakaoPay(xhr,json){
-		let toss={"bookNum":json,"id":"testid","title":"testtitle","count":selectCount,"total":${adultCount}+${teenCount}};
+		let toss={"bookNum":json,"id":"testid","${sessionScope.id}":"testtitle","count":selectCount,"total":${adultCount}+${teenCount}};
 		let jsonToss=JSON.stringify(toss);
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4 && xhr.status==200){
