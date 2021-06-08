@@ -36,6 +36,21 @@ public class bookDao {
 			dbCon.close(con, pstmt, null);
 		}
 	}
+	public void delete(int bookNum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="delete from book where bookNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, bookNum);
+			pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			dbCon.close(con, pstmt, null);
+		}
+	}
 	
 	public ArrayList<bookVo> select(int showNum){
 	Connection con=null;

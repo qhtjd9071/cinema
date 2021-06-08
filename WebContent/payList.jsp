@@ -11,7 +11,6 @@
 <h1>예매 내역</h1>
 <table border="1">
 	<tr>
-		<th>예매번호</th>
 		<th>내역</th>
 		<th>금액</th>
 		<th>결제날짜</th>
@@ -20,13 +19,12 @@
 	
 	<c:forEach var="vo" items="${list}">
 		<tr>
-			<td>${vo.intNum}</td>
 			<td>${vo.movieTitle}
-				좌석 : ${vo.seatNumArr }
+				좌석 : ${vo.seatNumArr}
 			</td>
 			<td>${vo.tot }</td>
 			<td>${vo.payDate }</td>
-			<td><a href="#">취소</a></td>
+			<td><a href="${pageContext.request.contextPath}/cancel?partner_order_id=${vo.intNum}">취소</a></td>
 		</tr>
 	</c:forEach>
 </table>
