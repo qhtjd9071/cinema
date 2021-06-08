@@ -41,7 +41,7 @@
 									<div class="count">
 										<input type="button" value="-" id="adultBtnMinus" class="count_minus">
 										<div id="adultCountDiv" class="count_number">0</div>
-										<input type="hidden" value="0" id="adultCount">
+										<input type="hidden" value="0" id="adultCount" name="adultCount">
 										<input type="button" value="+" id="adultBtnPlus" class="count_plus">
 									</div>
 								</label>
@@ -50,7 +50,7 @@
 									<div class="count">
 										<input type="button" value="-" id="teenBtnMinus" class="count_minus">
 										<div id="teenCountDiv" class="count_number">0</div>
-										<input type="hidden" value="0" id="teenCount">
+										<input type="hidden" value="0" id="teenCount" name="teenCount">
 										<input type="button" value="+" id="teenBtnPlus" class="count_plus">
 									</div>
 								</label>

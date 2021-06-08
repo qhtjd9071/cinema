@@ -22,8 +22,6 @@ import semi.vo.payVo;
 public class kakaoPay extends HttpServlet{
 	public String kakaoPayReady(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			 	request.setCharacterEncoding("utf-8");
-			 	
 			 	String jsonString=request.getParameter("toss");
 			 	JSONObject json=new JSONObject(jsonString);
 			 	String partner_order_id=json.getString("bookNum");
