@@ -160,9 +160,7 @@
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4 && xhr.status==200){
 					let json=xhr.responseText;
-					//location.href=json;
-			        let option = "width = 500, height = 500, top = 100, left = 200, location = no"
-			        window.open(json, "kakaoPay", option);
+					location.href=json;
 				}
 		}
 		xhr.open("post","kakao",true);
