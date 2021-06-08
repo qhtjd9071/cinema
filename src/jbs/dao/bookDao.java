@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import semi.db.dbCon;
 import semi.vo.bookVo;
+import semi.vo.bsmJoinVo;
 import semi.vo.payVo;
 
 public class bookDao {
@@ -36,14 +37,15 @@ public class bookDao {
 		}
 	}
 	
-	public ArrayList<bookVo> select(){
+	public ArrayList<bookVo> select(int showNum){
 	Connection con=null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	try {
 		con=dbCon.getConnection();
-		String sql="select * from book";
+		String sql="select * from book where showNum=?";
 		pstmt=con.prepareStatement(sql);
+		pstmt.setInt(1, showNum);
 		rs=pstmt.executeQuery();
 		ArrayList<bookVo> list=new ArrayList<bookVo>();
 		while(rs.next()){
@@ -59,6 +61,32 @@ public class bookDao {
 	}finally {
 		dbCon.close(con, pstmt, rs);
 	}
+	}
+	
+	public bsmJoinVo getUserBook(int bookNum){
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="select * from movie join (select * from book join show on book.showNum=show.showNum) bs on movie.movieNum=bs.movieNum where bookNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, bookNum);
+			rs=pstmt.executeQuery();
+			ArrayList<bookVo> list=new ArrayList<bookVo>();
+			if(rs.next()){
+				bsmJoinVo vo=new bsmJoinVo();
+				vo.setMovieTitle(rs.getString("movieTitle"));
+				vo.setSeatNum(rs.getInt("seatNum"));
+				vo.setUserNum(rs.getInt("userNum"));
+				return vo;
+			}
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			dbCon.close(con, pstmt, rs);
+		}
+		return null;
 	}
 	
 	public int getBookNum(bookVo vo){

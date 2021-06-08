@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,11 +15,21 @@
 <link rel="stylesheet" href="css/countSelection.css">
 <link rel="stylesheet" href="css/header2.css">
 <link rel="stylesheet" href="css/footer.css">
+<style type="text/css">
+	#seatArea{width:600px;margin:0 auto;}
+	#seatArea div{width:50px;height:50px;text-align:center;background-color:gray;display:inline-block;margin:10px;}
+	#rating{width:200px;hegiht:150px;margin:0 auto;color:blue}
+	#seatCount{width:200px;hegiht:150px;margin:0 auto;color:blue}
+</style>
+<script type="text/javascript">
+		const count=new Array(${getCount });
+		let totSeat=0;
+		for(let i=0;i<count.length;i++){
+			count[i]=0;
+		}
+</script>
 </head>
 <body>
-<%
-	String showNum=request.getParameter("showNum");
-%>
 <div class="header2">
 	<jsp:include page="header2.jsp"/>
 </div>
@@ -35,7 +46,7 @@
 					<div class="person_count">
 						<div class="select_numpeople">
 							<form action="selection" method="post" class="select_form">
-								<input type="hidden" value="<%=showNum %>" name="showNum">
+								<input type="hidden" value="${showNum}" name="showNum">
 								<label id="adult" >
 									성인
 									<div class="count">
@@ -58,17 +69,52 @@
 							</form>
 						</div>
 					</div>
+					<div id="rating">이 영화는 <span style="color:red">${rating}세</span>이상 관람가능한 영화입니다.</div>
+					<div id="seatArea"></div>
+					<div id="seatCount">
+					좌석수 : 
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
 </div>
+	<c:forEach var="i" begin="1" end="${getCount }">
+		<c:forEach var="vo" items="${list}">
+			<script type="text/javascript">
+			function cnt(){
+				if(${vo.seatNum==i}){
+					count[${i}-1]+=1;
+					totSeat+=1;
+				}
+			}
+			cnt();
+			</script>
+		</c:forEach>
+	<script type="text/javascript">
+		function controllSeat(){
+			const seatArea=document.getElementById("seatArea");
+			//좌석 배열
+			let div=document.createElement("div");
+				seatArea.appendChild(div);
+				
+			if(count[${i}-1]!=0){
+				div.style.backgroundColor="black";
+			}
+		}
+		controllSeat();
+		</script>
+	</c:forEach>
+
 <div class="footer">
 	<jsp:include page="footer.jsp"/>
 </div>
 </body>
 <script type="text/javascript">
+	const seatCount=document.getElementById("seatCount");
+	seatCount.innerHTML+=totSeat+"석  /  "+${getCount}+"석";
+
 	const abm=document.getElementById("adultBtnMinus");
 	const abp=document.getElementById("adultBtnPlus");
 	const ac=document.getElementById("adultCount");
@@ -101,10 +147,14 @@
 		tcd.innerHTML=tc.value;
 		}
 	});
-	tbp.addEventListener("click",function(e){
-		teenNum+=1;
-		tc.value=teenNum;
-		tcd.innerHTML=tc.value;
-	});
+	if(${rating=="19"}){
+		alert("성인만 선택 가능합니다.");
+	}else{
+		tbp.addEventListener("click",function(e){
+			teenNum+=1;
+			tc.value=teenNum;
+			tcd.innerHTML=tc.value;
+		});
+	}
 </script>
 </html>

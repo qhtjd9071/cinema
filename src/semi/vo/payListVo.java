@@ -2,20 +2,25 @@ package semi.vo;
 
 import java.sql.Date;
 
-public class payVo {
+public class payListVo {
 	private String payNum;
 	private int intNum;
 	private String method;
 	private int tot;
 	private Date payDate;
-	public payVo() {}
-	public payVo(String payNum, int intNum, String method, int tot, Date payDate) {
+	private String movieTitle;
+	private String seatNumArr;
+	public payListVo() {}
+	public payListVo(String payNum, int intNum, String method, int tot, Date payDate, String movieTitle,
+			String seatNumArr) {
 		super();
 		this.payNum = payNum;
 		this.intNum = intNum;
 		this.method = method;
 		this.tot = tot;
 		this.payDate = payDate;
+		this.movieTitle = movieTitle;
+		this.seatNumArr = seatNumArr;
 	}
 	public String getPayNum() {
 		return payNum;
@@ -47,6 +52,17 @@ public class payVo {
 	public void setPayDate(Date payDate) {
 		this.payDate = payDate;
 	}
-	
+	public String getMovieTitle() {
+		return movieTitle;
+	}
+	public void setMovieTitle(String movieTitle) {
+		this.movieTitle = movieTitle;
+	}
+	public String getSeatNumArr() {
+		return seatNumArr;
+	}
+	public void setSeatNumArr(String seatNumArr) {
+		this.seatNumArr = seatNumArr;
+	}
 	
 }

@@ -26,17 +26,12 @@ import semi.vo.usersVo;
 public class bookController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		String aa = request.getParameter("aa");
 		JSONObject json=new JSONObject(aa);
 		int showNum=json.getInt("showNum");
-		System.out.println(showNum);
 		int price=json.getInt("price");
-		System.out.println(price);
+		System.out.println("price:"+price);
 		JSONArray array=json.getJSONArray("array");
-		System.out.println(array.get(2));
-		//String str=array.toString().substring(2,aa.length()-2);
-		//String[] arr=str.split("\",\"");
 		
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
@@ -48,7 +43,7 @@ public class bookController extends HttpServlet {
 		for(int i=0;i<array.length();i++) {
 			if(!array.get(i).equals("")) {
 				String seatNum=array.get(i).toString();
-				System.out.println(seatNum);
+				System.out.println("seatNum:"+seatNum);
 				int seatNum2=Integer.parseInt(seatNum);
 				bookVo vo=new bookVo();
 				vo.setShowNum(showNum);
@@ -67,7 +62,7 @@ public class bookController extends HttpServlet {
 		vo.setBookNumArr(bookNumArr);
 		integrationDao intDao=integrationDao.getInstance();
 		intDao.insert(vo);
-		String intNum=Integer.toString(intDao.getBookNumArr(vo));
+		String intNum=Integer.toString(intDao.getIntNum(vo));
 		PrintWriter pw=response.getWriter();
 		pw.write(intNum);
 

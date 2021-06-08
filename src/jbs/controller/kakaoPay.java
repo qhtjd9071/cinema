@@ -87,7 +87,7 @@ public class kakaoPay extends HttpServlet{
 	    		payVo vo=new payVo();
 	    		vo.setPayNum(tid);
 	    		System.out.println("tid:"+tid);
-	    		vo.setBookNum(Integer.parseInt(partner_order_id));
+	    		vo.setIntNum(Integer.parseInt(partner_order_id));
 	    		System.out.println("poid:"+partner_order_id);
 	    		payDao dao=payDao.getInstance();
 	    		dao.insert(vo);

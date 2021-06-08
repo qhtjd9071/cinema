@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import semi.db.dbCon;
 import semi.vo.payVo;
@@ -22,7 +23,7 @@ public class payDao {
 			String sql="insert into pay values(?,?,null,null,sysdate)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, vo.getPayNum());
-			pstmt.setInt(2, vo.getBookNum());
+			pstmt.setInt(2, vo.getIntNum());
 			pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -93,5 +94,33 @@ public class payDao {
 			dbCon.close(con, pstmt, null);
 		}
 		return null;
+	}
+	
+	public ArrayList<payVo> payAll() {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="select * from pay";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			ArrayList<payVo> list=new ArrayList<payVo>();
+			while(rs.next()) {
+				payVo vo=new payVo();
+				vo.setPayNum(rs.getString("payNum"));
+				vo.setIntNum(rs.getInt("intNum"));
+				vo.setTot(rs.getInt("tot"));
+				vo.setMethod(rs.getString("method"));
+				vo.setPayDate(rs.getDate("payDate"));
+				list.add(vo);
+			}
+			return list;
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			dbCon.close(con, pstmt, null);
+		}
 	}
 }

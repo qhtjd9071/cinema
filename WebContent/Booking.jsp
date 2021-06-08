@@ -246,7 +246,7 @@
 					div4.innerHTML = beginhour.getHours() + " : " + (beginhour.getMinutes()<10?'0':'') + beginhour.getMinutes();;
 					div4.className = "timeListBox";
 					div4.onclick=function(){
-						location.href = "${pageContext.request.contextPath}/countSelection.jsp?showNum=" + showNum;
+						location.href = "${pageContext.request.contextPath}/count?showNum=" + showNum;
 					}
 					time_list.appendChild(div4);
 				}	

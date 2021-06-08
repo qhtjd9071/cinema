@@ -8,7 +8,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>좌석 선택</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
+
+<link rel="stylesheet" href="css/booklist.css">
+<link rel="stylesheet" href="css/header2.css">
+<link rel="stylesheet" href="css/footer.css">
 <style type="text/css">
 	#seatArea{width:600px;margin:0 auto;}
 	#seatArea div{width:50px;height:50px;text-align:center;background-color:gray;display:inline-block;margin:10px;}
@@ -28,8 +36,28 @@
 </script>
 </head>
 <body>
-<div id="rating">이 영화는 <span style="color:red">${rating}세</span>이상 관람가능한 영화입니다.</div>
-<div id="seatArea"></div>
+<div class="header2">
+	<jsp:include page="header2.jsp"/>
+</div>
+
+<div class="count_container">
+<div class="count_wrapper_container">
+	<div class="count_wrapper">
+		<div class="count_content">
+			<div class="seat_select">
+				<div class="group_top">
+					<h4>좌석 선택</h4>
+				</div>
+				<div class="seat_inner">
+					<a href="#" onclick="transfer()">결제하기</a>
+					<div id="seatArea"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
 <c:forEach var="i" begin="1" end="${getCount }">
 <c:forEach var="vo" items="${list}">
 	<script type="text/javascript">
@@ -58,8 +86,16 @@
 			div.innerHTML="C"+seatNum;
 		}else if(${i}/8<=4){
 			div.innerHTML="D"+seatNum;
+		}else if(${i}/8<=5){
+			div.innerHTML="E"+seatNum;
+		}else if(${i}/8<=6){
+			div.innerHTML="F"+seatNum;
+		}else if(${i}/8<=7){
+			div.innerHTML="G"+seatNum;
+		}else if(${i}/8<=8){
+			div.innerHTML="H"+seatNum;
 		}
-			seatArea.appendChild(div);
+		seatArea.appendChild(div);
 		
 		//좌석에 값 할당
 		let input=document.createElement("input");
@@ -96,7 +132,6 @@
 	controllSeat();
 	</script>
 </c:forEach>
-<a href="#" onclick="transfer()">결제하기</a>
 <script type="text/javascript">
 	//서버로 선택좌석 정보 전송
 	function transfer(){
@@ -105,13 +140,11 @@
 		}else{
 			var parameter={"showNum":${showNum},"price":${price},"array":book}
 			var aa=JSON.stringify(parameter);
-			console.log(aa);
 			let xhr=new XMLHttpRequest();
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState==4 && xhr.status==200){
 						let json=xhr.responseText;
 						let bna=JSON.parse(json);
-						alert(json);
 						kakaoPay(xhr,json);
 					}
 			}
@@ -135,5 +168,8 @@
 		xhr.send("toss="+jsonToss);
 	}
 </script>
+<div class="footer">
+	<jsp:include page="footer.jsp"/>
+</div>
 </body>
 </html>

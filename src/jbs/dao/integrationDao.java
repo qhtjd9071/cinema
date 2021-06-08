@@ -31,7 +31,7 @@ public class integrationDao {
 		}
 	}
 	
-	public int getBookNumArr(integrationVo vo) {
+	public int getIntNum(integrationVo vo) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -51,5 +51,28 @@ public class integrationDao {
 			dbCon.close(con, pstmt, null);
 		}
 		return 0;
+	}
+	
+	public integrationVo getBookNumArr(int intNum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="select * from integration where intNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, intNum);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				integrationVo vo=new integrationVo();
+				vo.setBookNumArr(rs.getString("bookNumArray"));
+				return vo;
+			}
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			dbCon.close(con, pstmt, null);
+		}
+		return null;
 	}
 }
