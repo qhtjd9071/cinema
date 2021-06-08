@@ -52,8 +52,8 @@ public class kakaoPay extends HttpServlet{
 	    	    ipAddress="localhost";
 	            String base_url="http://"+ipAddress+":"+request.getLocalPort()+request.getContextPath();
 	            String approval_url=base_url+"/kakao?partner_order_id="+partner_order_id;
-	            String cancel_url=base_url+"/kakaoPayCancel.jsp";
-	            String fail_url=base_url+"/kakaoPayFail.jsp";
+	            String cancel_url=base_url+"/pageList";
+	            String fail_url=base_url+"/bookCancel";
 	            
 	            //header에 붙여서 post방식으로 전송
 	            String headerParam = "cid=TC0ONETIME"+

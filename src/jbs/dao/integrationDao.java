@@ -30,6 +30,21 @@ public class integrationDao {
 			dbCon.close(con, pstmt, null);
 		}
 	}
+	public void delete(int intNum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="delete from integration where intNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, intNum);
+			pstmt.executeUpdate();
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			dbCon.close(con, pstmt, null);
+		}
+	}
 	
 	public int getIntNum(integrationVo vo) {
 		Connection con=null;
