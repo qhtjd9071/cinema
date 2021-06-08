@@ -19,7 +19,6 @@ public class EventController extends HttpServlet{
 		EventDao dao=EventDao.getInstance();
 		eventVo vo=dao.getinfo(eventNum);
 		req.setAttribute("vo", vo);
-		System.out.println("evenum:::"+eventNum + " dao:::"+dao + " vo:::"+ vo);
 		req.getRequestDispatcher("/LSH/event.jsp").forward(req, resp);
 	}
 }

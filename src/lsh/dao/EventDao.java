@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.servlet.http.HttpSession;
+
 import semi.db.dbCon;
 import semi.vo.eventVo;
 
@@ -15,13 +17,19 @@ public class EventDao {
 	public static EventDao getInstance() {
 		return instance;
 	}
+	//이벤트 정보
 	public eventVo getinfo(int eventNum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=dbCon.getConnection();
-			String sql="select * from event where eventNum=?";
+			String sql="update event set hit = hit+1 where eventNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, eventNum);
+			pstmt.executeUpdate();
+			
+			sql="select * from event where eventNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, eventNum);
 			rs=pstmt.executeQuery();
@@ -42,4 +50,5 @@ public class EventDao {
 			dbCon.close(con, pstmt, rs);
 		}
 	}
+	//이벤트 정보 끝
 }
