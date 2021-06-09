@@ -20,5 +20,6 @@ public class showEnrollController extends HttpServlet{
 		
 		showDao dao=showDao.getInstance();
 		dao.insert(movieNum, beginTime, endTime, roomSerialNum, price);
+		response.sendRedirect(request.getContextPath()+"/admin.jsp");
 	}
 }

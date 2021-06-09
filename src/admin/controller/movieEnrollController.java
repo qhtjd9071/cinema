@@ -23,5 +23,6 @@ public class movieEnrollController extends HttpServlet{
 		movieVo vo=new movieVo(0, title, content, director, genre, rating, img);
 		movieDao dao=movieDao.getInstance();
 		dao.insert(vo);
+		response.sendRedirect(request.getContextPath()+"/admin.jsp");
 	}
 }

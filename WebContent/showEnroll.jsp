@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상영영화 등록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -23,7 +23,7 @@
 </head>
 <body>
 	<div class="header2">
-		<jsp:include page="header2.jsp"/>
+		<jsp:include page="ad_header.jsp"/>
 	</div>
 	
 	<div class="movie">
@@ -36,6 +36,9 @@
 				영화제목
 				<input type="text" id="title" readonly="readonly">
 				<input type="hidden" id="movieNum" name="movieNum">
+				상영관
+				<input type="text" id="room" readonly="readonly">
+				<input type="hidden" id="roomSerialNum" name="roomSerialNum">
 				상영시작시간
 				<input type="date" name="beginDate" id="beginDate">
 				<input type="time" name="beginTime" id="beginTime">
@@ -44,12 +47,9 @@
 				<input type="date" name="endDate" id="endDate">
 				<input type="time" name="endTime" id="endTime">
 				<input type="hidden" name="end" id="end">
-				<input type="submit" value="등록">
-				상영관
-				<input type="text" id="room" readonly="readonly">
-				<input type="hidden" id="roomSerialNum" name="roomSerialNum">
 				가격
 				<input type="text" name="price">원
+				<input type="submit" value="등록">
 				</form>
 			</div>
 			영화목록
@@ -85,7 +85,6 @@
 			alert("날짜를 먼저 입력해주세요");
 		}else{
 			param3.value+=" "+param2.value;
-			alert(param3.value);
 		}
 	}
 </script>

@@ -22,5 +22,6 @@ public class roomEnrollController extends HttpServlet{
 		roomVo vo=new roomVo(0, theaterName, seatCount, location, roomNum);
 		roomDao dao=roomDao.getInstance();
 		dao.insert(vo);
+		response.sendRedirect(request.getContextPath()+"/admin.jsp");
 	}
 }

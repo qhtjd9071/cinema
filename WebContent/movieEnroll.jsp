@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>영화정보 등록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -17,7 +17,7 @@
 </head>
 <body>
 	<div class="header2">
-		<jsp:include page="header2.jsp"/>
+		<jsp:include page="ad_header.jsp"/>
 	</div>
 	<div class="movie">
 		<div class="movie_container">

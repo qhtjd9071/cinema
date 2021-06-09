@@ -22,8 +22,7 @@
 	
 	<div class="gnb">
 		<ul class="g_menu1">
-			<li><a href="https://www.lottecinema.co.kr/NLCHS/Mypage/MemberVipzone">멤버십</a></li>
-			<li><a href="https://www.lottecinema.co.kr/NLCHS/Customer">고객센터</a></li>
+			<li><a href="#">관리자 페이지</a></li>
 			<c:choose>
 				<c:when test="${empty sessionScope.id }">
 					<li><a href="${pageContext.request.contextPath }/login.jsp">로그인</a></li>
@@ -33,23 +32,13 @@
 				</c:otherwise>
 			</c:choose>
 		</ul>
-		
-		<ul class="g_menu2">
-			<li><a href="${pageContext.request.contextPath }/mypage.jsp" class="btn_my">마이페이지</a></li>
-			<li><a href="${pageContext.request.contextPath }/booking" class="btn_reserve">바로 예매</a></li>
-			<li>
-				<a class="btn_menu_all">전체 메뉴 레이어 열기</a>
-				<div id="allmenu"></div>
-			</li>
-		</ul>
 	</div>
+	
+	
 	
 	<div class="nav">
 		<ul>
-			<li><a href="${pageContext.request.contextPath }/booking" class="nav_ticketing">예매</a></li>
-			<li><a href="https://www.lottecinema.co.kr/NLCHS/Movie" class="nav_movie">영화</a></li>
-			<li><a href="${pageContext.request.contextPath }/LSH/Eve_main.jsp" class="nav_event">이벤트</a></li>
-			<li><a href="https://www.lottecinema.co.kr/NLCHS/Customer/NoticeList" class="nav_noticelist">공지사항</a></li>
+			<li><a href="${pageContext.request.contextPath }/admin.jsp" class="nav_ticketing">관리자 메인</a></li>
 		</ul>
 	</div>
 </div>

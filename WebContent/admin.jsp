@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상영관 등록</title>
+<title>관리자 메인</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -16,32 +16,20 @@
 <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-	<div class="header2">
-		<jsp:include page="ad_header.jsp"/>
-	</div>
-	
-	<div class="movie">
-		<div class="movie_container">
-		
-		<h1>상영관등록</h1>
-		<form method="post" action="${pageContext.request.contextPath}/admin?cmd=roomEnroll">
-			영화관이름
-			<input type="text" name="theaterName"><br>
-			좌석수
-			<input type="text" name="seatCount"><br>
-			위치
-			<input type="text" name="location"><br>
-			상영관번호
-			<input type="text" name="roomNum"><br>
-			<input type="submit" value="등록">
-		</form>
 
-		</div>
-	</div>
-	
-	<div class="footer">
-		<jsp:include page="footer.jsp"/>
-	</div>
-	
+<div class="header2">
+      <jsp:include page="ad_header.jsp"/>
+   </div>
+   <div class="movie">
+      <div class="movie_container">
+      <a href="movieEnroll.jsp">영화정보등록</a>
+      <a href="roomEnroll.jsp">상영관등록</a>
+      <a href="showEnroll.jsp">상영영화등록</a>
+      </div>
+   </div>
+   <div class="footer">
+      <jsp:include page="footer.jsp"/>
+   </div>
+   
 </body>
 </html>
