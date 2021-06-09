@@ -13,7 +13,6 @@
 
 <link rel="stylesheet" href="css/header.css">
 </head>
-
 <body>
 <div class="header">
 	<h1 class="logo">
