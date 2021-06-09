@@ -37,6 +37,6 @@ public class kakaoCancelController extends HttpServlet{
 		kakaoPay.kakaoPayCancel(partner_order_id);
 		payDao dao=payDao.getInstance();
 		dao.delete(Integer.parseInt(partner_order_id));
-		response.sendRedirect(request.getContextPath()+"/kakaoPayCancel.jsp");
+		response.sendRedirect(request.getContextPath()+"/payList");
 	}
 }
