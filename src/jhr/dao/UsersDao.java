@@ -110,7 +110,7 @@ public class UsersDao {
 	}
 
 	public int delaccount(usersVo vo) {
-		String sql="update users set delUser=? where id=?";
+		String sql="update users set delUser='yes' where id=?";
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
@@ -155,7 +155,7 @@ public class UsersDao {
 		ResultSet rs=null;
 		try {
 			con=dbCon.getConnection();
-			String sql="select * from users where id=? and pwd=?";
+			String sql="select * from users where id=? and pwd=? and delUser is null";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,id);
 			pstmt.setString(2,pwd);

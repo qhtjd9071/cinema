@@ -17,20 +17,16 @@ public class LoginController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String id=req.getParameter("id");
 		String pwd=req.getParameter("pwd");
-		if(id.equals("admin") && pwd.equals("1234")) {
-			resp.sendRedirect(req.getContextPath()+"/admin.jsp");
+		UsersDao dao=new UsersDao();
+		boolean b=dao.isMember(id, pwd);
+		if(b) {
+			HttpSession session=req.getSession();
+			session.setAttribute("id",id);
+			session.setAttribute("pwd",pwd);
+			resp.sendRedirect("main.jsp");
 		}else {
-			UsersDao dao=new UsersDao();
-			boolean b=dao.isMember(id, pwd);
-			if(b) {
-				HttpSession session=req.getSession();
-				session.setAttribute("id",id);
-				session.setAttribute("pwd",pwd);
-				resp.sendRedirect("main.jsp");
-			}else {
-				req.setAttribute("errMsg","비밀번호가 틀렸습니다.");
-				req.getRequestDispatcher("/login.jsp").forward(req, resp);
-			}
+			req.setAttribute("errMsg","아이디, 비밀번호가 일치하지 않습니다.");
+			req.getRequestDispatcher("/login.jsp").forward(req, resp);
 		}
 	}
 }

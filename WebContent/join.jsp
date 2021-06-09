@@ -155,6 +155,7 @@
 		var pwd1=document.getElementsByName("pwd")[0];
 		var pwd2=document.getElementsByName("pwd2")[0];
 		var email=document.getElementsByName("email")[0];
+		var ereg=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		var year=document.getElementsByName("year")[0];
 		var phone=document.getElementsByName("phone")[0];
 		if(name.value.trim()==""){
@@ -172,13 +173,11 @@
 			pwd.focus();
 			return false;
 		}
-		/*
 		if(pwd1.value.length<8 || pwd1.value.length>15){
 			alert("비밀번호는 8-15자리의 영문/숫자를 함께 입력해주세요.");
-			pwd.focus();
+			pwd1.focus();
 			return false;
 		}
-		*/
 		if(pwd2.value.trim()==""){
 			alert("비밀번호 확인을 입력하세요.");
 			pwd.focus();
@@ -196,13 +195,28 @@
 			email.focus();
 			return false;
 		}
+		if (!ereg.test(email.value)){
+			alert("이메일형식에 맞게 입력하세요.");
+			email.focus();
+			return false;
+		}
 		if(year.value.trim()==""){
 			alert("생년월일을 입력하세요.");
 			year.focus();
 			return false;
 		}
+		if(year.value.length!=8){
+			alert("생년월일은 8자리로 입력하세요.");
+			year.focus();
+			return false;
+		}
 		if(phone.value.trim()==""){
-			alert("전화번호를 입력하세요.");
+			alert("휴대폰번호를 입력하세요.");
+			phone.focus();
+			return false;
+		}
+		if(phone.value.indexOf("-")!=-1){
+			alert("휴대폰번호에 숫자만 입력해주세요.");
 			phone.focus();
 			return false;
 		}

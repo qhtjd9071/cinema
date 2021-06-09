@@ -17,16 +17,6 @@
 <link rel="stylesheet" href="css/header2.css">
 <link rel="stylesheet" href="css/mypage.css">
 <link rel="stylesheet" href="css/footer.css">
-<script type="text/javascript">
-	function updatePop(id, pwd) {
-		var pw=prompt("비밀번호를 입력하세요.","");
-		if(pwd==pw) {
-			location.href="${pageContext.request.contextPath }/update?id="+id;
-		} else {
-			alert("비밀번호가 일치하지 않습니다.");
-		}
-	}
-</script>
 </head>
 
 <body>
@@ -40,7 +30,7 @@
 			<nav class="mypage_lnb">
 				<p><a href="${pageContext.request.contextPath }/mypage.jsp">나의 로또시네마</a></p>
 				<ul>
-					<li><a href="${pageContext.request.contextPath }/payList">예매 내역</a></li>
+					<li onclick="myPagedetail('payList')"><a href="#">예매 내역</a></li>
 					<li><a href="${pageContext.request.contextPath }/inquiry.jsp">나의 문의 내역</a></li>
 					<li><a onclick="updatePop('<%=id %>','<%=pwd %>')">MY 정보관리</a></li>
 					<li><a href="${pageContext.request.contextPath }/delAccount.jsp">회원 탈퇴</a></li>
@@ -48,7 +38,7 @@
 			</nav>
 		</div>
 		<div class="mypage_content">
-			
+			<jsp:include page="payList.jsp"/>
 		</div>
 	</div>
 </div>
@@ -56,5 +46,16 @@
 <div class="footer">
 	<jsp:include page="footer.jsp"/>
 </div>
+
+<script type="text/javascript">
+	function updatePop(id, pwd) {
+		var pw=prompt("비밀번호를 입력하세요.","");
+		if(pwd==pw) {
+			location.href="${pageContext.request.contextPath }/update?id="+id;
+		} else {
+			alert("비밀번호가 일치하지 않습니다.");
+		}
+	}
+</script>
 </body>
 </html>
