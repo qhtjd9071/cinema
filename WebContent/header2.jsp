@@ -35,7 +35,12 @@
 		</ul>
 		
 		<ul class="g_menu2">
-			<li><a href="${pageContext.request.contextPath }/mypage.jsp" class="btn_my">마이페이지</a></li>
+			<c:if test="${sessionScope.id!=null }">
+				<li><a href="${pageContext.request.contextPath }/mypage.jsp" class="btn_my">마이페이지</a></li>
+			</c:if>
+			<c:if test="${sessionScope.id==null }">
+				<li><a href="${pageContext.request.contextPath }/join.jsp" class="btn_my">회원가입</a></li>
+			</c:if>
 			<li><a href="${pageContext.request.contextPath }/Booking" class="btn_reserve">바로 예매</a></li>
 		</ul>
 	</div>
