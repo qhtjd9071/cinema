@@ -21,7 +21,7 @@ public class UpdateController extends HttpServlet{
 		UsersDao dao=new UsersDao();
 		usersVo vo=dao.getinfo(id);
 		req.setAttribute("vo",vo);
-		req.getRequestDispatcher("/myinfo.jsp").forward(req, resp);
+		req.getRequestDispatcher("/mypage_myinfo.jsp").forward(req, resp);
 		
 	}
 	@Override
@@ -31,10 +31,10 @@ public class UpdateController extends HttpServlet{
 		String pwd=req.getParameter("pwd");	
 		String name=req.getParameter("name");
 		String email=req.getParameter("email");	
-		String year=req.getParameter("year");	
 		String phone=req.getParameter("phone");
+		String year=req.getParameter("year");	
 		String delUser=req.getParameter("delUser");	
-		usersVo vo=new usersVo(0, id, pwd, name, email, year, phone, null);
+		usersVo vo=new usersVo(0, id, pwd, name, email, phone, year, null);
 		UsersDao dao=new UsersDao();
 		int n=dao.update(vo);
 		if(n>0) {
@@ -42,7 +42,7 @@ public class UpdateController extends HttpServlet{
 		}else {
 			req.setAttribute("result","fail");
 		}
-		req.getRequestDispatcher("/mypage.jsp").forward(req, resp);
+		req.getRequestDispatcher("/mypage_payList.jsp").forward(req, resp);
 	}
 }
 

@@ -35,7 +35,7 @@ public class UsersDao {
 		}
 	}
 	public int update(usersVo vo) {
-		String sql="update users set name=?,email=?,year=?,phone=? where id=?";
+		String sql="update users set name=?,email=?,phone=?,year=? where id=?";
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		try {
@@ -43,8 +43,8 @@ public class UsersDao {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1,vo.getName());
 			pstmt.setString(2,vo.getEmail());
-			pstmt.setString(3,vo.getYear());
-			pstmt.setString(4,vo.getPhone());
+			pstmt.setString(3,vo.getPhone());
+			pstmt.setString(4,vo.getYear());
 			pstmt.setString(5,vo.getId());
 			int n=pstmt.executeUpdate();
 			return n;
@@ -72,8 +72,8 @@ public class UsersDao {
 						rs.getString("pwd"), 
 						rs.getString("name"), 
 						rs.getString("email"), 
-						rs.getString("year"), 
 						rs.getString("phone"),
+						rs.getString("year"), 
 						rs.getNString("delUser"));
 				return vo;
 			}
@@ -138,8 +138,8 @@ public class UsersDao {
 			pstmt.setString(2,vo.getPwd());
 			pstmt.setString(3,vo.getName());
 			pstmt.setString(4,vo.getEmail());
-			pstmt.setString(5,vo.getYear());
-			pstmt.setString(6,vo.getPhone());
+			pstmt.setString(5,vo.getPhone());
+			pstmt.setString(6,vo.getYear());
 			int n=pstmt.executeUpdate();
 			return n;
 		}catch(SQLException s) {
