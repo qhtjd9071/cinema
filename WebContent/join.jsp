@@ -220,6 +220,7 @@
 			phone.focus();
 			return false;
 		}
+		alert("회원가입에 성공했습니다!");
 		return true;
 	}
 	
@@ -247,5 +248,6 @@
 			xhr.send();
 		}
 	};
+	
 </script>
 </html>
