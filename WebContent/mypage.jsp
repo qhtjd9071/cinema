@@ -35,11 +35,22 @@
 </div>
 
 <div class="mypage">
-	<a href="${pageContext.request.contextPath }/payList.jsp">예매 내역</a>
-	<a href="${pageContext.request.contextPath }/inquiry.jsp">나의 문의 내역</a>
-	<!-- <a href="${pageContext.request.contextPath }/update">MY 정보 관리</a> -->
-	<input type="button" value="MY 정보 관리" onclick="updatePop('<%=id %>','<%=pwd %>')"/>
-	<a href="${pageContext.request.contextPath }/delAccount.jsp">회원 탈퇴</a>
+	<div class="mypage_container">
+		<div class="mypage_lnb_wrap">
+			<nav class="mypage_lnb">
+				<p><a href="${pageContext.request.contextPath }/mypage.jsp">나의 로또시네마</a></p>
+				<ul>
+					<li><a href="${pageContext.request.contextPath }/payList">예매 내역</a></li>
+					<li><a href="${pageContext.request.contextPath }/inquiry.jsp">나의 문의 내역</a></li>
+					<li><a onclick="updatePop('<%=id %>','<%=pwd %>')">MY 정보관리</a></li>
+					<li><a href="${pageContext.request.contextPath }/delAccount.jsp">회원 탈퇴</a></li>
+				</ul>
+			</nav>
+		</div>
+		<div class="mypage_content">
+			
+		</div>
+	</div>
 </div>
 
 <div class="footer">
