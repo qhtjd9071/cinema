@@ -1,0 +1,644 @@
+@charset "UTF-8";
+
+* {
+	margin:0;
+	padding:0;
+}
+
+body {
+	min-width:1024px;
+	display:block;
+	font-family:'Noto Sans KR', 'Roboto', 'dotum', 'sans-serif';
+	margin:0;
+	padding:0;
+	overflow-y:scroll;
+}
+.booking_container{
+	width:100%;
+	display:block;
+	margin:0 auto;
+	padding:115px 0 0 0;
+}
+.booking_wrapper_container {
+	width:100%;
+	display:block;
+	margin:0 auto;
+	padding:50px 0 0 70px;
+	background-color:#444;
+}
+.wrap_booking {
+	width: 1280px;
+    height: 870px;
+	overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    letter-spacing: normal;
+	line-height: 1.1;
+}
+/*
+.wrap_booking{
+	background-color: #FFF;
+	color: #000;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 870px;
+	letter-spacing: normal;
+	line-height: 1.1;
+	margin-bottom: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: relative;
+	width: 1280px;
+}
+*/
+.wrap_part{
+	color: #000;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 100%;
+	letter-spacing: normal;
+	line-height: 1.1;
+	margin-left: 0px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: relative;
+	width: 1202px;
+}
+.theater-part{
+	background-color: #FFF;
+	border-bottom-color: rgb(221, 221, 221);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	box-sizing: border-box;
+	color: #000;
+	display: block;
+	float: left;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 100%;
+	letter-spacing: normal;
+	line-height: 1.1;
+	position: relative;
+	width: 351px;
+}
+.booking-title{
+	background-color: #000;
+	border-right-color: rgb(34, 34, 34);
+	border-right-style :solid;
+	border-right-width: 1px;
+	color: #000;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 55px;
+	letter-spacing: normal;
+	line-height: 55px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: relative;
+	text-align: center;
+}
+.booking-title-top{
+	color : #FFF;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	height: 55px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	text-align: center;
+	margin-block-end: 1.33em;
+	margin-block-start: 1em;
+
+}
+.theater_inner{
+	border-right-color: rgb(221, 221, 221);
+	border-right-style: solid;
+	border-right-width: 1px;
+	color: #000;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 815px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+.tab_wrap.outer{
+	color: #000;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 753px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	margin-block-end :1em;
+	margin-block-start: 1em;
+	margin-bottom: 0px;
+	margin-inline-end: 0px;
+	margin-inline-start: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 0px;
+	padding-bottom: 0px;
+	padding-inline-start: 40px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 61px;
+	position: relative;
+}
+/* li */
+.movie_wrap.inner{
+	color: #000;
+	display: list-item;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	text-align: left-webkit-match-parent;
+}
+/* button */
+.location{
+	align-items: flex-start;
+	appearance: none;
+	background-color: #fff;
+	border-bottom-color: rgb(17, 17, 17);
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	border-image-slice: initial;
+	border-image-source: initial;
+	border-image-width: initial;
+	border-left-color: initial;
+	border-left-style: none;
+	border-left-width: initial;
+	border-right-color: initial;
+	border-right-style: none;
+	border-right-width: initial;
+	border-top-color: initial;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	border-top-style: none;
+	border-top-width: 0px;
+	box-sizing: border-box;
+	color: #000;
+	cursor: pointer;
+	display: inline-block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 15px;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant-caps: normal;
+	font-variant-east-asian: normal;
+	font-variant-ligatures: normal;
+	font-variant-numeric: normal;
+	font-weight: 400;
+	height: 61px;
+	left: 0px;
+	letter-spacing: normal;
+	line-height: 50px;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	margin: 55px 0em 0em 0em; 
+	padding-bottom: 1px;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 1px;
+	position: absolute;
+	text-align: center;
+	text-indent: 0px;
+	text-rendering: auto;
+	text-shadow: none;
+	text-transform: none;
+	top: 0px;
+	vertical-align: middle;
+	width: 50%;
+	word-spacing: normal;
+	writing-mode: horizontal-tb
+	-webkit-border-image none;
+}
+
+.button.location.span{
+	color: #000;
+	cursor: pointer;
+	display: inline;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 15px;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant-caps: normal;
+	font-variant-east-asian: normal;
+	font-variant-ligatures: normal;
+	font-variant-numeric: normal;
+	font-weight: 400;
+	height: auto;
+	letter-spacing: normal;
+	line-height: 50px;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	position: relative;
+	text-align: center;
+	text-indent: 0px;
+	text-rendering: auto;
+	text-shadow: none;
+	text-transform: none;
+	vertical-align: top;
+	white-space: nowrap;
+	width: auto;
+	word-spacing: normal;
+	writing-mode: horizontal-tb;
+}
+
+.theaterLoc-list{
+	background-color: #F5F5F5;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 100%;
+	margin: 0px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	position: relative;
+	text-align: left;
+	width: 350px;
+}
+.theaterLoc-list{
+	align-items: flex-start;
+	appearance: none;
+	background-color: #fff;
+	border-bottom-color: rgb(17, 17, 17);
+	border-bottom-left-radius: 2px;
+	border-bottom-right-radius: 2px;
+	border-bottom-style: solid;
+	border-bottom-width: 2px;
+	border-image-outset: initial;
+	border-image-repeat: initial;
+	border-image-slice: initial;
+	border-image-source: initial;
+	border-image-width: initial;
+	border-left-color: initial;
+	border-left-style: none;
+	border-left-width: initial;
+	border-right-color: initial;
+	border-right-style: none;
+	border-right-width: initial;
+	border-top-color: initial;
+	border-top-left-radius: 2px;
+	border-top-right-radius: 2px;
+	border-top-style: none;
+	border-top-width: 0px;
+	box-sizing: border-box;
+	color: #000;
+	cursor: pointer;
+	display: inline-block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 15px;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant-caps: normal;
+	font-variant-east-asian: normal;
+	font-variant-ligatures: normal;
+	font-variant-numeric: normal;
+	font-weight: 400;
+	height: 61px;
+	left: 0px;
+	letter-spacing: normal;
+	line-height: 50px;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	margin: 55px 0em 0em 0em; 
+	padding-bottom: 1px;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 1px;
+	position: absolute;
+	text-align: center;
+	text-indent: 0px;
+	text-rendering: auto;
+	text-shadow: none;
+	text-transform: none;
+	top: 0px;
+	vertical-align: middle;
+	width: 50%;
+	word-spacing: normal;
+	writing-mode: horizontal-tb
+	-webkit-border-image none;
+}
+.button.theater_name.span{
+	color: #000;
+	cursor: pointer;
+	display: inline;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 15px;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant-caps: normal;
+	font-variant-east-asian: normal;
+	font-variant-ligatures: normal;
+	font-variant-numeric: normal;
+	font-weight: 400;
+	height: auto;
+	letter-spacing: normal;
+	line-height: 50px;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	position: relative;
+	text-align: center;
+	text-indent: 0px;
+	text-rendering: auto;
+	text-shadow: none;
+	text-transform: none;
+	vertical-align: top;
+	white-space: nowrap;
+	width: auto;
+	word-spacing: normal;
+	writing-mode: horizontal-tb;
+}
+
+.movie-part{
+	background-color: #F8F8F8;
+	box-sizing: border-box;
+	color: #000;
+	display: block;
+	float: left;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 100%;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	position: relative;
+	width: 351px;
+}
+.booking-movie{
+	background-color: #000;
+	border-right-color: rgb(34, 34, 34);
+	border-right-style: solid;
+	border-right-width: 1px;
+	color: #000;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 55px;
+	letter-spacing: -0.03em;
+	line-height: 55px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: relative;
+	text-align: center;
+}
+.booking-move-top{
+	color: #fff;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 18px;
+	font-style: normal;
+	font-weight: normal;
+	letter-spacing: -0.03em;
+	line-height: 55px;
+	margin-block-end: 1.33em;
+	margin-block-start: 1.33em;
+	margin-bottom: 0px;
+	margin-inline-end: 0px;
+	margin-inline-start: 0px;
+	margin: 0 0 0 0px;
+	padding-left: 0px;
+	padding-right: 0px;
+	padding-top: 0px;
+	text-align: center;
+}
+.sort-wrapper{
+	border-bottom-color: rgb(221, 221, 221);
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	color: #000;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 60px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	padding-bottom: 0px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 0px;
+	position: relative;
+}
+
+.movieField{
+	align-items: center;
+	appearance: none;
+	background-attachment: initial;
+	background-clip: border-box;
+	background-color: rgb(255, 255, 255);
+	/*background-image: url(https://www.lottecinema.co.kr/NLCHS/Content/images/icon/arr_dw_13.png); */
+	background-origin: padding-box;
+	background-position-x: right 6px;
+	background-position-y: top 50%;
+	background-repeat-x: no-repeat;
+	background-repeat-y: no-repeat;
+	background-size: initial;
+	border-bottom-color: rgb(221, 221, 221);
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-image-outset: initial;
+	border-image-repeat: stretch;
+	border-image-slice: 100%;
+	border-image-source: none;
+	border-image-width: 1;
+	border-left-color: rgb(221, 221, 221);
+	border-left-style: solid;
+	border-left-width: 1px;
+	border-right-color: rgb(221, 221, 221);
+	border-right-style: solid;
+	border-right-width: 1px;
+	border-top-color: rgb(221, 221, 221);
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	border-top-style: solid;
+	border-top-width: 1px;
+	box-sizing: border-box;
+	color: #000;
+	cursor: default;
+	display: inline-block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 14px;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant-caps: normal;
+	font-variant-east-asian: normal;
+	font-variant-ligatures: normal;
+	font-variant-numeric: normal;
+	font-weight: 400;
+	height: 30px;
+	letter-spacing: normal;
+	line-height: 29px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 15px;
+	overflow-x: visible;
+	overflow-y: visible;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	padding-right: 35px;
+	padding-top: 0px;
+	text-align: start;
+	text-indent: 0px;
+	text-rendering: auto;
+	text-shadow: none;
+	text-transform: none;
+	vertical-align: middle;
+	white-space: pre;
+	width: 180px;
+	word-spacing: normal;
+	writing-mode: horizontal-tb;
+	-webkit-rtl-ordering: logical;
+}
+.select.option{
+	color: rgb(0, 0, 0);
+	cursor: default;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 14px;
+	font-stretch: 100%;
+	font-style: normal;
+	font-variant-caps: normal;
+	font-variant-east-asian: normal;
+	font-variant-ligatures: normal;
+	font-variant-numeric: normal;
+	font-weight: 400;
+	height: auto;
+	letter-spacing: normal;
+	line-height: 29px;
+	min-height: 1.2em;
+	padding-bottom: 1px;
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-top: 0px;
+	text-align: start;
+	text-indent: 0px;
+	text-rendering: auto;
+	text-shadow: none;
+	text-transform: none;
+	white-space: nowrap;
+	width: auto;
+	word-spacing: normal;
+	writing-mode: horizontal-tb;
+	-webkit-rtl-ordering: logical;
+}
+/*
+.movie-list{
+	color: rgb(0, 0, 0);
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 15px;
+	height: 754px;
+	letter-spacing: 0.03em;
+	line-height: 1.1;
+	overflow-x: visible;
+	overflow-y: visible;
+	position: relative;
+	touch-action: pinch-zoom;
+	direction: ltr;
+	max-height: none;
+	max-width: 100%;
+	outline-color: rgb(0, 0, 0);
+	outline-style: none;
+	outline-width :0px;
+}
+*/
+.movie-list{
+	color: rgb(0, 0, 0);
+	cursor: pointer;
+	direction: ltr;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+	letter-spacing: 0;
+	line-height: 1.1;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	padding-left: 30px;
+	text-align: left;
+	text-decoration-thickness: initial;
+	text-overflow: ellipsis;
+	vertical-align: middle;
+	white-space: nowrap;
+	width: 250px;
+}
+.date-part{
+	background-color: rgb(255, 255, 255);
+	box-sizing: border-box;
+	color: rgb(0, 0, 0);
+	display: block;
+	float: left;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 100%;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	position: relative;
+	width: 500px;
+}
+.booking-date{
+	background-color: rgb(0, 0, 0);
+	border-right-color: rgb(34, 34, 34);
+	border-right-style: solid;
+	border-right-width: 1px;
+	color: rgb(0, 0, 0);
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 55px;
+	letter-spacing: -0.03em;
+	line-height: 55px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: relative;
+	text-align: center;
+}
+.booking_date_wrap{
+	color: rgb(0, 0, 0);
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 75px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	margin-bottom: 10px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-top: 22px;
+}

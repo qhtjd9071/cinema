@@ -7,10 +7,6 @@
 <html>
 <head>
 <title> Booking.jsp </title>
-<style type="text/css">
-	.wrap_list{width:24%;}
-	.float_left{float:left;}
-</style>
 </head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -18,45 +14,75 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
 
-<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/booking.css">
 <link rel="stylesheet" href="css/header2.css">
 <link rel="stylesheet" href="css/footer.css">
 </head>
 
-<div id="content" class="main">
-	<div class="theater-part wrap_list float_left">
-        <div class="booking-title">극장</div>
-        
-        <div id="theaterLoc-list">
-        	<ul>
-        		<c:forEach var="vo" items="${ requestScope.theaterList }">
-        			<li onclick='theaterNameList("${vo.location}")'> ${ vo.location } </li>
-        		</c:forEach>
-        	</ul>
-        </div>
-        <div id="theaterName-list"></div>	
-    </div>
-    <div class="movie-part wrap_list float_left">
-        <div class="booking-title">영화</div>
-        <div class="sort-wrapper">
-				<select id="movieField" onchange="changeMovie()">
-					<option value="bookCount">관람순</option>
-					<option value="starCount">평점순</option>
-				</select>	
-        </div>
-        <div id="movie-list"></div>
-    </div>
-    <div class="date-part wrap_list float_left">
-        <div class="booking-title">날짜</div>
-        <div id="year-month"></div>
-        <div id="date-list"></div>
-    </div>
-    <div class="time-part wrap_list float_left">
-        <div class="booking-title">상영시간표</div>
-        <div>
-   		  	<div id="show-list"></div>
-        </div>
-    </div>
+<body>
+
+<div class="header2">
+	<jsp:include page="header2.jsp"/>
+</div>
+
+<div id="content" class="booking_container">
+	<div class="booking_wrapper_container">
+		<div class="wrap_booking"> 
+			<div class = "wrap_part">
+				<div class="theater-part">
+			        <div class="booking-title">
+			        	<h4 class="booking-title-top">극장</h4>
+		        	</div>
+			        <div id="theaterLoc-list" class="theater_inner">
+			        	<ul class="tab_wrap.outer">
+			        		<li class="movie_wrap.inner">
+				        		<button type="button" class="location">
+				        			<span>지역</span>
+				        		</button>
+				        		<c:forEach var="vo" items="${ requestScope.theaterList }">
+				        			<div class="theaterLoc-list" onclick='theaterNameList("${vo.location}")'> ${ vo.location } </div>
+				        		</c:forEach>
+				        		<button type="button" class="theater_name">
+				        			<span>영화관</span>
+				        		</button>
+					        	<div id="theaterName-list"></div>
+				        	</li>
+			        	</ul>
+			        </div>
+			    </div>
+			    <div class="movie-part">
+			        <div class="booking-movie">
+			        	<h4 class="booking-move-top">영화</h4>
+			        </div>
+			        <div class="sort-wrapper">
+							<select id="movieField" class = "movieField" onchange="changeMovie()">
+								<option value="bookCount">관람순</option>
+								<option value="starCount">평점순</option>
+							</select>	
+			        </div>
+			        <div id="movie-list" class="movie-list"></div>
+			    </div>
+			    <div class="date-part">
+			        <div class="booking-date">
+			        	<h4 class="booking-move-top">상영시간표</h4>
+			        </div>
+			        <div class="booking_date_wrap">
+				        <div id="year-month"></div>
+				        <div id="date-list"></div>
+			        </div>
+			    </div>
+			    <div class="time-part">
+		        <div class="booking-title">상영시간표</div>
+		        <div>
+		   		  	<div id="show-list"></div>
+		        </div>
+		    </div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer">
+	<jsp:include page="footer.jsp"/>
 </div>
 
 <script type="text/javascript">
