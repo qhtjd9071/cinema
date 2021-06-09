@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>mypage_payList.jsp</title>
+<title>mypage_delAccount.jsp</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -38,7 +38,7 @@
 			</nav>
 		</div>
 		<div class="mypage_content">
-			<jsp:include page="payList.jsp"/>
+			<jsp:include page="delAccount.jsp"/>
 		</div>
 	</div>
 </div>

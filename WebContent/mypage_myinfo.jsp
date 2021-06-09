@@ -33,7 +33,7 @@
 					<li onclick="myPagedetail('payList')"><a href="#">예매 내역</a></li>
 					<li><a href="${pageContext.request.contextPath }/inquiry.jsp">나의 문의 내역</a></li>
 					<li><a onclick="updatePop('<%=id %>','<%=pwd %>')">MY 정보관리</a></li>
-					<li><a href="${pageContext.request.contextPath }/delAccount.jsp">회원 탈퇴</a></li>
+					<li><a href="${pageContext.request.contextPath }/mypage_delAccount.jsp">회원 탈퇴</a></li>
 				</ul>
 			</nav>
 		</div>

@@ -24,35 +24,93 @@
 </head>
 
 <body>
-<h1>회원정보 수정</h1>
-<form method="post" action="update" onsubmit="return formSubmit()">
-	<table>
-		<tr>
-			<td>이름</td>
-			<td><input type="text" name="name" value="${vo.name}" readonly="readonly"></td>
-		</tr>
-		<tr>
-			<td>아이디</td>
-			<td><input type="text" name="id" value="${vo.id}" readonly="readonly"></td>
-		</tr>
-		<tr>
-			<td>생년월일</td>
-			<td><input type="text" name="year" value="${vo.year}" readonly="readonly"></td>
-		</tr>
-		<tr>
-			<td>휴대폰</td>
-			<td><input type="text" name="phone" value="${vo.phone}"></td>
-		</tr>
-		<tr>
-			<td>이메일</td>
-			<td><input type="text" name="email" value="${vo.email}"></td>
-		</tr>
-		<tr>
-			<td>비밀번호 변경</td>
-			<td><a href="${pageContext.request.contextPath }/pwdUpdate.jsp"><input type="button" value="비밀번호 변경"></a></td>
-		</tr>
-	</table>
-	<input type="submit" value="수정">
+<form method="post" action="update" class="update_form" onsubmit="return formSubmit()">
+	<h3>회원정보 수정</h3>
+	<div class="join1">
+		<div class="join_col1">
+			<label for="">이름</label>
+		</div>
+		<div class="join_col_input">
+			<div class="input_wrap">
+				<div class="wrap_inner">
+					<div class="ui_input">
+						<input type="text" name="name" class="input_space" value="${vo.name}" readonly="readonly">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="join1">
+		<div class="join_col1">
+			<label for="">아이디</label>
+		</div>
+		<div class="join_col_input">
+			<div class="input_wrap">
+				<div class="wrap_inner">
+					<div class="ui_input">
+						<input type="text" name="id" class="input_space" value="${vo.id}" readonly="readonly">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="join1">
+		<div class="join_col1">
+			<label for="">생년월일</label>
+		</div>
+		<div class="join_col_input">
+			<div class="input_wrap">
+				<div class="wrap_inner">
+					<div class="ui_input">
+						<input type="text" name="year" class="input_space" value="${vo.year}" readonly="readonly">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="join1">
+		<div class="join_col1">
+			<label for="">휴대폰</label>
+		</div>
+		<div class="join_col_input">
+			<div class="input_wrap">
+				<div class="wrap_inner">
+					<div class="ui_input">
+						<input type="text" name="phone" class="input_space" value="${vo.phone}" readonly="readonly">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="join1">
+		<div class="join_col1">
+			<label for="">이메일</label>
+		</div>
+		<div class="join_col_input">
+			<div class="input_wrap">
+				<div class="wrap_inner">
+					<div class="ui_input">
+						<input type="text" name="email" class="input_space" value="${vo.email}" readonly="readonly">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="join1">
+		<div class="join_col1">
+			<label for="">비밀번호 변경</label>
+		</div>
+		<div class="join_col_input">
+			<div class="input_wrap">
+				<div class="wrap_inner">
+					<div class="ui_input2">
+						<a href="${pageContext.request.contextPath }/pwdUpdate.jsp"><input type="button" value="비밀번호 변경" class="btn_pwd"></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="submit" value="수정" class="submit_btn">
 </form>
 </body>
 </html>

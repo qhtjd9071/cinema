@@ -118,5 +118,8 @@
 			</form>
 		</div>
 	</div>
+	<div class="footer">
+		<jsp:include page="footer2.jsp"/>
+	</div>
 </body>
 </html>
