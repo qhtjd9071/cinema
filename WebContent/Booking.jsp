@@ -38,7 +38,7 @@
 			        		<li class="movie_wrap.inner">
 				        		<button type="button" class="location">
 				        			<span>지역</span>
-				        		</button>
+				        		</button>	
 				        		<c:forEach var="vo" items="${ requestScope.theaterList }">
 				        			<div class="theaterLoc-list" onclick='theaterNameList("${vo.location}")'> ${ vo.location } </div>
 				        		</c:forEach>
@@ -192,8 +192,8 @@
 
 	 		
 	 		var li = '<li';
-	 		if(printDay == 0) li += ' class="sunday"';
-	 		if(printDay == 6) li += ' class="saturday"';
+	 		if(printDay == 0) li += ' class="sunday" style="color: red;"';
+	 		if(printDay == 6) li += ' class="saturday" style="color: blue;"';
 	 		li += ' onclick="selectDate(' + printYear + ',' + printMonth + ',' + printDate + ')">' + printDate + " " + weekOfDay[printDay] + "</li>";
 	 		
 	 		html += li;
@@ -271,7 +271,7 @@
 					let beginhour = new Date(begintime);
 					let beginMin = (beginhour.getMinutes()<10?'0':'') + beginhour.getMinutes();
 					let showNum = stList[i].getElementsByTagName("shownum")[0].textContent;
-					div4.innerHTML = beginhour.getHours() + " : " + (beginhour.getMinutes()<10?'0':'') + beginhour.getMinutes();;
+					div4.innerHTML = beginhour.getHours() + " : " + (beginhour.getMinutes()<10?'0':'') + beginhour.getMinutes() + "<br>";
 					div4.className = "timeListBox";
 					div4.onclick=function(){
 						location.href = "${pageContext.request.contextPath}/count?showNum=" + showNum;
