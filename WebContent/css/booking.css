@@ -28,7 +28,7 @@ body {
 }
 .wrap_booking {
 	width: 1280px;
-    height: 870px;
+    height: 600px;
 	overflow: hidden;
     position: relative;
     margin: 0 auto;
@@ -169,7 +169,23 @@ body {
 	list-style-position: initial;
 	list-style-type: none;
 	text-align: left-webkit-match-parent;
+	width: 50%;
 }
+/*
+.movie_wrap.inner2{
+	color: #000;
+	display: list-item;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	text-align: left-webkit-match-parent;
+	width: 50%;
+}
+*/
 /* button */
 .location{
 	align-items: flex-start;
@@ -315,7 +331,7 @@ body {
 	font-size: 20px;
 	height: 100%;
 	letter-spacing: 0em;
-	line-height: 1.1;
+	line-height: 30px;
 	list-style-image: initial;
 	list-style-position: initial;
 	list-style-type: none;
@@ -323,6 +339,7 @@ body {
 	text-align: center;
 	width: 175px;
 	margin-left: 175px;
+	
 }
 .movie-part{
 	background-color: #F8F8F8;
@@ -527,8 +544,8 @@ body {
 	display: block;
 	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
 	font-size: 20px;
-	letter-spacing: 0;
-	line-height: 1.1;
+	letter-spacing: 1px;
+	line-height: 30px;
 	list-style-image: initial;
 	list-style-position: initial;
 	list-style-type: none;
@@ -537,10 +554,10 @@ body {
 	text-align: left;
 	text-decoration-thickness: initial;
 	text-overflow: ellipsis;
-	vertical-align: middle;
 	white-space: nowrap;
 	width: 250px;
 	touch-action: pinch-zoom;
+	
 }
 .date-part{
 	background-color: rgb(255, 255, 255);
@@ -554,7 +571,7 @@ body {
 	letter-spacing: -0.03em;
 	line-height: 1.1;
 	position: relative;
-	width: 100px;
+	width: 150px;
 }
 .booking-date{
 	background-color: rgb(0, 0, 0);
@@ -586,7 +603,7 @@ body {
 	margin-top: 22px;
 }
 .time-part{
-	background-color: rgb(255, 255, 255);
+	background-color: #F8F8F8;
 	box-sizing: border-box;
 	color: rgb(0, 0, 0);
 	display: block;
@@ -597,7 +614,7 @@ body {
 	letter-spacing: -0.03em;
 	line-height: 1.1;
 	position: relative;
-	width: 400px;
+	width: 350px;
 }
 .booking-title{
 	background-color: rgb(0, 0, 0);
@@ -615,4 +632,47 @@ body {
 	overflow-y: hidden;
 	position: relative;
 	text-align: center;
+}
+.year_month{
+	color: rgb(0, 0, 0);
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 20px;
+	letter-spacing: 3px;
+	text-align: center;
+}
+.date_list ul li{
+	 list-style:none;
+	 margin-top: 20px;
+	 font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	 font-size: 20px;
+	 text-align: center;
+}
+
+.date_list li{
+	height: 20px;
+}
+
+.showListBox{
+	color: rgb(0, 0, 0);
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 20px;
+	margin-left: 20px;
+	line-height: 50px;
+}
+
+.timeListBox{
+	color: rgb(0, 0, 0);
+	background-color: #fff;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 20px;
+	border: 1px solid;
+	height: 40px;
+	width: 100px;
+	text-align: center;
+	margin: 10px 0 10px 0;
+	line-height:40px;
+	align-items:center;
 }
