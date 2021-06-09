@@ -16,25 +16,27 @@
 <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-
-<div class="header2">
+	<div class="header2">
       <jsp:include page="ad_header.jsp"/>
    </div>
+   
    <div class="movie">
       <div class="movie_container">
-      <li><a href="movieEnroll.jsp">영화정보등록</a></li>
-      <li><a href="roomEnroll.jsp">상영관등록</a></li>
-      <li><a href="showEnroll.jsp">상영영화등록</a></li>
-      </div>
-      <div class="movie_container2">
-      <li><a href="movieEnroll.jsp">영화정보보기</a></li>
-      <li><a href="roomEnroll.jsp">상영관보기</a></li>
-      <li><a href="showEnroll.jsp">상영영화보기</a></li>
+	      <ul class="mbtn_list">
+		      <li><a href="movieEnroll.jsp">영화정보등록</a></li>
+		      <li><a href="roomEnroll.jsp">상영관등록</a></li>
+		      <li><a href="showEnroll.jsp">상영영화등록</a></li>
+	      </ul>
+	      <ul class="mbtn_list">
+		      <li><a href="movieEnroll.jsp">영화정보보기</a></li>
+		      <li><a href="roomEnroll.jsp">상영관보기</a></li>
+		      <li><a href="showEnroll.jsp">상영영화보기</a></li>
+	      </ul>
       </div>
    </div>
+   
    <div class="footer">
       <jsp:include page="footer.jsp"/>
    </div>
-   
 </body>
 </html>
