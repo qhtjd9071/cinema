@@ -47,7 +47,6 @@
 				</ul>
 			</nav>
 		</div>
-		
 		<div class="mypage_content">
 			
 		</div>
