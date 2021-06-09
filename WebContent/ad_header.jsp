@@ -17,7 +17,7 @@
 <body>
 <div class="header">
 	<h1 class="logo">
-		<a href="${pageContext.request.contextPath }/main.jsp">LOTTE CINEMA</a>
+		<a href="${pageContext.request.contextPath }/admin.jsp">LOTTE CINEMA</a>
 	</h1>
 	
 	<div class="gnb">
