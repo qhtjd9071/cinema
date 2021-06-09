@@ -22,8 +22,7 @@
 	
 	<div class="gnb">
 		<ul class="g_menu1">
-			<li><a href="https://www.lottecinema.co.kr/NLCHS/Mypage/MemberVipzone">멤버십</a></li>
-			<li><a href="https://www.lottecinema.co.kr/NLCHS/Customer">고객센터</a></li>
+			<li><a href="${pageContext.request.contextPath}/csmain">고객센터</a></li>
 			<c:choose>
 				<c:when test="${empty sessionScope.id }">
 					<li><a href="${pageContext.request.contextPath }/login.jsp">로그인</a></li>

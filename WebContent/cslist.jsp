@@ -15,13 +15,14 @@
 		<th>작성자</th>
 		<th>제목</th>
 		<th>글내용</th>
+		<th>작성날짜</th>
 		<th>삭제</th>
 		<th>수정</th>
 	</tr>
 	<c:forEach var="vo" items="${requestScope.list }">
 		<tr>
 			<td>${vo.customerNum }</td>
-			<td>${vo.writer }</td>
+			<td>${vo.writer}</td>
 			<td><a href="csdetail?customerNum=${vo.customerNum}">
 			<c:if test="${vo.lev>0 }">
 				<c:forEach var="i" begin="1" end="${vo.lev}">
@@ -30,6 +31,7 @@
 			</c:if>
 			${vo.title }</a></td></td>
 			<td>${vo.content }</td>	
+			<td>${vo.writeDate}</td>
 			<td><a href="delMember?customerNum=${vo.customerNum}">삭제</a></td>
 			<td><a href="csupdate?customerNum=${vo.customerNum}">수정</a></td>
 			<!-- 답글인경우 들여쓰기하기 -->

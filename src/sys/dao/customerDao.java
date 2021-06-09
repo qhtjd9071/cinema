@@ -1,6 +1,7 @@
 package sys.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -113,7 +114,49 @@ public ArrayList<customerVo> list(int startRow,int endRow){
 			int ref=rs.getInt("ref");
 			int lev=rs.getInt("lev");
 			int step=rs.getInt("step");
-			customerVo vo=new customerVo(num, title, content, ref, lev, step, null, step);
+			int writer=rs.getInt("writer");
+			Date writeDate=rs.getDate("writedate");
+			customerVo vo=new customerVo(num, title, content, ref, lev, step, writeDate, writer);
+			list.add(vo);
+		}
+		return list;
+	}catch(SQLException s) {
+		s.printStackTrace();
+		return null;
+	}finally {
+		dbCon.close(con, pstmt, rs);
+	}	
+}
+
+public ArrayList<customerVo> questionList(int startRow,int endRow,int userNum){
+	String sql="select * from " + 
+			"(" + 
+			"  select g.*,rownum rnum from" + 
+			"  (" + 
+			"	 select * from customer order by ref desc,step asc" + 
+			"  ) g" + 
+			") where rnum>=? and rnum<=? and writer=? and writer='admin'";
+	Connection con=null;
+	PreparedStatement pstmt=null;
+	ResultSet rs=null;
+	try {
+		con=dbCon.getConnection();
+		pstmt=con.prepareStatement(sql);
+		pstmt.setInt(1, startRow);
+		pstmt.setInt(2,endRow);
+		pstmt.setInt(3,userNum);
+		rs=pstmt.executeQuery();
+		ArrayList<customerVo> list=new ArrayList<customerVo>();
+		while(rs.next()) {
+			int num=rs.getInt("customerNum");
+			String title=rs.getString("title");
+			String content=rs.getString("content");
+			int ref=rs.getInt("ref");
+			int lev=rs.getInt("lev");
+			int step=rs.getInt("step");
+			int writer=rs.getInt("writer");
+			Date writeDate=rs.getDate("writedate");
+			customerVo vo=new customerVo(num, title, content, ref, lev, step, writeDate, writer);
 			list.add(vo);
 		}
 		return list;
