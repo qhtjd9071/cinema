@@ -34,7 +34,7 @@
 		
 		<ul class="g_menu2">
 			<c:if test="${sessionScope.id!=null }">
-				<li><a href="${pageContext.request.contextPath }/mypage.jsp" class="btn_my">마이페이지</a></li>
+				<li><a href="${pageContext.request.contextPath }/mypage_payList.jsp" class="btn_my">마이페이지</a></li>
 			</c:if>
 			<c:if test="${sessionScope.id==null }">
 				<li><a href="${pageContext.request.contextPath }/join.jsp" class="btn_my">회원가입</a></li>

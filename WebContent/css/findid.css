@@ -53,19 +53,26 @@ body {
     border:0;
 }
 
-/*content*/
-.contents {
+/*findid*/
+.findid {
 	display:block;
 	box-sizing:border-box;
 	marging:0;
 	padding:0;
 }
-.contents_container {
+.findid_container {
     max-width:1100px;
 	display:block;
 	box-sizing:border-box;
 	margin:0 auto;
     padding:40px 0 0 0;
+}
+.toparea {
+	display:block;
+	box-sizing:border-box;
+	padding:0;
+	margin:0;
+	margin-bottom:65px;
 }
 .title {
     font-size:28px;
@@ -73,35 +80,33 @@ body {
     line-height:32px;
     color:#000;
     word-break:break-all;
-	margin-bottom:50px;
+	margin-bottom:38px;
 	padding:8px 0;
 }
-.join_form {
+.headline {
+    font-size:42px;
+    font-weight:100;
+    line-height:54px;
+    color:#000;
+    letter-spacing:-0.05em;
+	margin:0 0 10px;
+    word-break:break-all;
+}
+
+.find_id {
 	display:block;
 	box-sizing:border-box;
 	marging:0;
 	padding:0;
 }
-.join_form h3 {
+.find_id h3 {
 	font-size:17px;
-	font-weight:inherit;
-	letter-spacing:-0.05em;
+	font-weight:normal;
     color:#000;
-	display:block;
-	box-sizing:border-box;
     padding-bottom:5px;
 	border-bottom:1px solid #000;
 }
-.point_color {
-	color: #ee1c25;
-	margin-right:3px;
-}
-.join_form h3 small {
-	display:inline-block;
-	box-sizing:border-box;
-    margin-left:6px;
-}
-.join1 {
+.findid1 {
     width:100%;
 	display:table;
 	box-sizing:border-box;
@@ -109,7 +114,7 @@ body {
 	padding:20px 0;
     border-bottom:1px solid #d0d0d0;
 }
-.join_col1 {
+.findid_col1 {
 	width:160px;
     display:table-cell;
 	box-sizing:border-box;
@@ -119,7 +124,7 @@ body {
     letter-spacing:-0.05em;
     color:#8a8a8a;
 }
-.join_col_input {
+.findid_col_input {
     display:table-cell;
 	box-sizing:border-box;
 	color:#8a8a8a;
@@ -173,20 +178,6 @@ body {
     white-space:nowrap;
     text-overflow:ellipsis;
     overflow:hidden;
-}
-.ui_button {
-    min-width:70px;
-    height:34px;
-	align-items:flex-start;
-	box-sizing:border-box;
-	color:#fff;
-    background-color:#333;
-    padding:0 2px;
-    font-size:13px;
-    line-height:34px;
-    overflow:hidden;
-    white-space:nowrap;
-    border:none;
 }
 .submit_container {
 	width:100%;

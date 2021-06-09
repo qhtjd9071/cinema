@@ -11,18 +11,19 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
 
 <link rel="stylesheet" href="css/join.css">
+<link rel="stylesheet" href="css/footer2.css">
 </head>
 
 <body>
 <div class="header">
 	<div class="header_container">
-		<h1><a><img src="images/login/logo.png"></a></h1>
+		<h1><a href="${pageContext.request.contextPath }/main.jsp"><img src="images/login/logo.png"></a></h1>
 	</div>
 </div>
 <div class="contents">
 	<div class="contents_container">
 		<h2 class="title">회원가입</h2>
-		<form method="post" action="join" class="join_form"  onsubmit="return check()">
+		<form method="post" action="join" class="join_form" onsubmit="return check()">
 			<h3>
 				회원정보입력
 				<span class="point_color"><small>*은 필수입력 항목입니다.</small></span>
@@ -101,7 +102,7 @@
 			</div>
 			<div class="join1">
 				<div class="join_col1">
-					<label for="">휴대폰 번호</label>
+					<label for=""><span class="point_color">*</span>휴대폰 번호</label>
 				</div>
 				<div class="join_col_input">
 					<div class="input_wrap">
@@ -119,33 +120,7 @@
 </div>
 
 <div class="footer">
-	<div class="footer_container">
-		<div class="utility">
-			<div class="utility_item">
-				<a class="item_1">회사소개</a>
-			</div>
-			<div class="utility_item">
-				<a class="item_2">고객센터</a>
-			</div>
-			<div class="utility_item">
-				<a class="item_3">이용약관</a>
-			</div>
-			<div class="utility_item">
-				<a class="item_4">개인정보처리방침</a>
-			</div>
-		</div>
-	
-		<div class="com_address">
-			<address>
-				<span>서울시 중구 통일로 2길 16 AIA타워 14층</span>
-				<span>회사명 로또멤버스(주)</span>
-				<span>대표이사 전형석</span>
-				<span>사업자등록번호 104-86-58491</span>
-				<span>고객센터 1898-8900</span>
-			</address>
-		</div>
-		<div class="copyright">© LOTTO MEMBERS CO.,LTD.</div>
-	</div>
+	<jsp:include page="footer2.jsp"/>
 </div>
 </body>
 <script type="text/javascript">

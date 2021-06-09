@@ -53,14 +53,14 @@ body {
     border:0;
 }
 
-/*content*/
-.contents {
+/*pwdupdate*/
+.pwdupdate {
 	display:block;
 	box-sizing:border-box;
 	marging:0;
 	padding:0;
 }
-.contents_container {
+.pwdupdate_container {
     max-width:1100px;
 	display:block;
 	box-sizing:border-box;
@@ -81,25 +81,7 @@ body {
 	box-sizing:border-box;
 	marging:0;
 	padding:0;
-}
-.join_form h3 {
-	font-size:17px;
-	font-weight:inherit;
-	letter-spacing:-0.05em;
-    color:#000;
-	display:block;
-	box-sizing:border-box;
-    padding-bottom:5px;
-	border-bottom:1px solid #000;
-}
-.point_color {
-	color: #ee1c25;
-	margin-right:3px;
-}
-.join_form h3 small {
-	display:inline-block;
-	box-sizing:border-box;
-    margin-left:6px;
+	border-top:1px solid #000;
 }
 .join1 {
     width:100%;
@@ -174,19 +156,13 @@ body {
     text-overflow:ellipsis;
     overflow:hidden;
 }
-.ui_button {
-    min-width:70px;
-    height:34px;
-	align-items:flex-start;
+.join_form ul {
+	width:100%;
+	display:block;
 	box-sizing:border-box;
-	color:#fff;
-    background-color:#333;
-    padding:0 2px;
-    font-size:13px;
-    line-height:34px;
-    overflow:hidden;
-    white-space:nowrap;
-    border:none;
+	margin:70px 0 0 20px;
+	padding:0;
+	color:#444;
 }
 .submit_container {
 	width:100%;
@@ -195,6 +171,22 @@ body {
 	marging:0;
 	padding:0;
 	text-align:center;
+}
+.reset_btn {
+    min-width:9.375em;
+    height:40px;
+    display: inline-block;
+    align-items:flex-start;
+    text-align:center;
+    vertical-align:top;
+    line-height:40px;
+	padding:0 10px;
+	margin:0 auto;
+	margin-top:70px;
+	color:#ee1c25;
+    background-color:#fff;
+    border:1px solid #ee1c25;
+    border-radius:2px;
 }
 .submit_btn {
     min-width:9.375em;

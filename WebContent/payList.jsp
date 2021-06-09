@@ -17,40 +17,29 @@
 <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-
-	<div class="header2">
-		<jsp:include page="header2.jsp"/>
-	</div>
-	
 	<div class="movie">
 		<div class="movie_container">
-
-		<h1>예매 내역</h1>
-		<table border="1">
-			<tr>
-				<th>내역</th>
-				<th>금액</th>
-				<th>결제날짜</th>
-				<th>취소</th>
-			</tr>
-			
-			<c:forEach var="vo" items="${list}">
+			<h1>예매 내역</h1>
+			<table border="1">
 				<tr>
-					<td>${vo.movieTitle}
-						좌석 : ${vo.seatNumArr}
-					</td>
-					<td>${vo.tot }</td>
-					<td>${vo.payDate }</td>
-					<td><a href="${pageContext.request.contextPath}/cancel?partner_order_id=${vo.intNum}">취소</a></td>
+					<th>내역</th>
+					<th>금액</th>
+					<th>결제날짜</th>
+					<th>취소</th>
 				</tr>
-			</c:forEach>
-		</table>
-
+				
+				<c:forEach var="vo" items="${list}">
+					<tr>
+						<td>${vo.movieTitle}
+							좌석 : ${vo.seatNumArr}
+						</td>
+						<td>${vo.tot }</td>
+						<td>${vo.payDate }</td>
+						<td><a href="${pageContext.request.contextPath}/cancel?partner_order_id=${vo.intNum}">취소</a></td>
+					</tr>
+				</c:forEach>
+			</table>
 		</div>
-	</div>
-	
-	<div class="footer">
-		<jsp:include page="footer.jsp"/>
 	</div>
 </body>
 </html>

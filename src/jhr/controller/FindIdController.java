@@ -49,19 +49,3 @@ public class FindIdController extends HttpServlet{
 		req.getRequestDispatcher("/findidResult.jsp").forward(req, resp);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

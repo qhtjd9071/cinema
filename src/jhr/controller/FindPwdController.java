@@ -54,19 +54,3 @@ public class FindPwdController extends HttpServlet{
 		req.getRequestDispatcher("/findpwdResult.jsp").forward(req, resp);
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
