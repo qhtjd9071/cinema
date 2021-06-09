@@ -35,7 +35,7 @@
 </div>
 
 <div class="mypage">
-	<a href="${pageContext.request.contextPath }/reservation.jsp">예매 내역</a>
+	<a href="${pageContext.request.contextPath }/payList.jsp">예매 내역</a>
 	<a href="${pageContext.request.contextPath }/inquiry.jsp">나의 문의 내역</a>
 	<!-- <a href="${pageContext.request.contextPath }/update">MY 정보 관리</a> -->
 	<input type="button" value="MY 정보 관리" onclick="updatePop('<%=id %>','<%=pwd %>')"/>
