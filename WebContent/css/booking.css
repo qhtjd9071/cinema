@@ -14,16 +14,16 @@ body {
 	overflow-y:scroll;
 }
 .booking_container{
-	width:100%;
+	width:1280px;
 	display:block;
-	margin:0 auto;
+	margin:0;
 	padding:115px 0 0 0;
 }
 .booking_wrapper_container {
-	width:100%;
+	width:1280px;
 	display:block;
 	margin:0 auto;
-	padding:50px 0 0 70px;
+	padding:50px 0 50px 70px;
 	background-color:#444;
 }
 .wrap_booking {
@@ -64,8 +64,7 @@ body {
 	letter-spacing: normal;
 	line-height: 1.1;
 	margin-left: 0px;
-	overflow-x: hidden;
-	overflow-y: hidden;
+	overflow: hidden;
 	position: relative;
 	width: 1202px;
 }
@@ -176,58 +175,23 @@ body {
 	align-items: flex-start;
 	appearance: none;
 	background-color: #fff;
-	border-bottom-color: rgb(17, 17, 17);
-	border-bottom-left-radius: 2px;
-	border-bottom-right-radius: 2px;
-	border-bottom-style: solid;
-	border-bottom-width: 2px;
-	border-image-outset: initial;
-	border-image-repeat: initial;
-	border-image-slice: initial;
-	border-image-source: initial;
-	border-image-width: initial;
-	border-left-color: initial;
-	border-left-style: none;
-	border-left-width: initial;
-	border-right-color: initial;
-	border-right-style: none;
-	border-right-width: initial;
-	border-top-color: initial;
-	border-top-left-radius: 2px;
-	border-top-right-radius: 2px;
-	border-top-style: none;
-	border-top-width: 0px;
+	border:none;
+	border-bottom:2px solid rgb(17, 17, 17);
 	box-sizing: border-box;
 	color: #000;
 	cursor: pointer;
 	display: inline-block;
-	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
 	font-size: 15px;
-	font-stretch: normal;
-	font-style: normal;
-	font-variant-caps: normal;
-	font-variant-east-asian: normal;
-	font-variant-ligatures: normal;
-	font-variant-numeric: normal;
 	font-weight: 400;
 	height: 61px;
 	left: 0px;
 	letter-spacing: normal;
 	line-height: 50px;
-	list-style-image: initial;
-	list-style-position: initial;
-	list-style-type: none;
+	list-style: none;
 	margin: 55px 0em 0em 0em; 
-	padding-bottom: 1px;
-	padding-left: 6px;
-	padding-right: 6px;
-	padding-top: 1px;
+	padding:1px 6px;
 	position: absolute;
 	text-align: center;
-	text-indent: 0px;
-	text-rendering: auto;
-	text-shadow: none;
-	text-transform: none;
 	top: 0px;
 	vertical-align: middle;
 	width: 50%;
@@ -236,12 +200,12 @@ body {
 	-webkit-border-image none;
 }
 
-.button.location.span{
+.location span{
 	color: #000;
 	cursor: pointer;
 	display: inline;
 	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
-	font-size: 15px;
+	font-size: 20px;
 	font-stretch: normal;
 	font-style: normal;
 	font-variant-caps: normal;
@@ -269,77 +233,43 @@ body {
 }
 
 .theaterLoc-list{
-	background-color: #F5F5F5;
+	background-color: #fff;
 	display: block;
 	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
-	font-size: 12px;
+	font-size: 20px;
 	height: 100%;
-	margin: 0px;
-	letter-spacing: -0.03em;
+	letter-spacing: 0em;
 	line-height: 1.1;
 	list-style-image: initial;
 	list-style-position: initial;
 	list-style-type: none;
 	position: relative;
-	text-align: left;
-	width: 350px;
+	text-align: center;
+	width: 175px;
+	margin-top:61px;
 }
-.theaterLoc-list{
+.theater_name{
 	align-items: flex-start;
 	appearance: none;
 	background-color: #fff;
-	border-bottom-color: rgb(17, 17, 17);
-	border-bottom-left-radius: 2px;
-	border-bottom-right-radius: 2px;
-	border-bottom-style: solid;
-	border-bottom-width: 2px;
-	border-image-outset: initial;
-	border-image-repeat: initial;
-	border-image-slice: initial;
-	border-image-source: initial;
-	border-image-width: initial;
-	border-left-color: initial;
-	border-left-style: none;
-	border-left-width: initial;
-	border-right-color: initial;
-	border-right-style: none;
-	border-right-width: initial;
-	border-top-color: initial;
-	border-top-left-radius: 2px;
-	border-top-right-radius: 2px;
-	border-top-style: none;
-	border-top-width: 0px;
+	border:none;
+	border-bottom:2px solid rgb(17, 17, 17);
 	box-sizing: border-box;
 	color: #000;
 	cursor: pointer;
 	display: inline-block;
 	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
 	font-size: 15px;
-	font-stretch: normal;
-	font-style: normal;
-	font-variant-caps: normal;
-	font-variant-east-asian: normal;
-	font-variant-ligatures: normal;
-	font-variant-numeric: normal;
 	font-weight: 400;
 	height: 61px;
-	left: 0px;
+	left: 50%;
 	letter-spacing: normal;
 	line-height: 50px;
-	list-style-image: initial;
-	list-style-position: initial;
-	list-style-type: none;
+	list-style: none;
 	margin: 55px 0em 0em 0em; 
-	padding-bottom: 1px;
-	padding-left: 6px;
-	padding-right: 6px;
-	padding-top: 1px;
+	padding:1px 6px;
 	position: absolute;
 	text-align: center;
-	text-indent: 0px;
-	text-rendering: auto;
-	text-shadow: none;
-	text-transform: none;
 	top: 0px;
 	vertical-align: middle;
 	width: 50%;
@@ -347,12 +277,12 @@ body {
 	writing-mode: horizontal-tb
 	-webkit-border-image none;
 }
-.button.theater_name.span{
+.theater_name span{
 	color: #000;
 	cursor: pointer;
 	display: inline;
 	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
-	font-size: 15px;
+	font-size: 20px;
 	font-stretch: normal;
 	font-style: normal;
 	font-variant-caps: normal;
@@ -374,11 +304,26 @@ body {
 	text-transform: none;
 	vertical-align: top;
 	white-space: nowrap;
-	width: auto;
+	width: 175px;
 	word-spacing: normal;
 	writing-mode: horizontal-tb;
 }
-
+.theaterName_list{
+	background-color: #fff;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 20px;
+	height: 100%;
+	letter-spacing: 0em;
+	line-height: 1.1;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	position: absolute;
+	text-align: center;
+	width: 175px;
+	margin-left: 175px;
+}
 .movie-part{
 	background-color: #F8F8F8;
 	box-sizing: border-box;
@@ -581,15 +526,13 @@ body {
 	direction: ltr;
 	display: block;
 	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
-	font-size: 15px;
-	font-weight: 700;
+	font-size: 20px;
 	letter-spacing: 0;
 	line-height: 1.1;
 	list-style-image: initial;
 	list-style-position: initial;
 	list-style-type: none;
-	overflow-x: hidden;
-	overflow-y: hidden;
+	overflow: hidden;
 	padding-left: 30px;
 	text-align: left;
 	text-decoration-thickness: initial;
@@ -597,6 +540,7 @@ body {
 	vertical-align: middle;
 	white-space: nowrap;
 	width: 250px;
+	touch-action: pinch-zoom;
 }
 .date-part{
 	background-color: rgb(255, 255, 255);
@@ -610,7 +554,7 @@ body {
 	letter-spacing: -0.03em;
 	line-height: 1.1;
 	position: relative;
-	width: 500px;
+	width: 100px;
 }
 .booking-date{
 	background-color: rgb(0, 0, 0);
@@ -624,8 +568,7 @@ body {
 	height: 55px;
 	letter-spacing: -0.03em;
 	line-height: 55px;
-	overflow-x: hidden;
-	overflow-y: hidden;
+	overflow: hidden;
 	position: relative;
 	text-align: center;
 }
@@ -641,4 +584,35 @@ body {
 	margin-left: 20px;
 	margin-right: 20px;
 	margin-top: 22px;
+}
+.time-part{
+	background-color: rgb(255, 255, 255);
+	box-sizing: border-box;
+	color: rgb(0, 0, 0);
+	display: block;
+	float: left;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 100%;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	position: relative;
+	width: 400px;
+}
+.booking-title{
+	background-color: rgb(0, 0, 0);
+	border-right-color: rgb(34, 34, 34);
+	border-right-style: solid;
+	border-right-width: 1px;
+	color: rgb(0, 0, 0);
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 55px;
+	letter-spacing: -0.03em;
+	line-height: 55px;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	position: relative;
+	text-align: center;
 }

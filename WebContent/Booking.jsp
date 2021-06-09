@@ -45,7 +45,7 @@
 				        		<button type="button" class="theater_name">
 				        			<span>영화관</span>
 				        		</button>
-					        	<div id="theaterName-list"></div>
+					        	<div id="theaterName-list" class="theaterName_list"></div>
 				        	</li>
 			        	</ul>
 			        </div>
@@ -64,18 +64,20 @@
 			    </div>
 			    <div class="date-part">
 			        <div class="booking-date">
-			        	<h4 class="booking-move-top">상영시간표</h4>
+			        	<h4 class="booking-move-top">날짜</h4>
 			        </div>
 			        <div class="booking_date_wrap">
-				        <div id="year-month"></div>
-				        <div id="date-list"></div>
+				        <div id="year-month" class="year_month"></div>
+				        <div id="date-list" class="date_list"></div>
 			        </div>
 			    </div>
 			    <div class="time-part">
-		        <div class="booking-title">상영시간표</div>
-		        <div>
-		   		  	<div id="show-list"></div>
-		        </div>
+			        <div class="booking-title">
+			        	<h4 class="booking-title-top">상영시간표</h4>
+			        </div>
+			        <div>
+			   		  	<div id="show-list"></div>
+			        </div>
 		    </div>
 			</div>
 		</div>
