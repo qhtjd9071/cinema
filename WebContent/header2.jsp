@@ -41,13 +41,13 @@
 			<c:if test="${sessionScope.id==null }">
 				<li><a href="${pageContext.request.contextPath }/join.jsp" class="btn_my">회원가입</a></li>
 			</c:if>
-			<li><a href="${pageContext.request.contextPath }/Booking" class="btn_reserve">바로 예매</a></li>
+			<li><a href="${pageContext.request.contextPath }/booking" class="btn_reserve">바로 예매</a></li>
 		</ul>
 	</div>
 	
 	<div class="nav">
 		<ul>
-			<li><a href="${pageContext.request.contextPath }/Booking" class="nav_ticketing">예매</a></li>
+			<li><a href="${pageContext.request.contextPath }/booking" class="nav_ticketing">예매</a></li>
 			<li><a href="${pageContext.request.contextPath }/movieList" class="nav_movie">영화</a></li>
 			<li><a href="${pageContext.request.contextPath }/ntlist" class="nav_event">이벤트</a></li>
 			<li><a href="https://www.lottecinema.co.kr/NLCHS/Customer/NoticeList" class="nav_noticelist">공지사항</a></li>
