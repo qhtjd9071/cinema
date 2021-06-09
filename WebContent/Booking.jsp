@@ -52,7 +52,7 @@
 			    </div>
 			    <div class="movie-part">
 			        <div class="booking-movie">
-			        	<h4 class="booking-move-top">영화</h4>
+			        	<h4 class="booking-move-top">영화목록</h4>
 			        </div>
 			        <div class="sort-wrapper">
 							<select id="movieField" class = "movieField" onchange="changeMovie()">
