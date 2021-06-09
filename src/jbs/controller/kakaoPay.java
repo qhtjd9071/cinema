@@ -52,7 +52,7 @@ public class kakaoPay extends HttpServlet{
 	    	    ipAddress="localhost";
 	            String base_url="http://"+ipAddress+":"+request.getLocalPort()+request.getContextPath();
 	            String approval_url=base_url+"/kakao?partner_order_id="+partner_order_id;
-	            String cancel_url=base_url+"/pageList";
+	            String cancel_url=base_url+"/payList";
 	            String fail_url=base_url+"/bookCancel";
 	            
 	            //header에 붙여서 post방식으로 전송

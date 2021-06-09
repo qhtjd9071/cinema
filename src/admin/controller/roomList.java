@@ -31,6 +31,7 @@ public class roomList extends HttpServlet{
 			json.put("roomNum",vo.getRoomNum());
 			arr.put(json);
 		}
+		response.setContentType("text/plain;charset=utf-8");
 		PrintWriter pw=response.getWriter();
 		pw.print(arr);
 	}

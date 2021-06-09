@@ -30,6 +30,7 @@ public class movieList extends HttpServlet{
 			json.put("image",vo.getImage());
 			arr.put(json);
 		}
+		response.setContentType("text/plain;charset=utf-8");
 		PrintWriter pw=response.getWriter();
 		pw.print(arr);
 	}
