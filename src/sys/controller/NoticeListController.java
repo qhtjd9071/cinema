@@ -16,9 +16,6 @@ import sys.dao.noticeDao;
 public class NoticeListController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		HttpSession session=req.getSession();
-		String id=(String)session.getAttribute("id");
-		
 		String spageNum=req.getParameter("pageNum");
 		int pageNum=1;
 		if(spageNum!=null) {
@@ -41,7 +38,6 @@ public class NoticeListController extends HttpServlet {
 			endPageNum=pageCount;
 		}
 		
-		req.setAttribute("id", id);
 		req.setAttribute("list",list);
 		req.setAttribute("pageCount",pageCount);
 		req.setAttribute("startPageNum",startPageNum);
