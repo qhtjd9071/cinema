@@ -30,16 +30,20 @@ public class LoginController extends HttpServlet{
 			cook1.setPath("/");
 			resp.addCookie(cook1);
 		}
-		UsersDao dao=new UsersDao();
-		boolean b=dao.isMember(id, pwd);
-		if(b) {
-			HttpSession session=req.getSession();
-			session.setAttribute("id",id);
-			session.setAttribute("pwd",pwd);
-			resp.sendRedirect("main.jsp");
+		if(id.equals("admin")&&pwd.equals("1234")) {
+			resp.sendRedirect(req.getContextPath()+"/admin.jsp");
 		}else {
-			req.setAttribute("errMsg","아이디, 비밀번호가 일치하지 않습니다.");
-			req.getRequestDispatcher("/login.jsp").forward(req, resp);
+			UsersDao dao=new UsersDao();
+			boolean b=dao.isMember(id, pwd);
+			if(b) {
+				HttpSession session=req.getSession();
+				session.setAttribute("id",id);
+				session.setAttribute("pwd",pwd);
+				resp.sendRedirect("main.jsp");
+			}else {
+				req.setAttribute("errMsg","아이디, 비밀번호가 일치하지 않습니다.");
+				req.getRequestDispatcher("/login.jsp").forward(req, resp);
+			}
 		}
 	}
 }
