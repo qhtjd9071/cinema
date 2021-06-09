@@ -3,9 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>join.jsp</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
+
+<link rel="stylesheet" href="css/join.css">
 </head>
+
 <body>
 <div class="header">
 	<div class="header_container">
@@ -13,60 +20,140 @@
 	</div>
 </div>
 <div class="contents">
-	<h2 class="title">회원가입</h2>
-	<form method="post" action="join" class="join_form"  onsubmit="return check()">
-		<h3>
-			회원정보입력
-			<span><small>*은 필수입력 항목입니다.</small></span>
-		</h3>
-		<div class="join1">
-			<div class="join_col">
-				<label for="">
-					<em class="point_color">이름*</em>
-				</label>
-			</div>
-			<div class="join_col_input">
-				<div class="input_wrap">
-					<div class="ui_input">
-						<input type="text" name="name" maxlength="13">
-						<span class="placeholder">한글 또는 영문으로 입력해주세요.</span>
+	<div class="contents_container">
+		<h2 class="title">회원가입</h2>
+		<form method="post" action="join" class="join_form"  onsubmit="return check()">
+			<h3>
+				회원정보입력
+				<span class="point_color"><small>*은 필수입력 항목입니다.</small></span>
+			</h3>
+			<div class="join1">
+				<div class="join_col1">
+					<label for=""><span class="point_color">*</span>이름</label>
+				</div>
+				<div class="join_col_input">
+					<div class="input_wrap">
+						<div class="wrap_inner">
+							<div class="ui_input">
+								<input type="text" name="name" class="input_space" maxlength="12" placeholder="한글 또는 영문으로 입력해주세요.">
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="join1">
-			<div class="join_col">
-				<label for="">
-					<em class="point_color">아이디*</em>
-				</label>
-			</div>
-			<div class="join_col_input">
-				<div class="input_wrap">
-					<div class="ui_input">
-						<input type="text" name="id" maxlength="15" id="id">
-						<span class="placeholder">아이디를 입력해주세요.</span>
-						<input type="button" value="중복확인" id="idoverlap">  
-						<span id="result"></span><br>
+			<div class="join1">
+				<div class="join_col1">
+					<label for=""><span class="point_color">*</span>아이디</label>
+				</div>
+				<div class="join_col_input">
+					<div class="input_wrap">
+						<div class="wrap_inner">
+							<div class="ui_input">
+								<input type="text" name="id" class="input_space" maxlength="15" id="id" placeholder="아이디를 입력해주세요.">
+								<span id="result"></span><br>
+							</div>
+							<button type="button" class="ui_button" id="idoverlap">중복확인</button>
+						</div>
 					</div>
-					<!-- <button type="button" class="id_button">메일 발송</button> -->
 				</div>
 			</div>
+			<div class="join1">
+				<div class="join_col1">
+					<label for=""><span class="point_color">*</span>비밀번호</label>
+				</div>
+				<div class="join_col_input">
+					<div class="input_wrap">
+						<div class="wrap_inner">
+							<div class="ui_input">
+								<input type="password" name="pwd" class="input_space" maxlength="20" id="pwd" placeholder="비밀번호를 입력해주세요."><br>
+							</div><br>
+							<span class="point_color"><small>8-15자리의 영문/숫자를 함께 입력해주세요.</small></span><br>
+							<div class="ui_input">
+								<input type="password" name="pwd2" class="input_space" maxlength="20" id="pwd" placeholder="입력하신 비밀번호를 다시 한번 입력해주세요.">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="join1">
+				<div class="join_col1">
+					<label for=""><span class="point_color">*</span>이메일</label>
+				</div>
+				<div class="join_col_input">
+					<div class="input_wrap">
+						<div class="ui_input">
+							<input type="text" name="email" class="input_space" placeholder="이메일주소를 입력해주세요.">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="join1">
+				<div class="join_col1">
+					<label for=""><span class="point_color">*</span>생년월일</label>
+				</div>
+				<div class="join_col_input">
+					<div class="input_wrap">
+						<div class="ui_input">
+							<input type="text" name="year" class="input_space" maxlength="20" placeholder="생년월일 8자리를 입력해주세요. (ex.19990625)">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="join1">
+				<div class="join_col1">
+					<label for="">휴대폰 번호</label>
+				</div>
+				<div class="join_col_input">
+					<div class="input_wrap">
+						<div class="ui_input">
+							<input type="text" name="phone" class="input_space" maxlength="15" placeholder="휴대폰 번호를 입력해주세요. (숫자만 입력가능합니다.)">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="submit_container">
+				<input type="submit" value="등록" class="submit_btn">
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="footer">
+	<div class="footer_container">
+		<div class="utility">
+			<div class="utility_item">
+				<a class="item_1">회사소개</a>
+			</div>
+			<div class="utility_item">
+				<a class="item_2">고객센터</a>
+			</div>
+			<div class="utility_item">
+				<a class="item_3">이용약관</a>
+			</div>
+			<div class="utility_item">
+				<a class="item_4">개인정보처리방침</a>
+			</div>
 		</div>
-		
-		
-		비밀번호*<input type="text" name="pwd"><br>
-		이메일*<input type="text" name="email"><br>
-		생년월일*<input type="text" name="year"><br>
-		전화번호*<input type="text" name="phone"><br>
-		<input type="submit" value="등록">
-	</form>
+	
+		<div class="com_address">
+			<address>
+				<span>서울시 중구 통일로 2길 16 AIA타워 14층</span>
+				<span>회사명 로또멤버스(주)</span>
+				<span>대표이사 전형석</span>
+				<span>사업자등록번호 104-86-58491</span>
+				<span>고객센터 1898-8900</span>
+			</address>
+		</div>
+		<div class="copyright">© LOTTO MEMBERS CO.,LTD.</div>
+	</div>
 </div>
 </body>
 <script type="text/javascript">
 	function check(){
 		var name=document.getElementsByName("name")[0];
 		var id=document.getElementsByName("id")[0];
-		var pwd=document.getElementsByName("pwd")[0];
+		var pwd1=document.getElementsByName("pwd")[0];
+		var pwd2=document.getElementsByName("pwd2")[0];
 		var email=document.getElementsByName("email")[0];
 		var year=document.getElementsByName("year")[0];
 		var phone=document.getElementsByName("phone")[0];
@@ -80,9 +167,28 @@
 			id.focus();
 			return false;
 		}
-		if(pwd.value.trim()==""){
+		if(pwd1.value.trim()==""){
 			alert("비밀번호를 입력하세요.");
 			pwd.focus();
+			return false;
+		}
+		/*
+		if(pwd1.value.length<8 || pwd1.value.length>15){
+			alert("비밀번호는 8-15자리의 영문/숫자를 함께 입력해주세요.");
+			pwd.focus();
+			return false;
+		}
+		*/
+		if(pwd2.value.trim()==""){
+			alert("비밀번호 확인을 입력하세요.");
+			pwd.focus();
+			return false;
+		}
+		if (pwd1.value!=pwd2.value) {
+			alert("새로운 비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+			pwd1.value="";
+			pwd2.value="";
+			pwd1.focus();
 			return false;
 		}
 		if(email.value.trim()==""){
