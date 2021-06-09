@@ -27,7 +27,7 @@ CREATE TABLE book
 	price number NOT NULL,
 	userNum number NOT NULL,
 	cancel varchar2(20),
-	seatNum number NOT NULL,
+	seatNum varchar2(10) NOT NULL,
 	PRIMARY KEY (bookNum)
 );
 
@@ -73,7 +73,7 @@ CREATE TABLE movie
 	movieNum number NOT NULL,
 	movieTitle varchar2(50) NOT NULL,
 	movieContent varchar2(1000) NOT NULL,
-	director varchar2(10) NOT NULL,
+	director varchar2(20) NOT NULL,
 	genre varchar2(20) NOT NULL,
 	rating varchar2(20) NOT NULL,
 	image varchar2(100) NOT NULL,
@@ -107,21 +107,14 @@ CREATE TABLE notice
 
 CREATE TABLE pay
 (
-	payNum varchar2(40) NOT NULL,
-	intNum number unique NOT NULL,
+	payNum varchar2(200) NOT NULL,
+	intNum number NOT NULL,
 	method varchar2(20),
-    count number,
 	tot number,
+	payDate date NOT NULL,
 	PRIMARY KEY (payNum)
-    
 );
 
-CREATE TABLE integration
-(
-    intNum number NOT NULL,
-    bookNumArray varchar2(2000) NOT NULL,
-    PRIMARY KEY (intNum)
-);
 
 CREATE TABLE room
 (
@@ -141,6 +134,7 @@ CREATE TABLE show
 	beginTime date NOT NULL,
 	endTime date NOT NULL,
 	roomserialNum number NOT NULL,
+    price number NOT NULL,
 	PRIMARY KEY (showNum)
 );
 
@@ -152,15 +146,18 @@ CREATE TABLE users
 	pwd varchar2(20) NOT NULL,
 	name varchar2(10) NOT NULL,
 	email varchar2(50) NOT NULL,
+    year varchar2(20) NOT NULL,
 	phone varchar2(20) NOT NULL,
-	year number NOT NULL,
 	delUser varchar2(20),
 	PRIMARY KEY (userNum)
 );
 
-
-
-/* Create Foreign Keys */
+CREATE TABLE integration
+(
+    intNum number NOT NULL,
+    bookNumArray varchar2(20) NOT NULL,
+    PRIMARY KEY (intNum)
+);
 
 ALTER TABLE pay
 	ADD FOREIGN KEY (intNum)
@@ -222,4 +219,18 @@ ALTER TABLE movieComments
 ;
 
 commit;
+
+
+select * from book;
+select * from comments;
+select * from customer;
+select * from event;
+select * from integration;
+select * from movie;
+select * from moviecomments;
+select * from notice;
+select * from pay;
+select * from room;
+select * from show;
+select * from users;
 
