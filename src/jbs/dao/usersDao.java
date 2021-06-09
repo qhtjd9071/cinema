@@ -36,4 +36,25 @@ public class usersDao {
 		}
 		return 0;
 	}
+	public String getId(int userNum) {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="select * from users where userNum=?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,userNum);
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				String id=rs.getString(userNum);
+				return id;
+			}
+		}catch(SQLException s) {
+			s.printStackTrace();
+		}finally {
+			dbCon.close(con, pstmt,rs);
+		}
+		return null;
+	}
 }

@@ -8,7 +8,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import jbs.dao.usersDao;
 import semi.vo.customerVo;
 import sys.dao.customerDao;
 
@@ -32,7 +34,16 @@ public class CustomerListController extends HttpServlet{
 		if(endPageNum>pageCount) {
 			endPageNum=pageCount;
 		}
+		
+		HttpSession session=req.getSession();
+		String id=(String)session.getAttribute("id");
+		System.out.println("id:"+id);
+		usersDao usersdao=usersDao.getInstance();
+		int userNum=usersdao.getUserNum(id);
+		System.out.println("userNum:"+userNum);
+		
 		req.setAttribute("list",list);
+		req.setAttribute("userNum",userNum);
 		req.setAttribute("pageCount",pageCount);
 		req.setAttribute("startPageNum",startPageNum);
 		req.setAttribute("endPageNum",endPageNum);

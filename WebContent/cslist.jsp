@@ -8,11 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+${userNum }=${sessionScope.id }
 <h1>전체글목록</h1>
 <table border="1" width="500">
 	<tr>
 		<th>글번호</th>
-		<th>작성자</th>
 		<th>제목</th>
 		<th>글내용</th>
 		<th>작성날짜</th>
@@ -22,18 +22,25 @@
 	<c:forEach var="vo" items="${requestScope.list }">
 		<tr>
 			<td>${vo.customerNum }</td>
-			<td>${vo.writer}</td>
 			<td><a href="csdetail?customerNum=${vo.customerNum}">
 			<c:if test="${vo.lev>0 }">
 				<c:forEach var="i" begin="1" end="${vo.lev}">
 					&nbsp;[re]
 				</c:forEach>
 			</c:if>
-			${vo.title }</a></td></td>
+			${vo.title }</a></td>
 			<td>${vo.content }</td>	
-			<td>${vo.writeDate}</td>
-			<td><a href="delMember?customerNum=${vo.customerNum}">삭제</a></td>
-			<td><a href="csupdate?customerNum=${vo.customerNum}">수정</a></td>
+			<td>${vo.writedate}</td>
+			<c:choose>
+				<c:when test="${vo.writer==requestScope.userNum }">
+					<td><a href="delMember?customerNum=${vo.customerNum}">삭제</a></td>
+					<td><a href="csupdate?customerNum=${vo.customerNum}">수정</a></td>
+				</c:when>
+				<c:otherwise>
+					<td>삭제불가</td>
+					<td>수정불가</td>
+				</c:otherwise>
+			</c:choose>
 			<!-- 답글인경우 들여쓰기하기 -->
 		</tr>
 	</c:forEach>

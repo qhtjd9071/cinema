@@ -31,6 +31,9 @@ public class LoginController extends HttpServlet{
 			resp.addCookie(cook1);
 		}
 		if(id.equals("admin")&&pwd.equals("1234")) {
+			HttpSession session=req.getSession();
+			session.setAttribute("id",id);
+			session.setAttribute("pwd",pwd);
 			resp.sendRedirect(req.getContextPath()+"/admin.jsp");
 		}else {
 			UsersDao dao=new UsersDao();
