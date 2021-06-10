@@ -10,9 +10,12 @@ public class payListVo {
 	private Date payDate;
 	private String movieTitle;
 	private String seatNumArr;
+	private String theaterName;
+	private String roomNum;
+	private String beginTime;
 	public payListVo() {}
 	public payListVo(String payNum, int intNum, String method, int tot, Date payDate, String movieTitle,
-			String seatNumArr) {
+			String seatNumArr, String theaterName, String roomNum, String beginTime) {
 		super();
 		this.payNum = payNum;
 		this.intNum = intNum;
@@ -21,6 +24,9 @@ public class payListVo {
 		this.payDate = payDate;
 		this.movieTitle = movieTitle;
 		this.seatNumArr = seatNumArr;
+		this.theaterName = theaterName;
+		this.roomNum = roomNum;
+		this.beginTime = beginTime;
 	}
 	public String getPayNum() {
 		return payNum;
@@ -63,6 +69,24 @@ public class payListVo {
 	}
 	public void setSeatNumArr(String seatNumArr) {
 		this.seatNumArr = seatNumArr;
+	}
+	public String getTheaterName() {
+		return theaterName;
+	}
+	public void setTheaterName(String theaterName) {
+		this.theaterName = theaterName;
+	}
+	public String getRoomNum() {
+		return roomNum;
+	}
+	public void setRoomNum(String roomNum) {
+		this.roomNum = roomNum;
+	}
+	public String getBeginTime() {
+		return beginTime;
+	}
+	public void setBeginTime(String beginTime) {
+		this.beginTime = beginTime;
 	}
 	
 }

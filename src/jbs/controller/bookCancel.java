@@ -8,7 +8,7 @@ import jbs.dao.bookDao;
 import jbs.dao.integrationDao;
 import jbs.dao.payDao;
 import jbs.dao.usersDao;
-import semi.vo.bsmJoinVo;
+import semi.vo.bsmrJoinVo;
 import semi.vo.integrationVo;
 import semi.vo.payVo;
 
@@ -36,7 +36,7 @@ public class bookCancel{
 				for(int j=0;j<bookNumArr2.length;j++) {
 					int bookNum=Integer.parseInt(bookNumArr2[j]);
 					System.out.println("bookNum:"+bookNum);
-					bsmJoinVo bsmvo=bookdao.getUserBook(bookNum);
+					bsmrJoinVo bsmvo=bookdao.getUserBook(bookNum);
 					System.out.println("userNum==bsmvo.getUserNum():"+(userNum==bsmvo.getUserNum()));
 					//user체크 후 결제 취소된 결제테이블, 통합테이블, 예매테이블 삭제
 					if(userNum==bsmvo.getUserNum()) {

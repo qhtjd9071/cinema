@@ -14,7 +14,7 @@ import jbs.dao.bookDao;
 import jbs.dao.integrationDao;
 import jbs.dao.payDao;
 import jbs.dao.usersDao;
-import semi.vo.bsmJoinVo;
+import semi.vo.bsmrJoinVo;
 import semi.vo.integrationVo;
 import semi.vo.payListVo;
 import semi.vo.payVo;
@@ -29,7 +29,6 @@ public class payListController extends HttpServlet{
 		
 		HttpSession session=request.getSession();
 		String id=(String)session.getAttribute("id");
-		System.out.println("id:"+id);
 		usersDao usersdao=usersDao.getInstance();
 		int userNum=usersdao.getUserNum(id);
 		
@@ -45,22 +44,56 @@ public class payListController extends HttpServlet{
 			String[] bookNumArr2=bookNumArr.split(",");
 			String movieTitle = "";
 			String seatNumArr = "";
+			String theaterName="";
+			String roomNum="";
+			String beginTime="";
 			
 			boolean usercheck=false;
 			for(int j=0;j<bookNumArr2.length;j++) {
 					int bookNum=Integer.parseInt(bookNumArr2[j]);
-					System.out.println("bookNum:"+bookNum);
-					bsmJoinVo bsmvo=bookdao.getUserBook(bookNum);
-					System.out.println("userNum==bsmvo.getUserNum():"+(userNum==bsmvo.getUserNum()));
+					bsmrJoinVo bsmrvo=bookdao.getUserBook(bookNum);
 					usercheck=false;
-					if(userNum==bsmvo.getUserNum()) {
-						movieTitle="영화:"+bsmvo.getMovieTitle()+"<br>";
-						seatNumArr+=bsmvo.getSeatNum()+"번 ";
+					if(userNum==bsmrvo.getUserNum()) {
+						movieTitle="영화:"+bsmrvo.getMovieTitle();
+						//seatNum이름부여
+						System.out.println("bsmrvo.seatNum:"+bsmrvo.getSeatNum());
+						int tempSeatNum=bsmrvo.getSeatNum()%8;
+						System.out.println("tsn"+tempSeatNum);
+						String seatNum=null;
+						if(tempSeatNum==0){
+							System.out.println(true);
+							tempSeatNum=8;
+						}else {
+							System.out.println(false);
+						}
+						System.out.println(tempSeatNum);
+						if(bsmrvo.getSeatNum()/8<=1){
+							seatNum="A"+tempSeatNum;
+						}else if(bsmrvo.getSeatNum()/8<=2){
+							seatNum="B"+tempSeatNum;
+						}else if(bsmrvo.getSeatNum()/8<=3){
+							seatNum="C"+tempSeatNum;
+						}else if(bsmrvo.getSeatNum()/8<=4){
+							seatNum="D"+tempSeatNum;
+						}else if(bsmrvo.getSeatNum()/8<=5){
+							seatNum="E"+tempSeatNum;
+						}else if(bsmrvo.getSeatNum()/8<=6){
+							seatNum="F"+tempSeatNum;
+						}else if(bsmrvo.getSeatNum()/8<=7){
+							seatNum="G"+seatNum;
+						}else if(bsmrvo.getSeatNum()/8<=8){
+							seatNum="H"+seatNum;
+						}
+						
+						seatNumArr+=seatNum+" ";
+						System.out.println(seatNum);
+						theaterName="영화관:"+bsmrvo.getTheaterName();
+						roomNum="상영관:"+bsmrvo.getRoomNum()+"번 상영관";
+						beginTime="시작시간:"+bsmrvo.getBeginTime();
 						usercheck=true;
 					
 				}
 			}
-			System.out.println(usercheck);
 			payListVo plvo=new payListVo();
 			if(usercheck==true) {
 				plvo.setPayNum(vo.getPayNum());
@@ -70,6 +103,9 @@ public class payListController extends HttpServlet{
 				plvo.setTot(vo.getTot());
 				plvo.setMovieTitle(movieTitle);
 				plvo.setSeatNumArr(seatNumArr);
+				plvo.setTheaterName(theaterName);
+				plvo.setBeginTime(beginTime);
+				plvo.setRoomNum(roomNum);
 				
 				plvoList.add(plvo);
 			}

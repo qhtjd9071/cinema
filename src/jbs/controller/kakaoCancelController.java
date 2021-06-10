@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import jbs.dao.bookDao;
 import jbs.dao.integrationDao;
 import jbs.dao.payDao;
-import semi.vo.bsmJoinVo;
+import semi.vo.bsmrJoinVo;
 import semi.vo.integrationVo;
 @WebServlet("/cancel")
 public class kakaoCancelController extends HttpServlet{

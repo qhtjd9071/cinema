@@ -19,7 +19,7 @@ import jbs.dao.bookDao;
 import jbs.dao.integrationDao;
 import jbs.dao.payDao;
 import jbs.dao.usersDao;
-import semi.vo.bsmJoinVo;
+import semi.vo.bsmrJoinVo;
 import semi.vo.integrationVo;
 import semi.vo.payListVo;
 import semi.vo.payVo;

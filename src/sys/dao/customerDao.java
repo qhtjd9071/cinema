@@ -135,7 +135,7 @@ public ArrayList<customerVo> questionList(int startRow,int endRow,int userNum){
 			"  (" + 
 			"	 select * from customer order by ref desc,step asc" + 
 			"  ) g" + 
-			") where rnum>=? and rnum<=? and writer=? and writer='admin'";
+			") where rnum>=? and rnum<=? and writer=? or writer=0";
 	Connection con=null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;

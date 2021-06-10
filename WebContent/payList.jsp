@@ -30,8 +30,11 @@
 				
 				<c:forEach var="vo" items="${list}">
 					<tr>
-						<td>${vo.movieTitle}
-							좌석 : ${vo.seatNumArr}
+						<td>${vo.movieTitle}<br>
+							좌석 : ${vo.seatNumArr}<br>
+							${vo.theaterName}<br>
+							${vo.roomNum}<br>
+							${vo.beginTime}
 						</td>
 						<td>${vo.tot }</td>
 						<td>${vo.payDate }</td>

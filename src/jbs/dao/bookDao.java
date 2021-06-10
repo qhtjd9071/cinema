@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import semi.db.dbCon;
 import semi.vo.bookVo;
-import semi.vo.bsmJoinVo;
+import semi.vo.bsmrJoinVo;
 import semi.vo.payVo;
 
 public class bookDao {
@@ -78,22 +78,24 @@ public class bookDao {
 	}
 	}
 	
-	public bsmJoinVo getUserBook(int bookNum){
+	public bsmrJoinVo getUserBook(int bookNum){
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		try {
 			con=dbCon.getConnection();
-			String sql="select * from movie join (select * from book join show on book.showNum=show.showNum) bs on movie.movieNum=bs.movieNum where bookNum=?";
+			String sql="select * from room join (select * from movie join (select * from book join show on book.showNum=show.showNum) bs on movie.movieNum=bs.movieNum) bsm on room.roomSerialNum=bsm.roomSerialNum where bookNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, bookNum);
 			rs=pstmt.executeQuery();
-			ArrayList<bookVo> list=new ArrayList<bookVo>();
 			if(rs.next()){
-				bsmJoinVo vo=new bsmJoinVo();
+				bsmrJoinVo vo=new bsmrJoinVo();
 				vo.setMovieTitle(rs.getString("movieTitle"));
 				vo.setSeatNum(rs.getInt("seatNum"));
 				vo.setUserNum(rs.getInt("userNum"));
+				vo.setTheaterName(rs.getString("theaterName"));
+				vo.setRoomNum(rs.getInt("roomNum"));
+				vo.setBeginTime(rs.getString("beginTime"));
 				return vo;
 			}
 		}catch(SQLException se) {
