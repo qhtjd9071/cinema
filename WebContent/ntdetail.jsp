@@ -21,9 +21,6 @@
 		<td>내용</td>
 		<td><div style="width:350px;height: 200px">${vo.content }</div></td>
 	</tr>
-	<tr>
-		<td colspan="2"><a href="${pageContext.request.contextPath}/ntinsert.jsp?noticeNum=${vo.noticeNum}&ref=${vo.ref}&lev=${vo.lev}&step=${vo.step}">답글</a></td>
-	</tr>
 </table>
 </body>
 </html>

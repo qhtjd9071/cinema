@@ -29,12 +29,10 @@ public class NoticeInsertController extends HttpServlet {
 		noticeDao dao=noticeDao.getInstance();
 		int n=dao.insert(vo);
 		if(n>0) {
-			req.setAttribute("result", "success");
+			req.setAttribute("result", "insert_success");
 		}else {
-			req.setAttribute("result", "fail");
+			req.setAttribute("result", "insert_fail");
 		}
-		req.setAttribute("top", "/ntheader.jsp");
-		req.setAttribute("content", "/ntresult.jsp");
-		req.getRequestDispatcher("/ntresult.jsp").forward(req, resp);
+		req.getRequestDispatcher("/ntlist").forward(req, resp);
 	}
 }

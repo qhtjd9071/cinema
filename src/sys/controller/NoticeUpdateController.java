@@ -30,11 +30,11 @@ public class NoticeUpdateController extends HttpServlet{
 		noticeDao dao=noticeDao.getInstance();
 		int n=dao.update(vo);
 		if(n>0) {
-			req.setAttribute("result", "success");
+			req.setAttribute("result", "update_success");
 		}else {
-			req.setAttribute("result", "fail");
+			req.setAttribute("result", "update_fail");
 		}
-		req.getRequestDispatcher("/csresult.jsp").forward(req, resp);
+		req.getRequestDispatcher("/ntlist").forward(req, resp);
 	
 	}
 }

@@ -17,10 +17,10 @@ public class NoticeDelController extends HttpServlet{
 		noticeDao dao=noticeDao.getInstance();
 		int n=dao.delete(num);
 		if(n>0) {
-			resp.sendRedirect(req.getContextPath()+"/ntlist");
+			req.setAttribute("result", "delete_success");
 		}else {
-			req.setAttribute("result", "fail");
-			req.getRequestDispatcher("/ntresult.jsp").forward(req, resp);
+			req.setAttribute("result", "delete_fail");
 		}
+		req.getRequestDispatcher("/ntlist").forward(req, resp);
 	}
 }
