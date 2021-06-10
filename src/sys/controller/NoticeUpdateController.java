@@ -22,7 +22,6 @@ public class NoticeUpdateController extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
 		int num=Integer.parseInt(req.getParameter("noticeNum"));
 		String title =req.getParameter("title");
 		String content =req.getParameter("content");
