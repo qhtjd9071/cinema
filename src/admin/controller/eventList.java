@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.dao.roomDao;
-import semi.vo.roomVo;
+import admin.dao.eventDao;
+import semi.vo.eventVo;
 @WebServlet("/eventlist")
 public class eventList extends HttpServlet{
 	@Override
@@ -21,11 +21,10 @@ public class eventList extends HttpServlet{
 			pageNum=Integer.parseInt(spageNum);
 		}
 		
-		roomDao dao=roomDao.getInstance();
+		eventDao dao=eventDao.getInstance();
 		int startRow=(pageNum-1)*10+1;
 		int endRow=startRow+9;
-		ArrayList<roomVo> list=dao.list(startRow,endRow);
-		System.out.println(list.get(0).getRoomSerialNum());
+		ArrayList<eventVo> list=dao.list(startRow,endRow);
 		int pageCount=(int)Math.ceil(dao.getCount()/10.0);
 		int startPageNum=((pageNum-1)/10*10)+1;
 		int endPageNum=startPageNum+9;
