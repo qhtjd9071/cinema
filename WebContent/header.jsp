@@ -47,7 +47,7 @@
 		<ul>
 			<li><a href="${pageContext.request.contextPath }/booking" class="nav_ticketing">예매</a></li>
 			<li><a href="${pageContext.request.contextPath }/movieList" class="nav_movie">영화</a></li>
-			<li><a href="https://event.lottecinema.co.kr/NLCHS/Event" class="nav_event">이벤트</a></li>
+			<li><a href="${pageContext.request.contextPath }/event.do" class="nav_event">이벤트</a></li>
 			<li><a href="${pageContext.request.contextPath }/ntlist" class="nav_noticelist">공지사항</a></li>
 		</ul>
 	</div>

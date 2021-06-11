@@ -64,6 +64,7 @@ CREATE TABLE event
 	content varchar2(1000) NOT NULL,
 	writedate date NOT NULL,
 	hit number NOT NULL,
+    image String NOT NULL,
 	PRIMARY KEY (eventNum)
 );
 
@@ -219,18 +220,4 @@ ALTER TABLE movieComments
 ;
 
 commit;
-
-
-select * from book;
-select * from comments;
-select * from customer;
-select * from event;
-select * from integration;
-select * from movie;
-select * from moviecomments;
-select * from notice;
-select * from pay;
-select * from room;
-select * from show;
-select * from users;
 

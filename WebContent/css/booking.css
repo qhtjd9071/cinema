@@ -261,7 +261,7 @@ body {
 	list-style-type: none;
 	position: relative;
 	text-align: center;
-	width: 175px;
+	width: 50%;
 	margin-top:61px;
 }
 .theater_name{
@@ -594,13 +594,8 @@ body {
 	display: block;
 	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
 	font-size: 12px;
-	height: 75px;
 	letter-spacing: -0.03em;
 	line-height: 1.1;
-	margin-bottom: 10px;
-	margin-left: 20px;
-	margin-right: 20px;
-	margin-top: 22px;
 }
 .time-part{
 	background-color: #F8F8F8;
@@ -640,12 +635,14 @@ body {
 	font-size: 20px;
 	letter-spacing: 3px;
 	text-align: center;
+	padding: 19px 0px;
+	border-bottom: 1px solid black;
 }
 .date_list ul li{
 	 list-style:none;
 	 margin-top: 20px;
 	 font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
-	 font-size: 20px;
+	 font-size: 17px;
 	 text-align: center;
 }
 
