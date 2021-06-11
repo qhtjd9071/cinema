@@ -27,7 +27,7 @@
 	<div class="tab">
 		<table border="0" width="500" class="text_c">
 			<colgroup>
-				<col style="width: 40%">
+				<col style="width: 30%">
 				<col style="width: auto%">
 				<col style="width: 20%">
 			</colgroup>
@@ -37,9 +37,9 @@
 					<th>삭제</th>
 				</tr>
 			<c:forEach var="vo" items="${list}">
-				<tr style="border:1px">
+				<tr style="border:1px;">
 					<td>${vo.movieTitle}</td>
-					<td><img src="${vo.image}"></td>
+					<td><img style=" height:250px" src="${vo.image}"></td>
 					<td><a href="${pageContext.request.contextPath}/movieDel?movieNum=${vo.movieNum}">삭제</a></td>
 				</tr>
 			</c:forEach>

@@ -23,14 +23,18 @@
    <div class="movie">
       <div class="movie_container">
 	      <ul class="mbtn_list">
-		      <li><a href="${pageContext.request.contextPath}/movieEnroll.jsp">영화정보등록</a></li>
-		      <li><a href="${pageContext.request.contextPath}/roomEnroll.jsp">상영관등록</a></li>
-		      <li><a href="${pageContext.request.contextPath}/showEnroll.jsp">상영영화등록</a></li>
+		      <li><a href="${pageContext.request.contextPath}/movieEnroll.jsp" style="background-color:#444444; color:white;">영화 정보 등록</a></li>
+		      <li><a href="${pageContext.request.contextPath}/roomEnroll.jsp" style="background-color:#F8F8F8">상영관 등록</a></li>
+		      <li><a href="${pageContext.request.contextPath}/showEnroll.jsp" style="background-color:#444444; color:white;">상영 영화 등록</a></li>
+		      <li><a href="#" style="background-color:#F8F8F8">공지사항 등록</a></li>
+		      <li><a href="#" style="background-color:#444444; color:white;">이벤트 등록</a></li>
 	      </ul>
 	      <ul class="mbtn_list">
-		      <li><a href="${pageContext.request.contextPath}/movielist">영화정보보기</a></li>
-		      <li><a href="${pageContext.request.contextPath}/roomlist">상영관보기</a></li>
-		      <li><a href="${pageContext.request.contextPath}/showlist">상영영화보기</a></li>
+		      <li><a href="${pageContext.request.contextPath}/movielist" style="background-color:#444444; color:white;">영화 정보 보기</a></li>
+		      <li><a href="${pageContext.request.contextPath}/roomlist" style="background-color:#F8F8F8">상영관 보기</a></li>
+		      <li><a href="${pageContext.request.contextPath}/showlist" style="background-color:#444444; color:white;">상영 영화 보기</a></li>
+		      <li><a href="#" style="background-color:#F8F8F8">공지사항 보기</a></li>
+		      <li><a href="#" style="background-color:#444444; color:white;">이벤트 보기</a></li>
 	      </ul>
       </div>
    </div>

@@ -25,6 +25,9 @@ public class adminController extends HttpServlet{
 		}else if(cmd.equals("showEnroll")) {
 			adminAction=new showEnrollController();
 			adminAction.service(request,response);
+		}else if(cmd.equals("eventEnroll")) {
+			adminAction=new eventEnrollController();
+			adminAction.service(request,response);
 		}
 	}
 }

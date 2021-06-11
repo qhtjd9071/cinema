@@ -5,41 +5,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-	.wrapper{display:flex; justify-content:space-between;}
-	.movieList{width:550px;height:500px;overflow:scroll;}
-	.movieList div{display:flex;flex-direction:column;width:500px;height:200px;}
-	.movieImg{width:100px;height:180px;}
-</style>
 </head>
 <body>
-<h1>상영등록</h1>
-<div class="wrapper">
-	<div class="inputDiv" id="inputDiv">
-		<form method="post" action="${pageContext.request.contextPath}/admin?cmd=showEnroll">
-		영화제목
-		<input type="text" id="title" readonly="readonly">
-		<input type="hidden" id="movieNum" name="movieNum">
-		상영시작시간
-		<input type="date" name="beginDate" id="beginDate">
-		<input type="time" name="beginTime" id="beginTime">
-		<input type="hidden" name="begin" id="begin">
-		상영종료시간
-		<input type="date" name="endDate" id="endDate">
-		<input type="time" name="endTime" id="endTime">
-		<input type="hidden" name="end" id="end">
-		<input type="submit" value="등록">
-		상영관
-		<input type="text" id="room" readonly="readonly">
-		<input type="hidden" id="roomSerialNum" name="roomSerialNum">
-		가격
-		<input type="text" name="price">원
-		</form>
+<div class="header">
+	<jsp:include page="ad_header.jsp"/>
+</div>
+
+<div class="content">
+	<div class="content_container">
+		<h1>상영등록</h1>
+		<div class="wrapper">
+			<div class="inputDiv" id="inputDiv">
+				<form method="post" action="${pageContext.request.contextPath}/admin?cmd=showEnroll">
+				영화제목
+				<input type="text" id="title" readonly="readonly">
+				<input type="hidden" id="movieNum" name="movieNum">
+				상영시작시간
+				<input type="date" name="beginDate" id="beginDate">
+				<input type="time" name="beginTime" id="beginTime">
+				<input type="hidden" name="begin" id="begin">
+				상영종료시간
+				<input type="date" name="endDate" id="endDate">
+				<input type="time" name="endTime" id="endTime">
+				<input type="hidden" name="end" id="end">
+				<input type="submit" value="등록">
+				상영관
+				<input type="text" id="room" readonly="readonly">
+				<input type="hidden" id="roomSerialNum" name="roomSerialNum">
+				가격
+				<input type="text" name="price">원
+				</form>
+			</div>
+			영화목록
+			<div class="movieList" id="movieList"></div>
+			상영목록
+			<div class="roomList" id="roomList"></div>
+		</div>
 	</div>
-	영화목록
-	<div class="movieList" id="movieList"></div>
-	상영목록
-	<div class="roomList" id="roomList"></div>
+</div>
+
+<div class="footer">
+	<jsp:include page="footer.jsp"/>
 </div>
 <script type="text/javascript">
 	const beginDate=document.getElementById("beginDate");

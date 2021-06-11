@@ -28,7 +28,7 @@ body {
 	padding:0;
 }
 .mbtn_list {
-	width:800px;
+	width:980px;
 	display:flex;
 	justify-content:space-between;
 	box-sizing:border-box;
@@ -53,13 +53,13 @@ body {
 	margin:0;
 }
 .mbtn_list li a {
-	width:200px;
-	height:180px;
+	width:156px;
+	height:156px;
 	text-align:center;
 	display:block;
 	cursor:pointer;
 	font-size:18px;
-	line-height:180px;
+	line-height:156px;
 	letter-spacing:-0.03em;
 	text-decoration:none;
 	color:#000;
