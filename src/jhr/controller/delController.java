@@ -28,6 +28,7 @@ public class delController extends HttpServlet{
 			
 			if(n>0) {
 				req.setAttribute("result","success");
+				session.invalidate();
 				resp.sendRedirect(req.getContextPath()+"/main.jsp");
 			}else {
 				req.setAttribute("result","fail");
