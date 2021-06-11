@@ -13,15 +13,12 @@
 </head>
 <body>
 <!-- 이벤트 정보 -->
-<table width="500" cellpadding="0" cellspacing="0" border="1">
-	<tr>
-		<td>이벤트제목${vo.title }</td>
-		<td>내용 : ${vo.content }</td>
-		<td>날짜 : ${vo.writedate }</td>
-		<td>조회수 : ${vo.hit }</td>
-	</tr>
-</table>
+
+<div class="contents_event">
+	<div class="evnt_img"><img src="${vo.eventImage }"></div>
+	<div class="btn_btm_wrap">
+		<a class="btn_col2 ty6" href="${pageContext.request.contextPath}/Eve_main.jsp">목록</a>
+	</div>
 </div>
-<!-- 이벤트 정보 -->
 </body> 
 </html>
