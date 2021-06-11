@@ -22,6 +22,6 @@ public class EventController extends HttpServlet{
 		ArrayList<eventVo> list = dao.list();
 		
 		req.setAttribute("list", list);
-		req.getRequestDispatcher("/LSH/event.jsp").forward(req, resp);
+		req.getRequestDispatcher("/event.jsp").forward(req, resp);
 	}
 }

@@ -40,7 +40,7 @@
 				        			<span>지역</span>
 				        		</button>	
 				        		<c:forEach var="vo" items="${ requestScope.theaterList }">
-				        			<div class="theaterLoc-list" onclick='theaterNameList("${vo.location}")'> ${ vo.location } </div>
+				        			<span class="theaterLoc-list" onclick='theaterNameList("${vo.location}")'> ${ vo.location } </span>
 				        		</c:forEach>
 				        		<button type="button" class="theater_name">
 				        			<span>영화관</span>
