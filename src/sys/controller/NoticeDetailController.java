@@ -15,9 +15,10 @@ import sys.dao.noticeDao;
 public class NoticeDetailController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int num=Integer.parseInt(req.getParameter("noticeNum"));
+		int noticeNum=Integer.parseInt(req.getParameter("noticeNum"));
 		noticeDao dao=noticeDao.getInstance();
-		noticeVo vo=dao.detail(num);
+		dao.hitPlus(noticeNum);
+		noticeVo vo=dao.detail(noticeNum);
 		String content=vo.getContent();
 		content=content.replaceAll("\n","<br>");
 		vo.setContent(content);

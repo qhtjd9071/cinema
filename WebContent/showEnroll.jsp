@@ -7,10 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
+<!-- 
 <div class="header">
 	<jsp:include page="ad_header.jsp"/>
 </div>
-
+ -->
 <div class="content">
 	<div class="content_container">
 		<h1>상영등록</h1>
@@ -68,7 +69,6 @@
 			alert("날짜를 먼저 입력해주세요");
 		}else{
 			param3.value+=" "+param2.value;
-			alert(param3.value);
 		}
 	}
 </script>

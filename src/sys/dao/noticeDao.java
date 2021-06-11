@@ -1,6 +1,7 @@
 package sys.dao;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -106,7 +107,9 @@ public class noticeDao {
 			if(rs.next()) {
 				String title=rs.getString("title");
 				String content=rs.getString("content");
-				noticeVo vo=new noticeVo(num, title, content, null, num);
+				int hit=rs.getInt("hit");
+				Date writeDate=rs.getDate("writeDate");
+				noticeVo vo=new noticeVo(num, title, content, writeDate, hit);
 				return vo;
 			}
 			return null;
@@ -177,6 +180,22 @@ public class noticeDao {
 		}catch(SQLException s) {
 			s.printStackTrace();
 			return -1;
+		}finally {
+			dbCon.close(con,pstmt,null);
+		}
+	}
+	
+	public void hitPlus(int noticeNum){
+		String sql="update notice set hit=hit+1 where noticeNum=?";
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		try {
+			con=dbCon.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1,noticeNum);
+			pstmt.executeUpdate();
+		}catch(SQLException s) {
+			s.printStackTrace();
 		}finally {
 			dbCon.close(con,pstmt,null);
 		}

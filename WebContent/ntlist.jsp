@@ -52,12 +52,14 @@ ${result }
 			<colgroup>
 				<col style="width: 20%">
 				<col style="width: auto%">
-				<col style="width: 20%">
+				<col style="width: 15%">
+				<col style="width: 15%">
 			</colgroup>
 				<tr style="border:solid;">
 					<th>번호</th>
 					<th>제목</th>
 					<th>등록일</th>
+					<th>조회수</th>
 					<c:if test="${sessionScope.id=='admin'}">
 					<th>삭제</th>
 					<th>수정</th>
@@ -68,6 +70,7 @@ ${result }
 					<td>${vo.noticeNum}</td>
 					<td class="text_l"><a style="color:gray;text-decoration:none;" href="${pageContext.request.contextPath}/ntdetail?noticeNum=${vo.noticeNum}">${vo.title}</a></td>
 					<td>${vo.writedate}</td>
+					<td>${vo.hit}</td>
 					<c:if test="${sessionScope.id=='admin'}">
 						<td><a href="${pageContext.request.contextPath}/delMember2?noticeNum=${vo.noticeNum}">삭제</a></td>
 						<td><a href="${pageContext.request.contextPath}/ntupdate?noticeNum=${vo.noticeNum}">수정</a></td>
