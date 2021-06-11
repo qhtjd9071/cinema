@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!-- 이벤트페이지 메인 -->
+<!-- 이벤트페이지 메인1 -->
 <style>
 	*{margin:0px;padding:0px;}
 	#wrap{width:1000px;height:1200px;margin:auto;margin-top:40px;}

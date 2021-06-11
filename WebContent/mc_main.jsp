@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>main.jsp</title>
+<title>main.jsp1</title>
 </head>
 <body>
 <h1>테스트 메인</h1>

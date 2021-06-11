@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EventDetail</title>
+<title>EventDetai1l</title>
 </head>
 <body>
 <!-- 이벤트 정보 -->
