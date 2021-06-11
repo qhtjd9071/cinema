@@ -146,7 +146,7 @@ function getStars() {
 		let xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4 && xhr.status==200){
-				const movi_review_list=document.getElementById("movi_review_list");
+				const review_con_list=document.getElementById("review_con_list");
 				let childs=commList.childNodes;
 				for(let i=childs.length-1;i>=0;i--){
 					commList.removeChild(childs.item(i));

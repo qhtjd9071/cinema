@@ -21,7 +21,6 @@ public class ListController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		CommentsDao dao=CommentsDao.getInstance();
 		int movieNum=Integer.parseInt(req.getParameter("movieNum"));
-		System.out.println(movieNum);
 		ArrayList<movieCommentsVo> list=dao.list(movieNum);
 		
 		resp.setContentType("text/xml;charset=utf-8");
