@@ -17,7 +17,8 @@
 <div class="contents_event">
 	<div class="evnt_img"><img src="${vo.eventImage }"></div>
 	<div class="btn_btm_wrap">
-		
+		<a class="btn_col2 ty6" href="${pageContext.request.contextPath}/Eve_main.jsp">목록</a>
 	</div>
+</div>
 </body> 
 </html>
