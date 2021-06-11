@@ -15,23 +15,6 @@
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/footer.css">
 </head>
-<script type="text/javascript">
-	window.onload=function(){
-		if("${result}"=="insert_success"){
-			alert("글 등록 성공");
-		}else if("${result}"=="insert_fail"){
-			alert("글 등록 실패");
-		}else if("${result}"=="update_success"){
-			alert("글 수정 성공");
-		}else if("${result}"=="update_fail"){
-			alert("글 수정 실패");
-		}else if("${result}"=="delete_success"){
-			alert("글 삭제 성공");
-		}else if("${result}"=="delete_fail"){
-			alert("글 삭제 실패");
-		}
-	}
-</script>
 <body>
 <div class="header">
 		<jsp:include page="ad_header.jsp"/>

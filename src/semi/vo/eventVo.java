@@ -8,14 +8,16 @@ public class eventVo {
 	private String content;
 	private Date writedate;
 	private int hit;
+	private String image;
 	public eventVo() {}
-	public eventVo(int eventNum, String title, String content, Date writedate, int hit) {
+	public eventVo(int eventNum, String title, String content, Date writedate, int hit, String image) {
 		super();
 		this.eventNum = eventNum;
 		this.title = title;
 		this.content = content;
 		this.writedate = writedate;
 		this.hit = hit;
+		this.image = image;
 	}
 	public int getEventNum() {
 		return eventNum;
@@ -46,6 +48,12 @@ public class eventVo {
 	}
 	public void setHit(int hit) {
 		this.hit = hit;
+	}
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 }
