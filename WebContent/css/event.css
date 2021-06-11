@@ -26,6 +26,7 @@ body {
    box-sizing:border-box;
    margin:0 auto;
    padding:0;
+   height: 1024px;
 }
 
 .event_list{
@@ -42,20 +43,8 @@ body {
 }
 .event_list_wrap{
 	color: rgb(0, 0, 0);
-	display: block;
-	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
-	font-size: 12px;
-	letter-spacing: -0.03em;
-	line-height: 1.1;
-	margin-left: auto;
-	margin-right: auto;
-	padding-top: 50px;
-	width: 980px;
-}
-
-.event_list_wrap{
-	color: rgb(0, 0, 0);
-	display: list-item;
+	display:block;
+	box-sizing:border-box;
 	float: left;
 	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
 	font-size: 12px;
@@ -64,17 +53,16 @@ body {
 	list-style-image: initial;
 	list-style-position: initial;
 	list-style-type: none;
-	margin-bottom: 0px;
-	margin-left: 7.5px;
-	margin-right: 7.5px;
-	margin-top: 0px;
+	margin: 0px;
 	position: relative;
 	text-align: center;
-	width: 184px;
 }
+
 .event_selected {
-	width:184px;
-	margin: 0 7.5px;
+	width: 314px;
+    height: 230px;
+	margin: 0 10px;
+	padding-left: 25px;
 	display:list-item;
 	float:left;
 }
@@ -95,7 +83,7 @@ body {
 	overflow: hidden;
 	position: relative;
 	text-align: center;
-	height: 262px;
+	height: 180px;
 }
 .eventImg img {
 	width:100%;
