@@ -65,7 +65,7 @@ public class EventDao {
 			ArrayList<eventVo> list=new ArrayList<eventVo>();
 			while(rs.next()) {
 				eventVo vo=new eventVo();
-				vo.setEventNum(rs.getInt("evnetNum"));
+				vo.setEventNum(rs.getInt("eventNum"));
 				vo.setTitle(rs.getString("title"));
 				vo.setContent(rs.getString("content"));
 				vo.setWritedate(rs.getDate("writedate"));
