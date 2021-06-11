@@ -18,7 +18,7 @@
 <body>
 
 <div class="header2">
-	<jsp:include page="/header2.jsp"/>
+	<jsp:include page="header2.jsp"/>
 </div>
 <!-- 영화 상세정보 -->
 <div class="movie">
@@ -96,7 +96,7 @@
 <!-- 별점 -->
 
 <div class="footer">
-	<jsp:include page="../footer.jsp"/>
+	<jsp:include page="footer.jsp"/>
 </div>
 
 
