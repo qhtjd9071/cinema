@@ -11,9 +11,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
 
-<link rel="stylesheet" href="/css/moviecomments.css">
-<link rel="stylesheet" href="/css/header2.css">
-<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="css/moviecomments.css">
+<link rel="stylesheet" href="css/header2.css">
+<link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
 
@@ -21,6 +21,7 @@
 	<jsp:include page="/header2.jsp"/>
 </div>
 <!-- 영화 상세정보 -->
+<div id="commList"></div>
 <div class="movie">
 	<div class="movie_container">
 		<div class="contents_movie_detail">
@@ -50,7 +51,6 @@
 					</div>
 				</li>
 				<li class="active">
-					<input type="button" class="tab_tit" style="width:50%; left:0%;" value="평점 및 관람평" onclick="addComments()">
 					<div class="tab_con">
 						<div class="movi_score_box">
 							<p class="txt_info"><span>"영화 관람 후 관람평을 작성하시면"<br>"L.POINT 50P를 적립해 드립니다."</span></p>
@@ -77,6 +77,7 @@
 							<input type="text" id="id" value="${id }" readonly="readonly"><br>
 							영화평 <br>
 							<textarea rows="3" cols="30" id="content"></textarea><br>
+							<input type="button" class="tab_tit" style="width:50%; left:0%;" value="평점 및 관람평" onclick="addComments()">
 						</div>
 						<div class="movi_review_list">
 							<div class="review_top"></div>
@@ -89,16 +90,6 @@
 		</div>	
 	</div>
 </div>
-
-<!-- 데이터 입력하는 부분  -->
-	<div>
-		<div id="commList"></div>
-		<div id="commForm"></div>
-				
-			
-		</div>
-	</div>
-<!-- 데이터 입력하는 부분 끝 -->
 
 <!-- 별점 -->
 <script src="/js/jquery-1.11.3.min.js"></script>
@@ -155,7 +146,7 @@ function getStars() {
 		let xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4 && xhr.status==200){
-				const commList=document.getElementById("commList");
+				const movi_review_list=document.getElementById("movi_review_list");
 				let childs=commList.childNodes;
 				for(let i=childs.length-1;i>=0;i--){
 					commList.removeChild(childs.item(i));

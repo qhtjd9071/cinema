@@ -38,7 +38,8 @@ public class EventDao {
 				String content=rs.getString("content");
 				Date writedate=rs.getDate("writedate");
 				int hit=rs.getInt("hit");
-				eventVo vo=new eventVo(eventNum, title, content, writedate, hit);
+				String mainImage=rs.getString("mainImage");
+				eventVo vo=new eventVo(eventNum, title, content, writedate, hit, mainImage, null);
 				return vo;
 			}else {
 				return null;
@@ -57,7 +58,7 @@ public class EventDao {
 		ResultSet rs=null;
 		try {
 			con=dbCon.getConnection();
-			String sql="select * from event";
+			String sql="select * from event order by eventNum desc";
 			pstmt=con.prepareStatement(sql);
 			rs=pstmt.executeQuery();
 			ArrayList<eventVo> list=new ArrayList<eventVo>();
@@ -68,6 +69,8 @@ public class EventDao {
 				vo.setContent(rs.getString("content"));
 				vo.setWritedate(rs.getDate("writedate"));
 				vo.setHit(rs.getInt("hit"));
+				vo.setmainImage(rs.getString("mainImage"));
+				vo.setdetailImage(rs.getString("detailImage"));
 				list.add(vo);
 			}
 			return list;
@@ -78,4 +81,5 @@ public class EventDao {
 			dbCon.close(con, pstmt, null);
 		}
 	}
+	
 }

@@ -26,7 +26,7 @@
 				<ul class="img_lst_wrap">
 					<li>
 						<c:forEach var="vo" items="${ requestScope.list }">
-						<div style="background-color: red;"><a href='${pageContext.request.contextPath}/event.do?eventNum=${vo.eventNum}'><img src="${vo.eventImage }"></a></div>
+						<div style="background-color: red;"><a href='${pageContext.request.contextPath}/event.do?eventNum=${vo.eventNum}'><img src="${vo.mainImage }"></a></div>
 						<div style="background-color: red;"> ${vo.title}</div>
 						</c:forEach>
 						<div class="itm_tit"></div>
@@ -37,17 +37,6 @@
 				</ul>
 			</div>
 			
-		</div>
-	</div>
-	<div id="main">
-		<div id="movie">
-		<h3 align="left">영화</h3>
-			<c:forEach var="vo" items="${ requestScope.list }">
-			<div style="background-color: red;"><a href='${pageContext.request.contextPath}/event.do?eventNum=${vo.eventNum}'><img src="${vo.image}"></a></div>
-			<div style="background-color: red;"> ${vo.title}</div>
-			<a href="${pageContext.request.contextPath }/event.do?eventNum=2"><img src="/images/event/2.jpg"></a>
-			<a href=""><img src="../images/event/3.jpg"></a>
-			</c:forEach>
 		</div>
 	</div>
 
