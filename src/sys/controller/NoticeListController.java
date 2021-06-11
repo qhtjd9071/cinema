@@ -43,8 +43,6 @@ public class NoticeListController extends HttpServlet {
 		req.setAttribute("startPageNum",startPageNum);
 		req.setAttribute("endPageNum",endPageNum);
 		req.setAttribute("pageNum",pageNum);
-		req.setAttribute("top","/ntheader.jsp");
-		req.setAttribute("content","/ntlist.jsp");
 		req.getRequestDispatcher("/ntlist.jsp").forward(req, resp);
 	}
 	

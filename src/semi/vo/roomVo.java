@@ -1,25 +1,25 @@
 package semi.vo;
 
 public class roomVo {
-	private int roomserialNum;
+	private int roomSerialNum;
 	private String theaterName;
 	private int sitCount;
 	private String location;
 	private int roomNum;
 	public roomVo() {}
-	public roomVo(int roomserialNum, String theaterName, int sitCount, String location, int roomNum) {
+	public roomVo(int roomSerialNum, String theaterName, int sitCount, String location, int roomNum) {
 		super();
-		this.roomserialNum = roomserialNum;
+		this.roomSerialNum = roomSerialNum;
 		this.theaterName = theaterName;
 		this.sitCount = sitCount;
 		this.location = location;
 		this.roomNum = roomNum;
 	}
-	public int getRoomserialNum() {
-		return roomserialNum;
+	public int getRoomSerialNum() {
+		return roomSerialNum;
 	}
-	public void setRoomserialNum(int roomserialNum) {
-		this.roomserialNum = roomserialNum;
+	public void setRoomSerialNum(int roomSerialNum) {
+		this.roomSerialNum = roomSerialNum;
 	}
 	public String getTheaterName() {
 		return theaterName;

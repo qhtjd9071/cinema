@@ -23,14 +23,14 @@
    <div class="movie">
       <div class="movie_container">
 	      <ul class="mbtn_list">
-		      <li><a href="movieEnroll.jsp">영화정보등록</a></li>
-		      <li><a href="roomEnroll.jsp">상영관등록</a></li>
-		      <li><a href="showEnroll.jsp">상영영화등록</a></li>
+		      <li><a href="${pageContext.request.contextPath}/movieEnroll.jsp">영화정보등록</a></li>
+		      <li><a href="${pageContext.request.contextPath}/roomEnroll.jsp">상영관등록</a></li>
+		      <li><a href="${pageContext.request.contextPath}/showEnroll.jsp">상영영화등록</a></li>
 	      </ul>
 	      <ul class="mbtn_list">
-		      <li><a href="movieEnroll.jsp">영화정보보기</a></li>
-		      <li><a href="roomEnroll.jsp">상영관보기</a></li>
-		      <li><a href="showEnroll.jsp">상영영화보기</a></li>
+		      <li><a href="${pageContext.request.contextPath}/movielist">영화정보보기</a></li>
+		      <li><a href="${pageContext.request.contextPath}/roomlist">상영관보기</a></li>
+		      <li><a href="${pageContext.request.contextPath}/showlist">상영영화보기</a></li>
 	      </ul>
       </div>
    </div>
