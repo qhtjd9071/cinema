@@ -39,7 +39,8 @@ public class EventDao {
 				Date writedate=rs.getDate("writedate");
 				int hit=rs.getInt("hit");
 				String mainImage=rs.getString("mainImage");
-				eventVo vo=new eventVo(eventNum, title, content, writedate, hit, mainImage, null);
+				String detailImage=rs.getString("detailImage");
+				eventVo vo=new eventVo(eventNum, title, content, writedate, hit, mainImage, detailImage);
 				return vo;
 			}else {
 				return null;

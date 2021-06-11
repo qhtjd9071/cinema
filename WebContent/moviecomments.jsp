@@ -21,7 +21,6 @@
 	<jsp:include page="/header2.jsp"/>
 </div>
 <!-- 영화 상세정보 -->
-<div id="commList"></div>
 <div class="movie">
 	<div class="movie_container">
 		<div class="contents_movie_detail">
