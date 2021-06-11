@@ -50,7 +50,7 @@
 					</div>
 				</li>
 				<li class="active">
-					<button type="button" class="tab_tit" style="width:50%; left:0%;"><span>평점 및 관람평</span></button>
+					<input type="button" class="tab_tit" style="width:50%; left:0%;" value="평점 및 관람평" onclick="addComments()">
 					<div class="tab_con">
 						<div class="movi_score_box">
 							<p class="txt_info"><span>"영화 관람 후 관람평을 작성하시면"<br>"L.POINT 50P를 적립해 드립니다."</span></p>
@@ -78,7 +78,11 @@
 							영화평 <br>
 							<textarea rows="3" cols="30" id="content"></textarea><br>
 						</div>
-						<div class="movi_review_list"></div>
+						<div class="movi_review_list">
+							<div class="review_top"></div>
+							<ul class="review_con_list"></ul>
+							<button type="button" class="btn_txt_more"></button>
+						</div>
 					</div>
 				</li>
 			</ul>
@@ -200,9 +204,5 @@ function getStars() {
 </script>
 <!-- 페이징처리 -->
 <!-- 페이징처리 -->
-<div class="footer">
-	<jsp:include page="/footer.jsp"/>
-</div>
-
 </body>
 </html>

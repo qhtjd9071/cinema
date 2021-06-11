@@ -25,7 +25,7 @@
 			<c:forEach var="vo" items="${ requestScope.list }">
 			<div style="background-color: red;"><a href='${pageContext.request.contextPath}/event.do?eventNum=${vo.eventNum}'><img src="${vo.image}"></a></div>
 			<div style="background-color: red;"> ${vo.title}</div>
-			<a href="${pageContext.request.contextPath }/event.do?eventNum=2"><img src="../images/event/2.jpg"></a>
+			<a href="${pageContext.request.contextPath }/event.do?eventNum=2"><img src="/images/event/2.jpg"></a>
 			<a href=""><img src="../images/event/3.jpg"></a>
 			</c:forEach>
 		</div>
