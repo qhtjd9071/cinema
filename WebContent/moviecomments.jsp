@@ -115,8 +115,8 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 </div>
 
 <!-- 별점 -->
-<script src="/js/jquery-1.11.3.min.js"></script>
-<script src="/js/star.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/star.js"></script>
 <!-- 별점 -->
 
 <div class="footer">
