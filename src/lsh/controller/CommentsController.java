@@ -11,22 +11,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import jbs.dao.usersDao;
 import lsh.dao.CommentsDao;
 import semi.vo.movieCommentsVo;
 
-@WebServlet("/LSH/comments.do")
+@WebServlet("/aa.do")
 public class CommentsController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
-//		int movieCommentsNum=Integer.parseInt(req.getParameter("movieCommentsNum"));
 		String id=req.getParameter("id");
 		String content=req.getParameter("content");
 		int star=Integer.parseInt(req.getParameter("star"));
-//		String writedate=req.getParameter("writedate");
-//		int UserNum=Integer.parseInt(req.getParameter("UserNum"));
+		String writedate=req.getParameter("writedate");
+		
+		usersDao usersdao=usersDao.getInstance();
+		int UserNum=usersdao.getUserNum(id);
+		
 		int movieNum=Integer.parseInt(req.getParameter("movieNum"));
-		movieCommentsVo vo=new movieCommentsVo(1, id, content, star, null, 1, movieNum);
+		movieCommentsVo vo=new movieCommentsVo(0, id, content, star, null, UserNum, movieNum);
 		CommentsDao dao=CommentsDao.getInstance();
 		int n=dao.insert(vo);
 		resp.setContentType("text/xml;charset=utf-8");

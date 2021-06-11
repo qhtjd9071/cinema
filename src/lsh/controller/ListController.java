@@ -15,7 +15,7 @@ import semi.vo.movieCommentsVo;
 
 
 
-@WebServlet("/LSH/list.do")
+@WebServlet("/list.do")
 public class ListController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

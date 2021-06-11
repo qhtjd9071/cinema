@@ -7,11 +7,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import lsh.dao.MovieDao;
 import semi.vo.movieVo;
 
-@WebServlet("/LSH/movie.do")
+@WebServlet("/moviecomments.do")
 public class MovieController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -19,6 +20,10 @@ public class MovieController extends HttpServlet{
 		MovieDao dao=MovieDao.getInstance();
 		movieVo vo=dao.getinfo(movieNum);
 		req.setAttribute("vo", vo);
-		req.getRequestDispatcher("/LSH/movie.jsp").forward(req, resp);
+		
+		HttpSession session=req.getSession();
+		String id=(String)session.getAttribute("id");
+		req.setAttribute("id", id);
+		req.getRequestDispatcher("/moviecomments.jsp").forward(req, resp);
 	}
 }

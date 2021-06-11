@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import lsh.dao.CommentsDao;
 
-@WebServlet("/LSH/delete.do")
+@WebServlet("/delete.do")
 public class DeleteController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -23,9 +23,9 @@ public class DeleteController extends HttpServlet{
 		pw.print("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
 		pw.print("<result>");
 		if(n>0) {
-			pw.print("<code>삭제완료</code>");
+			pw.print("<code>�궘�젣�셿猷�</code>");
 		}else {
-			pw.print("<code>삭제실패</code>");
+			pw.print("<code>�궘�젣�떎�뙣</code>");
 		}
 		pw.print("</result>");
 	}

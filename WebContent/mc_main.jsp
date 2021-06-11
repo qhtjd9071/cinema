@@ -9,7 +9,7 @@
 <body>
 <h1>테스트 메인</h1>
 <ul>
-	<li><a href="/LSH/movie.do?movieNum=1">영화1</a></li>
+	<li><a href="${pageContext.request.contextPath }/moviecomments.do?movieNum=1">영화1</a></li>
 </ul>
 </body>
 </html>

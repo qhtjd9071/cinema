@@ -5,11 +5,11 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 
 import semi.db.dbCon;
 import semi.vo.eventVo;
+import semi.vo.movieVo;
 
 public class EventDao {
 	private static EventDao instance=new EventDao();
@@ -17,7 +17,7 @@ public class EventDao {
 	public static EventDao getInstance() {
 		return instance;
 	}
-	//이벤트 정보
+	
 	public eventVo getinfo(int eventNum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
@@ -50,5 +50,32 @@ public class EventDao {
 			dbCon.close(con, pstmt, rs);
 		}
 	}
-	//이벤트 정보 끝
+	
+	public ArrayList<eventVo> list() {
+		Connection con=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		try {
+			con=dbCon.getConnection();
+			String sql="select * from event";
+			pstmt=con.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			ArrayList<eventVo> list=new ArrayList<eventVo>();
+			while(rs.next()) {
+				eventVo vo=new eventVo();
+				vo.setEventNum(rs.getInt("evnetNum"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setWritedate(rs.getDate("writedate"));
+				vo.setHit(rs.getInt("hit"));
+				list.add(vo);
+			}
+			return list;
+		}catch(SQLException se) {
+			se.printStackTrace();
+			return null;
+		}finally {
+			dbCon.close(con, pstmt, null);
+		}
+	}
 }
