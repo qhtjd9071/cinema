@@ -4,16 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>상영영화 등록</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
-
-<link rel="stylesheet" href="css/movieEnroll.css">
-<link rel="stylesheet" href="css/header2.css">
-<link rel="stylesheet" href="css/footer.css">
+<title>Insert title here</title>
 <style type="text/css">
 	.wrapper{display:flex; justify-content:space-between;}
 	.movieList{width:550px;height:500px;overflow:scroll;}
@@ -22,48 +13,34 @@
 </style>
 </head>
 <body>
-	<div class="header2">
-		<jsp:include page="ad_header.jsp"/>
+<h1>상영등록</h1>
+<div class="wrapper">
+	<div class="inputDiv" id="inputDiv">
+		<form method="post" action="${pageContext.request.contextPath}/admin?cmd=showEnroll">
+		영화제목
+		<input type="text" id="title" readonly="readonly">
+		<input type="hidden" id="movieNum" name="movieNum">
+		상영시작시간
+		<input type="date" name="beginDate" id="beginDate">
+		<input type="time" name="beginTime" id="beginTime">
+		<input type="hidden" name="begin" id="begin">
+		상영종료시간
+		<input type="date" name="endDate" id="endDate">
+		<input type="time" name="endTime" id="endTime">
+		<input type="hidden" name="end" id="end">
+		<input type="submit" value="등록">
+		상영관
+		<input type="text" id="room" readonly="readonly">
+		<input type="hidden" id="roomSerialNum" name="roomSerialNum">
+		가격
+		<input type="text" name="price">원
+		</form>
 	</div>
-	
-	<div class="movie">
-		<div class="movie_container">
-		
-		<h1>상영등록</h1>
-		<div class="wrapper">
-			<div class="inputDiv" id="inputDiv">
-				<form method="post" action="${pageContext.request.contextPath}/admin?cmd=showEnroll">
-				영화제목
-				<input type="text" id="title" readonly="readonly">
-				<input type="hidden" id="movieNum" name="movieNum">
-				상영관
-				<input type="text" id="room" readonly="readonly">
-				<input type="hidden" id="roomSerialNum" name="roomSerialNum">
-				상영시작시간
-				<input type="date" name="beginDate" id="beginDate">
-				<input type="time" name="beginTime" id="beginTime">
-				<input type="hidden" name="begin" id="begin">
-				상영종료시간
-				<input type="date" name="endDate" id="endDate">
-				<input type="time" name="endTime" id="endTime">
-				<input type="hidden" name="end" id="end">
-				가격
-				<input type="text" name="price">원
-				<input type="submit" value="등록">
-				</form>
-			</div>
-			영화목록
-			<div class="movieList" id="movieList"></div>
-			상영목록
-			<div class="roomList" id="roomList"></div>
-		</div>
-
-		</div>
-	</div>
-	
-	<div class="footer">
-		<jsp:include page="footer.jsp"/>
-	</div>
+	영화목록
+	<div class="movieList" id="movieList"></div>
+	상영목록
+	<div class="roomList" id="roomList"></div>
+</div>
 <script type="text/javascript">
 	const beginDate=document.getElementById("beginDate");
 	const begintTime=document.getElementById("beginTime");
@@ -85,6 +62,7 @@
 			alert("날짜를 먼저 입력해주세요");
 		}else{
 			param3.value+=" "+param2.value;
+			alert(param3.value);
 		}
 	}
 </script>
