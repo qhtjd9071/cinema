@@ -18,7 +18,8 @@
 </div>
 
 
-<div class="wrap">
+<div class="movie">
+	<div class="movie_container">
 		<div class="contnets_event_home" style="margin-top:120px;">
 			<div class="title_top"></div>
 			<div class="lst_wrap">
@@ -26,20 +27,19 @@
 				<ul class="img_lst_wrap">
 					<li>
 						<c:forEach var="vo" items="${ requestScope.list }">
-						<div style="background-color: red;"><a href='${pageContext.request.contextPath}/event.do?eventNum=${vo.eventNum}'><img src="${vo.mainImage }"></a></div>
-						<div style="background-color: red;"> ${vo.title}</div>
+						<div><a href='${pageContext.request.contextPath}/event.do?eventNum=${vo.eventNum}'><img src="${vo.mainImage }"></a></div>
+						<div> ${vo.title}</div>
 						</c:forEach>
 						<div class="itm_tit"></div>
-						<div class="itm_date"${vo.writedate }></div>
+						<div class="itm_date">${vo.writedate }></div>
 					</li>
 					<li></li>
 					<li></li>
 				</ul>
 			</div>
-			
 		</div>
 	</div>
-
+</div>
 <div class="footer">
 	<jsp:include page="footer.jsp"/>
 </div>
