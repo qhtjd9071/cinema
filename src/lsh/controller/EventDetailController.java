@@ -11,17 +11,18 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import lsh.dao.EventDao;
+import lsh.dao.EventDetailDao;
 import semi.vo.eventVo;
 
 
-@WebServlet("/event.do")
-public class EventController extends HttpServlet{
+@WebServlet("/eventdetail.do")
+public class EventDetailController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		EventDao dao=EventDao.getInstance();
-		ArrayList<eventVo> list = dao.list();
+		EventDetailDao detaildao=EventDetailDao.getInstance();
+		ArrayList<eventVo> dlist = detaildao.dlist();
 		
-		req.setAttribute("list", list);
-		req.getRequestDispatcher("/Eve_main.jsp").forward(req, resp);
+		req.setAttribute("dlist", dlist);
+		req.getRequestDispatcher("/event.jsp").forward(req, resp);
 	}
 }
