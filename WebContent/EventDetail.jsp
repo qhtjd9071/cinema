@@ -22,15 +22,11 @@
 </div>
 
 <div class="contents_event">
-		<ul class="movie_list_wrap">
-			<li class= "movie_selected">
-				<span class="movieImg">
-					<a href='${pageContext.request.contextPath}/eventDetail?eventNum=${vo.eventNum}'>
-						<img src="${vo.detailImage}">
-					</a>
-				</span>
-			</li>
-		</ul>		
+	<div class="movieImg">
+		<a href='${pageContext.request.contextPath}/eventDetail?eventNum=${vo.eventNum}'>
+			<img src="${vo.detailImage}">
+		</a>
+	</div>	
 </div>
 <div class="footer">
 	<jsp:include page="footer.jsp"/>
