@@ -64,7 +64,8 @@ CREATE TABLE event
 	content varchar2(1000) NOT NULL,
 	writedate date NOT NULL,
 	hit number NOT NULL,
-    image String NOT NULL,
+    mainImage String NOT NULL,
+    detailImage String NOT NULL,
 	PRIMARY KEY (eventNum)
 );
 
@@ -220,4 +221,3 @@ ALTER TABLE movieComments
 ;
 
 commit;
-
