@@ -41,9 +41,9 @@ public class FindPwdController extends HttpServlet{
 			pstmt.setString(4,phone);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-					test="<h1>ì…ë ¥í•˜ì‹  ì •ë³´ì™€ ì¼ì¹˜í•˜ëŠ” ë¹„ë°€ë²ˆí˜¸ ì •ë³´ì…ë‹ˆë‹¤.</h1>"+"<br>"+"ë¹„ë°€ë²ˆí˜¸ :"+ rs.getString("pwd")+"<br>";
+					test="<h1>ºñ¹Ğ¹øÈ£ Ã£±â °á°ú</h1>"+"<br>"+"ºñ¹Ğ¹øÈ£ :"+ rs.getString("pwd")+"<br>";
 			}else {
-				test="<h1>ì…ë ¥í•˜ì‹  ì •ë³´ì™€ ì¼ì¹˜í•˜ëŠ” ë¹„ë°€ë²ˆí˜¸ê°€ ì—†ìŠµë‹ˆë‹¤.</h1>";
+				test="<h1>µî·ÏÇÏ½Å Á¤º¸¿Í ÀÏÄ¡ÇÏ´Â ºñ¹Ğ¹øÈ£°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù</h1>";
 			}		
 		}catch(SQLException se) {
 			se.printStackTrace();

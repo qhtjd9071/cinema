@@ -36,9 +36,9 @@ public class FindIdController extends HttpServlet{
 			pstmt.setString(2,email);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				test="<h1>ì…ë ¥í•˜ì‹  ì •ë³´ì™€ ì¼ì¹˜í•˜ëŠ” ì•„ì´ë”” ì •ë³´ì…ë‹ˆë‹¤.</h1>"+"<br>"+"ì•„ì´ë”” :"+ rs.getString("id")+"<br>";
+				test="<h1>¾ÆÀÌµğ Ã£±â °á°ú</h1>"+"<br>"+"¾ÆÀÌµğ :"+ rs.getString("id")+"<br>";
 			}else {
-				test="<h1>ì…ë ¥í•˜ì‹  ì •ë³´ì™€ ì¼ì¹˜í•˜ëŠ” ì•„ì´ë””ê°€ ì—†ìŠµë‹ˆë‹¤.</h1>";
+				test="<h1>µî·ÏÇÏ½Å Á¤º¸¿Í ÀÏÄ¡ÇÏ´Â ¾ÆÀÌµğ°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù</h1>";
 			}		
 		}catch(SQLException se) {
 			se.printStackTrace();
