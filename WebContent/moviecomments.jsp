@@ -57,7 +57,6 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 				<ul class="detail_info1">
 					<li class="sub_info1">관람등급   <strong>${vo.rating }</strong></li>
 					<li class="sub_info2">관람객평점 <strong>${vo.grade }</strong></li>
-					<li class="sub_info3"></li>
 				</ul>
 				<ul class="detail_info2">
 					<li class="sub_info1"><em>장르</em><strong>${vo.genre }</strong></li>
@@ -104,9 +103,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 							</div>
 						</div>
 						<div class="movi_review_list">
-							<div class="review_top"></div>
 							<ul class="review_con_list" id="review_con_list"></ul>
-							<button type="button" class="btn_txt_more"></button>
 						</div>
 					</div>
 				</li>
@@ -177,7 +174,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 				let xml=xhr.responseXML;
 				let mcom=xml.getElementsByTagName("mcom");	
 				for(let i=0;i<mcom.length;i++){
-					let div=document.createElement("div");
+					let li=document.createElement("li");
 					let movieCommentsNum=mcom[i].getElementsByTagName("movieCommentsNum")[0].textContent;
 					let id=mcom[i].getElementsByTagName("id")[0].textContent;
 					let content=mcom[i].getElementsByTagName("content")[0].textContent;
@@ -186,13 +183,13 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 					let UserNum=mcom[i].getElementsByTagName("UserNum")[0].textContent;
 					let movieNum=mcom[i].getElementsByTagName("movieNum")[0].textContent;
 					
-					div.innerHTML=  "별점:" + star + "<br>" +
-									"내용:" + content +
-									"작성자:" + id +
+					li.innerHTML=   "<div class=\"topinfo\">"+ "<span class=\"nameinfo\">"+id +"</span>"+
+									"<span class=\"scoreinfo\">"+"평점  " +star +"</div>"+ "</div>" +
+									"<div class=\"reviewinfo\">" + content +"</div>"+
 									"<a href='javascript:delComments(" + movieCommentsNum + ")'>삭제</a>";
 					
-					div.className="commBox";
-					review_con_list.appendChild(div);
+					li.className="commBox";
+					review_con_list.appendChild(li);
 				}
 			}			
 		};
