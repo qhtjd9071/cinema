@@ -34,9 +34,12 @@
 	</div>
 		<table>
 			<colgroup>
+				<col style="width: 15%">
 				<col style="width: auto%">
-				<col style="width: 25%">
-				<col style="width: 20%">
+				<col style="width: 10%">
+				<col style="width: 15%">
+				<col style="width: 10%">
+				<col style="width: 5%">
 			</colgroup>
 			<tr>
 				<th>제목</th>
@@ -66,7 +69,7 @@
 			    border-radius:10px;
 			    background-color:black;
 			   	position: absolute; 
-  				left: 42%; 
+  				left: 45.5%; 
 			    cursor: pointer;">
 </div>
 
