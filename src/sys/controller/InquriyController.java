@@ -46,7 +46,7 @@ public class InquriyController extends HttpServlet{
 		req.setAttribute("startPageNum",startPageNum);
 		req.setAttribute("endPageNum",endPageNum);
 		req.setAttribute("pageNum",pageNum);
-		req.getRequestDispatcher("myInquiry.jsp").forward(req, resp);
+		req.getRequestDispatcher("/mypage_cslist.jsp").forward(req, resp);
 			
 	}
 }

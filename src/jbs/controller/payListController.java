@@ -112,6 +112,6 @@ public class payListController extends HttpServlet{
 		}
 		
 		request.setAttribute("list", plvoList);
-		request.getRequestDispatcher("/payList.jsp").forward(request, response);
+		request.getRequestDispatcher("/mypage_payList.jsp").forward(request, response);
 	}
 }

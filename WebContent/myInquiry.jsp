@@ -1,11 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -13,17 +8,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
 
 <link rel="stylesheet" href="css/myInquiry.css">
-<link rel="stylesheet" href="css/header2.css">
-<link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-	<div class="header2">
-	   <jsp:include page="header2.jsp"/>
-	</div>
 	
 	<div class="content">
 		<div class="content_container">
-			<h1>전체글목록</h1>
+			<h1>문의내역</h1>
 			<table>
 				<tr>
 					<th>글번호</th>
@@ -75,8 +65,4 @@
 		</div>
 	</div>
 	   
-	<div class="footer">
-	   <jsp:include page="footer.jsp"/>
-	</div>
 </body>
-</html>
