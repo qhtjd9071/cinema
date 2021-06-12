@@ -3,8 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Insert title here</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
+
+<link rel="stylesheet" href="css/showEnroll.css">
 </head>
 <body>
 <div class="header">
@@ -15,31 +21,53 @@
 	<div class="content_container">
 		<h1>상영등록</h1>
 		<div class="wrapper">
-			<div class="inputDiv" id="inputDiv">
-				<form method="post" action="${pageContext.request.contextPath}/admin?cmd=showEnroll">
-				영화제목
-				<input type="text" id="title" readonly="readonly">
-				<input type="hidden" id="movieNum" name="movieNum">
-				상영시작시간
-				<input type="date" name="beginDate" id="beginDate">
-				<input type="time" name="beginTime" id="beginTime">
-				<input type="hidden" name="begin" id="begin">
-				상영종료시간
-				<input type="date" name="endDate" id="endDate">
-				<input type="time" name="endTime" id="endTime">
-				<input type="hidden" name="end" id="end">
-				<input type="submit" value="등록">
-				상영관
-				<input type="text" id="room" readonly="readonly">
-				<input type="hidden" id="roomSerialNum" name="roomSerialNum">
-				가격
-				<input type="text" name="price">원
-				</form>
-			</div>
-			영화목록
-			<div class="movieList" id="movieList"></div>
-			상영목록
-			<div class="roomList" id="roomList"></div>
+			<form method="post" action="${pageContext.request.contextPath}/admin?cmd=showEnroll" class="inputDiv">
+				<ul>
+					<li>
+						<h3>영화제목</h3>
+						<input type="text" id="title" readonly="readonly">
+						<input type="hidden" id="movieNum" name="movieNum">
+					</li>
+					<li>
+						<h3>상영관</h3>
+						<input type="text" id="room" readonly="readonly">
+						<input type="hidden" id="roomSerialNum" name="roomSerialNum">
+					</li>
+					<li>
+						<h3>가격</h3>
+						<input type="text" name="price"> 원
+					</li>
+				</ul>
+				<ul>
+					<li class="movietime">
+						<h3>상영시작시간</h3>
+						<input type="date" name="beginDate" id="beginDate">
+						<input type="time" name="beginTime" id="beginTime">
+						<input type="hidden" name="begin" id="begin">
+					</li>
+					<li class="movietime">
+						<h3>상영종료시간</h3>
+						<input type="date" name="endDate" id="endDate">
+						<input type="time" name="endTime" id="endTime">
+						<input type="hidden" name="end" id="end">
+						<input type="submit" value="등록" class="timesubmit">
+					</li>
+				</ul>
+			</form>
+			<ul class="listul">
+				<li>
+					<div class="roomlist">
+						<h3>상영목록</h3>
+						<div class="roomlist1" id="roomList"></div>
+					</div>
+				</li>
+				<li>
+					<div class="movielist">
+						<h3>영화목록</h3>
+						<ul class="movielist1" id="movieList"></ul>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</div>
 </div>
@@ -110,15 +138,15 @@
 				let jsonArr=JSON.parse(xhr.responseText);
 				for(let i=0;i<jsonArr.length;i++){
 					let json=jsonArr[i];
-					let div=document.createElement("div");
-					div.innerHTML=json.movieTitle;
-					movieList.appendChild(div);
+					let li=document.createElement("li");
+					li.innerHTML=json.movieTitle;
+					movieList.appendChild(li);
 					let movieImg=document.createElement("img");
 					movieImg.src=json.image;
 					movieImg.className="movieImg";
-					div.appendChild(movieImg);
+					li.appendChild(movieImg);
 					
-					div.addEventListener("click",function(e){
+					li.addEventListener("click",function(e){
 						movieNum.value=json.movieNum;
 						title.value=json.movieTitle;
 					});
