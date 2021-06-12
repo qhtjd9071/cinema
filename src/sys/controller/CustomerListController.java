@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import jbs.dao.usersDao;
-import semi.vo.customerVo;
+import semi.vo.customerVo2;
 import sys.dao.customerDao;
 
 
@@ -27,7 +27,7 @@ public class CustomerListController extends HttpServlet{
 		customerDao dao=new customerDao();
 		int startRow=(pageNum-1)*10+1;
 		int endRow=startRow+9;
-		ArrayList<customerVo> list=dao.list(startRow, endRow);
+		ArrayList<customerVo2> list=dao.list(startRow, endRow);
 		int pageCount=(int)Math.ceil(dao.getCount()/10.0);		
 		int startPageNum=((pageNum-1)/10*10)+1;
 		int endPageNum=startPageNum+9;
@@ -37,10 +37,8 @@ public class CustomerListController extends HttpServlet{
 		
 		HttpSession session=req.getSession();
 		String id=(String)session.getAttribute("id");
-		System.out.println("id:"+id);
 		usersDao usersdao=usersDao.getInstance();
 		int userNum=usersdao.getUserNum(id);
-		System.out.println("userNum:"+userNum);
 		
 		req.setAttribute("list",list);
 		req.setAttribute("userNum",userNum);

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import semi.db.dbCon;
 import semi.vo.customerVo;
+import semi.vo.customerVo2;
 
 public class customerDao {
 	public int getMaxNum() {
@@ -89,12 +90,12 @@ public int getCount() {
 		dbCon.close(con, pstmt1, null);
 	}
 }
-public ArrayList<customerVo> list(int startRow,int endRow){
+public ArrayList<customerVo2> list(int startRow,int endRow){
 	String sql="select * from " + 
 			"(" + 
 			"  select g.*,rownum rnum from" + 
 			"  (" + 
-			"	 select * from customer order by ref desc,step asc" + 
+			"	 select * from customer join users on customer.writer=users.userNum order by ref desc,step asc" + 
 			"  ) g" + 
 			") where rnum>=? and rnum<=?";
 	Connection con=null;
@@ -106,7 +107,7 @@ public ArrayList<customerVo> list(int startRow,int endRow){
 		pstmt.setInt(1, startRow);
 		pstmt.setInt(2,endRow);
 		rs=pstmt.executeQuery();
-		ArrayList<customerVo> list=new ArrayList<customerVo>();
+		ArrayList<customerVo2> list=new ArrayList<customerVo2>();
 		while(rs.next()) {
 			int num=rs.getInt("customerNum");
 			String title=rs.getString("title");
@@ -114,9 +115,9 @@ public ArrayList<customerVo> list(int startRow,int endRow){
 			int ref=rs.getInt("ref");
 			int lev=rs.getInt("lev");
 			int step=rs.getInt("step");
-			int writer=rs.getInt("writer");
+			String writer=rs.getString("id");
 			Date writeDate=rs.getDate("writedate");
-			customerVo vo=new customerVo(num, title, content, ref, lev, step, writeDate, writer);
+			customerVo2 vo=new customerVo2(num, title, content, ref, lev, step, writeDate, writer);
 			list.add(vo);
 		}
 		return list;
@@ -128,12 +129,12 @@ public ArrayList<customerVo> list(int startRow,int endRow){
 	}	
 }
 
-public ArrayList<customerVo> questionList(int startRow,int endRow,int userNum){
+public ArrayList<customerVo2> questionList(int startRow,int endRow,int userNum){
 	String sql="select * from " + 
 			"(" + 
 			"  select g.*,rownum rnum from" + 
 			"  (" + 
-			"	 select * from customer order by ref desc,step asc" + 
+			"	 select * from customer join users on customer.writer=users.userNum order by ref desc,step asc" + 
 			"  ) g" + 
 			") where rnum>=? and rnum<=? and writer=? or writer=0";
 	Connection con=null;
@@ -146,7 +147,7 @@ public ArrayList<customerVo> questionList(int startRow,int endRow,int userNum){
 		pstmt.setInt(2,endRow);
 		pstmt.setInt(3,userNum);
 		rs=pstmt.executeQuery();
-		ArrayList<customerVo> list=new ArrayList<customerVo>();
+		ArrayList<customerVo2> list=new ArrayList<customerVo2>();
 		while(rs.next()) {
 			int num=rs.getInt("customerNum");
 			String title=rs.getString("title");
@@ -154,9 +155,9 @@ public ArrayList<customerVo> questionList(int startRow,int endRow,int userNum){
 			int ref=rs.getInt("ref");
 			int lev=rs.getInt("lev");
 			int step=rs.getInt("step");
-			int writer=rs.getInt("writer");
+			String writer=rs.getString("id");
 			Date writeDate=rs.getDate("writedate");
-			customerVo vo=new customerVo(num, title, content, ref, lev, step, writeDate, writer);
+			customerVo2 vo=new customerVo2(num, title, content, ref, lev, step, writeDate, writer);
 			list.add(vo);
 		}
 		return list;

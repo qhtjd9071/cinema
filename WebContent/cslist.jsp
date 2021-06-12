@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>전체 문의글</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -23,22 +23,26 @@
 	
 	<div class="content">
 		<div class="content_container">
-			<h1>전체글목록</h1>
+			<h1>문의글 목록</h1>
 			<table>
+				<colgroup>
+					<col style="width: 15%">
+					<col style="width: 15%">
+					<col style="width: auto%">
+					<col style="width: 15%">
+				</colgroup>
 				<tr>
 					<th>글번호</th>
 					<th>작성자</th>
 					<th>제목</th>
-					<th>글내용</th>
-					<th>삭제</th>
-					<th>수정</th>
+					<th>작성일</th>
 				</tr>
 				<c:forEach var="vo" items="${requestScope.list }">
 					<tr class="tr1">
 						<td class="td1">${vo.customerNum }</td>
 						<td class="td1">${vo.writer }</td>
 						<td>
-							<a href="csdetail?customerNum=${vo.customerNum}">
+							<a href="csdetail?customerNum=${vo.customerNum}" style="color:gray">
 							<c:if test="${vo.lev>0 }">
 								<c:forEach var="i" begin="1" end="${vo.lev}">
 								&nbsp;[re]
@@ -46,9 +50,7 @@
 							</c:if>
 							${vo.title }</a>
 						</td>
-						<td>${vo.content }</td>	
-						<td class="td1"><a href="delMember?customerNum=${vo.customerNum}">삭제</a></td>
-						<td class="td1"><a href="csupdate?customerNum=${vo.customerNum}">수정</a></td>
+						<td>${vo.writedate}</td>
 						<!-- 답글인경우 들여쓰기하기 -->
 					</tr>
 				</c:forEach>

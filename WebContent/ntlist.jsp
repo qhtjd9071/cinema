@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/footer.css">
 </head>
-${result }
 <script type="text/javascript">
 	window.onload=function(){
 		if("${result}"=="insert_success"){
