@@ -84,13 +84,12 @@ public class BookingDao {
 		try {
 			con = dbCon.getConnection();
 			String sql = "select distinct(m.movieTitle) from show s join movie m on m.movieNum = s.movieNum "
-						+ " join room r on s.roomserialNum = r.roomserialnum where r.theaterName = ?";
+					   + " join room r on s.roomserialNum = r.roomserialnum where r.theaterName = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, theaterName);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				String movieTitle = rs.getString("movieTitle");
-				//System.out.println(movieTitle);
 				roommovVo vo = new roommovVo(movieTitle, 0, 0, null);
 				mlist.add(vo);
 			}
@@ -144,7 +143,7 @@ public class BookingDao {
 			dbCon.close(con, pstmt, rs);
 		}
 	}
-	
+
 	// 영화별 영화 불러오기 - 평점순
 	public ArrayList<roommovVo> mStarList(String theaterName){
 		Connection con = null;
@@ -174,10 +173,10 @@ public class BookingDao {
 					+ "order by s desc";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, theaterName);
-			//System.out.println("star: " + theaterName);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 					String movieTitle = rs.getString("movieTitle");
+					System.out.println("별점: " + movieTitle);
 					roommovVo vo = new roommovVo(movieTitle, 0, 0, null);
 					starlist.add(vo);
 				}	
