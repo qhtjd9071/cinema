@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
 
 <link rel="stylesheet" href="css/moviecomments.css">
-<link rel="stylesheet" href="css/star.css">
 <link rel="stylesheet" href="css/header2.css">
 <link rel="stylesheet" href="css/footer.css">
 
@@ -20,7 +19,7 @@
 .star-input>.input>label:hover,
 .star-input>.input>input:focus+label,
 .star-input>.input>input:checked+label{display: inline-block;vertical-align:middle;background:url('images/star/grade_img.png')no-repeat;}
-.star-input{display:inline-block; white-space:nowrap;width:225px;height:40px;padding:25px;line-height:30px;}
+.star-input{display:inline-block; white-space:nowrap;background-color:#F8F8F8;line-height:30px;}
 .star-input>.input{display:inline-block;width:150px;background-size:150px;height:28px;white-space:nowrap;overflow:hidden;position: relative;}
 .star-input>.input>input{position:absolute;width:1px;height:1px;opacity:0;}
 star-input>.input.focus{outline:1px dotted #ddd;}
@@ -34,14 +33,14 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 .star-input>.input>label[for="p3"]{width:90px;z-index:3;}
 .star-input>.input>label[for="p4"]{width:120px;z-index:2;}
 .star-input>.input>label[for="p5"]{width:150px;z-index:1;}
-.star-input>output{display:inline-block;width:60px; font-size:18px;text-align:right; vertical-align:middle;}
+.star-input>output{display:block;width:100%; font-size:13px;text-align:center; vertical-align:middle;margin:10px 0 0 0;}
 </style>
 
 </head>
 <body>
 
 <div class="header2">
-	<jsp:include page="header2.jsp"/>
+	<jsp:include page="/header2.jsp"/>
 </div>
 
 <!-- 영화 상세정보 -->
@@ -53,33 +52,35 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 					<img src="${vo.image }">
 				</div>
 				<div class="tit_info">
-					<Strong>${vo.movieTitle }</Strong>
+					<strong>${vo.movieTitle }</strong>
 				</div>
 				<ul class="detail_info1">
-					<li class="sub_info1">${vo.rating }</li>
+					<li class="sub_info1">관람객 평점   <strong>${vo.rating }</strong></li>
 					<li class="sub_info2"></li>
 					<li class="sub_info3"></li>
 				</ul>
 				<ul class="detail_info2">
-					<li class="sub_info1">${vo.genre }</li>
-					<li class="sub_info2">${vo.director }</li>
-					<li class="sub_info3"></li>
+					<li class="sub_info1"><em>장르</em><strong>${vo.genre }</strong></li>
+					<li class="sub_info2"><em>감독</em><strong>${vo.director }</strong></li>
 				</ul>
 			</div>
-			<ul class="tab_wrap outer">
-				<li class="active">
-					<button type="button" class="tab_tit" style="width:50%; left:0%;"><span>영화정보</span></button>
+			<ul class="tab_wrap">
+				<li>
+					<input type="button" class="tab_tit" value="영화정보">
 					<div class="tab_con">
-						${vo.movieContent }
+						<strong>시놉시스</strong>
+						<div class="movie_content">${vo.movieContent }</div>
 					</div>
 				</li>
-				<li class="active">
+				<li>
+					<input type="button" class="tab_tit" value="평점 및 관람평" style="margin-top:42px">
 					<div class="tab_con">
 						<div class="movi_score_box">
-							<p class="txt_info"><span>"영화 관람 후 관람평을 작성하시면"<br>"L.POINT 50P를 적립해 드립니다."</span></p>
+							<p class="txt_info">"영화 관람 후 관람평을 작성하시면"<br>"POINT 50P를 적립해 드립니다."</p>
 						</div>
 						<div class="movi_review_box">
 							<span class="star-input">
+							  	<output for="star-input"><b>0</b>점</output>
 								<span class="input">
 							    	<input type="radio" name="star-input" value="1" id="p1" onclick="getStars()">
 							    	<label for="p1">1</label>
@@ -92,15 +93,18 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 							    	<input type="radio" name="star-input" value="5" id="p5" onclick="getStars()">
 							    	<label for="p5">5</label>
 							  	</span>
-							  	<output for="star-input"><b>0</b>점</output>
 							  	<button onclick='getStars()'></button>		
 							</span>
-							<div id="result" style="display:none;"></div>	
-							아이디 <br>
-							<input type="text" id="id" value="${id }" readonly="readonly"><br>
-							영화평 <br>
-							<textarea rows="3" cols="30" id="content"></textarea><br>
-							<input type="button" class="tab_tit" style="width:50%; left:0%;" value="평점 및 관람평" onclick="addComments()">
+							<div class="review_write_box">
+							<!-- 
+								<div id="result"></div>	
+								아이디 <br>
+								<input type="text" id="id" value="${id }" readonly="readonly"><br>
+							 -->
+								<textarea rows="3" cols="30" id="content" placeholder="평점 및 영화 관람평을 작성해주세요.
+주제와 무관한 리뷰 또는 스포일러는 표시제한 또는 삭제될 수 있습니다."></textarea>
+								<input type="button" value="관람평 등록" onclick="addComments()">
+							</div>
 						</div>
 						<div class="movi_review_list">
 							<div class="review_top"></div>
@@ -120,25 +124,23 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 <!-- 별점 -->
 
 <div class="footer">
-	<jsp:include page="footer.jsp"/>
+	<jsp:include page="/footer.jsp"/>
 </div>
 
 
 
 <script type="text/javascript">
-
-function getStars() {
-	  
-	  const stars
-	  = document.getElementsByName("star-input");
-	  
-	  stars.forEach((node) => {
-	    if(node.checked)  {
-	      document.getElementById("result").innerText
-	        = node.value;
-	    }
-	  }) 
-	}
+	function getStars() {
+		  const stars
+		  = document.getElementsByName("star-input");
+		  
+		  stars.forEach((node) => {
+		    if(node.checked)  {
+		      document.getElementById("result").innerText
+		        = node.value;
+		    }
+		  }) 
+		}
 
 	function addComments(){
 		const id=document.getElementById("id").value;	
