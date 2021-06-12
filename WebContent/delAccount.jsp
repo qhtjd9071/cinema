@@ -22,7 +22,7 @@
 <body>
 	<div class="delaccount">
 		<h3 class="title">회원탈퇴</h3>
-		<p class="caution">[주의] 메가박스 회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요.</p>
+		<p class="caution">[주의] 로또시네마 회원탈퇴를 신청하기 전에 안내 사항을 꼭 확인해주세요.</p>
 		<div class="content">
 			<ol>
 				<li class="list_num">

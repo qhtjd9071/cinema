@@ -25,7 +25,7 @@
 </div>
 
 <div class="contents_event">
-	<div class="evnt_img"><img src="${vo.detailImage }"></div>
+	<div class="evnt_img"><img src="${pageContext.request.contextPath}/eventdetail.do?eventNum=${vo.detailImage }"></div>
 	<div class="btn_btm_wrap">
 		<a class="btn_col2 ty6" href="${pageContext.request.contextPath}/Eve_main.jsp">목록</a>
 	</div>
