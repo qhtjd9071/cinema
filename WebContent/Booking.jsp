@@ -211,7 +211,7 @@
 	 			printYear += 1;
 	 		}
 	 		
-	 		var li = '<li class="off';
+	 		var li = '<li style="color: gray;" class="off';
 	 		if(printDay == 0) li += ' sunday';
 	 		if(printDay == 6) li += ' saturday';
 	 		li += '" onclick="selectDate(' + printYear + ',' + printMonth + ',' + printDate + ')">' + printDate + " " + weekOfDay[printDay] + "</li>";
