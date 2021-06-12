@@ -484,7 +484,6 @@ body {
 */
 .movie-list{
 	width: 250px;
-	height:50px;
 	color: rgb(0, 0, 0);
 	cursor: pointer;
 	direction: ltr;
