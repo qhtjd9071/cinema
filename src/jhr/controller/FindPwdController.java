@@ -20,6 +20,7 @@ public class FindPwdController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
+		String id=req.getParameter("id");
 		String name=req.getParameter("name");
 		String email=req.getParameter("email");
 		String year=req.getParameter("year");
@@ -32,13 +33,14 @@ public class FindPwdController extends HttpServlet{
 		
 		try {
 			con=dbCon.getConnection();
-			String sql="select * from users where name like '%'||?||'%' and email like '%'||?||'%' "
-					+ "and year like '%'||?||'%' and phone like '%'||?||'%'";
+			String sql="select * from users where id=? and name=? and email=? "
+					+ "and year=? and phone=?";
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,name);
-			pstmt.setString(2,email);
-			pstmt.setString(3,year);
-			pstmt.setString(4,phone);
+			pstmt.setString(1,id);
+			pstmt.setString(2,name);
+			pstmt.setString(3,email);
+			pstmt.setString(4,year);
+			pstmt.setString(5,phone);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 					test="<h1>비밀번호 찾기 결과</h1>"+"<br>"+"비밀번호 :"+ rs.getString("pwd")+"<br>";

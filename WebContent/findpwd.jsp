@@ -31,6 +31,20 @@
 				<h3>인증정보 입력</h3>
 					<div class="findid1">
 						<div class="findid_col1">
+							<label for="">아이디</label>
+						</div>
+						<div class="findid_col_input">
+							<div class="input_wrap">
+								<div class="wrap_inner">
+									<div class="ui_input">
+										<input type="text" name="id" class="input_space" maxlength="15" id="name" placeholder="아이디를 입력해주세요.">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="findid1">
+						<div class="findid_col1">
 							<label for="">이름</label>
 						</div>
 						<div class="findid_col_input">
@@ -98,11 +112,17 @@
 </body>
 <script type="text/javascript">
 	function check(){
+		var id=document.getElementsByName("id")[0];
 		var name=document.getElementsByName("name")[0];
 		var email=document.getElementsByName("email")[0];
 		var ereg=/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
 		var year=document.getElementsByName("year")[0];
 		var phone=document.getElementsByName("phone")[0];
+		if(id.value.trim()==""){
+			alert("아이디를 입력하세요.");
+			id.focus();
+			return false;
+		}
 		if(name.value.trim()==""){
 			alert("이름을 입력하세요.");
 			name.focus();
