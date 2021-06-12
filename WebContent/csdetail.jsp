@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>문의 상세</title>
 <style>
 	.dtlistbox{text-align: center !important;width: 100%;
     border-collapse: collapse;

@@ -62,6 +62,7 @@
       <div class="movie_container">
       <c:choose>
 	<c:when test="${result=='success'}">
+	<img src="/images/sg.JPG">
 	<div class="bgb">
 		<h1>성공적으로 접수되었습니다.빠른 시간 내에 답변 드리겠습니다.
 		<br>

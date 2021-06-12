@@ -35,6 +35,7 @@
 		      <li><a href="${pageContext.request.contextPath}/showlist" style="background-color:#444444; color:white;">상영 영화 보기</a></li>
 		      <li><a href="${pageContext.request.contextPath}/ntlist" style="background-color:#F8F8F8">공지사항 보기</a></li>
 		      <li><a href="${pageContext.request.contextPath}/eventlist" style="background-color:#444444; color:white;">이벤트 보기</a></li>
+		      <li><a href="${pageContext.request.contextPath}/cslist" style="background-color:#F8F8F8;">문의내역 보기</a></li>
 	      </ul>
       </div>
    </div>

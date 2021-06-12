@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>insert.jsp</title>
+<title>문의 작성</title>
 <style>
 .movie {
 	width:100%;

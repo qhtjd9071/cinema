@@ -134,8 +134,8 @@
 					let json=JSON.parse(fileName);
 					if(json!=""){
 						let img=document.getElementById("img");
-						img.src="${pageContext.request.contextPath }/upload/"+json.orgFileName;
-						imgsrc.value=img.src;
+						img.src="${pageContext.request.contextPath }/upload/movie/"+json.orgFileName;
+						imgsrc.value="${pageContext.request.contextPath }/images/movie/"+json.orgFileName;
 					}
 				}
 			xhr.open("post", "${pageContext.request.contextPath}/fileup", true);

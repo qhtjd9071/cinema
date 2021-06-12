@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>noticmain.jsp</title>
+<title>고객센터</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 
@@ -29,6 +29,8 @@
 		<h1>고객센터</h1>
 		<ul>
 			<li><a href="${pageContext.request.contextPath}/csinsert.jsp">1:1문의</a></li>
+			<br>
+			<br>
 			<li><a href="${pageContext.request.contextPath}/cslist">문의글목록보기</a></li>	
 		</ul>
 		</div>

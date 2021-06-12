@@ -18,7 +18,7 @@ import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 public class FileuploadController2 extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String saveDir=getServletContext().getRealPath("/upload");
+		String saveDir=getServletContext().getRealPath("/upload/eventdetail");
 		System.out.println(saveDir);
 		MultipartRequest mr=new MultipartRequest(request,
 				saveDir,

@@ -21,6 +21,23 @@
 	#seatArea{width:600px;margin:0 auto;}
 	#seatArea div{width:50px;height:50px;text-align:center;background-color:gray;display:inline-block;margin:10px;}
 	#rating{width:200px;hegiht:150px;margin:0 auto;color:blue}
+	.btn{
+			width:100px;
+			background-color: #f8585b;
+			border: none;
+			color:white;
+			padding: 15px 0;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 15px;
+			margin: 4px;
+			border-radius:10px;
+			background-color:black;
+			position: absolute; 
+  			left: 45.5%; 
+			cursor: pointer;
+		}
 </style>
 <script type="text/javascript">
 		//배열 초기화
@@ -49,8 +66,8 @@
 					<h4>좌석 선택</h4>
 				</div>
 				<div class="seat_inner">
-					<a href="#" onclick="transfer()">결제하기</a>
 					<div id="seatArea"></div>
+					<input type="button" value="결제하기" id="btn" onclick="trans()" class="btn">
 				</div>
 			</div>
 		</div>
