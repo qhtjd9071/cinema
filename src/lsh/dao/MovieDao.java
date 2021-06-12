@@ -21,9 +21,11 @@ public class MovieDao {
 		ResultSet rs=null;
 		try {
 			con=dbCon.getConnection();
-			String sql="select * from movie where movieNum=?";
+			String sql="select movieNum,movieTitle,movieContent,director,genre,rating,image,(select ROUND(AVG(NVL(star,0)),1) from movieComments where movieNum=?) grade from movie where movieNum=?";
+
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, movieNum);
+			pstmt.setInt(2, movieNum);
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				String movieTitle=rs.getString("movieTitle");
@@ -32,7 +34,8 @@ public class MovieDao {
 				String genre=rs.getString("genre");
 				String rating=rs.getString("rating");
 				String image=rs.getString("image");
-				movieVo vo=new movieVo(movieNum, movieTitle, movieContent, director, genre, rating, image);
+				String grade=rs.getString("grade");
+				movieVo vo=new movieVo(movieNum, movieTitle, movieContent, director, genre, rating, image, grade);
 				return vo;
 			}else {
 				return null;

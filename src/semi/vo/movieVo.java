@@ -8,9 +8,10 @@ public class movieVo {
 	private String genre;
 	private String rating;
 	private String image;
+	private String grade;
 	public movieVo() {}
 	public movieVo(int movieNum, String movieTitle, String movieContent, String director, String genre, String rating,
-			String image) {
+			String image, String grade) {
 		super();
 		this.movieNum = movieNum;
 		this.movieTitle = movieTitle;
@@ -19,6 +20,7 @@ public class movieVo {
 		this.genre = genre;
 		this.rating = rating;
 		this.image = image;
+		this.grade = grade;
 	}
 	public int getMovieNum() {
 		return movieNum;
@@ -62,6 +64,11 @@ public class movieVo {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
 	
 }

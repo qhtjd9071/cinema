@@ -55,8 +55,8 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 					<strong>${vo.movieTitle }</strong>
 				</div>
 				<ul class="detail_info1">
-					<li class="sub_info1">관람객 평점   <strong>${vo.rating }</strong></li>
-					<li class="sub_info2"></li>
+					<li class="sub_info1">관람등급   <strong>${vo.rating }</strong></li>
+					<li class="sub_info2">관람객평점 <strong>${vo.grade }</strong></li>
 					<li class="sub_info3"></li>
 				</ul>
 				<ul class="detail_info2">
