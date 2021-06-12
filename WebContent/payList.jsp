@@ -22,7 +22,11 @@
 			<h1>예매 내역</h1>
 			<table border="1">
 				<tr>
-					<th>내역</th>
+					<th>제목</th>
+					<th>좌석</th>
+					<th>극장</th>
+					<th>상영관</th>
+					<th>시작 시간</th>
 					<th>금액</th>
 					<th>결제날짜</th>
 					<th>취소</th>
@@ -30,12 +34,11 @@
 				
 				<c:forEach var="vo" items="${list}">
 					<tr>
-						<td>${vo.movieTitle}<br>
-							좌석 : ${vo.seatNumArr}<br>
-							${vo.theaterName}<br>
-							${vo.roomNum}<br>
-							${vo.beginTime}
-						</td>
+						<td>${vo.movieTitle}</td>
+						<td>좌석 : ${vo.seatNumArr}</td>
+						<td>${vo.theaterName}</td>
+						<td>${vo.roomNum}</td>
+						<td>${vo.beginTime}</td>
 						<td>${vo.tot }</td>
 						<td>${vo.payDate }</td>
 						<td><a href="${pageContext.request.contextPath}/cancel?partner_order_id=${vo.intNum}">취소</a></td>
