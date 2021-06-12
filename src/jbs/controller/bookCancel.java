@@ -42,8 +42,10 @@ public class bookCancel{
 					if(userNum==bsmvo.getUserNum()) {
 						//예약 삭제
 						bookdao.delete(bookNum);
+						System.out.println("예약삭제:"+bookNum);
 						//결제 삭제
 						paydao.delete(intNum);
+						System.out.println("결제삭제:"+intNum);
 						//통합 삭제
 						integrationDao.getInstance().delete(intNum);
 					}

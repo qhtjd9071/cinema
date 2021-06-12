@@ -3,7 +3,6 @@
 
 DROP TABLE pay CASCADE CONSTRAINTS;
 DROP TABLE book CASCADE CONSTRAINTS;
-DROP TABLE comments CASCADE CONSTRAINTS;
 DROP TABLE customer CASCADE CONSTRAINTS;
 DROP TABLE event CASCADE CONSTRAINTS;
 DROP TABLE movieComments CASCADE CONSTRAINTS;
@@ -31,22 +30,10 @@ CREATE TABLE book
 	PRIMARY KEY (bookNum)
 );
 
-
-CREATE TABLE comments
-(
-	commentNum number NOT NULL,
-	content varchar2(300) NOT NULL,
-	writedate date NOT NULL,
-	noticeNum number NOT NULL,
-	writer number NOT NULL,
-	PRIMARY KEY (commentNum)
-);
-
-
 CREATE TABLE customer
 (
 	customerNum number NOT NULL,
-	title varchar2(100) NOT NULL,
+	title varchar2(300) NOT NULL,
 	content varchar2(2000) NOT NULL,
 	ref number NOT NULL,
 	lev number NOT NULL,
@@ -60,7 +47,7 @@ CREATE TABLE customer
 CREATE TABLE event
 (
 	eventNum number NOT NULL,
-	title varchar2(100) NOT NULL,
+	title varchar2(300) NOT NULL,
 	content varchar2(2000) NOT NULL,
 	writedate date NOT NULL,
 	hit number NOT NULL,
@@ -73,7 +60,7 @@ CREATE TABLE event
 CREATE TABLE movie
 (
 	movieNum number NOT NULL,
-	movieTitle varchar2(100) NOT NULL,
+	movieTitle varchar2(300) NOT NULL,
 	movieContent varchar2(2000) NOT NULL,
 	director varchar2(100) NOT NULL,
 	genre varchar2(100) NOT NULL,
@@ -99,7 +86,7 @@ CREATE TABLE movieComments
 CREATE TABLE notice
 (
 	noticeNum number NOT NULL,
-	title varchar2(100) NOT NULL,
+	title varchar2(300) NOT NULL,
 	content varchar2(2000) NOT NULL,
 	writedate date NOT NULL,
 	hit number  NOT NULL,
@@ -121,7 +108,7 @@ CREATE TABLE pay
 CREATE TABLE room
 (
 	roomserialNum number NOT NULL,
-	theaterName varchar2(100) NOT NULL,
+	theaterName varchar2(300) NOT NULL,
 	sitCount number NOT NULL,
 	location varchar2(100) NOT NULL,
 	roomNum number,
@@ -147,7 +134,7 @@ CREATE TABLE users
 	id varchar2(100) NOT NULL,
 	pwd varchar2(100) NOT NULL,
 	name varchar2(100) NOT NULL,
-	email varchar2(100) NOT NULL,
+	email varchar2(300) NOT NULL,
     year varchar2(100) NOT NULL,
 	phone varchar2(100) NOT NULL,
 	delUser varchar2(100),
@@ -157,7 +144,7 @@ CREATE TABLE users
 CREATE TABLE integration
 (
     intNum number NOT NULL,
-    bookNumArray varchar2(100) NOT NULL,
+    bookNumArray varchar2(200) NOT NULL,
     PRIMARY KEY (intNum)
 );
 
@@ -176,12 +163,6 @@ ALTER TABLE movieComments
 ALTER TABLE show
 	ADD FOREIGN KEY (movieNum)
 	REFERENCES movie (movieNum)
-;
-
-
-ALTER TABLE comments
-	ADD FOREIGN KEY (noticeNum)
-	REFERENCES notice (noticeNum)
 ;
 
 
@@ -219,5 +200,34 @@ ALTER TABLE movieComments
 	ADD FOREIGN KEY (userNum)
 	REFERENCES users (userNum)
 ;
+
+drop sequence book_seq;
+create sequence book_seq;
+
+drop sequence event_seq;
+create sequence event_seq;
+
+drop sequence int_seq;
+create sequence int_seq;
+
+drop sequence movie_seq;
+create sequence movie_seq;
+
+drop sequence movieComments_seq;
+create sequence movieComments_seq;
+
+drop sequence notice_seq;
+create sequence notice_seq;
+
+drop sequence room_seq;
+create sequence room_seq;
+
+drop sequence show_seq;
+create sequence show_seq;
+
+drop sequence users_seq;
+create sequence users_seq;
+
+insert into users values(0,'admin',1234,'包府磊','包府磊','包府磊','包府磊',null);
 
 commit;

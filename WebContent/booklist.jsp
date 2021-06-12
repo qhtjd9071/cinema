@@ -67,7 +67,7 @@
 				</div>
 				<div class="seat_inner">
 					<div id="seatArea"></div>
-					<input type="button" value="결제하기" id="btn" onclick="trans()" class="btn">
+					<input type="button" value="결제하기" id="btn" onclick="transfer()" class="btn">
 				</div>
 			</div>
 		</div>

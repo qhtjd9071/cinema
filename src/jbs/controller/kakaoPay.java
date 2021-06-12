@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
-import jbs.dao.bookDao;
 import jbs.dao.payDao;
 import semi.vo.payVo;
 
@@ -41,16 +40,8 @@ public class kakaoPay extends HttpServlet{
 	            con.setDoOutput(true);//보낼값 있음
 	            
 	            //IP주소,포트번호,url 얻어오기
-	            String ipAddress = null;
-	    	    /*
-	            try {
-	    	    	ipAddress = InetAddress.getLocalHost().getHostAddress();
-	    	    } catch (UnknownHostException e) {
-	    	    	ipAddress = "";
-	    	    }
-	    	    */
-	    	    ipAddress="localhost";
-	            String base_url="http://"+ipAddress+":"+request.getLocalPort()+request.getContextPath();
+	            String base_url="http://"+"www.lottocinema.shop"+request.getContextPath();
+	            System.out.println(base_url);
 	            String approval_url=base_url+"/kakao?partner_order_id="+partner_order_id;
 	            String cancel_url=base_url+"/payList";
 	            String fail_url=base_url+"/bookCancel";

@@ -20,7 +20,7 @@ public class noticeDao {
 	public int insert(noticeVo vo){
 			Connection con=null;
 			PreparedStatement pstmt=null;
-		String sql="insert into notice values(myboard_seq.nextval,?,?,sysdate,?)";
+		String sql="insert into notice values(notice_seq.nextval,?,?,sysdate,?)";
 		try {
 			con=dbCon.getConnection();
 			pstmt=con.prepareStatement(sql);

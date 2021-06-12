@@ -67,21 +67,21 @@ public class payListController extends HttpServlet{
 							System.out.println(false);
 						}
 						System.out.println(tempSeatNum);
-						if(bsmrvo.getSeatNum()/8<=1){
+						if(bsmrvo.getSeatNum()/8.0<=1){
 							seatNum="A"+tempSeatNum;
-						}else if(bsmrvo.getSeatNum()/8<=2){
+						}else if(bsmrvo.getSeatNum()/8.0<=2){
 							seatNum="B"+tempSeatNum;
-						}else if(bsmrvo.getSeatNum()/8<=3){
+						}else if(bsmrvo.getSeatNum()/8.0<=3){
 							seatNum="C"+tempSeatNum;
-						}else if(bsmrvo.getSeatNum()/8<=4){
+						}else if(bsmrvo.getSeatNum()/8.0<=4){
 							seatNum="D"+tempSeatNum;
-						}else if(bsmrvo.getSeatNum()/8<=5){
+						}else if(bsmrvo.getSeatNum()/8.0<=5){
 							seatNum="E"+tempSeatNum;
-						}else if(bsmrvo.getSeatNum()/8<=6){
+						}else if(bsmrvo.getSeatNum()/8.0<=6){
 							seatNum="F"+tempSeatNum;
-						}else if(bsmrvo.getSeatNum()/8<=7){
+						}else if(bsmrvo.getSeatNum()/8.0<=7){
 							seatNum="G"+seatNum;
-						}else if(bsmrvo.getSeatNum()/8<=8){
+						}else if(bsmrvo.getSeatNum()/8.0<=8){
 							seatNum="H"+seatNum;
 						}
 						
