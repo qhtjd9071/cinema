@@ -6,6 +6,21 @@
 <meta charset="UTF-8">
 <title>insert.jsp</title>
 <style>
+.movie {
+	width:100%;
+	display:block;
+	box-sizing:border-box;
+	margin:0;
+	padding:200px 0 0 0;
+}
+.movie_container {
+	max-width:980px;
+	display:block;
+	box-sizing:border-box;
+	margin:0 auto;
+	padding:0;
+}
+
 #movieoretc{margin-left: 5px;}
 	.titdiv{    margin: 20px 0 50px 0;display: block;
     margin-block-start: 1em;
