@@ -28,7 +28,7 @@
 	<div class="mypage_container">
 		<div class="mypage_lnb_wrap">
 			<nav class="mypage_lnb">
-				<p><a href="${pageContext.request.contextPath }/mypage_myinfo.jsp">나의 로또시네마</a></p>
+				<p><a href="#">나의 로또시네마</a></p>
 				<ul>
 					<li onclick="myPagedetail('payList')"><a href="${pageContext.request.contextPath }/payList">예매 내역</a></li>
 					<li><a href="${pageContext.request.contextPath }/inquiry">나의 문의 내역</a></li>
