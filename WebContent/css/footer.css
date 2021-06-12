@@ -38,8 +38,8 @@ body {
 }
 .banner_02 {
 	display:block;
-	background-color: rgb(255, 219, 0);
-    background-image: url(../images/main/bg_01.jpg);
+	background-color:rgb(0, 92, 185);
+    background-image:url(../images/main/bg_01.jpg);
     background-repeat-x:repeat;
     background-repeat-y:no-repeat;
     background-position: 0px 0px;

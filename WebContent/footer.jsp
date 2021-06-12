@@ -15,19 +15,17 @@
 
 <body>
 <div class="banner">
-	<div class="inner">
-		<div class="banner_01">
-			<a><img src="images/main/Voyagers_980180.jpg"></a>
-		</div>
-		<div class="banner_02">
-			<a><img src="images/main/Inbyu_980240.png"></a>
-		</div>
+	<div class="banner_01">
+		<a><img src="images/main/Voyagers_980180.jpg"></a>
+	</div>
+	<div class="banner_02">
+		<a><img src="images/main/Hyundaicard_980240.jpg"></a>
 	</div>
 </div>
 <div class="footer">
 	<div class="inner">
 		<span class="f_logo">
-			<img src="images/main/logo_footer.gif">
+			<img src="images/main/logo_footer.png">
 		</span>
 		<ul class="f_menu">
 			<li><a>회원약관</a></li>
@@ -41,14 +39,14 @@
 			<li><a>기업정보</a></li>
 		</ul>
 		<div class="f_address">
-			<p>서울특별시 송파구 올림픽로 300 롯데월드타워 27층</p>
+			<p>서울특별시 송파구 올림픽로 300 로또월드타워 27층</p>
 			<span class="bar">고객센터 1544-8855</span><br>
 			<span class="bar bar2">대표이사 기원규</span>
 			<span class="bar">사업자등록번호 313-87-00979</span>
 			<span class="bar">통신판매업신고번호 제1184호</span>
 			<span class="bar">개인정보 보호 최고 책임자 김무성</span>
 		</div>
-		<p class="copyright">COPYRIGHT© LOTTE CINEMA ALL RIGHT RESERVED.</p>
+		<p class="copyright">COPYRIGHT© LOTTO CINEMA ALL RIGHT RESERVED.</p>
 	</div>
 	<div class="article_award">
 		<div class="inner">
