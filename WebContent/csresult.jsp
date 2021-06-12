@@ -63,7 +63,6 @@
       <c:choose>
 	<c:when test="${result=='success'}">
 	<div class="bgb">
-	<img src="images/sg.JPG">
 		<h1>성공적으로 접수되었습니다.빠른 시간 내에 답변 드리겠습니다.
 		<br>
 		문의하신 내역은 문의목록 에서 확인하실수 있습니다.

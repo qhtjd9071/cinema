@@ -120,11 +120,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 <!-- 별점 -->
 
 <div class="footer">
-<<<<<<< HEAD
 	<jsp:include page="footer.jsp"/>
-=======
-	<jsp:include page="/footer.jsp"/>
->>>>>>> branch 'master' of https://github.com/qhtjd9071/semi.git
 </div>
 
 

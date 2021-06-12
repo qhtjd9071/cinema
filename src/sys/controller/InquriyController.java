@@ -15,8 +15,8 @@ import semi.vo.customerVo;
 import sys.dao.customerDao;
 
 
-@WebServlet("/question")
-public class QuestionController extends HttpServlet{
+@WebServlet("/inquiry")
+public class InquriyController extends HttpServlet{
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session=req.getSession();
@@ -44,7 +44,7 @@ public class QuestionController extends HttpServlet{
 		req.setAttribute("startPageNum",startPageNum);
 		req.setAttribute("endPageNum",endPageNum);
 		req.setAttribute("pageNum",pageNum);
-		req.getRequestDispatcher("cslist.jsp").forward(req, resp);
+		req.getRequestDispatcher("myInquiry.jsp").forward(req, resp);
 			
 	}
 }
