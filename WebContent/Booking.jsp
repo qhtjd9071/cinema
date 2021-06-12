@@ -35,13 +35,15 @@
 		        	</div>
 			        <div id="theaterLoc-list" class="theater_inner">
 			        	<ul class="tab_wrap.outer">
-			        		<li class="movie_wrap.inner">
+			        		<li class="movie_wrap_inner1">
 				        		<button type="button" class="location">
 				        			<span>지역</span>
 				        		</button>	
 				        		<c:forEach var="vo" items="${ requestScope.theaterList }">
-				        			<span class="theaterLoc-list" onclick='theaterNameList("${vo.location}")'> ${ vo.location } </span>
+				        			<div class="theaterLoc-list" onclick='theaterNameList("${vo.location}")'> ${ vo.location } </div>
 				        		</c:forEach>
+				        	</li>
+				        	<li class="movie_wrap_inner2">
 				        		<button type="button" class="theater_name">
 				        			<span>영화관</span>
 				        		</button>
