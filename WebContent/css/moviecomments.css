@@ -209,12 +209,12 @@ b {
 	text-align:center;
 }
 .review_write_box {
-    width:538px;
-    display:block;
+    width:656px;
+    display:flex;
 	float:left;
 }
 .review_write_box textarea {
-	width:100%;
+	width:538px;
 	height:100%;
 	cursor:text;
 	display:inline-block;
@@ -226,7 +226,7 @@ b {
 	letter-spacing:-0.03em;
 	border:none;
 }
-.review_write_box input {
+.review_submit {
     width:119px;
     height:90px;
     align-items:flex-start;

@@ -96,11 +96,11 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 							  	<button onclick='getStars()'></button>		
 							</span>
 							<div class="review_write_box">
-								<div id="result" style="display:none;"></div>
-								<input type="text" id="id" value="${id }" readonly="readonly"><br>
+								<div id="result"></div>
+								<input style="display:none" type="text" id="id" value="${id }" readonly="readonly">
 								<textarea rows="3" cols="30" id="content" placeholder="평점 및 영화 관람평을 작성해주세요.
 주제와 무관한 리뷰 또는 스포일러는 표시제한 또는 삭제될 수 있습니다."></textarea>
-								<input type="button" value="관람평 등록" onclick="addComments()">
+								<input class="review_submit" type="button" value="관람평 등록" onclick="addComments()">
 							</div>
 						</div>
 						<div class="movi_review_list">
