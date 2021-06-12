@@ -10,12 +10,11 @@
 <link rel="stylesheet" href="css/myInquiry.css">
 </head>
 <body>
-	
 	<div class="content">
 		<div class="content_container">
 			<h1>문의내역</h1>
 			<table>
-				<tr>
+				<tr class="tr1">
 					<th>글번호</th>
 					<th>작성자</th>
 					<th>제목</th>
@@ -24,7 +23,7 @@
 					<th>수정</th>
 				</tr>
 				<c:forEach var="vo" items="${requestScope.list }">
-					<tr class="tr1">
+					<tr>
 						<td class="td1">${vo.customerNum }</td>
 						<td class="td1">${vo.writer }</td>
 						<td>
@@ -51,10 +50,10 @@
 				<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 					<c:choose>
 						<c:when test="${pageNum==i }"><%--현재페이지인경우 --%>
-							<a href="cslist?pageNum=${i }"><span style="color:blue">[${i }]</span></a>
+							<a href="cslist?pageNum=${i }"><span>[${i }]</span></a>
 						</c:when>
 						<c:otherwise>
-							<a href="cslist?pageNum=${i }"><span style="color:gray">[${i }]</span></a>
+							<a href="cslist?pageNum=${i }"><span>[${i }]</span></a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -63,6 +62,5 @@
 				</c:if>
 			</div>
 		</div>
-	</div>
-	   
+	</div> 
 </body>

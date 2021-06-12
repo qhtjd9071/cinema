@@ -13,14 +13,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
 
 <link rel="stylesheet" href="css/payList.css">
-<link rel="stylesheet" href="css/header2.css">
-<link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-	<div class="movie">
-		<div class="movie_container">
-			<h1>예매 내역</h1>
-			<table border="1">
+	<div class="content">
+		<div class="content_container">
+			<h1 class="title">예매 내역</h1>
+			<table>
 				<tr>
 					<th>제목</th>
 					<th>좌석</th>
