@@ -15,46 +15,7 @@
 
 <body>
 	<div class="visual_main">
-		<div class="visual_inner">
-			<div class="slide_wrap">
-				<div class="slide">
-					<div class="slide_stage">
-						<div class="myslide"><a><img src="images/main/Ella_1920774.jpg"></a></div>
-						<div class="myslide"><a><img src="images/main/Spiral_1920774.jpg"></a></div>
-						<div class="myslide"><a><img src="images/main/InTheHeights_1920774.jpg"></a></div>
-						<div class="myslide"><a><img src="images/main/TheFast_1920774.jpg"></a></div>
-						<div class="myslide"><a><img src="images/main/Place_1920774.jpg"></a></div>
-						<div class="myslide"><a><img src="images/main/Line_1920774.jpg"></a></div>
-						<div class="myslide"><a><img src="images/main/Voyagers_1920774.jpg"></a></div>
-						<div class="myslide"><a><img src="images/main/Killer_1920774.jpg"></a></div>
-						<div class="myslide"><a><img src="images/main/Luca_1920774.jpg"></a></div>
-						<div class="myslide"><a><img src="images/main/Truck_1920774.jpg"></a></div>
-						<div class="myslide"><a><img src="images/main/Conjuring_1920774.jpg"></a></div>
-					</div>
-					<div class="slide_nav">
-						<button type="button" role="presentation" class="slide_prev"><span></span></button>
- 						<button type="button" role="presentation" class="slide_next"><span></span></button>
-					</div>
-					<div class="slide_dots">
-						<button role="button" class="slide_dot active"><span></span></button>
-						<button role="button" class="slide_dot"><span></span></button>
-						<button role="button" class="slide_dot"><span></span></button>
-						<button role="button" class="slide_dot"><span></span></button>
-						<button role="button" class="slide_dot"><span></span></button>
-						<button role="button" class="slide_dot"><span></span></button>
-						<button role="button" class="slide_dot"><span></span></button>
-						<button role="button" class="slide_dot"><span></span></button>
-						<button role="button" class="slide_dot"><span></span></button>
-						<button role="button" class="slide_dot"><span></span></button>
-						<button role="button" class="slide_dot"><span></span></button>
-					</div>
-				</div>
-				<div class="bx_ctrl">
-					<button class="bx_play"></button>
-					<button class="bx_stop"></button>
-				</div>
-			</div>
-		</div>
+		<jsp:include page="slide.jsp"/>
 	</div>
 	
 	<div class="contents_main">
