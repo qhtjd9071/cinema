@@ -18,8 +18,8 @@
 <link rel="stylesheet" href="css/header2.css">
 <link rel="stylesheet" href="css/footer.css">
 <style type="text/css">
-	#seatArea{width:600px;margin:0 auto;}
-	#seatArea div{width:50px;height:50px;text-align:center;background-color:gray;display:inline-block;margin:10px;}
+	#seatArea{width:600px;margin:0 auto; margin-top:50px; margin-bottom:50px;}
+	#seatArea div{width:50px;height:50px;text-align:center;background-color:gray;display:inline-block;margin:10px; line-height:50px !important;}
 	#rating{width:200px;hegiht:150px;margin:0 auto;color:blue}
 	.btn{
 			width:100px;
@@ -60,15 +60,14 @@
 <div class="count_container">
 <div class="count_wrapper_container">
 	<div class="count_wrapper">
-		<div class="count_content">
-			<div class="seat_select">
-				<div class="group_top">
-					<h4>좌석 선택</h4>
-				</div>
-				<div class="seat_inner">
-					<div id="seatArea"></div>
-					<input type="button" value="결제하기" id="btn" onclick="transfer()" class="btn">
-				</div>
+		<div class="seat_select">
+			<div class="group_top">
+				<h4>좌석 선택</h4>
+			</div>
+			<div class="seat_inner">
+				<div class="screen">SCREEN</div>
+				<div id="seatArea"></div>
+				<input type="button" value="결제하기" id="btn" onclick="transfer()" class="btn">
 			</div>
 		</div>
 	</div>

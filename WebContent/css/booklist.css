@@ -16,35 +16,27 @@ body {
 
 /*count_container */
 .count_container {
-	width:1280px;
+	width:100%;
 	display:block;
 	margin:0;
 	padding:115px 0 0 0;
 }
 .count_wrapper_container {
-	width:1280px;
+	width:100%;
 	display:block;
 	margin:0 auto;
-	padding:50px 0 0 70px;
+	padding:50px 0;
 	background-color:#444;
 }
 .count_wrapper {
-	width:1280px;
-    height: 600px;
+	width:980px;
+    height: 100%;
 	overflow: hidden;
     position: relative;
     margin: 0 auto;
 }
-.count_content {
-    width: 1202px;
-    height: 100%;
-	display: block;
-    overflow: inherit;
-    position: relative;
-    margin-left: 78px;
-}
 .seat_select {
-	width: 1202px;
+	width: 980px;
     height: 100%;
     display:block;
 	position: relative;
@@ -68,7 +60,8 @@ body {
     line-height:55px;
 }
 .seat_inner {
-    height: 815px;
+    height: 100%;
+    min-height:700px;
 	overflow: hidden;
 	display:block;
 }
@@ -146,4 +139,15 @@ label {
 }
 button {
 	font-size:20px;
+}
+.screen {
+	width:100%;
+	height:30px;
+	background-color:#6E6E6E;
+	color:#fff;
+	padding:5px 0;
+	font-size:16px;
+	letter-spacing:15px;
+	ling-height:30px;
+	text-align:center;
 }
