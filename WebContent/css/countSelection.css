@@ -30,7 +30,7 @@ body {
 }
 .count_wrapper {
 	width:980px;
-    height: 700px;
+    height: 100%;
 	overflow: hidden;
     position: relative;
     margin: 0 auto;
