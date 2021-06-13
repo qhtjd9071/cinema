@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="css/header2.css">
 <link rel="stylesheet" href="css/footer.css">
 </head>
-
 <body>
 <%
 	Cookie[] cooks=request.getCookies();
