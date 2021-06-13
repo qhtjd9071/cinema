@@ -86,6 +86,7 @@
 					<li><a>카카오페이 서비스 일시 중단 안내</a></li>
 					<li><a>(극장판 귀멸의 칼날 : 무한열차편) 스페셜 굿즈 이벤트 관련 안내</a></li>
 					<li><a>로또시네마 영상정보처리기기 운영 및 관리방침 개정 안내</a></li>
+					<li><a>로또시네마 관람요금 변경안내</a></li>
 				</ul>
 			</div>
 			<button type="button" class="btn_txt_more" onclick="location.href='${pageContext.request.contextPath}/ntlist'">더보기</button>
@@ -100,12 +101,12 @@
             	rolling_menu.style.transition = '0.2s';
             	rolling_menu.style.transform = "translate(0px, -"+15*(curIndex+1)+"px)";
                 curIndex++;
-                if(curIndex === 15){
+                if(curIndex === 16){
                     setTimeout(function(){
                         ul.style.transition = '0s';
                         ul.style.transform = "translate(0px, 0px)";
                     },201)
-                    curIndex = -1;
+                    curIndex = 0;
                 }
             },500);
         }

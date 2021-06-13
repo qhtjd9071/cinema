@@ -576,6 +576,8 @@ body {
 	list-style:none;
 	margin:0;
 	padding:0;
+	overflow:hidden;
+	height:255;
 }
 .rolling_menu li {
 	height:15px;
