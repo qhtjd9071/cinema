@@ -53,11 +53,11 @@
 			<div class="premiere_container">
 				<ul class="premiere_wrap">
 				<li><a><img src="images/main/396466108a034230a569310229027f80.jpg"></a></li>
-				<li><a><img src="images/main/9b734f5b71fc43ed89928c681e286b28.jpg"></a></li>
+				<li><a><img src="images/main/opera.jpg"></a></li>
 				<li><a><img src="images/main/e9f290989a4b4c1b8385a36ed0ddc3ca.jpg"></a></li>
 			</ul>
 			</div>
-			<button type="button" class="btn_txt_more">더보기</button>
+			<button type="button" class="btn_txt_more" onclick="location.href='${pageContext.request.contextPath}/event'">더보기</button>
 		</div>
 		<div class="mid_menu_wrap">
 			<a><img src="images/main/3423e358b74d49d5b12867c7d9c6f6a8.png"></a>
@@ -70,20 +70,45 @@
 			<div class="sec_tit3">공지사항</div>
 			<div class="rolling_menu_wrap">
 				<ul class="rolling_menu">
-					<li><a>롯데시네마 시스템 점검 안내</a></li>
-					<li><a>KT 멤버십 영화예매 적립 서비스 안내</a></li>
-					<li><a>마스크 착용 의무화 행정명령 시행 안내</a></li>
-					<li><a>롯데시네마 영구VIP 서비스 종료 안내</a></li>
-					<li><a>롯데시네마 시스템 점검 안내</a></li>
-					<li><a>롯데시네마 시스템 점검 안내</a></li>
-					<li><a>롯데시네마 시스템 점검 안내</a></li>
-					<li><a>롯데시네마 시스템 점검 안내</a></li>
-					<li><a>롯데시네마 시스템 점검 안내</a></li>
-					<li><a>롯데시네마 시스템 점검 안내</a></li>
+					<li><a>로또시네마 관람요금 변경안내</a></li>
+					<li><a>모바일로또상품권 시스템 점검 작업 안내</a></li>
+					<li><a>로또시네마 시스템 점검 안내</a></li>
+					<li><a>로또시네마 개인정보 처리방침 개정 안내</a></li>
+					<li><a>푸시(알림) 서비스 점검 안내</a></li>
+					<li><a>모바일관람권 시스템 점검 작업 안내</a></li>
+					<li><a>로또시네마 시스템 점검 안내</a></li>
+					<li><a>L.POINT 일부 서비스 일시 중단 안내</a></li>
+					<li><a>로또시네마 시스템 점검 안내</a></li>
+					<li><a>SKT T멤버십 영화예매 티켓 승급금액 반영 안내</a></li>
+					<li><a>2021년 틴틴클럽/브라보클럽 안내</a></li>
+					<li><a>로또시네마 회원약관 및 개인정보처리방침 개정 안내</a></li>
+					<li><a>영화관람권 가격 변경 안내</a></li>
+					<li><a>카카오페이 서비스 일시 중단 안내</a></li>
+					<li><a>(극장판 귀멸의 칼날 : 무한열차편) 스페셜 굿즈 이벤트 관련 안내</a></li>
+					<li><a>로또시네마 영상정보처리기기 운영 및 관리방침 개정 안내</a></li>
 				</ul>
 			</div>
-			<button type="button" class="btn_txt_more">더보기</button>
+			<button type="button" class="btn_txt_more" onclick="location.href='${pageContext.request.contextPath}/ntlist'">더보기</button>
 		</div>
 	</div>
 </body>
+<script>
+        let rolling_menu=document.querySelector(".rolling_menu");
+        function move(){
+        	let curIndex=0;
+            setInterval(function(){
+            	rolling_menu.style.transition = '0.2s';
+            	rolling_menu.style.transform = "translate(0px, -"+15*(curIndex+1)+"px)";
+                curIndex++;
+                if(curIndex === 15){
+                    setTimeout(function(){
+                        ul.style.transition = '0s';
+                        ul.style.transform = "translate(0px, 0px)";
+                    },201)
+                    curIndex = -1;
+                }
+            },500);
+        }
+        document.addEventListener("DOMContentLoaded",move());
+    </script>
 </html>
