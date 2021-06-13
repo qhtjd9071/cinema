@@ -23,6 +23,7 @@ body {
 
 .event_container {
    max-width:1100px;
+   height:1000px;
    display:block;
    box-sizing:border-box;
    margin:0 auto;
