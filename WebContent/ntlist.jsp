@@ -38,7 +38,7 @@
 		<jsp:include page="ad_header.jsp"/>
 	</c:if>
 	<c:if test="${sessionScope.id!='admin'}">
-		<jsp:include page="header.jsp"/>
+		<jsp:include page="header2.jsp"/>
 	</c:if>
 </div>
 
