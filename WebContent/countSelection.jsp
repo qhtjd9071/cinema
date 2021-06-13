@@ -16,9 +16,9 @@
 <link rel="stylesheet" href="css/header2.css">
 <link rel="stylesheet" href="css/footer.css">
 <style type="text/css">
-	#seatArea{width:600px;margin:0 auto;}
+	#seatArea{width:560px;margin:0 auto; align-items:center;}
 	#seatArea div{width:50px;height:50px;text-align:center;background-color:gray;display:inline-block;margin:10px;}
-	#rating{width:200px;hegiht:150px;margin:0 auto;color:blue}
+	#rating{width:600px; text-align:center; hegiht:150px;margin:0 auto;margin-bottom:30px;color:blue}
 	#seatCount{width:200px;hegiht:150px;margin:0 auto;color:blue}
 </style>
 <script type="text/javascript">
