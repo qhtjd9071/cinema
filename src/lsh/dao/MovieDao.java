@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import semi.db.dbCon;
-import semi.vo.movieVo;
 import semi.vo.movieVo2;
 
 

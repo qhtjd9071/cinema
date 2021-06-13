@@ -124,6 +124,11 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 
 
 <script type="text/javascript">
+
+	window.onload = function(){
+	    list();
+	}
+	
 	function getStars() {
 		  const stars
 		  = document.getElementsByName("star-input");
@@ -135,31 +140,6 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 		    }
 		  }) 
 		}
-
-	function addComments(){
-		const id=document.getElementById("id").value;	
-		const content=document.getElementById("content").value;	
-		let star=0;
-		const stars = document.getElementsByName("star-input");  
-	  	stars.forEach((node) => {
-	    	if(node.checked)  {
-		      star = node.value;
-		    }
-	  	}) 
-		let xhr=new XMLHttpRequest();	
-		xhr.onreadystatechange=function(){	
-			if(xhr.readyState==4 && xhr.status==200){
-				let xml=xhr.responseXML;
-				let code=xml.getElementsByTagName("code")[0].textContent;
-				alert(code);
-				list();
-			}
-		};
-		xhr.open('post','${pageContext.request.contextPath}/aa.do',true);
-		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-		let params="movieNum=${vo.movieNum}&id=" +id+ "&content=" + content + "&star=" + star;
-		xhr.send(params);
-	}
 	
 	function list(){
 		let xhr=new XMLHttpRequest();
@@ -195,6 +175,31 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 		};
 		xhr.open('get','${pageContext.request.contextPath}/list.do?movieNum=${vo.movieNum}',true);
 		xhr.send();
+	}
+	
+	function addComments(){
+		const id=document.getElementById("id").value;	
+		const content=document.getElementById("content").value;	
+		let star=0;
+		const stars = document.getElementsByName("star-input");  
+	  	stars.forEach((node) => {
+	    	if(node.checked)  {
+		      star = node.value;
+		    }
+	  	}) 
+		let xhr=new XMLHttpRequest();	
+		xhr.onreadystatechange=function(){	
+			if(xhr.readyState==4 && xhr.status==200){
+				let xml=xhr.responseXML;
+				let code=xml.getElementsByTagName("code")[0].textContent;
+				alert(code);
+				list();
+			}
+		};
+		xhr.open('post','${pageContext.request.contextPath}/aa.do',true);
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		let params="movieNum=${vo.movieNum}&id=" +id+ "&content=" + content + "&star=" + star;
+		xhr.send(params);
 	}
 	
 	function delComments(movieCommentsNum){
