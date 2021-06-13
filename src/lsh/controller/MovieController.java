@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import lsh.dao.MovieDao;
-import semi.vo.movieVo;
+import semi.vo.movieVo2;
 
 @WebServlet("/moviecomments.do")
 public class MovieController extends HttpServlet{
@@ -18,7 +18,7 @@ public class MovieController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int movieNum=Integer.parseInt(req.getParameter("movieNum"));
 		MovieDao dao=MovieDao.getInstance();
-		movieVo vo=dao.getinfo(movieNum);
+		movieVo2 vo=dao.getinfo(movieNum);
 		req.setAttribute("vo", vo);
 		
 		HttpSession session=req.getSession();

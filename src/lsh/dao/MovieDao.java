@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import semi.db.dbCon;
 import semi.vo.movieVo;
+import semi.vo.movieVo2;
 
 
 public class MovieDao {
@@ -15,7 +16,7 @@ public class MovieDao {
 	public static MovieDao getInstance() {
 		return instance;
 	}
-	public movieVo getinfo(int movieNum) {
+	public movieVo2 getinfo(int movieNum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
@@ -35,7 +36,7 @@ public class MovieDao {
 				String rating=rs.getString("rating");
 				String image=rs.getString("image");
 				String grade=rs.getString("grade");
-				movieVo vo=new movieVo(movieNum, movieTitle, movieContent, director, genre, rating, image, grade);
+				movieVo2 vo=new movieVo2(movieNum, movieTitle, movieContent, director, genre, rating, image, grade);
 				return vo;
 			}else {
 				return null;
