@@ -12,6 +12,7 @@ body {
    padding:0;
    overflow-y:scroll;
 }
+
 .event {
    width:100%;
    display:block;
@@ -26,7 +27,6 @@ body {
    box-sizing:border-box;
    margin:0 auto;
    padding:0;
-   height: 1024px;
 }
 
 .event_list{
@@ -39,7 +39,7 @@ body {
 	margin-bottom: 37px;
 	position: relative;
 	width: 995px;
-	height: 950px;
+	height: 100%;
 }
 .event_list_wrap{
 	color: rgb(0, 0, 0);
@@ -56,6 +56,7 @@ body {
 	margin: 0px;
 	position: relative;
 	text-align: center;
+	margin:30px 0 70px 0;
 }
 
 .event_selected {
@@ -65,6 +66,7 @@ body {
 	padding-left: 25px;
 	display:list-item;
 	float:left;
+	margin-bottom:20px;
 }
 .eventMainImg {
 	border-bottom-left-radius: 4px;
