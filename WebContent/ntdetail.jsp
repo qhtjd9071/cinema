@@ -13,23 +13,23 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap">
 
 <link rel="stylesheet" href="css/ntdetail.css">
-<link rel="stylesheet" href="css/header.css">
+<link rel="stylesheet" href="css/header2.css">
 <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
 
-<div class="header">
+<div class="header2">
 	<c:if test="${sessionScope.id=='admin'}">
 		<jsp:include page="ad_header.jsp"/>
 	</c:if>
 	<c:if test="${sessionScope.id!='admin'}">
-		<jsp:include page="header.jsp"/>
+		<jsp:include page="header2.jsp"/>
 	</c:if>
 </div>
 
 <div class="main">
 	<div class="title_top">
-		<h1>공지사항 상세</h1>
+		<h1 class="title">공지사항 상세</h1>
 	</div>
 		<table>
 			<colgroup>

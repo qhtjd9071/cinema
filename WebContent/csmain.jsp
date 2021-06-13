@@ -38,6 +38,7 @@
 	color:white;
 	border:none;
 	border-radius:5px;
+	text-decoration:none;
 }
 </style>
 <body>

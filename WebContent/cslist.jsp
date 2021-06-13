@@ -23,7 +23,7 @@
 	
 	<div class="content">
 		<div class="content_container">
-			<h1>문의글 목록</h1>
+			<h1 class="title">문의글 목록</h1>
 			<table>
 				<colgroup>
 					<col style="width: 15%">

@@ -38,15 +38,16 @@
     
     .titcolor{    color: #ff7787 !important;}
     
-	.bun{    border: 1px solid #DDD;
+	.bun{    border:none;
     background: #fff url(../images/icon/arr_dw_13.png);
     background-repeat: no-repeat;
     background-position: right 6px top 50%;
     height: 40px;
     line-height: 40px;
-    padding: 0 35px 0 18px;
+    padding: 0 20px 0 0;
     font-size: 14px;
-    box-sizing: border-box;}
+    box-sizing: border-box;
+    font-size:16px;}
     
 	.title{border: 1px solid #DDD;
     background: #fff url(../images/icon/arr_dw_13.png);
@@ -55,12 +56,17 @@
     height: 40px;
     line-height: 40px;
     padding: 0 35px 0 18px;
+    padding-bottom:0 !important;
     font-size: 14px;
-    box-sizing: border-box;background-color: #F8F8F8;
-    border-color: #DDD;}
+    box-sizing: border-box;
+    background-color: #F8F8F8;
+    border-color: #DDD;
+    border-bottom:1px solid #DDD !important;}
     
     .content{background-color: #F8F8F8;
-    border-color: #DDD;}
+    border-color: #DDD;
+    padding:18px !important;
+    }
 	
     .btn2{    height: 45px;
     line-height: 43px;
@@ -89,6 +95,7 @@
     text-align: center;
     vertical-align: middle;
     background-color: #ffffff;}
+    .mov_title {padding-bottom:40px; border-bottom:1px solid #000; margin-bottom:30px;}
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -107,7 +114,7 @@
    </div>
    <div class="movie">
       <div class="movie_container">
-      <h1>문의내용</h1><p style=color:red;>*필수입력</p>
+      <h1 class="mov_title">문의내용</h1><p style=color:red;>*필수입력</p>
       <dl class="titdiv">
       <dt class="tit">고객님의 문의에<span class="titcolor">답변하는 직원은 고객 여러분의 가족 중 한 사람</span>일 수 있습니다.</dt>
       <dd class="tit2">고객의 언어폭력(비하, 욕설, 반말, 성희롱 등)으로부터 직원을 보호하기 위해 관련 법에 따라 수사기관에 필요한 조치를 요구할 수 있으며, 형법에 의해 처벌 대상이 될수 있습니다.</dd>

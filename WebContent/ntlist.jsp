@@ -44,7 +44,7 @@
 
 <div class="main">
 	<div class="title_top">
-		<h1>공지사항</h1>
+		<h1 class="title">공지사항</h1>
 	</div>
 	<div class="tab">
 		<table border="0" width="500" class="text_c">
