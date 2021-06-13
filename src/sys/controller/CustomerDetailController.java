@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import semi.vo.customerVo;
+import semi.vo.customerVo2;
 import sys.dao.customerDao;
 @WebServlet("/csdetail")
 public class CustomerDetailController extends HttpServlet{
@@ -16,7 +16,7 @@ public class CustomerDetailController extends HttpServlet{
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int num=Integer.parseInt(req.getParameter("customerNum"));
 		customerDao dao=new customerDao();
-		customerVo vo=dao.detail(num);
+		customerVo2 vo=dao.detail(num);
 		String content=vo.getContent();
 		content=content.replaceAll("\n","<br>");
 		vo.setContent(content);

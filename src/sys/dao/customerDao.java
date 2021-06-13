@@ -168,8 +168,8 @@ public ArrayList<customerVo2> questionList(int startRow,int endRow,int userNum){
 		dbCon.close(con, pstmt, rs);
 	}	
 }
-public customerVo detail(int num) {
-	String sql="select * from customer where customerNum=?";
+public customerVo2 detail(int num) {
+	String sql="select * from customer join users on customer.writer=users.userNum where customerNum=?";
 	Connection con=null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
@@ -184,7 +184,8 @@ public customerVo detail(int num) {
 			int ref=rs.getInt("ref");
 			int lev=rs.getInt("lev");
 			int step=rs.getInt("step");
-			customerVo vo=new customerVo(num, title, content, ref, lev, step, null, step);
+			String writer=rs.getString("id");
+			customerVo2 vo=new customerVo2(num, title, content, ref, lev, step, null, writer);
 			return vo;
 		}
 		return null;
