@@ -54,7 +54,7 @@ public class payListController extends HttpServlet{
 					bsmrJoinVo bsmrvo=bookdao.getUserBook(bookNum);
 					usercheck=false;
 					if(userNum==bsmrvo.getUserNum()) {
-						movieTitle="영화:"+bsmrvo.getMovieTitle();
+						movieTitle=bsmrvo.getMovieTitle();
 						//seatNum이름부여
 						System.out.println("bsmrvo.seatNum:"+bsmrvo.getSeatNum());
 						int tempSeatNum=bsmrvo.getSeatNum()%8;
@@ -87,9 +87,9 @@ public class payListController extends HttpServlet{
 						
 						seatNumArr+=seatNum+" ";
 						System.out.println(seatNum);
-						theaterName="영화관:"+bsmrvo.getTheaterName();
-						roomNum="상영관:"+bsmrvo.getRoomNum()+"번 상영관";
-						beginTime="시작시간:"+bsmrvo.getBeginTime();
+						theaterName=bsmrvo.getTheaterName();
+						roomNum=bsmrvo.getRoomNum()+"번";
+						beginTime=bsmrvo.getBeginTime();
 						usercheck=true;
 					
 				}
