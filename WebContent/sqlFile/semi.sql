@@ -190,12 +190,6 @@ ALTER TABLE comments
 ;
 
 
-ALTER TABLE customer
-	ADD FOREIGN KEY (writer)
-	REFERENCES users (userNum)
-;
-
-
 ALTER TABLE movieComments
 	ADD FOREIGN KEY (userNum)
 	REFERENCES users (userNum)

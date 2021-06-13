@@ -23,7 +23,7 @@ public class countController extends HttpServlet{
 		
 		bookDao dao=bookDao.getInstance();
 		ArrayList<bookVo> list=dao.select(showNum);
-		int getCount=dao.getCount();
+		int getCount=dao.getCount(showNum);
 		
 		showDao dao2=showDao.getInstance();
 		int movieNum=dao2.getMovieNum(showNum);

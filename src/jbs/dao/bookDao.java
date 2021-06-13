@@ -163,15 +163,16 @@ public class bookDao {
 		}
 	}
 	
-	public int getCount() {
+	public int getCount(int showNum) {
 		Connection con=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		int count=0;
 		try {
 			con=dbCon.getConnection();
-			String sql="select sitcount from room";
+			String sql="select sitcount from room join show on room.roomSerialNum=show.roomSerialNum where showNum=?";
 			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, showNum);
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				count=rs.getInt("sitcount");

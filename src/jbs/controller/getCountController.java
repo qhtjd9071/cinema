@@ -15,7 +15,8 @@ public class getCountController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		bookDao dao=bookDao.getInstance();
-		int getCount=dao.getCount();
+		int showNum=Integer.parseInt(request.getParameter("showNum"));
+		int getCount=dao.getCount(showNum);
 		request.setAttribute("getCount", getCount);
 		request.getRequestDispatcher("/booklist.jsp").forward(request, response);
 	}
