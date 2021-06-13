@@ -31,6 +31,7 @@ public class bookCancel{
 			if(vo.getMethod()==null) {
 				integrationVo intvo=intdao.getBookNumArr(intNum);
 				String bookNumArr=intvo.getBookNumArr();
+				System.out.println("bookNumArr:"+bookNumArr);
 				String[] bookNumArr2=bookNumArr.split(",");
 
 				for(int j=0;j<bookNumArr2.length;j++) {

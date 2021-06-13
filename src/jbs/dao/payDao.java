@@ -116,8 +116,8 @@ public class payDao {
 				payVo vo=new payVo();
 				vo.setPayNum(rs.getString("payNum"));
 				vo.setIntNum(rs.getInt("intNum"));
-				vo.setTot(rs.getInt("tot"));
 				vo.setMethod(rs.getString("method"));
+				vo.setTot(rs.getInt("tot"));
 				vo.setPayDate(rs.getDate("payDate"));
 				list.add(vo);
 			}

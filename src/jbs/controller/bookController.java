@@ -64,6 +64,7 @@ public class bookController extends HttpServlet {
 			}
 		}
 		
+		System.out.println("bookcontrol-bookNumArr:"+bookNumArr);
 		integrationVo vo=new integrationVo();
 		vo.setBookNumArr(bookNumArr);
 		integrationDao intDao=integrationDao.getInstance();

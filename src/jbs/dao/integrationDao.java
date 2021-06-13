@@ -80,7 +80,7 @@ public class integrationDao {
 		ResultSet rs=null;
 		try {
 			con=dbCon.getConnection();
-			String sql="select * from integration where intNum=?";
+			String sql="select bookNumArray from integration where intNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, intNum);
 			rs=pstmt.executeQuery();

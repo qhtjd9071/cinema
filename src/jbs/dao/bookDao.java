@@ -122,10 +122,11 @@ public class bookDao {
 		ResultSet rs=null;
 		try {
 			con=dbCon.getConnection();
-			String sql="select bookNum from book where userNum=? and seatNum=?";
+			String sql="select bookNum from book where userNum=? and seatNum=? and showNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, vo.getUserNum());
 			pstmt.setInt(2, vo.getSeatNum());
+			pstmt.setInt(3, vo.getShowNum());
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				int bookNum=rs.getInt("bookNum");
