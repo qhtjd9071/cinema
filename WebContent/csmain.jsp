@@ -15,11 +15,31 @@
 <link rel="stylesheet" href="css/cslist.css">
 <link rel="stylesheet" href="css/header2.css">
 <link rel="stylesheet" href="css/footer.css">
-<style>
-	h1 {margin-bottom:40px;}
-	li {list-style:none;}
-</style>
 </head>
+<style>
+.content_container h1 {
+	margin-bottom:40px;
+}
+.content_container ul {
+	display:block;
+	list-style:none;
+}
+.content_container li {
+	display:block;
+	float:left;
+	list-style:none;
+	margin-bottom:70px;
+	margin-right:50px;
+}
+.content_container a {
+	display:inline-block;
+	padding:30px 40px;
+	background-color:#6E6E6E;
+	color:white;
+	border:none;
+	border-radius:5px;
+}
+</style>
 <body>
 	<div class="header2">
 	   <jsp:include page="header2.jsp"/>
@@ -30,11 +50,9 @@
 		<h1>고객센터</h1>
 		<ul>
 		<c:if test="${sessionScope.id!=null}">
-			<li><a href="${pageContext.request.contextPath}/csinsert.jsp">1:1문의</a></li>
+			<li><a href="${pageContext.request.contextPath}/csinsert.jsp">1:1 문의</a></li>
 		</c:if>
-			<br>
-			<br>
-			<li><a href="${pageContext.request.contextPath}/cslist">문의글목록보기</a></li>	
+			<li><a href="${pageContext.request.contextPath}/cslist">문의글 목록 보기</a></li>	
 		</ul>
 		</div>
 	</div>
