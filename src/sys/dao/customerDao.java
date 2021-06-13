@@ -129,14 +129,17 @@ public ArrayList<customerVo2> list(int startRow,int endRow){
 	}	
 }
 
-public ArrayList<customerVo2> questionList(int startRow,int endRow,int userNum){
+public ArrayList<customerVo2> questionList(int startRow,int endRow,int userNum,ArrayList<Integer> cusList){
 	String sql="select * from " + 
 			"(" + 
 			"  select g.*,rownum rnum from" + 
 			"  (" + 
 			"	 select * from customer join users on customer.writer=users.userNum order by ref desc,step asc" + 
 			"  ) g" + 
-			") where rnum>=? and rnum<=? and writer=? or writer=0";
+			") where rnum>=? and rnum<=? and writer=?";
+		for(int i=0;i<cusList.size();i++) {
+			sql+=" or ref=?";
+		}
 	Connection con=null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
@@ -146,6 +149,9 @@ public ArrayList<customerVo2> questionList(int startRow,int endRow,int userNum){
 		pstmt.setInt(1, startRow);
 		pstmt.setInt(2,endRow);
 		pstmt.setInt(3,userNum);
+		for(int i=0;i<cusList.size();i++) {
+			pstmt.setInt(i+4, cusList.get(i));
+		}
 		rs=pstmt.executeQuery();
 		ArrayList<customerVo2> list=new ArrayList<customerVo2>();
 		while(rs.next()) {
@@ -264,6 +270,29 @@ public int delete(int num){
 		return -1;
 	}finally {
 		dbCon.close(con,pstmt,null);
+	}
+}
+public ArrayList<Integer> getCustomerNum(int userNum){
+	String sql="select customerNum from customer where writer=?";
+	Connection con=null;
+	PreparedStatement pstmt=null;
+	ResultSet rs=null;
+	try {
+		con=dbCon.getConnection();
+		pstmt=con.prepareStatement(sql);
+		pstmt.setInt(1,userNum);
+		rs=pstmt.executeQuery();
+		ArrayList<Integer> list=new ArrayList<Integer>();
+		while(rs.next()) {
+			int customerNum=rs.getInt("customerNum");
+			list.add(customerNum);
+		}
+		return list;
+	}catch(SQLException s) {
+		s.printStackTrace();
+		return null;
+	}finally {
+		dbCon.close(con,pstmt,rs);
 	}
 }
 }

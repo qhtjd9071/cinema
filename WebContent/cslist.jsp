@@ -45,7 +45,7 @@
 							<a href="csdetail?customerNum=${vo.customerNum}" style="color:gray">
 							<c:if test="${vo.lev>0 }">
 								<c:forEach var="i" begin="1" end="${vo.lev}">
-								&nbsp;[re]
+								&nbsp;<span style="color:red">[re]</span>
 								</c:forEach>
 							</c:if>
 							${vo.title }</a>

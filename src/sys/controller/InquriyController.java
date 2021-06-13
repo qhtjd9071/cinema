@@ -32,7 +32,10 @@ public class InquriyController extends HttpServlet{
 		customerDao dao=new customerDao();
 		int startRow=(pageNum-1)*10+1;
 		int endRow=startRow+9;
-		ArrayList<customerVo2> list=dao.questionList(startRow, endRow, userNum);
+		
+		ArrayList<Integer> cusList=dao.getCustomerNum(userNum);
+		
+		ArrayList<customerVo2> list=dao.questionList(startRow, endRow, userNum, cusList);
 		int pageCount=(int)Math.ceil(dao.getCount()/10.0);		
 		int startPageNum=((pageNum-1)/10*10)+1;
 		int endPageNum=startPageNum+9;
