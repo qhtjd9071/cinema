@@ -38,6 +38,7 @@ public class bookController extends HttpServlet {
 		String bookNumArr="";
 		usersDao udao=usersDao.getInstance();
 		int userNum=udao.getUserNum(id);
+		System.out.println("userNum:"+userNum);
 		
 		bookDao dao=bookDao.getInstance();
 		for(int i=0;i<array.length();i++) {
@@ -47,10 +48,15 @@ public class bookController extends HttpServlet {
 				int seatNum2=Integer.parseInt(seatNum);
 				bookVo vo=new bookVo();
 				vo.setShowNum(showNum);
+				System.out.println("showNum"+showNum);
 				vo.setPrice(price);
+				System.out.println("price:"+price);
 				vo.setUserNum(userNum);
+				System.out.println("userNum"+userNum);
 				vo.setSeatNum(seatNum2);
-				if(dao.check(vo.getShowNum(), vo.getSeatNum())!=true) {
+				System.out.println("seatNum2:"+seatNum2);
+				if(dao.check(vo.getSeatNum(), vo.getShowNum())!=true) {
+					System.out.println("실행");
 					dao.insert(vo);
 					//id넣기
 					bookNumArr+=dao.getBookNum(vo)+",";

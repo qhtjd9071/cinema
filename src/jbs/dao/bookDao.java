@@ -26,10 +26,15 @@ public class bookDao {
 			String sql="insert into book values(book_seq.nextval,?,sysdate,?,?,null,?)";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, vo.getShowNum());
+			System.out.println("voshowNum:"+vo.getShowNum());
 			pstmt.setInt(2, vo.getPrice());
+			System.out.println("voprice:"+vo.getPrice());
 			pstmt.setInt(3, vo.getUserNum());
+			System.out.println("vouser:"+vo.getUserNum());
 			pstmt.setInt(4, vo.getSeatNum());
-			pstmt.executeUpdate();
+			System.out.println("voseatNum:"+vo.getSeatNum());
+			int n=pstmt.executeUpdate();
+			System.out.println("bookInsertResult:"+n);
 		}catch(SQLException se) {
 			se.printStackTrace();
 		}finally {
@@ -41,12 +46,18 @@ public class bookDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=dbCon.getConnection();
+			con.setAutoCommit(false);
 			String sql="delete from book where bookNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, bookNum);
 			pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}finally {
 			dbCon.close(con, pstmt, null);
 		}

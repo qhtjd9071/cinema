@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,7 +29,9 @@
 		<div class="content_container">  
 		<h1>고객센터</h1>
 		<ul>
+		<c:if test="${sessionScope.id!=null}">
 			<li><a href="${pageContext.request.contextPath}/csinsert.jsp">1:1문의</a></li>
+		</c:if>
 			<br>
 			<br>
 			<li><a href="${pageContext.request.contextPath}/cslist">문의글목록보기</a></li>	

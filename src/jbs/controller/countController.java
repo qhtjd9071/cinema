@@ -30,7 +30,7 @@ public class countController extends HttpServlet{
 		
 		movieDao dao3=movieDao.getInstance();
 		String rating=dao3.getRating(movieNum);
-		System.out.println(rating);
+		System.out.println("rating:"+rating);
 		
 		request.setAttribute("rating", rating);
 		request.setAttribute("list", list);

@@ -17,22 +17,22 @@ public class bookCancel{
 		payDao paydao=payDao.getInstance();
 		integrationDao intdao=integrationDao.getInstance();
 		bookDao bookdao=bookDao.getInstance();
-		
 		String id=(String)session.getAttribute("id");
 		System.out.println("id:"+id);
 		usersDao usersdao=usersDao.getInstance();
 		int userNum=usersdao.getUserNum(id);
-		
+
 		ArrayList<payVo> list=paydao.payAll();
 		for(int i=0;i<list.size();i++) {
 			System.out.println();
 			payVo vo=list.get(i);
 			int intNum=vo.getIntNum();
+			System.out.println("cancel-intNum:"+intNum);
 			if(vo.getMethod()==null) {
 				integrationVo intvo=intdao.getBookNumArr(intNum);
 				String bookNumArr=intvo.getBookNumArr();
 				String[] bookNumArr2=bookNumArr.split(",");
-				
+
 				for(int j=0;j<bookNumArr2.length;j++) {
 					int bookNum=Integer.parseInt(bookNumArr2[j]);
 					System.out.println("bookNum:"+bookNum);

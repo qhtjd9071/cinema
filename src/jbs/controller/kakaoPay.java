@@ -24,10 +24,8 @@ public class kakaoPay extends HttpServlet{
 			 	String jsonString=request.getParameter("toss");
 			 	JSONObject json=new JSONObject(jsonString);
 			 	String partner_order_id=json.getString("bookNum");
-			 	System.out.println(partner_order_id);
 			 	String partner_user_id=json.getString("id");
 			 	String item_name=json.getString("title");
-			 	System.out.println(item_name);
 			 	int quantity=json.getInt("count");
 			 	int total_amount=json.getInt("total");
 			 	
@@ -41,7 +39,6 @@ public class kakaoPay extends HttpServlet{
 	            
 	            //IP주소,포트번호,url 얻어오기
 	            String base_url="http://"+"www.lottocinema.shop"+request.getContextPath();
-	            System.out.println(base_url);
 	            String approval_url=base_url+"/kakao?partner_order_id="+partner_order_id;
 	            String cancel_url=base_url+"/payList";
 	            String fail_url=base_url+"/bookCancel";
@@ -84,6 +81,7 @@ public class kakaoPay extends HttpServlet{
 	    		dao.insert(vo);
 	    		
 	    		System.out.println("puid:"+partner_user_id);
+	    		System.out.println("end of kakaopayready");
 	    		return next_redirect_pc_url;
 		 	} catch (MalformedURLException me) {
 	            System.out.println("잘못된 URL입니다.");

@@ -23,9 +23,9 @@ public class DeleteController extends HttpServlet{
 		pw.print("<?xml version=\"1.0\" encoding=\"utf-8\"?>");
 		pw.print("<result>");
 		if(n>0) {
-			pw.print("<code>ï¿½ê¶˜ï¿½ì £ï¿½ì…¿çŒ·ï¿½</code>");
+			pw.print("<code>´ñ±Û »èÁ¦¿Ï·á</code>");
 		}else {
-			pw.print("<code>ï¿½ê¶˜ï¿½ì £ï¿½ë–Žï¿½ë™£</code>");
+			pw.print("<code>´ñ±Û »èÁ¦½ÇÆÐ</code>");
 		}
 		pw.print("</result>");
 	}

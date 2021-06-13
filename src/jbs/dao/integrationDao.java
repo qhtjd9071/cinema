@@ -41,6 +41,12 @@ public class integrationDao {
 			pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}finally {
 			dbCon.close(con, pstmt, null);
 		}

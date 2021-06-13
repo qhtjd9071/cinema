@@ -24,8 +24,8 @@ import semi.vo.integrationVo;
 import semi.vo.payListVo;
 import semi.vo.payVo;
 
-@WebFilter("/main.jsp")
-public class deleteNonePayedBook implements Filter {
+@WebFilter("/booking")
+public class deleteNonePayedBook2 implements Filter {
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req=(HttpServletRequest)request;
 		

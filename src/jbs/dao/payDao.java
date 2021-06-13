@@ -44,6 +44,12 @@ public class payDao {
 			pstmt.executeUpdate();
 		}catch(SQLException se) {
 			se.printStackTrace();
+			try {
+				con.rollback();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}finally {
 			dbCon.close(con, pstmt, null);
 		}
@@ -54,6 +60,7 @@ public class payDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=dbCon.getConnection();
+			con.setAutoCommit(false);
 			String sql="delete from pay where intNum=?";
 			pstmt=con.prepareStatement(sql);
 			System.out.println(partner_order_id);
