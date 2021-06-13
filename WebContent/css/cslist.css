@@ -41,7 +41,7 @@ table {
     display: table;
     border-collapse: collapse;
     box-sizing: border-box;
-    text-indent: initial;
+    text-align: center;
     border-spacing: 10px;
     border-color: grey;
     font-size:15px
@@ -49,4 +49,10 @@ table {
 th, td{
 	border-bottom:1px solid gray;
 	padding:16px;
+}
+.pagenum{ 
+	padding:30px;
+	width:100px;
+	margin:0 auto;
+	font-size:15px;
 }

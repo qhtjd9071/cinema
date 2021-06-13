@@ -41,8 +41,8 @@
 					<tr class="tr1">
 						<td class="td1">${vo.customerNum }</td>
 						<td class="td1">${vo.writer }</td>
-						<td>
-							<a href="csdetail?customerNum=${vo.customerNum}" style="color:gray">
+						<td style="text-align:left">
+							<a href="csdetail?customerNum=${vo.customerNum}" style="color:gray;text-decoration:none;">
 							<c:if test="${vo.lev>0 }">
 								<c:forEach var="i" begin="1" end="${vo.lev}">
 								&nbsp;<span style="color:red">[re]</span>
@@ -63,10 +63,10 @@
 				<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 					<c:choose>
 						<c:when test="${pageNum==i }"><%--현재페이지인경우 --%>
-							<a href="cslist?pageNum=${i }"><span style="color:blue">[${i }]</span></a>
+							<a href="cslist?pageNum=${i }"><span style="color:red">[${i }]</span></a>
 						</c:when>
 						<c:otherwise>
-							<a href="cslist?pageNum=${i }"><span style="color:gray">[${i }]</span></a>
+							<a href="cslist?pageNum=${i }"><span style="color:black">[${i }]</span></a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
