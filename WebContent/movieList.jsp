@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="css/movielist.css">
 <link rel="stylesheet" href="css/header2.css">
 <link rel="stylesheet" href="css/footer.css">
-<title> movieList.jsp </title>
+<title>영화</title>
 </head>
 <body>
 <div class="header2">

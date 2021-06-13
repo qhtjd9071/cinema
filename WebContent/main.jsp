@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>main.jsp</title>
+<title>로또시네마</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 

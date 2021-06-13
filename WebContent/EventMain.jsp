@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="css/event.css">
 <link rel="stylesheet" href="css/header2.css">
 <link rel="stylesheet" href="css/footer.css">
-<title> EventMain.jsp </title>
+<title>이벤트</title>
 </head>
 <body>
 <div class="header2">

@@ -12,7 +12,7 @@
 <body>
 	<div class="content">
 		<div class="content_container">
-			<h1>문의내역</h1>
+			<h1>내 문의내역</h1>
 			<table>
 				<tr class="tr1">
 					<th>글번호</th>

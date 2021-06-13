@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>mypage.jsp</title>
+<title>비밀번호 변경</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 

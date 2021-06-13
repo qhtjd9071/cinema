@@ -41,8 +41,8 @@
 				<td>${vo.writer }</td>
 			</tr>
 			<tr>
-				<td>내용</td>
-				<td><div>${vo.content }</div></td>
+				<td style="font-weight:bold;">내용</td>
+				<td colspan="5"><div style="text-align:left;padding:10px;">${vo.content }</div></td>
 			</tr>
 			<c:if test="${sessionScope.id=='admin'}">
 				<tr>

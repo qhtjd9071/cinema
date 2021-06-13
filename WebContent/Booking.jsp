@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title> Booking.jsp </title>
+<title>영화 선택</title>
 </head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
