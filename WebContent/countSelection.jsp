@@ -156,5 +156,10 @@
 			tcd.innerHTML=tc.value;
 		});
 	}
+	// 뒤로가기 방지
+	window.history.forward();
+	function noBack() {
+		window.history.forward();
+	}
 </script>
 </html>

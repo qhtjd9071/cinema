@@ -46,7 +46,6 @@ public class bookDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=dbCon.getConnection();
-			con.setAutoCommit(false);
 			String sql="delete from book where bookNum=?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, bookNum);

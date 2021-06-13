@@ -185,6 +185,13 @@
 		xhr.send("toss="+jsonToss);
 	}
 </script>
+<script type="text/javascript">
+		//결제페이지에서 뒤로가기 방지
+		window.history.forward();
+		function noBack() {
+			window.history.forward();
+		}
+</script>
 <div class="footer">
 	<jsp:include page="footer.jsp"/>
 </div>

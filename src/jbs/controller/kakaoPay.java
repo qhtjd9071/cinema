@@ -3,6 +3,7 @@ package jbs.controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -105,7 +106,12 @@ public class kakaoPay extends HttpServlet{
 			System.out.println("poid:"+partner_order_id);
 			payDao dao=payDao.getInstance();
 			payVo vo=dao.find(intOrder);
-			String tid=vo.getPayNum();
+			String tid=null;
+			try {
+				tid=vo.getPayNum();
+			}catch(NullPointerException ne) {
+				System.out.println("중복예매에 대한 결제시도 발생");
+			}
 			//partner_order_id로 bookNum 검색후 userNum으로 users 테이블과 조인해서 id 가져오기
 			HttpSession session=request.getSession();
 			String partner_user_id=(String)session.getAttribute("id");

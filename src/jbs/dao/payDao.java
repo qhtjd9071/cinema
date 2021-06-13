@@ -60,7 +60,6 @@ public class payDao {
 		PreparedStatement pstmt=null;
 		try {
 			con=dbCon.getConnection();
-			con.setAutoCommit(false);
 			String sql="delete from pay where intNum=?";
 			pstmt=con.prepareStatement(sql);
 			System.out.println(partner_order_id);
