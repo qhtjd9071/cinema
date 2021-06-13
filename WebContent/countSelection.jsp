@@ -35,9 +35,8 @@
 </div>
 
 <div class="count_container">
-<div class="count_wrapper_container">
-	<div class="count_wrapper">
-		<div class="count_content">
+	<div class="count_wrapper_container">
+		<div class="count_wrapper">
 			<div class="seat_select">
 				<div class="group_top">
 					<h4>인원 선택</h4>
@@ -78,7 +77,6 @@
 			</div>
 		</div>
 	</div>
-</div>
 </div>
 	<c:forEach var="i" begin="1" end="${getCount }">
 		<c:forEach var="vo" items="${list}">
@@ -155,11 +153,6 @@
 			tc.value=teenNum;
 			tcd.innerHTML=tc.value;
 		});
-	}
-	// 뒤로가기 방지
-	window.history.forward();
-	function noBack() {
-		window.history.forward();
 	}
 </script>
 </html>

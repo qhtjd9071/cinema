@@ -25,26 +25,18 @@ body {
 	width:100%;
 	display:block;
 	margin:0 auto;
-	padding:50px 0 0 70px;
+	padding:50px 0;
 	background-color:#444;
 }
 .count_wrapper {
-	width:100%;
-    height: 870px;
+	width:980px;
+    height: 700px;
 	overflow: hidden;
     position: relative;
     margin: 0 auto;
 }
-.count_content {
-    width: 1202px;
-    height: 100%;
-	display: block;
-    overflow: inherit;
-    position: relative;
-    margin-left: 78px;
-}
 .seat_select {
-	width: 1202px;
+	width: 980px;
     height: 100%;
     display:block;
 	position: relative;
