@@ -33,11 +33,11 @@
 	
 		<div class="com_address">
 			<address>
-				<span>서울시 중구 통일로 2길 16 AIA타워 14층</span>
+				<span>동서울시 중구 통일로 2길 16 AIA타워 14층</span>
 				<span>회사명 로또멤버스(주)</span>
-				<span>대표이사 전형석</span>
-				<span>사업자등록번호 104-86-58491</span>
-				<span>고객센터 1898-8900</span>
+				<span>대표이사 아무개</span>
+				<span>사업자등록번호 000-00-12345</span>
+				<span>고객센터 0000-1234</span>
 			</address>
 		</div>
 		<div class="copyright">© LOTTO MEMBERS CO.,LTD.</div>

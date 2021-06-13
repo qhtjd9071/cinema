@@ -39,12 +39,13 @@
 			<li><a>기업정보</a></li>
 		</ul>
 		<div class="f_address">
-			<p>서울특별시 송파구 올림픽로 300 로또월드타워 27층</p>
-			<span class="bar">고객센터 1544-8855</span><br>
-			<span class="bar bar2">대표이사 기원규</span>
-			<span class="bar">사업자등록번호 313-87-00979</span>
-			<span class="bar">통신판매업신고번호 제1184호</span>
-			<span class="bar">개인정보 보호 최고 책임자 김무성</span>
+			<p>동서울특별시 송파구 올림픽로 300 로또월드타워 27층</p>
+			<span class="bar">고객센터 0000-1234</span><br>
+			<span class="bar bar2">조장 정보성</span>
+			<span class="bar">조원 신연식 이상현 이혜진 정혜린</span>
+			<span class="bar">사업자등록번호 000-00-12345</span>
+			<span class="bar">통신판매업신고번호 제1234호</span>
+			<span class="bar">개인정보 보호 최고 책임자 아무개</span>
 		</div>
 		<p class="copyright">COPYRIGHT© LOTTO CINEMA ALL RIGHT RESERVED.</p>
 	</div>
