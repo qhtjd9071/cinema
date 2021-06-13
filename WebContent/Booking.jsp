@@ -28,7 +28,6 @@
 <div id="content" class="booking_container">
 	<div class="booking_wrapper_container">
 		<div class="wrap_booking"> 
-			<div class = "wrap_part">
 				<div class="theater-part">
 			        <div class="booking-title">
 			        	<h4 class="booking-title-top">극장</h4>
@@ -81,7 +80,6 @@
 			   		  	<div id="show-list"></div>
 			        </div>
 		    </div>
-			</div>
 		</div>
 	</div>
 </div>

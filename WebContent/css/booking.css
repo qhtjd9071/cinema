@@ -14,26 +14,26 @@ body {
 	overflow-y:scroll;
 }
 .booking_container{
-	width:1280px;
+	width:100%;
 	display:block;
 	margin:0;
 	padding:115px 0 0 0;
 }
 .booking_wrapper_container {
-	width:1280px;
+	width:100%;
 	display:block;
 	margin:0 auto;
-	padding:50px 0 50px 70px;
+	padding:50px 0px;
 	background-color:#444;
 }
 .wrap_booking {
-	width: 1280px;
+	width: 1202px;
     height: 600px;
 	overflow: hidden;
     position: relative;
-    margin: 0 auto;
     letter-spacing: normal;
 	line-height: 1.1;
+	margin:0 auto;
 }
 /*
 .wrap_booking{
@@ -63,7 +63,7 @@ body {
 	font-size: 12px;
 	letter-spacing: normal;
 	line-height: 1.1;
-	margin-left: 0px;
+	margin: 0px;
 	overflow: hidden;
 	position: relative;
 }
