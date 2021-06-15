@@ -51,6 +51,32 @@ public int getCount() {
 		dbCon.close(con, pstmt, rs);
 		}
 	}
+public int getCount(int userNum,ArrayList<Integer> cusList) {
+	Connection con=null;
+	PreparedStatement pstmt=null;
+	ResultSet rs=null;
+	try {
+		con=dbCon.getConnection();
+		String sql="select NVL(count(customerNum),0) from customer where writer=?";
+		for(int i=0;i<cusList.size();i++) {
+			sql+=" or ref=?";
+		}
+		pstmt=con.prepareStatement(sql);
+		pstmt.setInt(1, userNum);
+		for(int i=0;i<cusList.size();i++) {
+			pstmt.setInt(i+2, cusList.get(i));
+		}
+		rs=pstmt.executeQuery();
+		rs.next();
+		int mnum=rs.getInt(1);
+		return mnum;
+	}catch(SQLException se) {
+		se.printStackTrace();
+		return -1;
+	}finally {
+		dbCon.close(con, pstmt, rs);
+	}
+}
 	public int insert(customerVo vo) {
 	Connection con=null;
 	PreparedStatement pstmt1=null;
@@ -134,24 +160,25 @@ public ArrayList<customerVo2> questionList(int startRow,int endRow,int userNum,A
 			"(" + 
 			"  select g.*,rownum rnum from" + 
 			"  (" + 
-			"	 select * from customer join users on customer.writer=users.userNum order by ref desc,step asc" + 
+			"	 select * from customer join users on customer.writer=users.userNum where writer=1";
+			for(int i=0;i<cusList.size();i++) {
+				sql+=" or ref=?";
+			}
+			sql+="	 order by ref desc,step asc" + 
 			"  ) g" + 
-			") where rnum>=? and rnum<=? and writer=?";
-		for(int i=0;i<cusList.size();i++) {
-			sql+=" or ref=?";
-		}
+			") where rnum>=? and rnum<=?";
 	Connection con=null;
 	PreparedStatement pstmt=null;
 	ResultSet rs=null;
 	try {
 		con=dbCon.getConnection();
 		pstmt=con.prepareStatement(sql);
-		pstmt.setInt(1, startRow);
-		pstmt.setInt(2,endRow);
-		pstmt.setInt(3,userNum);
+		pstmt.setInt(1,userNum);
 		for(int i=0;i<cusList.size();i++) {
-			pstmt.setInt(i+4, cusList.get(i));
+			pstmt.setInt(i+2, cusList.get(i));
 		}
+		pstmt.setInt(cusList.size()+1, startRow);
+		pstmt.setInt(cusList.size()+2,endRow);
 		rs=pstmt.executeQuery();
 		ArrayList<customerVo2> list=new ArrayList<customerVo2>();
 		while(rs.next()) {

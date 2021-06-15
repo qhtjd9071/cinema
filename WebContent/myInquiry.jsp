@@ -45,20 +45,20 @@
 			<!-- 페이징 처리 -->
 			<div class="pagenum">
 				<c:if test="${startPageNum>10 }">
-					<a href="cslist?pageNum=${startPageNum-1 }">[이전]</a>
+					<a href="inquiry?pageNum=${startPageNum-1 }">[이전]</a>
 				</c:if>
 				<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 					<c:choose>
 						<c:when test="${pageNum==i }"><%--현재페이지인경우 --%>
-							<a href="cslist?pageNum=${i }"><span>[${i }]</span></a>
+							<a href="inquiry?pageNum=${i }"><span style="color:red">[${i }]</span></a>
 						</c:when>
 						<c:otherwise>
-							<a href="cslist?pageNum=${i }"><span>[${i }]</span></a>
+							<a href="inquiry?pageNum=${i }"><span>[${i }]</span></a>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<c:if test="${endPageNum<pageCount }">
-					<a href="cslist?pageNum=${endPageNum+1 }">[다음]</a>
+					<a href="inquiry?pageNum=${endPageNum+1 }">[다음]</a>
 				</c:if>
 			</div>
 		</div>

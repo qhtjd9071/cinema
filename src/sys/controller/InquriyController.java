@@ -36,7 +36,7 @@ public class InquriyController extends HttpServlet{
 		ArrayList<Integer> cusList=dao.getCustomerNum(userNum);
 		
 		ArrayList<customerVo2> list=dao.questionList(startRow, endRow, userNum, cusList);
-		int pageCount=(int)Math.ceil(dao.getCount()/10.0);		
+		int pageCount=(int)Math.ceil(dao.getCount(userNum, cusList)/10.0);		
 		int startPageNum=((pageNum-1)/10*10)+1;
 		int endPageNum=startPageNum+9;
 		if(endPageNum>pageCount) {

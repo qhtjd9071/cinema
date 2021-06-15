@@ -47,6 +47,7 @@
 					<div class="member_login_wrap">
 						<div class="login_inner">
 							<div class="login_box">
+							관리자 아이디:admin 비밀번호:1234
 								<form class="login_area" method="post" action="login">
 									<input type="text" name="id" value="<%=id %>" id="userId" class="login_id" maxlength="50" placeholder="아이디 또는 이메일을 입력해 주세요.">
 									<input type="password" name="pwd" value="<%=pwd %>" id="userPwd" class="login_pwd" maxlength="15" placeholder="비밀번호를 입력해 주세요.">

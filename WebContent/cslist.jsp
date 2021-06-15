@@ -17,9 +17,14 @@
 <link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
-	<div class="header2">
-	   <jsp:include page="header2.jsp"/>
-	</div>
+<div class="header">
+	<c:if test="${sessionScope.id=='admin'}">
+		<jsp:include page="ad_header.jsp"/>
+	</c:if>
+	<c:if test="${sessionScope.id!='admin'}">
+		<jsp:include page="header2.jsp"/>
+	</c:if>
+</div>
 	
 	<div class="content">
 		<div class="content_container">

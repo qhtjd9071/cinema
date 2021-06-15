@@ -30,12 +30,12 @@ public class pwdUpdateController extends HttpServlet{
 			if(n>0) {
 				req.setAttribute("vo",vo);
 				session.setAttribute("pwd", newPwd);
-				req.getRequestDispatcher("/mypage.jsp").forward(req, resp);
+				req.getRequestDispatcher("/payList").forward(req, resp);
 			} else {
-				req.getRequestDispatcher("/pwdUpdate.jsp").forward(req, resp);
+				req.getRequestDispatcher("/payList").forward(req, resp);
 			}
 		} else {
-			req.getRequestDispatcher("/pwdUpdate.jsp").forward(req, resp);
+			req.getRequestDispatcher("/payList").forward(req, resp);
 		}
 	}
 }

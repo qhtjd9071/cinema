@@ -64,3 +64,9 @@ a {
 	text-decoration:none;
 	color:black;
 }
+.pagenum{ 
+	padding:30px;
+	width:100px;
+	margin:0 auto;
+	font-size:15px;
+}

@@ -30,7 +30,13 @@ public class deleteNonePayedBook implements Filter {
 		HttpServletRequest req=(HttpServletRequest)request;
 		
 		bookCancel bc=new bookCancel();
-		bc.cancel(req.getSession());
+		HttpSession session=req.getSession();
+		bc.cancel(session);
+		String id=(String)session.getAttribute("id");
+		if(id!=null && id.equals("admin")) {
+			HttpServletResponse resp = (HttpServletResponse)response;
+			resp.sendRedirect(req.getContextPath() + "/admin.jsp");
+		}
 		
 		chain.doFilter(request, response);
 	}

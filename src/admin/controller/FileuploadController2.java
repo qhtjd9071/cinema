@@ -26,11 +26,9 @@ public class FileuploadController2 extends HttpServlet{
 				"utf-8",
 				new DefaultFileRenamePolicy()
 		);
-		String orgFileName=mr.getFilesystemName("upload_file2");
 		String saveFileName=mr.getFilesystemName("upload_file2");
 		
 		JSONObject json=new JSONObject();
-		json.put("orgFileName", orgFileName);
 		json.put("saveFileName", saveFileName);
 		PrintWriter pw=response.getWriter();
 		pw.print(json);

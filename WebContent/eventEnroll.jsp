@@ -144,8 +144,8 @@
 					let json=JSON.parse(fileName);
 					if(json!=""){
 						let img=document.getElementById("img1");
-						img.src="${pageContext.request.contextPath }/upload/event/"+json.orgFileName;
-						imgsrc1.value="${pageContext.request.contextPath}/images/event/"+json.orgFileName;
+						img.src="${pageContext.request.contextPath }/upload/event/"+json.saveFileName;
+						imgsrc1.value="${pageContext.request.contextPath }/upload/event/"+json.saveFileName;
 					}
 				}
 			xhr.open("post", "${pageContext.request.contextPath}/fileup1", true);
@@ -165,8 +165,8 @@
 					let json=JSON.parse(fileName);
 					if(json!=""){
 						let img=document.getElementById("img2");
-						img.src="${pageContext.request.contextPath }/upload/eventdetail/"+json.orgFileName;
-						imgsrc2.value="${pageContext.request.contextPath}/images/eventdetail/"+json.orgFileName;
+						img.src="${pageContext.request.contextPath }/upload/eventdetail/"+json.saveFileName;
+						imgsrc2.value="${pageContext.request.contextPath}/upload/eventdetail/"+json.saveFileName;
 					}
 				}
 			xhr.open("post", "${pageContext.request.contextPath}/fileup2", true);

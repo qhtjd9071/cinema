@@ -34,16 +34,16 @@
 			</colgroup>
 				<tr style="border:solid;">
 					<th>제목</th>
+					<th>내용</th>
 					<th>삭제</th>
 					<th>작성일</th>
-					<th>조회</th>
 				</tr>
 			<c:forEach var="vo" items="${list}">
 				<tr style="border:1px;">
 					<td>${vo.title}</td>
+					<td>${vo.content}</td>
 					<td><a href="${pageContext.request.contextPath}/eventDel?eventNum=${vo.eventNum}">삭제</a></td>
 					<td>${vo.writedate }</td>
-					<td>${vo.hit }</td>
 				</tr>
 			</c:forEach>
 		</table>
