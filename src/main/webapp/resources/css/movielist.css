@@ -1,0 +1,131 @@
+@charset "UTF-8";
+* {
+   margin:0;
+   padding:0;
+}
+
+body {
+   min-width:1024px;
+   display:block;
+   font-family:'Noto Sans KR', 'Roboto', 'dotum', 'sans-serif';
+   margin:0;
+   padding:0;
+   overflow-y:scroll;
+}
+.movie {
+   width:100%;
+   display:block;
+   box-sizing:border-box;
+   margin:0;
+   padding:150px 0 0 0;
+}
+
+.movie_container {
+   width:995px;
+   display:block;
+   box-sizing:border-box;
+   margin:0 auto;
+   padding:0;
+}
+/*
+.main_list_wrap{
+	color: rgb(0, 0, 0);
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 50px;
+	width: 980px;
+}
+*/
+.movie_list{
+	color: rgb(0, 0, 0);
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	margin-bottom: 37px;
+	position: relative;
+	width: 995px;
+	height: 950px;
+}
+.movie_list_wrap{
+	color: rgb(0, 0, 0);
+	display:block;
+	box-sizing:border-box;
+	float: left;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	margin: 0px;
+	position: relative;
+	text-align: center;
+}
+.movie_selected {
+	width:184px;
+	margin: 0 7.5px;
+	display:list-item;
+	float:left;
+}
+.movieImg {
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	color: #000;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	height: 262px;
+}
+.movieImg img {
+	width:100%;
+}
+
+.movieTitle_wrap{
+	color: #000;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 12px;
+	height: 33px;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	margin-top: 14px;
+	text-align: center;
+}
+.movieTitle{
+	color: #000;
+	display: block;
+	font-family: "Noto Sans KR", Roboto, dotum, sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	list-style-image: initial;
+	list-style-position: initial;
+	list-style-type: none;
+	margin-bottom: 6px;
+	overflow: hidden;
+	text-align: center;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

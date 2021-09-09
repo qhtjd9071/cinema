@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+
+element.style {
+    margin-top: 120px;
+}
+user agent stylesheet
+div {
+    display: block;
+}
+body, input, button, select, textarea {
+    font-family: "Noto Sans KR", "Roboto", "dotum", "sans-serif";
+    font-size: 12px;
+    color: #000;
+}
+body{
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+}
+.main {
+    width: 980px;
+    margin: 0 auto;
+    padding: 200px 0 0 0;
+}
+
+.title_top {  
+margin-bottom: 20px;
+    padding: 25px 0 14px;
+    border-bottom: 1px solid #EEE;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 0;
+    display: table;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 10px;
+    border-color: grey;
+    font-size:15px
+}
+th, td{
+	border-bottom:1px solid gray;
+	padding:16px;
+}
+div.btn_wrap{
+	margin:0 auto;
+   	width: 50%;
+}

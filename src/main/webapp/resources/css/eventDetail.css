@@ -1,0 +1,27 @@
+@charset "UTF-8";
+* {
+   margin:0;
+   padding:0;
+}
+
+body {
+   min-width:1024px;
+   display:block;
+   font-family:'Noto Sans KR', 'Roboto', 'dotum', 'sans-serif';
+   margin:0;
+   padding:0;
+   overflow-y:scroll;
+}
+.contents_event {
+   width:100%;
+   display:block;
+   box-sizing:border-box;
+   margin:0;
+   padding:150px 0 0 0;
+}
+.movieImg {
+	width:980px;
+	display:block;
+	padding:0;
+	margin:0 auto;
+}
