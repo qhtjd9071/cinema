@@ -17,12 +17,12 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
-		<property name="mapperLocations" value="classpath*:com/cinema/lotto/mapper/db/*.xml"/>
+		<property name="mapperLocations" value="classpath*:shop/jbsapp/www/mapper/db/*.xml"/>
 	</bean>
 	
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean>
 	
-	<mybatis:scan base-package="com.cinema.lotto.mapper"/>
+	<mybatis:scan base-package="shop.jbsapp.www.mapper"/>
 </beans>
