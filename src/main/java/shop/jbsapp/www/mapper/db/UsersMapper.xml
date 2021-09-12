@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.jbsapp.www.mapper.UsersMapper">
+	<insert id="insert" parameterType="shop.jbsapp.www.vo.UsersVo">
+		INSERT INTO USERS VALUES(#{id}, #{pwd}, #{name}, #{email}, #{birth}, #{phone})
+	</insert>
+	
+	<delete id="deleteById" parameterType="String">
+		DELETE FROM USERS WHERE ID = #{id}
+	</delete>
+	
+	<select id="findById" parameterType="String" resultType="shop.jbsapp.www.vo.UsersVo">
+		SELECT * FROM USERS WHERE ID = #{id}
+	</select>
+	
+</mapper>
