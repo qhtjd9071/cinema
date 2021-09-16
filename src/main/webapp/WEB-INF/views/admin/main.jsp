@@ -29,8 +29,8 @@
 		      <li><a href="${cp}/room/list" style="background-color:#F8F8F8">상영관 보기</a></li>
 	      </ul>
 	      <ul class="mbtn_list">
-		      <li><a href="${cp}/show/insert" style="background-color:#444444; color:white;">상영 영화 등록</a></li>
-		      <li><a href="${cp}/show/list" style="background-color:#F8F8F8">상영 영화 보기</a></li>
+		      <li><a href="${cp}/show/insert" style="background-color:#444444; color:white;">상영 정보 등록</a></li>
+		      <li><a href="${cp}/show/list" style="background-color:#F8F8F8">상영 정보 보기</a></li>
 		      <li><a href="${cp}/notice/insert" style="background-color:#444444; color:white;">공지사항 등록</a></li>
 		      <li><a href="${cp}/notice/list" style="background-color:#F8F8F8">공지사항 보기</a></li>
 	      </ul>
