@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.jbsapp.www.mapper.RoomsMapper">
+	<insert id="insert" parameterType="shop.jbsapp.www.vo.RoomsVo">
+		INSERT INTO ROOMS VALUES(ROOMS_SEQ.NEXTVAL, #{theaterName}, #{seatCount}, #{location}, #{roomNum})
+	</insert>
+	
+	<delete id="deleteById">
+		DELETE FROM ROOMS WHERE ID = #{id}
+	</delete>
+	
+	<select id="findAll" resultType="shop.jbsapp.www.vo.RoomsVo">
+		SELECT * FROM ROOMS
+	</select>
+	
+	<select id="findByLocation" resultType="shop.jbsapp.www.vo.RoomsVo">
+		SELECT * FROM ROOMS WHERE LOCATION = #{location}
+	</select>
+	
+	<select id="findAllPaging" parameterType="shop.jbsapp.www.util.PageUtil" resultType="shop.jbsapp.www.vo.RoomsVo">
+		SELECT * FROM 
+			(SELECT N.*, ROWNUM RNUM FROM 
+				(SELECT * FROM ROOMS ORDER BY ID DESC) N
+			)
+		<![CDATA[WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}]]>
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT NVL(COUNT(*), 0) FROM ROOMS
+	</select>
+</mapper>
