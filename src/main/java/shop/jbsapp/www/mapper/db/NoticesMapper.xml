@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.jbsapp.www.mapper.NoticesMapper">
+	<insert id="insert" parameterType="shop.jbsapp.www.vo.NoticesVo">
+		INSERT INTO NOTICES VALUES(NOTICES_SEQ.NEXTVAL, #{title}, #{content}, sysdate, 0)
+	</insert>
+	
+	<delete id="deleteById">
+		DELETE FROM NOTICES WHERE ID = #{id}
+	</delete>
+	
+	<select id="findById" resultType="shop.jbsapp.www.vo.NoticesVo">
+		SELECT * FROM NOTICES WHERE ID = #{id}
+	</select>
+	
+	<select id="findAll" resultType="shop.jbsapp.www.vo.NoticesVo">
+		SELECT * FROM NOTICES
+	</select>
+
+	<select id="findAllPaging" parameterType="shop.jbsapp.www.util.PageUtil" resultType="shop.jbsapp.www.vo.NoticesVo">
+		SELECT * FROM 
+			(SELECT N.*, ROWNUM RNUM FROM 
+				(SELECT * FROM NOTICES ORDER BY ID DESC) N
+			)
+		<![CDATA[WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}]]>
+	</select>
+	
+	<update id="update" parameterType="shop.jbsapp.www.vo.NoticesVo">
+		UPDATE NOTICES SET TITLE = #{title}, CONTENT = #{content} WHERE ID = #{id}
+	</update>
+	
+	<update id="increaseHit">
+		UPDATE NOTICES SET HIT = HIT + 1
+	</update>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM NOTICES
+	</select>
+</mapper>
