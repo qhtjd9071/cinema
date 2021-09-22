@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.jbsapp.www.mapper.EventsMapper">
+	<insert id="insert" parameterType="shop.jbsapp.www.vo.EventsVo">
+		INSERT INTO EVENTS VALUES(EVENTS_SEQ.NEXTVAL, #{title}, #{content}, sysdate, #{mainImage}, #{detailImage})
+	</insert>
+	
+	<delete id="deleteById">
+		DELETE FROM EVENTS WHERE ID = #{id}
+	</delete>
+	
+	<select id="findById" resultType="shop.jbsapp.www.vo.EventsVo">
+		SELECT * FROM EVENTS WHERE ID = #{id}
+	</select>
+	
+	<select id="findAll" resultType="shop.jbsapp.www.vo.EventsVo">
+		SELECT * FROM EVENTS
+	</select>
+	
+	<select id="findAllPaging" parameterType="shop.jbsapp.www.util.PageUtil" resultType="shop.jbsapp.www.vo.EventsVo">
+		SELECT * FROM
+			(SELECT N.*, ROWNUM RNUM FROM 
+				(SELECT * FROM EVENTS ORDER BY ID DESC) N
+			)
+		<![CDATA[WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}]]>
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM EVENTS
+	</select>
+</mapper>
