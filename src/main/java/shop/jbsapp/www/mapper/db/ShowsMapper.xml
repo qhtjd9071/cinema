@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.jbsapp.www.mapper.ShowsMapper">
+	<insert id="insert" parameterType="HashMap">
+		INSERT INTO SHOWS VALUES(SHOWS_SEQ.NEXTVAL, #{movieId}, TO_DATE(#{beginTime} , 'YYYY-MM-DD HH24:MI'), TO_DATE(#{endTime} , 'YYYY-MM-DD HH24:MI'), #{roomId}, #{price})
+	</insert>
+	
+	<delete id="deleteById">
+		DELETE FROM SHOWS WHERE ID = #{id}
+	</delete>
+	
+	<select id="showListPaging" parameterType="shop.jbsapp.www.util.PageUtil" resultType="HashMap">
+		SELECT * FROM 
+			(SELECT SMR.*, ROWNUM RNUM FROM
+				(SELECT S.ID, TITLE, BEGINTIME, ENDTIME, THEATERNAME, ROOMNUM
+				FROM SHOWS S JOIN MOVIES M ON S.MOVIEID = M.ID
+				JOIN ROOMS R ON S.ROOMID = R.ID) SMR
+			)
+		<![CDATA[WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}]]>
+	</select>
+	
+	<select id="count" resultType="int">
+		SELECT NVL(COUNT(*), 0) FROM SHOWS
+	</select>
+</mapper>
