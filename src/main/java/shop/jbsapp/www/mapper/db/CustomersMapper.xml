@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.jbsapp.www.mapper.CustomersMapper">
+	<insert id="insert" parameterType="shop.jbsapp.www.vo.CustomersVo">
+		INSERT INTO CUSTOMERS VALUES(#{id}, #{title}, #{content}, #{ref}, #{lev}, #{step}, sysdate, #{userId})
+	</insert>
+	
+	<delete id="deleteById">
+		DELETE FROM CUSTOMERS WHERE ID = #{id} OR REF = #{id}
+	</delete>
+	
+	<select id="findById" resultType="shop.jbsapp.www.vo.CustomersVo">
+		SELECT * FROM CUSTOMERS WHERE ID = #{id}
+	</select>
+	
+	<select id="findAllPaging" parameterType="shop.jbsapp.www.util.PageUtil" resultType="shop.jbsapp.www.vo.CustomersVo">
+		SELECT * FROM 
+			(SELECT C.*, ROWNUM RNUM FROM
+				(SELECT * FROM CUSTOMERS ORDER BY REF DESC, STEP ASC) C
+			)
+		<![CDATA[WHERE RNUM >= #{startRow} AND RNUM <= #{endRow}]]>
+	</select>
+	
+	<update id="update" parameterType="shop.jbsapp.www.vo.CustomersVo">
+		UPDATE CUSTOMERS SET TITLE = #{title}, CONTENT = #{content} WHERE ID = #{id}
+	</update>
+	
+	<select id="count" resultType="int">
+		SELECT COUNT(*) FROM CUSTOMERS
+	</select>
+	
+	<select id="getMax" resultType="int">
+		SELECT NVL(MAX(ID), 0) MAXNUM FROM CUSTOMERS
+	</select>
+	
+	<update id="increaseLevel" parameterType="shop.jbsapp.www.vo.CustomersVo">
+		UPDATE CUSTOMERS SET STEP = STEP + 1 WHERE REF = #{ref} AND STEP > #{step}
+	</update>
+</mapper>
