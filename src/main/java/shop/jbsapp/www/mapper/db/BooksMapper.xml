@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.jbsapp.www.mapper.BooksMapper">
+	<insert id="insert" parameterType="shop.jbsapp.www.vo.BooksVo">
+		INSERT INTO BOOKS VALUES(BOOKS_SEQ.NEXTVAL, SYSDATE, #{price}, #{seatNum}, #{showId}, #{userId})
+	</insert>
+	
+	<delete id="deleteById" parameterType="int">
+		DELETE FROM BOOKS WHERE ID = #{id}
+	</delete>
+	
+	<select id="findById" parameterType="int" resultType="shop.jbsapp.www.vo.BooksVo">
+		SELECT * FROM BOOKS WHERE ID = #{id}
+	</select>
+	
+	<select id="movieList" parameterType="HashMap" resultType="HashMap">
+		SELECT M.TITLE TITLE, NVL(STAR, 0) STAR FROM MOVIES M LEFT OUTER JOIN
+			(SELECT MOVIEID, AVG(STAR) STAR FROM COMMENTS 
+			WHERE MOVIEID = ANY(SELECT DISTINCT(M.ID) FROM SHOWS S JOIN ROOMS R ON S.ROOMID = R.ID JOIN MOVIES M ON S.MOVIEID = M.ID
+			WHERE THEATERNAME = #{theaterName}) GROUP BY MOVIEID) S ON M.ID = S.MOVIEID 
+			<if test="sort == starCount">
+				ORDER BY STAR DESC
+			</if>
+	</select>
+	
+	<select id="roomList" parameterType="HashMap" resultType="HashMap">
+		<if test="roomNum == null">
+			SELECT ROOMNUM, SEATCOUNT FROM SHOWS S JOIN MOVIES M ON S.MOVIEID = M.ID
+			JOIN ROOMS R ON S.ROOMID = R.ID WHERE TO_CHAR(BEGINTIME, 'YYYY/MM/DD') = #{BEGINTIME}
+			AND TITLE = #{title} AND THEATERNAME = #{theaterName}
+		</if>
+		<if test="roomNum != null">
+			SELECT ROOMNUM, SEATCOUNT FROM SHOWS S JOIN MOVIES M ON S.MOVIEID = M.ID
+			JOIN ROOMS R ON S.ROOMID = R.ID WHERE TO_CHAR(BEGINTIME, 'YYYY/MM/DD') = #{BEGINTIME}
+			AND TITLE = #{title} AND THEATERNAME = #{theaterName} AND ROOMNUM = #{roomNum}
+		</if>
+	</select>
+	
+	<select id="getSeatCountByShowId" parameterType="int" resultType="int">
+		SELECT SEATCOUNT FROM ROOM R JOIN SHOW S ON R.ID = S.ROOMID WHERE SHOWID = #{showId} 
+	</select>
+	
+	<select id="findByShowId" parameterType="int" resultType="shop.jbsapp.www.vo.BooksVo">
+		SELECT * FROM BOOKS WHERE SHOWID = #{showId}
+	</select>
+	
+	<select id="getMovieIdByShowId" parameterType="int" resultType="int">
+		SELECT MOVIEID FROM SHOW WHERE ID = #{id}
+	</select>
+</mapper>
