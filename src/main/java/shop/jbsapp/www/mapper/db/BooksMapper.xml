@@ -29,18 +29,18 @@
 	<select id="roomList" parameterType="HashMap" resultType="HashMap">
 		<if test="roomNum == null">
 			SELECT ROOMNUM, SEATCOUNT FROM SHOWS S JOIN MOVIES M ON S.MOVIEID = M.ID
-			JOIN ROOMS R ON S.ROOMID = R.ID WHERE TO_CHAR(BEGINTIME, 'YYYY/MM/DD') = #{BEGINTIME}
+			JOIN ROOMS R ON S.ROOMID = R.ID WHERE TO_CHAR(BEGINTIME, 'YYYY/MM/DD') = #{beginTime}
 			AND TITLE = #{title} AND THEATERNAME = #{theaterName}
 		</if>
 		<if test="roomNum != null">
-			SELECT ROOMNUM, SEATCOUNT FROM SHOWS S JOIN MOVIES M ON S.MOVIEID = M.ID
-			JOIN ROOMS R ON S.ROOMID = R.ID WHERE TO_CHAR(BEGINTIME, 'YYYY/MM/DD') = #{BEGINTIME}
+			SELECT TO_CHAR(BEGINTIME, 'YYYY-MM-DD HH24:MI:SS') BEGINTIME, S.ID FROM SHOWS S JOIN MOVIES M ON S.MOVIEID = M.ID
+			JOIN ROOMS R ON S.ROOMID = R.ID WHERE TO_CHAR(BEGINTIME, 'YYYY/MM/DD') = #{beginTime}
 			AND TITLE = #{title} AND THEATERNAME = #{theaterName} AND ROOMNUM = #{roomNum}
 		</if>
 	</select>
 	
 	<select id="getSeatCountByShowId" parameterType="int" resultType="int">
-		SELECT SEATCOUNT FROM ROOM R JOIN SHOW S ON R.ID = S.ROOMID WHERE SHOWID = #{showId} 
+		SELECT SEATCOUNT FROM ROOMS R JOIN SHOWS S ON R.ID = S.ROOMID WHERE S.ID = #{showId} 
 	</select>
 	
 	<select id="findByShowId" parameterType="int" resultType="shop.jbsapp.www.vo.BooksVo">
@@ -48,6 +48,11 @@
 	</select>
 	
 	<select id="getMovieIdByShowId" parameterType="int" resultType="int">
-		SELECT MOVIEID FROM SHOW WHERE ID = #{id}
+		SELECT MOVIEID FROM SHOWS WHERE ID = #{id}
 	</select>
+	
+	<select id="getRating" parameterType="int" resultType="String">
+		SELECT RATING FROM MOVIES WHERE ID = #{id}
+	</select>
+	
 </mapper>

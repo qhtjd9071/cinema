@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import shop.jbsapp.www.service.BooksService;
+import shop.jbsapp.www.service.MoviesService;
 import shop.jbsapp.www.service.RoomsService;
 import shop.jbsapp.www.util.GetSeatNum;
 import shop.jbsapp.www.vo.BooksVo;
+import shop.jbsapp.www.vo.MoviesVo;
 import shop.jbsapp.www.vo.RoomsVo;
 
 @Controller
@@ -31,6 +33,9 @@ public class BookController{
 	
 	@Autowired
 	private RoomsService roomsService;
+	
+	@Autowired
+	private MoviesService moviesService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 	
@@ -44,18 +49,20 @@ public class BookController{
 	}
 	
 	@GetMapping("/countPeople")
-	public ModelAndView countForm(int showId) {
+	public ModelAndView countForm(@Param(value = "showId") int showId) {
 		List<BooksVo> list = bookService.findByShowId(showId);
 		List<String> strList = new ArrayList<String>();
 		for(BooksVo vo : list) {
 			strList = GetSeatNum.getSeatNumList(strList, vo.getSeatNum());
 		}
 		
+		int movieId = bookService.getMovieIdByShowId(showId);
 		ModelAndView mv = new ModelAndView("book/countSelection");
 		mv.addObject("list", strList);
 		mv.addObject("count", bookService.getSeatCountByShowId(showId));
 		mv.addObject("showId", showId);
-		mv.addObject("movieNum", bookService.getMovieIdByShowId(showId));
+		mv.addObject("movieId", movieId);
+		mv.addObject("rating", bookService.getRating(movieId));
 		return mv;
 	}
 	
@@ -66,12 +73,16 @@ public class BookController{
 		for(BooksVo vo : list) {
 			strList = GetSeatNum.getSeatNumList(strList, vo.getSeatNum());
 		}
+		
+		int movieId = bookService.getMovieIdByShowId(showId);
+		MoviesVo vo = moviesService.findById(movieId);
 		ModelAndView mv = new ModelAndView("book/bookPage");
 		mv.addObject("list", strList);
 		mv.addObject("count", bookService.getSeatCountByShowId(showId));
 		mv.addObject("showId", showId);
+		// price 테이블 위치 바꿔야함
 		mv.addObject("price", 10000);
-		mv.addObject("movieTitle", "test");
+		mv.addObject("movieTitle", vo.getTitle());
 		mv.addObject("adultCount", adultCount);
 		mv.addObject("teenCount", teenCount);
 		mv.addObject("totalCount", adultCount + teenCount);
@@ -90,7 +101,6 @@ public class BookController{
 		map.put("theaterName", theaterName);
 		map.put("sort", sort);
 		List<Map<String, Object>> list = bookService.movieList(map);
-		System.out.println(list);
 		return list;
 	}
 	

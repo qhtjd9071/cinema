@@ -27,5 +27,7 @@ public interface BooksMapper {
 	List<BooksVo> findByShowId(int showId);
 	
 	int getMovieIdByShowId(int showId);
-	
+
+	String getRating(int movieId);
+
 }

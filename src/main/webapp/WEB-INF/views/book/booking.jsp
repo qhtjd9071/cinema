@@ -122,7 +122,6 @@
 		let movieField = document.getElementById("movieField")
 		let mfIndex = movieField.options[movieField.selectedIndex].value;
 		sort = mfIndex;
-		alert(sort);
 		movieList(curTheaterName,sort);
 	}
 	
@@ -226,15 +225,16 @@
     	let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
-				let xml = xhr.responseXML;
+				let result = xhr.responseText;
+				let jsonArr = JSON.parse(result);
 				let show_list = document.getElementById("show-list");
-				let sList = xml.getElementsByTagName("sList");
 				show_list.innerHTML = "";
-				for(let i=0; i<sList.length; i++){
+				for(let i=0; i<jsonArr.length; i++){
+					let json = jsonArr[i];
 					let div3 = document.createElement("div");
-					let roomNum = sList[i].getElementsByTagName("rn")[0].textContent;
-					let sitCount = sList[i].getElementsByTagName("sc")[0].textContent;
-					div3.innerHTML = roomNum + "관 " + sitCount + "석" + "<br>";
+					let roomNum = json.ROOMNUM;
+					let seatCount = json.SEATCOUNT;
+					div3.innerHTML = roomNum + "관 " + seatCount + "석" + "<br>";
 					div3.className = roomNum;
 					div3.className += " showListBox";
 					show_list.appendChild(div3);
@@ -242,7 +242,7 @@
 				}	
 			}
 		};
-		xhr.open('get','${cp}/show?begintime=' + curDate +'&movieTitle=' + curMovieTitle + '&theaterName=' + curTheaterName,true)
+		xhr.open('get','${cp}/api/book/showList?begintime=' + curDate +'&movieTitle=' + curMovieTitle + '&theaterName=' + curTheaterName,true)
 		xhr.send();
     }
     
@@ -251,27 +251,27 @@
     	let xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function(){
 			if(xhr.readyState == 4 && xhr.status == 200){
-				let xml = xhr.responseXML;
-				console.log(xhr.responseText);
+				let result = xhr.responseText;
 				let time_list = document.getElementsByClassName(roomNum)[0];
-				let stList = xml.getElementsByTagName("stList");
-				for(let i=0; i<stList.length; i++){
+				let jsonArr = JSON.parse(result);
+				for(let i=0; i<jsonArr.length; i++){
+					let json = jsonArr[i];
 					let div4 = document.createElement("div");
-					let begintime = stList[i].getElementsByTagName("time")[0].textContent;
+					let begintime = json.BEGINTIME;
 					let beginhour = new Date(begintime);
 					let beginMin = (beginhour.getMinutes()<10?'0':'') + beginhour.getMinutes();
-					let showNum = stList[i].getElementsByTagName("shownum")[0].textContent;
+					let showId = json.ID;
 					div4.innerHTML = beginhour.getHours() + " : " + (beginhour.getMinutes()<10?'0':'') + beginhour.getMinutes() + "<br>";
 					div4.className = "timeListBox";
 					div4.onclick=function(){
-						location.href = "${cp}/count?showNum=" + showNum;
+						location.href = "${cp}/book/countPeople?showId=" + showId;
 					}
 					time_list.appendChild(div4);
 				}	
 			}
 			
 		};
-		xhr.open('post','${cp}/time', true);
+		xhr.open('post','${cp}/api/book/timeList', true);
 		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 		let params = "begintime=" + curDate + "&movieTitle=" + curMovieTitle + "&theaterName=" + curTheaterName + "&roomNum=" + roomNum;
 		xhr.send(params);

@@ -38,11 +38,11 @@
 </style>
 <script type="text/javascript">
 		//배열 초기화
-		const book=new Array(${getCount });
+		const book=new Array(${count });
 		for(let i=0;i<book.length;i++){
 			book[i]="";
 		}
-		const count=new Array(${getCount });
+		const count=new Array(${count });
 		for(let i=0;i<count.length;i++){
 			count[i]=0;
 		}
@@ -71,7 +71,7 @@
 </div>
 </div>
 
-<c:forEach var="i" begin="1" end="${getCount }">
+<c:forEach var="i" begin="1" end="${count }">
 <c:forEach var="vo" items="${list}">
 	<script type="text/javascript">
 	function cnt(){
@@ -151,14 +151,14 @@
 		if(selectCount<${totalCount}){
 			alert("좌석을 선택하세요");
 		}else{
-			var parameter={"showNum":${showNum},"price":${price},"array":book}
+			var parameter={"showId":${showId},"price":${price},"array":book}
 			var aa=JSON.stringify(parameter);
 			let xhr=new XMLHttpRequest();
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState==4 && xhr.status==200){
 						let json=xhr.responseText;
 						let bna=JSON.parse(json);
-						kakaoPay(xhr,json);
+						kakaoPay(xhr.json);
 					}
 			}
 			xhr.open("post","book",true);

@@ -22,7 +22,7 @@
 	#seatCount{width:200px;hegiht:150px;margin:0 auto;color:blue}
 </style>
 <script type="text/javascript">
-		const count=new Array(${getCount });
+		const count=new Array(${count });
 		let totSeat=0;
 		for(let i=0;i<count.length;i++){
 			count[i]=0;
@@ -45,7 +45,7 @@
 					<div class="person_count">
 						<div class="select_numpeople">
 							<form action="selection" method="post" class="select_form">
-								<input type="hidden" value="${showNum}" name="showNum">
+								<input type="hidden" value="${showId}" name="showId">
 								<label id="adult" >
 									성인
 									<div class="count">
@@ -78,7 +78,7 @@
 		</div>
 	</div>
 </div>
-	<c:forEach var="i" begin="1" end="${getCount }">
+	<c:forEach var="i" begin="1" end="${count }">
 		<c:forEach var="vo" items="${list}">
 			<script type="text/javascript">
 			function cnt(){
@@ -111,7 +111,7 @@
 </body>
 <script type="text/javascript">
 	const seatCount=document.getElementById("seatCount");
-	seatCount.innerHTML+=totSeat+"석  /  "+${getCount}+"석";
+	seatCount.innerHTML+=totSeat+"석  /  "+${count}+"석";
 
 	const abm=document.getElementById("adultBtnMinus");
 	const abp=document.getElementById("adultBtnPlus");
