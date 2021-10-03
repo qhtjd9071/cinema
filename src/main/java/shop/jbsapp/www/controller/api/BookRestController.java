@@ -1,5 +1,6 @@
 package shop.jbsapp.www.controller.api;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,10 +9,12 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import shop.jbsapp.www.service.BooksService;
+import shop.jbsapp.www.vo.BooksVo;
 
 @RestController
 @RequestMapping("/api/book")
@@ -19,6 +22,20 @@ public class BookRestController {
 	
 	@Autowired
 	private BooksService booksService;
+	
+	@PostMapping("/book")
+	public int book(@RequestBody Map<String, Object> params, Principal principal) {
+		BooksVo vo = new BooksVo();
+		int price = (int) params.get("price");
+		String seatNum = ((String) params.get("seatNum")).toString();
+		int showId = (int) params.get("showId");
+		vo.setPrice(price);
+		vo.setSeatNum(seatNum);
+		vo.setShowId(showId);
+		vo.setUserId(principal.getName());
+		booksService.insert(vo);
+		return booksService.getIdBySeatNumAndShowId(params);
+ 	}
 	
 	@GetMapping("/showList")
 	public List<Map<String, Object>> showList(String begintime, String movieTitle, String theaterName) {

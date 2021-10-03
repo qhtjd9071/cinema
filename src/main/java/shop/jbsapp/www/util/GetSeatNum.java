@@ -6,7 +6,7 @@ import java.util.List;
 public class GetSeatNum {
 	public static List<String> getSeatNumList(List<String> list, String seatNumString) {
 		String temp = seatNumString.substring(1, seatNumString.length() - 1);
-		String[] seatNumArr = temp.split(", ");
+		String[] seatNumArr = temp.split(",");
 		for(String str : seatNumArr) {
 			if(!str.equals("")) {
 				list.add(str);
@@ -34,7 +34,7 @@ public class GetSeatNum {
 	
 	public static void main(String[] args) {
 		String test = "[1, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 49, 50]";
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<>();
 		List<String> method1 = getSeatNumList(list, test);
 		System.out.println(method1.toString());
 		

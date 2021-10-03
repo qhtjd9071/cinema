@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal.username" var="logined"/>
+</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
@@ -75,7 +79,7 @@
 <c:forEach var="vo" items="${list}">
 	<script type="text/javascript">
 	function cnt(){
-		if(${vo.seatNum==i}){
+		if(${vo==i}){
 			count[${i}-1]+=1;
 		}
 	}
@@ -151,34 +155,35 @@
 		if(selectCount<${totalCount}){
 			alert("좌석을 선택하세요");
 		}else{
-			var parameter={"showId":${showId},"price":${price},"array":book}
-			var aa=JSON.stringify(parameter);
+			var parameter={"showId":${showId},"price":${price},"seatNum":book.toString()}
+			var params=JSON.stringify(parameter);
 			let xhr=new XMLHttpRequest();
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState==4 && xhr.status==200){
 						let json=xhr.responseText;
 						let bna=JSON.parse(json);
-						kakaoPay(xhr.json);
+						kakaoPay(xhr,json);
 					}
 			}
-			xhr.open("post","book",true);
-			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-			xhr.send("aa="+aa);
+			xhr.open("post","/api/book/book",true);
+			xhr.setRequestHeader("Content-Type", "application/json");
+			xhr.send(params);
 		}
 	}
 	
 	function kakaoPay(xhr,json){
-		let toss={"bookNum":json,"id":"${sessionScope.id}","title":"${movieTitle}","count":selectCount,"total":${price*adultCount}+${price*0.7*teenCount}};
-		let jsonToss=JSON.stringify(toss);
+		alert(json);
+		let parameter={"bookId":json,"userId":"${logined}","title":"${movieTitle}","count":selectCount,"total":${price*adultCount}+${price*0.7*teenCount}};
+		let params=JSON.stringify(parameter);
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4 && xhr.status==200){
 					let json=xhr.responseText;
 					location.href=json;
 				}
 		}
-		xhr.open("post","kakao",true);
-		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-		xhr.send("toss="+jsonToss);
+		xhr.open("post","/api/pay/kakaoPayReady",true);
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.send(params);
 	}
 </script>
 <script type="text/javascript">

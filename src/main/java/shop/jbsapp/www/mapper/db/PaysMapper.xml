@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.jbsapp.www.mapper.PaysMapper">
+	<insert id="insert" parameterType="shop.jbsapp.www.vo.PaysVo">
+		INSERT INTO PAYS VALUES(#{id}, #{bookId}, NULL, NULL, SYSDATE)
+	</insert>
+	
+	<update id="update" parameterType="shop.jbsapp.www.vo.PaysVo">
+		UPDATE PAYS SET METHOD = #{method}, TOTAL = #{total} WHERE ID = #{id}
+	</update>
+	
+	<delete id="deleteByBookId">
+		DELETE FROM PAYS WHERE BOOKID = #{bookId}
+	</delete>
+	
+	<select id="findByBookId" resultType="shop.jbsapp.www.vo.PaysVo">
+		SELECT * FROM PAYS WHERE BOOKID = #{bookId}
+	</select>
+	
+	<select id="findAll" resultType="shop.jbsapp.www.vo.PaysVo">
+		SELECT * FROM PAYS
+	</select>
+</mapper>

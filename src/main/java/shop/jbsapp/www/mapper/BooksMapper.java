@@ -30,4 +30,8 @@ public interface BooksMapper {
 
 	String getRating(int movieId);
 
+	int getIdByShowId(int showId);
+
+	int getIdBySeatNumAndShowId(Map<String, Object> params);
+
 }

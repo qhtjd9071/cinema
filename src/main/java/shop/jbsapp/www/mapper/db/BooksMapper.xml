@@ -55,4 +55,7 @@
 		SELECT RATING FROM MOVIES WHERE ID = #{id}
 	</select>
 	
+	<select id="getIdBySeatNumAndShowId" parameterType="HashMap" resultType="int">
+		SELECT ID FROM BOOKS WHERE SEATNUM = #{seatNum} AND SHOWID = #{showId}
+	</select>
 </mapper>

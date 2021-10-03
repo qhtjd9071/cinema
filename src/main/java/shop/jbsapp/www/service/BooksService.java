@@ -49,5 +49,13 @@ public class BooksService {
 		return booksMapper.getRating(movieId);
 	}
 
+	public int getIdByShowId(int showId) {
+		return booksMapper.getIdByShowId(showId);
+	}
+
+	public int getIdBySeatNumAndShowId(Map<String, Object> params) {
+		return booksMapper.getIdBySeatNumAndShowId(params);
+	}
+
 
 }

@@ -55,7 +55,8 @@ public class BookController{
 		for(BooksVo vo : list) {
 			strList = GetSeatNum.getSeatNumList(strList, vo.getSeatNum());
 		}
-		
+		System.out.println("test:"+list.toString());
+		System.out.println("test:"+strList.toString());
 		int movieId = bookService.getMovieIdByShowId(showId);
 		ModelAndView mv = new ModelAndView("book/countSelection");
 		mv.addObject("list", strList);

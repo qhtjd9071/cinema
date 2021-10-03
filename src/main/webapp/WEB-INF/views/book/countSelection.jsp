@@ -82,7 +82,7 @@
 		<c:forEach var="vo" items="${list}">
 			<script type="text/javascript">
 			function cnt(){
-				if(${vo.seatNum==i}){
+				if(${vo==i}){
 					count[${i}-1]+=1;
 					totSeat+=1;
 				}
