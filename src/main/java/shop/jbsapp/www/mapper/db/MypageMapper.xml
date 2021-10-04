@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.jbsapp.www.mapper.MypageMapper">
+	<select id="myBook" resultType="HashMap">
+		SELECT P.BOOKID, TITLE, SEATNUM, THEATERNAME, ROOMNUM, BEGINTIME, TOTAL, P.CREATEDATE FROM PAYS P
+		JOIN BOOKS B ON P.BOOKID = B.ID JOIN SHOWS S ON B.SHOWID = S.ID
+		JOIN MOVIES M ON S.MOVIEID = M.ID
+		JOIN ROOMS R ON S.ROOMID = R.ID
+		WHERE USERID = #{userId}
+	</select>
+	
+	<select id="countByUserId" resultType="int">
+		SELECT COUNT(*) FROM CUSTOMERS WHERE USERID = #{userId}
+	</select>
+	
+	<select id="inquiryList" parameterType="HashMap" resultType="shop.jbsapp.www.vo.CustomersVo">
+		SELECT * FROM
+			(SELECT C.*, ROWNUM RNUM FROM
+				(SELECT * FROM CUSTOMERS WHERE USERID = 'admin' OR USERID = #{userId}
+				ORDER BY REF DESC, STEP ASC) C
+			)
+		<![CDATA[WHERE RNUM >= #{pageUtil.startRow} AND RNUM <= #{pageUtil.endRow}]]>
+	</select>
+</mapper>

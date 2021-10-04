@@ -18,7 +18,7 @@ public class GetSeatNum {
 	public static String getSeatNumList(String seatNumString) {
 		List<String> list = new ArrayList<String>();
 		String temp = seatNumString.substring(1, seatNumString.length() - 1);
-		String[] seatNumArr = temp.split(", ");
+		String[] seatNumArr = temp.split(",");
 		int index = 0;
 		for(String str : seatNumArr) {
 			if(!str.equals("")) {
