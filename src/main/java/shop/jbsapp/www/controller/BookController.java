@@ -105,4 +105,13 @@ public class BookController{
 		return list;
 	}
 	
+	@GetMapping("/cancel")
+	public String cancel(@Param(value = "bookId") int bookId) {
+		int result = bookService.cancel(bookId);
+		if (result > 0) {
+			return "redirect:/mypage/payList";
+		} else {
+			return "/fail/fail";
+		}
+	}
 }

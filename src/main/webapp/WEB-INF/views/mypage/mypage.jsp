@@ -1,9 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	String id=(String)session.getAttribute("id");
-	String pwd=(String)session.getAttribute("pwd");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,7 +28,7 @@
 				<ul>
 					<li><a href="${cp}/mypage/payList">예매 내역</a></li>
 					<li><a href="${cp}/mypage/inquiry">나의 문의 내역</a></li>
-					<li><a onclick="updatePop('<%=id %>','<%=pwd %>')">MY 정보관리</a></li>
+					<li><a onclick="updatePop()">MY 정보관리</a></li>
 					<li><a href="${cp }/mypage/delAccount">회원 탈퇴</a></li>
 				</ul>
 			</nav>

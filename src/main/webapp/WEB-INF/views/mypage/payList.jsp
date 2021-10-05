@@ -32,14 +32,14 @@
 				
 				<c:forEach var="vo" items="${list}">
 					<tr>
-						<td>${vo.movieTitle}</td>
-						<td>${vo.seatNumArr}</td>
-						<td>${vo.theaterName}</td>
-						<td>${vo.roomNum}</td>
-						<td>${vo.beginTime}</td>
-						<td>${vo.tot }</td>
-						<td>${vo.payDate }</td>
-						<td><a href="${cp}/cancel?partner_order_id=${vo.intNum}">취소</a></td>
+						<td>${vo.TITLE}</td>
+						<td>${vo.SEATNUM}</td>
+						<td>${vo.THEATERNAME}</td>
+						<td>${vo.ROOMNUM}</td>
+						<td>${vo.BEGINTIME}</td>
+						<td>${vo.TOTAL }</td>
+						<td>${vo.CREATEDATE }</td>
+						<td><a href="${cp}/book/cancel?bookId=${vo.BOOKID}">취소</a></td>
 					</tr>
 				</c:forEach>
 			</table>

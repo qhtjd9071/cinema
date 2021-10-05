@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import shop.jbsapp.www.mapper.BooksMapper;
+import shop.jbsapp.www.mapper.PaysMapper;
 import shop.jbsapp.www.vo.BooksVo;
 
 @Service
@@ -16,6 +17,9 @@ public class BooksService {
 
 	@Autowired
 	private BooksMapper booksMapper;
+	
+	@Autowired
+	private PaysMapper paysMapper;
 	
 	public int insert(BooksVo vo) {
 		return booksMapper.insert(vo);
@@ -55,6 +59,17 @@ public class BooksService {
 
 	public int getIdBySeatNumAndShowId(Map<String, Object> params) {
 		return booksMapper.getIdBySeatNumAndShowId(params);
+	}
+
+	public int cancel(int bookId) {
+		try {
+			paysMapper.deleteByBookId(bookId);
+			booksMapper.deleteById(bookId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		}
+		return 1;
 	}
 
 

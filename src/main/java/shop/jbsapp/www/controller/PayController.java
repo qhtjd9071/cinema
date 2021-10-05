@@ -28,4 +28,5 @@ public class PayController {
 	public void kakaoPayFail(Principal principal) {
 		payService.kakaoPayFail(principal.getName());
 	}
+	
 }

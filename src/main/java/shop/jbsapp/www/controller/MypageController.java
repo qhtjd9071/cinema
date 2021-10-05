@@ -21,6 +21,7 @@ import shop.jbsapp.www.vo.CustomersVo;
 @Controller
 @RequestMapping(value = "/mypage")
 public class MypageController {
+	
 	@Autowired
 	private MypageService mypageService;
 	
@@ -47,7 +48,7 @@ public class MypageController {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pageUtil", pageUtil);
-		map.put("writer", principal.getName());
+		map.put("userId", principal.getName());
 		
 		List<CustomersVo> list = mypageService.inquiryList(map);
 		ModelAndView mv = new ModelAndView("mypage/mypage");
