@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,7 +102,7 @@
 			<div class="input_wrap">
 				<div class="wrap_inner">
 					<div class="ui_input2">
-						<a href="${cp }/pwdUpdate.jsp"><input type="button" value="비밀번호 변경" class="btn_pwd"></a>
+						<a href="${cp}/mypage/updatePwd"><input type="button" value="비밀번호 변경" class="btn_pwd"></a>
 					</div>
 				</div>
 			</div>

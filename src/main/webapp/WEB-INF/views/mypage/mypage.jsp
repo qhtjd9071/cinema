@@ -24,11 +24,11 @@
 	<div class="mypage_container">
 		<div class="mypage_lnb_wrap">
 			<nav class="mypage_lnb">
-				<p><a href="${cp }/mypage.jsp">나의 로또시네마</a></p>
+				<p><a href="${cp}/mypage/payList">나의 로또시네마</a></p>
 				<ul>
 					<li><a href="${cp}/mypage/payList">예매 내역</a></li>
 					<li><a href="${cp}/mypage/inquiry">나의 문의 내역</a></li>
-					<li><a onclick="updatePop()">MY 정보관리</a></li>
+					<li><a href="${cp}/mypage/myInfo">MY 정보관리</a></li>
 					<li><a href="${cp }/mypage/delAccount">회원 탈퇴</a></li>
 				</ul>
 			</nav>

@@ -12,4 +12,6 @@ public interface UsersMapper {
 	int deleteById(String id);
 	
 	UsersVo findById(String id);
+
+	void updatePwd(UsersVo vo);
 }

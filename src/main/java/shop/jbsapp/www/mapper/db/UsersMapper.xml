@@ -16,4 +16,8 @@
 		SELECT * FROM USERS WHERE ID = #{id}
 	</select>
 	
+	<update id="updatePwd" parameterType="shop.jbsapp.www.vo.UsersVo">
+		UPDATE USERS SET PWD = #{pwd} WHERE ID = #{id}
+	</update>
+	
 </mapper>
