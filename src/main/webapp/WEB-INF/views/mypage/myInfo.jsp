@@ -60,7 +60,7 @@
 			<div class="input_wrap">
 				<div class="wrap_inner">
 					<div class="ui_input">
-						<input type="text" name="year" class="input_space" value="${vo.year}" readonly="readonly">
+						<input type="text" name="birth" class="input_space" value="${vo.birth}" readonly="readonly">
 					</div>
 				</div>
 			</div>

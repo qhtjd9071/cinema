@@ -88,8 +88,9 @@ public class MypageController {
 	}
 	
 	@PostMapping("/updatePwd")
-	public String pwdUpdate(Authentication authentication, Principal principal, String newpwd1) {
-		boolean checkPwd = usersService.checkPwd(newpwd1, authentication);
+	public String pwdUpdate(Authentication authentication, Principal principal, String currpwd, String newpwd1) {
+		System.out.println("currpwd:"+currpwd);
+		boolean checkPwd = usersService.checkPwd(currpwd, authentication);
 		String userId = principal.getName();
 		if (checkPwd) {
 			usersService.updatePwd(userId, newpwd1);

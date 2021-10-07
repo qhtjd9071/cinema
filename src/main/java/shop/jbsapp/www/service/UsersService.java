@@ -1,10 +1,8 @@
 package shop.jbsapp.www.service;
 
-import java.security.Principal;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.AuthenticatedPrincipal;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,9 +40,10 @@ public class UsersService {
 	}
 
 	public boolean checkPwd(String pwd, Authentication authentication) {
-		String presentPwd = authentication.getCredentials().toString();
-		String encoded = encoder.encode(pwd);
-		if (encoder.matches(presentPwd, encoded)) {
+		User user = (User) authentication.getPrincipal();
+		String userId = user.getUsername();
+		UsersVo vo = usersMapper.findById(userId);
+		if (encoder.matches(pwd, vo.getPassword())) {
 			return true;
 		} else {
 			return false;
@@ -53,7 +52,8 @@ public class UsersService {
 
 	public void updatePwd(String id, String pwd) {
 		UsersVo vo = usersMapper.findById(id);
-		vo.setPwd(pwd);
+		String encoded = encoder.encode(pwd);
+		vo.setPwd(encoded);
 		usersMapper.updatePwd(vo);
 	}
 }

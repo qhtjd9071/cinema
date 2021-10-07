@@ -113,7 +113,7 @@
 				</div>
 			</div>
 			<div class="submit_container">
-				<input type="submit" value="등록" class="submit_btn">
+				<input type="submit" value="등록" class="submit_btn" onclick="checkuse(event)">
 			</div>
 		</form>
 	</div>
@@ -124,6 +124,15 @@
 </div>
 </body>
 <script type="text/javascript">
+
+	let using = false;
+
+	function checkuse(e) {
+		if (using == true) {
+			e.preventDefault();
+			alert("아이디를 확인해주세요.");
+		}
+	}
 	function check(){
 		var name=document.getElementsByName("name")[0];
 		var id=document.getElementsByName("id")[0];
@@ -208,13 +217,15 @@
 				if(xhr.readyState==4 && xhr.status==200){
 					let result=xhr.responseText;
 					let json=JSON.parse(result);
-					if(json.using==true){
+					if(json==true){
 						alert("사용중인 아이디입니다.");
+						using = true;
 					}else{
 						if((id<"0"||id>"9")&&(id<"A"||id>"Z")&&(id<"a"||id>"z")) {
 							alert("한글 및 특수문자는 아이디로 사용하실 수 없습니다.");
 						} else {
 							alert("사용 가능한 아이디입니다.");
+							using = false;
 						}
 					}
 				}
