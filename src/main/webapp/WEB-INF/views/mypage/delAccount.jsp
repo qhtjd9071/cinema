@@ -39,7 +39,7 @@
 				</li>
 				<li class="list_num">
 					<p class="subtitle">3. 회원님의 비밀번호를 입력하시고 [탈퇴] 버튼을 클릭해주세요.</p>
-					<form action="/memeber/delete" method="post" class="del_form">
+					<form action="/mypage/delete" method="post" class="del_form">
 						<div class="join1">
 							<div class="join_col1">
 								<label for="">비밀번호</label>

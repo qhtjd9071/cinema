@@ -32,6 +32,7 @@ public class UsersService {
 	}
 	
 	public int deleteById(String id) {
+		usersMapper.deleteAuthorityById(id);
 		return usersMapper.deleteById(id);
 	}
 

@@ -5,9 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -89,7 +92,6 @@ public class MypageController {
 	
 	@PostMapping("/updatePwd")
 	public String pwdUpdate(Authentication authentication, Principal principal, String currpwd, String newpwd1) {
-		System.out.println("currpwd:"+currpwd);
 		boolean checkPwd = usersService.checkPwd(currpwd, authentication);
 		String userId = principal.getName();
 		if (checkPwd) {
@@ -100,13 +102,13 @@ public class MypageController {
 		}
 	}
 	
-	@PostMapping
-	public String deleteUser(Authentication authentication, Principal principal, String pwd) {
+	@PostMapping("/delete")
+	public String deleteUser(Authentication authentication, Principal principal, String pwd, String newpwd1, HttpSession session) {
 		boolean checkPwd = usersService.checkPwd(pwd, authentication);
 		String userId = principal.getName();
 		if (checkPwd) {
 			usersService.deleteById(userId);
-			return "redirect:/";
+			return "redirect:/logout";
 		} else {
 			return "/fail/fail";
 		}

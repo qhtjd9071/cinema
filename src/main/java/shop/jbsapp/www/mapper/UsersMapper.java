@@ -8,6 +8,8 @@ import shop.jbsapp.www.vo.UsersVo;
 public interface UsersMapper {
 
 	int insert(UsersVo vo);
+
+	int deleteAuthorityById(String id);
 	
 	int deleteById(String id);
 	

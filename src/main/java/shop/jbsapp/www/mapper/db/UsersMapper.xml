@@ -8,6 +8,10 @@
 		INSERT INTO USERS VALUES(#{id}, #{pwd}, #{name}, #{email}, #{birth}, #{phone})
 	</insert>
 	
+	<delete id="deleteAuthorityById" parameterType="String">
+		DELETE FROM AUTHORITIES WHERE ID = #{id}
+	</delete>
+	
 	<delete id="deleteById" parameterType="String">
 		DELETE FROM USERS WHERE ID = #{id}
 	</delete>
