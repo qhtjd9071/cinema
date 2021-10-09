@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,6 +19,7 @@ import shop.jbsapp.www.util.PageUtil;
 import shop.jbsapp.www.vo.CustomersVo;
 
 @Controller
+@RequestMapping("/customer")
 public class CustomerController {
 	
 	private static Logger logger = (Logger) LoggerFactory.getLogger(CustomerController.class);
@@ -25,17 +27,17 @@ public class CustomerController {
 	@Autowired
 	private CustomersService customersService;
 	
-	@GetMapping("/customer/main")
+	@GetMapping("/main")
 	public String main() {
 		return "customer/main";
 	}
 	
-	@GetMapping("/customer/insert")
+	@GetMapping("/insert")
 	public String insertForm() {
 		return "customer/insert";
 	}
 	
-	@PostMapping("/customer/insert")
+	@PostMapping("/insert")
 	public String insert(@RequestParam(defaultValue = "0") int id, 
 								 @RequestParam(defaultValue = "0") int ref, 
 								 @RequestParam(defaultValue = "0") int lev, 
@@ -49,7 +51,7 @@ public class CustomerController {
 		return "fail/fail";
 	}
 	
-	@GetMapping("/customer/list")
+	@GetMapping("/list")
 	public ModelAndView list(String pageNum) {
 		ModelAndView mv = new ModelAndView("customer/list");
 		int spageNum = 1;
@@ -64,7 +66,7 @@ public class CustomerController {
 		return mv;
 	}
 	
-	@GetMapping("/customer/detail")
+	@GetMapping("/detail")
 	public ModelAndView detail(int id) {
 		ModelAndView mv = new ModelAndView("customer/detail");
 		CustomersVo vo = customersService.findById(id);
@@ -72,7 +74,7 @@ public class CustomerController {
 		return mv;
 	}
 	
-	@GetMapping("/customer/update")
+	@GetMapping("/update")
 	public ModelAndView updateForm(int id) {
 		ModelAndView mv = new ModelAndView("customer/update");
 		CustomersVo vo = customersService.findById(id);
@@ -80,7 +82,7 @@ public class CustomerController {
 		return mv;
 	}
 	
-	@PostMapping("/customer/update")
+	@PostMapping("/update")
 	public String update(CustomersVo vo) {
 		logger.info("{} : {}", vo.getId(), vo.getContent());
 		int result = customersService.update(vo);
@@ -91,7 +93,7 @@ public class CustomerController {
 		return "fail/fail";
 	}
 	
-	@GetMapping("/customer/delete")
+	@GetMapping("/delete")
 	public String delete(int id) {
 		int result = customersService.deleteById(id);
 		if (result > 0) {
