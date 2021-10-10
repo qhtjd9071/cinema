@@ -1,6 +1,7 @@
 package shop.jbsapp.www.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -72,5 +73,14 @@ public class MovieController {
 	public @ResponseBody List<MoviesVo> movieList() {
 		List<MoviesVo> list = moviesService.findAll();
 		return list;
+	}
+	
+	@GetMapping("/detail")
+	public ModelAndView detail(int id) {
+		ModelAndView mv = new ModelAndView("movie/detail");
+		Map<String, Object> map = moviesService.detailById(id);
+		mv.addObject("vo", map.get("vo"));
+		mv.addObject("grade", map.get("grade"));
+		return mv;
 	}
 }

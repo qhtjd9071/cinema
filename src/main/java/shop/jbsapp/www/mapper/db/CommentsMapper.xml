@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="shop.jbsapp.www.mapper.CommentsMapper">
+	<insert id="insert" parameterType="shop.jbsapp.www.vo.CommentsVo">
+		INSERT INTO COMMENTS VALUES(COMMENTS_SEQ.NEXTVAL, #{content}, #{star}, SYSDATE, #{userId}, #{movieId})
+	</insert>
+	
+	<delete id="deleteById">
+		DELETE FROM COMMENTS WHERE ID = #{id}
+	</delete>
+	
+	<select id="getAvgStarByMovieId" parameterType="int" resultType="double">
+		SELECT NVL(ROUND(AVG(STAR), 1), 0) GRADE FROM COMMENTS WHERE MOVIEID = #{movieId}
+	</select>
+	
+	<select id="findByMovieId" resultType="shop.jbsapp.www.vo.CommentsVo">
+		SELECT * FROM COMMENTS WHERE MOVIEID = #{movieId}
+	</select>
+</mapper>

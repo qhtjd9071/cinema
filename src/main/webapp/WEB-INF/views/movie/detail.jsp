@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal.username" var="logined"/>
+</sec:authorize>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +100,7 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 							</span>
 							<div class="review_write_box">
 								<div style="display:none" id="result"></div>
-								<input style="display:none" type="text" id="userId" value="${logined}" readonly="readonly">
+								<input type="hidden" id="userId" value="${logined}" readonly="readonly">
 								<textarea rows="3" cols="30" id="content" placeholder="평점 및 영화 관람평을 작성해주세요.
 주제와 무관한 리뷰 또는 스포일러는 표시제한 또는 삭제될 수 있습니다."></textarea>
 								<input class="review_submit" type="button" value="관람평 등록" onclick="addComments()">
@@ -151,34 +155,33 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 					review_con_list.removeChild(childs.item(i));
 				}
 				
-				let json=xhr.responseText;
-				let mcom=xml.getElementsByTagName("mcom");	
-				for(let i=0;i<mcom.length;i++){
+				let result=xhr.responseText;
+				let jsonArr = JSON.parse(result);
+				for(let i=0;i<jsonArr.length;i++){
+					let json = jsonArr[i];
 					let li=document.createElement("li");
-					let commentsId=mcom[i].getElementsByTagName("commentsId")[0].textContent;
-					let id=mcom[i].getElementsByTagName("userId")[0].textContent;
-					let content=mcom[i].getElementsByTagName("content")[0].textContent;
-					let star=mcom[i].getElementsByTagName("star")[0].textContent;
-					let creatDate=mcom[i].getElementsByTagName("createDate")[0].textContent;
-					let userId=mcom[i].getElementsByTagName("userId")[0].textContent;
-					let movieId=mcom[i].getElementsByTagName("movieId")[0].textContent;
+					let id = json.id;
+					let userId=json.userId;
+					let content=json.content;
+					let star=json.star;
+					let movieId=json.movieId
 					
 					li.innerHTML=   "<div class=\"topinfo\">"+ "<span class=\"nameinfo\">"+userId +"</span>"+
 									"<span class=\"scoreinfo\">"+"평점  " +star +"</div>"+ "</div>" +
 									"<div class=\"reviewinfo\">" + content +"</div>"+
-									"<a href='javascript:delComments(" + commentsId + ")'>삭제</a>";
+									"<a href='javascript:delComments(" + id + ")'>삭제</a>";
 					
 					li.className="commBox";
 					review_con_list.appendChild(li);
 				}
 			}			
 		};
-		xhr.open('get','${cp}/comments/list?movieId=${id}',true);
+		xhr.open('get','${cp}/comments/list?movieId=${vo.id}',true);
 		xhr.send();
 	}
 	
 	function addComments(){
-		const id=document.getElementById("id").value;	
+		const userId=document.getElementById("userId").value;	
 		const content=document.getElementById("content").value;	
 		let star=0;
 		const stars = document.getElementsByName("star-input");  
@@ -191,32 +194,30 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 		xhr.onreadystatechange=function(){	
 			if(xhr.readyState==4 && xhr.status==200){
 				let result=xhr.responseText;
-				alert(result);
+				if (result == "true")
 				list();
 			}
 		};
-		xhr.open('post','${cp}/aa.do',true);
+		alert(star);
+		let params="movieId=${vo.id}&userId=" +userId+ "&content=" + content + "&star=" + star;
+		xhr.open('get','${cp}/comments/insert?'+params,true);
 		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-		let params="movieId=${id}&userId=" +userId+ "&content=" + content + "&star=" + star;
-		xhr.send(params);
+		xhr.send();
 	}
 	
 	function delComments(id){
 		let xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4 && xhr.status==200){
-				let xml=xhr.responseXML;
-				let code=xml.getElementsByTagName("code")[0].textContent;
-				alert(code);
+				let result=xhr.responseText;
+				if (result == "true")
 				list();
 			}
 		};
-		xhr.open('get','${cp}/comments/delete?id='+commentsId,true);
+		xhr.open('get','${cp}/comments/delete?id='+id,true);
 		xhr.send();
 	}
 	
 </script>
-<!-- 페이징처리 -->
-<!-- 페이징처리 -->
 </body>
 </html>
