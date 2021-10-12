@@ -217,6 +217,7 @@
  	}
  	function selectDate(year, month, date){
 		curDate = year + "/" + month + "/" + date;
+ 	 	alert(curDate);
 		// 상영관, 상영시간 정보 얻어오기
 		showList(curDate,curMovieTitle,curTheaterName);
 	}

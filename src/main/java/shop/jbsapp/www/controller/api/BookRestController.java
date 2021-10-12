@@ -46,7 +46,7 @@ public class BookRestController {
 		if (tmp[2].length() == 1) {
 			beginTime +=  "0" + tmp[2];
 		} else {
-			begintime += tmp[2];
+			beginTime += tmp[2];
 		}
 		
 		Map<String, Object> map = new HashMap<>();
@@ -69,9 +69,8 @@ public class BookRestController {
 		if (tmp[2].length() == 1) {
 			beginTime +=  "0" + tmp[2];
 		} else {
-			begintime += tmp[2];
+			beginTime += tmp[2];
 		}
-		
 		Map<String, Object> map = new HashMap<>();
 		System.out.println("check:"+roomNum);
 		map.put("beginTime", beginTime);
