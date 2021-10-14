@@ -198,7 +198,6 @@ star-input>.input.focus{outline:1px dotted #ddd;}
 				list();
 			}
 		};
-		alert(star);
 		let params="movieId=${vo.id}&userId=" +userId+ "&content=" + content + "&star=" + star;
 		xhr.open('get','${cp}/comments/insert?'+params,true);
 		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");

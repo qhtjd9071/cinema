@@ -90,7 +90,7 @@
 	function controllSeat(){
 		const seatArea=document.getElementById("seatArea");
 		//좌석 배열
-		let div=document.createElement("div");
+		var div=document.createElement("div");
 		let seatNum=${i}%8;
 		if(${i}%8==0){
 			seatNum=8;
@@ -124,7 +124,7 @@
 			div.style.backgroundColor="red";
 			input.value="using";
 		}
-		
+
 		//좌석 클릭처리
 		div.addEventListener("click",function(e){
 			if(input.value=="using"){
@@ -155,14 +155,17 @@
 		if(selectCount<${totalCount}){
 			alert("좌석을 선택하세요");
 		}else{
-			var parameter={"showId":${showId},"price":${price},"seatNum":book.toString()}
-			var params=JSON.stringify(parameter);
+			let parameter={"showId":${showId},"price":${price},"seatNum":book.toString()}
+			let params=JSON.stringify(parameter);
 			let xhr=new XMLHttpRequest();
 			xhr.onreadystatechange=function(){
 				if(xhr.readyState==4 && xhr.status==200){
-						let json=xhr.responseText;
-						let bna=JSON.parse(json);
-						kakaoPay(xhr,json);
+						let result=xhr.responseText;
+						if (result == "-1") {
+							alert("이미 예매된 좌석입니다.")
+							return;
+						}
+						kakaoPay(xhr,result);
 					}
 			}
 			xhr.open("post","/api/book/book",true);
@@ -171,9 +174,8 @@
 		}
 	}
 	
-	function kakaoPay(xhr,json){
-		alert(json);
-		let parameter={"bookId":json,"userId":"${logined}","title":"${movieTitle}","count":selectCount,"total":${price*adultCount}+${price*0.7*teenCount}};
+	function kakaoPay(xhr,bookId){
+		let parameter={"bookId":bookId,"userId":"${logined}","title":"${movieTitle}","count":selectCount,"total":${price*adultCount}+${price*0.7*teenCount}};
 		let params=JSON.stringify(parameter);
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4 && xhr.status==200){

@@ -57,7 +57,7 @@ public class BooksService {
 		return booksMapper.getIdByShowId(showId);
 	}
 
-	public int getIdBySeatNumAndShowId(Map<String, Object> params) {
+	public Integer getIdBySeatNumAndShowId(Map<String, Object> params) {
 		return booksMapper.getIdBySeatNumAndShowId(params);
 	}
 

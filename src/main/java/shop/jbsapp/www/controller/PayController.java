@@ -1,6 +1,8 @@
 package shop.jbsapp.www.controller;
 
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,18 +17,28 @@ import shop.jbsapp.www.service.PaysService;
 @RequestMapping(value = "/pay")
 public class PayController {
 	@Autowired
-	private PaysService payService;
+	private PaysService paysService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(PayController.class);
 	
 	@GetMapping("/kakaoPayCancel")
 	public void kakaoPayCancel(String partner_order_id) {
-		payService.kakaoPayCancel(partner_order_id);
+		paysService.kakaoPayCancel(partner_order_id);
+	}
+	
+	@GetMapping("/kakaoPayApprove")
+	public String kakaoPayApprove(String partner_order_id, String pg_token, Principal principal) {
+		Map<String, String> map = new HashMap<>();
+		map.put("partner_order_id", partner_order_id);
+		map.put("pg_token", pg_token);
+		map.put("id", principal.getName());
+		paysService.kakaoPayApprove(map);
+		return "redirect:/mypage/payList";
 	}
 	
 	@GetMapping("/kakaoPayFail")
 	public void kakaoPayFail(Principal principal) {
-		payService.kakaoPayFail(principal.getName());
+		paysService.kakaoPayFail(principal.getName());
 	}
 	
 }

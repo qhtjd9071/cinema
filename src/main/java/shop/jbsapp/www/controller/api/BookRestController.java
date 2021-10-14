@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import shop.jbsapp.www.service.BooksService;
+import shop.jbsapp.www.util.GetSeatNum;
 import shop.jbsapp.www.vo.BooksVo;
 
 @RestController
@@ -33,8 +34,13 @@ public class BookRestController {
 		vo.setSeatNum(seatNum);
 		vo.setShowId(showId);
 		vo.setUserId(principal.getName());
-		booksService.insert(vo);
-		return booksService.getIdBySeatNumAndShowId(params);
+		Integer checkSeat = booksService.getIdBySeatNumAndShowId(params);
+		if (checkSeat != null) {
+			return -1;
+		} else {
+			booksService.insert(vo);
+			return booksService.getIdBySeatNumAndShowId(params);
+		}
  	}
 	
 	@GetMapping("/showList")

@@ -71,7 +71,7 @@
   				left: 45.5%; 
 			    cursor: pointer;">
 </div>
-
+</div>
 
 <div class="footer">
 	<jsp:include page="../layout/footer.jsp"/>

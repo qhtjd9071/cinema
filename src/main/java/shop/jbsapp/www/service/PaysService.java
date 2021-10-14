@@ -51,7 +51,7 @@ public class PaysService {
 		String quantity = Integer.toString((int) map.get("count"));
 		String total_amount = Integer.toString((int) map.get("total"));
 
-		String approval_url = HomePageUrl + "/api/pay/kakaoPayApprove?partner_order_id=" + partner_order_id;
+		String approval_url = HomePageUrl + "/pay/kakaoPayApprove?partner_order_id=" + partner_order_id;
 		String cancel_url = HomePageUrl + "/pay/kakaoPayCancel";
 		String fail_url = HomePageUrl + "/pay/kakaoPayFail";
 

@@ -32,6 +32,6 @@ public interface BooksMapper {
 
 	int getIdByShowId(int showId);
 
-	int getIdBySeatNumAndShowId(Map<String, Object> params);
+	Integer getIdBySeatNumAndShowId(Map<String, Object> params);
 
 }
