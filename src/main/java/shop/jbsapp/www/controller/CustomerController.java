@@ -86,7 +86,6 @@ public class CustomerController {
 	public String update(CustomersVo vo) {
 		logger.info("{} : {}", vo.getId(), vo.getContent());
 		int result = customersService.update(vo);
-		System.out.println(result);
 		if (result > 0) {
 			return "redirect:list";
 		}

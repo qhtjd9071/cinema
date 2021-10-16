@@ -46,7 +46,6 @@ public class CommentController {
 		vo.setUserId(userId);
 		vo.setContent(content);
 		vo.setStar(star);
-		System.out.println("vo:"+vo);
 		int result = commentsService.insert(vo);
 		if (result > 0) {
 			return true;

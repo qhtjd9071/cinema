@@ -55,8 +55,6 @@ public class BookController{
 		for(BooksVo vo : list) {
 			strList = GetSeatNum.getSeatNumList(strList, vo.getSeatNum());
 		}
-		System.out.println("test:"+list.toString());
-		System.out.println("test:"+strList.toString());
 		int movieId = bookService.getMovieIdByShowId(showId);
 		ModelAndView mv = new ModelAndView("book/countSelection");
 		mv.addObject("list", strList);
@@ -81,7 +79,7 @@ public class BookController{
 		mv.addObject("list", strList);
 		mv.addObject("count", bookService.getSeatCountByShowId(showId));
 		mv.addObject("showId", showId);
-		// price 테이블 위치 바꿔야함
+		// price �뀒�씠釉� �쐞移� 諛붽퓭�빞�븿
 		mv.addObject("price", 10000);
 		mv.addObject("movieTitle", vo.getTitle());
 		mv.addObject("adultCount", adultCount);

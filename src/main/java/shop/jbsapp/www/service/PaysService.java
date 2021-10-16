@@ -71,7 +71,6 @@ public class PaysService {
 
 		Map<String, Object> responseMap = null;
 		try {
-			System.out.println("response:"+responseMap);
 			responseMap = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body, Map.class);
 		} catch (RestClientException e) {
 			e.printStackTrace();
@@ -91,8 +90,6 @@ public class PaysService {
 		PaysVo vo = new PaysVo();
 		vo.setId(tid);
 		vo.setBookId(Integer.parseInt(partner_order_id));
-		System.out.println("tid:"+tid);
-		System.out.println("test:"+vo.toString());
 		
 		payMapper.insert(vo);
 

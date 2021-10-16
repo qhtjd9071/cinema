@@ -37,7 +37,6 @@ public class NoticesService {
 	public int update(NoticesVo vo) {
 		logger.info("check");
 		int result = noticesMapper.update(vo);
-		System.out.println(result);
 		return result;
 	}
 

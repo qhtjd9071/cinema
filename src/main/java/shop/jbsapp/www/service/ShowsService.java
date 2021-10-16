@@ -18,11 +18,6 @@ public class ShowsService {
 	private ShowsMapper showsMapper;
 	
 	public int insert(Map<String, Object> map) {
-		System.out.println( map.get("beginTime") );
-		System.out.println( map.get("endTime") );
-		System.out.println(map.get("movieId"));
-		System.out.println(map.get("movieId"));
-		System.out.println(map.get("price"));
 		return showsMapper.insert(map);
 	}
 

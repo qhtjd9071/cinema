@@ -62,7 +62,6 @@ public class BookRestController {
 		map.put("theaterName", theaterName);
 		
 		List<Map<String, Object>> result = booksService.roomList(map);
-		System.out.println("result:"+ result);
 		return result;
 	}
 	
@@ -78,7 +77,6 @@ public class BookRestController {
 			beginTime += tmp[2];
 		}
 		Map<String, Object> map = new HashMap<>();
-		System.out.println("check:"+roomNum);
 		map.put("beginTime", beginTime);
 		map.put("title", movieTitle);
 		map.put("theaterName", theaterName);

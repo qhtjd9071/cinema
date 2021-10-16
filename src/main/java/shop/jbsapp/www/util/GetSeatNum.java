@@ -36,9 +36,7 @@ public class GetSeatNum {
 		String test = "[1, , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , , 49, 50]";
 		List<String> list = new ArrayList<>();
 		List<String> method1 = getSeatNumList(list, test);
-		System.out.println(method1.toString());
 		
 		String method2 = getSeatNumList(test);
-		System.out.println(method2);
 	}
 }

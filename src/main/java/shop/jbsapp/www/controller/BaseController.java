@@ -46,7 +46,6 @@ public class BaseController {
 		} else if (cmd.equals("movie")) {
 			path=context.getRealPath("/resources/upload/movie");
 		}
-		System.out.println("path:"+path);
 		String orgfilename=file.getOriginalFilename();
 		String savefilename=UUID.randomUUID()+"_"+orgfilename;
 		try {

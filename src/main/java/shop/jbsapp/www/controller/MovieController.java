@@ -37,7 +37,6 @@ public class MovieController {
 	
 	@PostMapping("/insert")
 	public String insert(MoviesVo vo) {
-		System.out.println(vo.toString());
 		int result = moviesService.insert(vo);
 		if (result > 0) {
 			return "redirect:list";

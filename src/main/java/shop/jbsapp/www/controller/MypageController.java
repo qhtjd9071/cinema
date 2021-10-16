@@ -49,7 +49,6 @@ public class MypageController {
 	
 	@GetMapping("/inquiry")
 	public ModelAndView inquiry(@RequestParam(value = "pageNum", required = false) String spageNum, Principal principal) {
-		System.out.println("check1");
 		int pageNum = 1;
 		if(spageNum != null) {
 			pageNum = Integer.parseInt(spageNum);
