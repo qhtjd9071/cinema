@@ -19,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 import shop.jbsapp.www.service.BooksService;
 import shop.jbsapp.www.service.MoviesService;
 import shop.jbsapp.www.service.RoomsService;
+import shop.jbsapp.www.service.ShowsService;
 import shop.jbsapp.www.util.GetSeatNum;
 import shop.jbsapp.www.vo.BooksVo;
 import shop.jbsapp.www.vo.MoviesVo;
@@ -36,6 +37,9 @@ public class BookController{
 	
 	@Autowired
 	private MoviesService moviesService;
+	
+	@Autowired
+	private ShowsService showsService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(BookController.class);
 	
@@ -79,8 +83,7 @@ public class BookController{
 		mv.addObject("list", strList);
 		mv.addObject("count", bookService.getSeatCountByShowId(showId));
 		mv.addObject("showId", showId);
-		// price �뀒�씠釉� �쐞移� 諛붽퓭�빞�븿
-		mv.addObject("price", 10000);
+		mv.addObject("price", showsService.getPriceById(showId));
 		mv.addObject("movieTitle", vo.getTitle());
 		mv.addObject("adultCount", adultCount);
 		mv.addObject("teenCount", teenCount);

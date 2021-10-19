@@ -33,4 +33,8 @@ public class ShowsService {
 		return showsMapper.count();
 	}
 
+	public int getPriceById(int id) {
+		return showsMapper.getPriceById(id);
+	}
+
 }

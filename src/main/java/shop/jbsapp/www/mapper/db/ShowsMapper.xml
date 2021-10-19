@@ -25,4 +25,8 @@
 	<select id="count" resultType="int">
 		SELECT NVL(COUNT(*), 0) FROM SHOWS
 	</select>
+	
+	<select id="getPriceById" resultType="int">
+		SELECT PRICE FROM SHOWS WHERE ID = #{id}
+	</select>
 </mapper>

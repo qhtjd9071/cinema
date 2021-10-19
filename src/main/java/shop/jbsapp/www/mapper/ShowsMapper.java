@@ -17,4 +17,6 @@ public interface ShowsMapper {
 	List<Map<String, Object>> showListPaging(PageUtil pageUtil);
 	
 	int count();
+
+	int getPriceById(int id);
 }
