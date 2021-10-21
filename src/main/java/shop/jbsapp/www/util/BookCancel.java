@@ -19,7 +19,7 @@ public class BookCancel {
 			int bookId=paysVo.getBookId();
 			if(paysVo.getMethod() == null) {
 				BooksVo bookVo = bookMapper.findById(bookId);
-				if(bookVo.getUserId() == id) {
+				if(bookVo.getUserId().equals(id)) {
 					payMapper.deleteByBookId(bookId);
 					bookMapper.deleteById(bookId);
 				}
