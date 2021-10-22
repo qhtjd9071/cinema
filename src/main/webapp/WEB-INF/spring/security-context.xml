@@ -5,13 +5,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
          http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
-<!-- 
-	<global-method-security
-		secured-annotations="enabled" pre-post-annotations="enabled">
-		<expression-handler
-			ref="methodSecurityExpressionHandler" />
-	</global-method-security>
-	 -->
+
 	<http pattern="/resources/**" security="none" />
 
 	<http auto-config="true" use-expressions="true">
@@ -29,17 +23,16 @@
 			username-parameter="id" password-parameter="pwd" />
 			
 		<csrf disabled="true"/>
-		<!-- 
+		
 		<session-management>
 			<concurrency-control max-sessions="1"
 				error-if-maximum-exceeded="true" />
 		</session-management>
-		 -->
+		
 		<logout logout-success-url="/"
 			logout-url="/logout" />
 	</http>
 
-	<!-- bean 등록 -->
 	<authentication-manager
 		alias="authenticationManager">
 		<authentication-provider
