@@ -70,7 +70,7 @@
 							</div><br>
 							<span class="point_color"><small>8-15자리의 영문/숫자를 함께 입력해주세요.</small></span><br>
 							<div class="ui_input">
-								<input type="password" name="pwd2" class="input_space" maxlength="20" id="pwd" placeholder="입력하신 비밀번호를 다시 한번 입력해주세요.">
+								<input type="password" name="pwd2" class="input_space" maxlength="20" id="pwd2" placeholder="입력하신 비밀번호를 다시 한번 입력해주세요.">
 							</div>
 						</div>
 					</div>
