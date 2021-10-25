@@ -24,4 +24,61 @@ url : http://www.jbsapp.shop (추가 예정) -> (추가 완료)
 - tomcat 9 (docker)
 
 상세 정보 : 
-(추가 예정)
+  
+1) 메인페이지 
+  
+ ![image](https://user-images.githubusercontent.com/79811772/159501759-34f85589-31c2-47ee-a9ed-0bb660fcbf79.png)
+
+2.	로그인페이지 
+ ![image](https://user-images.githubusercontent.com/79811772/159501820-2ca66ed6-ea21-4934-baa9-c4601b53d81c.png)
+
+  
+ 
+3.	관리자페이지 
+ 
+  ![image](https://user-images.githubusercontent.com/79811772/159501829-06de4aa1-4d9f-4e24-9f1e-e59bd9a949d9.png)
+
+ 
+4.	예매페이지 
+ ![image](https://user-images.githubusercontent.com/79811772/159501846-ad0e1cde-3689-4ce1-be87-c95af51b6159.png)
+
+  
+5.	좌석선택페이지 
+  
+ ![image](https://user-images.githubusercontent.com/79811772/159501858-d410251b-2408-43d3-9931-b04bdb9b3173.png)
+
+6.	결제페이지 
+ 
+  ![image](https://user-images.githubusercontent.com/79811772/159501871-ff0ca0b2-b067-4a67-b79d-1b6286c6b1ea.png)
+
+ 
+7.	마이페이지 
+ 
+  ![image](https://user-images.githubusercontent.com/79811772/159501877-dec74215-9b1c-44eb-aaf6-3f8feb4b369a.png)
+
+ 
+8.	영화페이지 
+ 
+  ![image](https://user-images.githubusercontent.com/79811772/159501898-6d5e7a4d-8fdc-4bfa-955a-00e28ac50c1c.png)
+
+ 
+9.	영화댓글페이지 
+ 
+  ![image](https://user-images.githubusercontent.com/79811772/159501917-fad82aa5-58b7-4e29-80b8-e0dd433b9b38.png)
+
+ 
+10.	이벤트페이지 
+ 
+  ![image](https://user-images.githubusercontent.com/79811772/159501929-ddf3a50c-132b-466b-b610-86f7a86f6788.png)
+
+ 
+11.	공지사항페이지 
+ 
+  ![image](https://user-images.githubusercontent.com/79811772/159501946-33b6e728-e26e-443d-8a56-5d66233e6221.png)
+
+ 
+12.	고객센터페이지 
+ 
+  ![image](https://user-images.githubusercontent.com/79811772/159501961-c2752102-3d7e-44cd-ac3e-a614651f3d1e.png)
+
+
